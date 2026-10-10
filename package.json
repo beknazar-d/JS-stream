@@ -1,0 +1,16 @@
+{
+    "name": "study-platform",
+    "private": true,
+    "version": "0.1.0",
+    "workspaces": [
+        "apps/*",
+        "packages/*"
+    ],
+    "scripts": {
+        "dev": "npm --prefix apps/site run dev",
+        "build": "npm --prefix apps/site run build",
+        "lint": "npm --prefix apps/site run lint",
+        "test": "echo \"No platform tests yet\" && exit 0",
+        "verify": "npm --prefix apps/site run build"
+    }
+}
