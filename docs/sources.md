@@ -33,3 +33,16 @@
 | [MDN Web Docs: for, while, do...while, break, continue, Functions, Arrow functions, Closures, Equality comparisons, Nullish coalescing, Lexical grammar (ASI), let (TDZ)](https://developer.mozilla.org/ru/docs/Web/JavaScript) | Факты о поведении конструкций и порядок тем. Текст не копировался | CC BY-SA 2.5 (атрибуция «Mozilla Contributors») |
 
 Сообщения консоли и результаты выражений получены запуском в Node.js 22.22.0 (V8).
+
+## Модуль 0 «Рабочее место», уроки 0.1–0.4
+
+Тексты, примеры и задания написаны с нуля, со своими данными. Прямых заимствований нет.
+
+| Источник | Что использовано | Лицензия |
+| --- | --- | --- |
+| [Node.js: документация и страница загрузки](https://nodejs.org/) | Версии LTS, команды `node -v`, `npm -v`, `node файл.js` | MIT (только факты) |
+| [MDN Web Docs: Chrome DevTools, Console API, Error](https://developer.mozilla.org/ru/docs/Web/JavaScript) | Типы ошибок, методы `console`, оператор `debugger`. Текст не копировался | CC BY-SA 2.5 (атрибуция «Mozilla Contributors») |
+| [Pro Git](https://git-scm.com/book/ru/v2) и документация Git | Порядок команд init, add, commit, log, формат `git status --short` | CC BY-NC-SA 3.0 (только порядок тем, текст не копировался) |
+| [Chrome DevTools: Sources и горячие клавиши](https://developer.chrome.com/docs/devtools) | Клавиши F8, F10, F11, Shift+F11 | Только факты |
+
+Вывод терминала, Git и стектрейсы получены запуском команд в Node.js 22.22.0 и Git 2.43.0 (Linux, bash). Исключения, не проверенные запуском: поведение PowerShell и cmd на Windows, формат стектрейса с путём Windows (используется только в скрытом тесте), клавиши DevTools.

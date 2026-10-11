@@ -1,0 +1,22 @@
+order: 4
+title: "Файл и строка из стектрейса"
+type: implement
+role: main
+difficulty: 4
+minutes: 25
+language: js
+tags: [стектрейс, ошибки, строки, split, indexOf, Number]
+hints:
+  - "Направление: пройдите по строкам стектрейса и выберите первую строку со своим кодом. Строки с «at » — это кадры вызовов. Внутренние кадры Node.js начинаются с «node:». Место (файл:строка:столбец) стоит в скобках или сразу после «at »."
+  - "Шаг: режьте место по двоеточиям и берите числа С КОНЦА: последняя часть — столбец, предпоследняя — строка, всё остальное, склеенное через двоеточие, — файл. В пути могут быть свои двоеточия: file:/// и буква диска C:."
+  - "Почти решение: let place = frame.slice(3); if (place.endsWith(\")\")) { place = place.slice(place.lastIndexOf(\"(\") + 1, -1); } if (place.startsWith(\"node:\")) continue; const parts = place.split(\":\"); column = Number(parts[parts.length - 1]); line = Number(parts[parts.length - 2]); file = parts.slice(0, -2).join(\":\"). Если line — NaN, кадр пропустите."
+wrong:
+  - name: first-frame
+    kind: partial
+    explanation: "Берётся первый кадр «at», даже если он внутренний (node:internal). Если ошибка случилась до запуска вашего кода, например «Cannot find module», нужно вернуть null, а функция вернула внутренний файл Node.js."
+  - name: string-numbers
+    kind: common-mistake
+    explanation: "Строка и столбец возвращены строками, а не числами. Проверка toEqual различает 1 и «1»."
+  - name: fixed-colons
+    kind: edge-case
+    explanation: "Числа берутся с фиксированных позиций после первого двоеточия. Это ломается на путях, где двоеточия есть внутри: file:///home/... в ES-модулях и C:\\Users\\... в Windows. Числа нужно брать с конца строки."

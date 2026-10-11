@@ -1,0 +1,22 @@
+order: 1
+title: "Имена ошибок и слово для точки останова"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 5
+language: js
+tags: [ошибки, ReferenceError, TypeError, SyntaxError, debugger]
+hints:
+  - "Направление: имя ошибки — первое слово сообщения до двоеточия. Вспомните три сообщения из раздела «Типичные ошибки»."
+  - "Шаг: «is not defined» — имя не объявлено. «is not a function» и «Cannot read properties of undefined» — неподходящее действие со значением. «missing )» — нарушены правила записи кода."
+  - "Почти решение: ReferenceError, TypeError, TypeError, SyntaxError и debugger."
+wrong:
+  - name: three-of-five
+    kind: partial
+    explanation: "Заполнены только три константы из пяти. Остальные остались пустыми, а тест проверяет каждую."
+  - name: swapped
+    kind: common-mistake
+    explanation: "Для необъявленного имени написано TypeError. Но сообщение «is not defined» принадлежит ReferenceError: имени не существует вообще. TypeError — когда значение есть, но действие с ним невозможно."
+  - name: lowercase
+    kind: edge-case
+    explanation: "Имена написаны строчными буквами. JavaScript различает регистр: имя типа ошибки пишется ReferenceError, а слово для точки останова — debugger. Тест сравнивает строки точно."
