@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+.catalog {
+  padding: 24px;
+}
+
+.card {
+  max-width: 280px;
+  padding: 16px;
+  border: 1px solid #d5dbe1;
+  border-radius: 8px;
+  background: #ffffff;
+  transition: transform 1.5s ease, box-shadow 1.5s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card__title {
+  margin: 0 0 8px;
+  font-size: 1.125rem;
+}
+
+.card__price {
+  margin: 0;
+  font-weight: 700;
+}

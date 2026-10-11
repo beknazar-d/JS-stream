@@ -1,0 +1,3 @@
+transform: composite, opacity: composite
+background-color: paint, box-shadow: paint
+width: layout, margin: layout, top: layout

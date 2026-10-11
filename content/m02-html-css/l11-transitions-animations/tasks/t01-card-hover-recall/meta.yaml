@@ -1,0 +1,22 @@
+order: 1
+title: "По памяти: плавное поднятие карточки"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 8
+language: html
+tags: [transition, transform, hover, box-shadow]
+hints:
+  - "Направление: переход описывается у исходного состояния (в .card), а не в :hover. Сдвиг по вертикали — функция translateY()."
+  - "Шаг: transition принимает список через запятую: свойство, длительность, функция плавности. Для двух свойств нужно два набора."
+  - "Почти решение: .card { transition: transform 0.2s ease, box-shadow 0.2s ease; } .card:hover { transform: translateY(-4px); box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); }"
+wrong:
+  - name: transition-all
+    kind: common-mistake
+    explanation: "transition: all анимирует любое свойство, которое изменится: и нужные, и случайные. Если позже добавить в :hover width или цвет, они тоже поплывут. Перечислите свойства явно."
+  - name: too-slow
+    kind: edge-case
+    explanation: "Переход идёт 1,5 секунды. Карточка отзывается лениво, интерфейс кажется тормозящим. Для откликов на наведение берут 0,1–0,3 секунды."
+  - name: no-hover-rule
+    kind: partial
+    explanation: "transition объявлен, но менять нечему: нет правила .card:hover, значит и переход не из чего запускать. Переход срабатывает при изменении значения."

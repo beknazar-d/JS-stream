@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+.catalog {
+  padding: 24px;
+}
+
+.card {
+  max-width: 280px;
+  padding: 16px;
+  border: 1px solid #d5dbe1;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.card__title {
+  margin: 0 0 8px;
+  font-size: 1.125rem;
+}
+
+.card__price {
+  margin: 0;
+  font-weight: 700;
+}
+
+/* Сделайте так, чтобы при наведении карточка плавно приподнималась:
+   1. в .card добавьте transition для transform и box-shadow, 0.2 секунды;
+   2. в правиле .card:hover сдвиньте карточку вверх на 4px через transform
+      и добавьте тень box-shadow. */

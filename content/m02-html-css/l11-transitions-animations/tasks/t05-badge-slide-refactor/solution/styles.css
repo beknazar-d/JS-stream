@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+.product {
+  padding: 24px;
+}
+
+.offer {
+  height: 32px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: #b42318;
+  color: #ffffff;
+  font-weight: 700;
+  animation: slide-in 0.6s ease-out both;
+}
+
+/* Плашка выезжает слева и проявляется */
+@keyframes slide-in {
+  from {
+    transform: translateX(-120px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.price {
+  font-weight: 700;
+}
