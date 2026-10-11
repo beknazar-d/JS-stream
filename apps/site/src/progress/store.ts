@@ -32,15 +32,17 @@ export interface ProgressData {
   tasks: Record<string, TaskProgress>
   cards: Record<string, CardProgress>
   lessons: Record<string, LessonProgress>
+  // Отмеченные пункты чек-листов: ключ <lessonId>/<id> → номера пунктов.
+  checklists: Record<string, number[]>
 }
 
 const DB_NAME = 'js-stream'
-const DB_VERSION = 1
-const STORES = ['tasks', 'cards', 'lessons'] as const
+const DB_VERSION = 2
+const STORES = ['tasks', 'cards', 'lessons', 'checklists'] as const
 type StoreName = (typeof STORES)[number]
 
 let db: IDBDatabase | undefined
-let data: ProgressData = { tasks: {}, cards: {}, lessons: {} }
+let data: ProgressData = { tasks: {}, cards: {}, lessons: {}, checklists: {} }
 let persistent = true
 const listeners = new Set<() => void>()
 
@@ -159,6 +161,18 @@ export function setCard(id: string, value: CardProgress) {
   emit()
 }
 
+// --- Чек-листы ---
+
+export function setChecklistItem(key: string, index: number, checked: boolean) {
+  const current = new Set(data.checklists[key] ?? [])
+  if (checked) current.add(index)
+  else current.delete(index)
+  const value = [...current].sort((a, b) => a - b)
+  data.checklists = { ...data.checklists, [key]: value }
+  write('checklists', key, value)
+  emit()
+}
+
 // --- Экспорт и импорт ---
 
 const FORMAT = 'js-stream-progress'
@@ -219,12 +233,21 @@ export function importProgress(text: string): number {
     write('lessons', id, raw)
     count++
   }
+  const checklists = isRecord(parsed.checklists) ? parsed.checklists : {}
+  for (const [key, raw] of Object.entries(checklists)) {
+    if (!Array.isArray(raw)) continue
+    const incoming = raw.filter((n): n is number => Number.isInteger(n))
+    const merged = [...new Set([...(data.checklists[key] ?? []), ...incoming])].sort((a, b) => a - b)
+    data.checklists = { ...data.checklists, [key]: merged }
+    write('checklists', key, merged)
+    count++
+  }
   emit()
   return count
 }
 
 export async function resetProgress() {
-  data = { tasks: {}, cards: {}, lessons: {} }
+  data = { tasks: {}, cards: {}, lessons: {}, checklists: {} }
   if (db) {
     const tx = db.transaction(STORES, 'readwrite')
     for (const name of STORES) tx.objectStore(name).clear()
