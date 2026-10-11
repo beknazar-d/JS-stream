@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="13">
+  <title id="t">Макет карточки товара на ширине 1024</title>
+  <desc id="d">Две колонки с зазором 32. Слева галерея шириной 480: картинка 480 на 360 и три миниатюры 96 на 72 с зазором 12. Справа информация: заголовок 32 пикселя, рейтинг, цена 28 пикселей жирная и старая цена зачёркнутая, описание, кнопка 200 на 48, список характеристик из двух колонок, первая колонка 160.</desc>
+  <rect width="640" height="400" fill="#ffffff"/>
+  <g stroke="#555555" stroke-width="1" fill="none">
+    <rect x="20" y="20" width="600" height="360" stroke-dasharray="4 4"/>
+  </g>
+  <rect x="40" y="40" width="270" height="203" rx="6" fill="#dfe7f1" stroke="#6b7a90"/>
+  <text x="175" y="146" text-anchor="middle" fill="#334155">Картинка 480 × 360</text>
+  <g fill="#dfe7f1" stroke="#6b7a90">
+    <rect x="40" y="250" width="54" height="40" rx="3"/>
+    <rect x="100" y="250" width="54" height="40" rx="3"/>
+    <rect x="160" y="250" width="54" height="40" rx="3"/>
+  </g>
+  <text x="40" y="310" fill="#334155" font-size="12">миниатюры 96 × 72, зазор 12</text>
+  <text x="329" y="62" fill="#1a1a1a" font-size="22" font-weight="700">Чайник Домотека ЧЭ-17</text>
+  <text x="329" y="84" fill="#4b5563">Рейтинг 4,7 из 5 · 128 отзывов</text>
+  <text x="329" y="116" fill="#1a1a1a" font-size="20" font-weight="700">3 490 ₽</text>
+  <text x="410" y="116" fill="#6b7280" text-decoration="line-through">4 190 ₽</text>
+  <text x="329" y="142" fill="#1a1a1a">Электрический чайник на 1,7 литра...</text>
+  <rect x="329" y="158" width="112" height="30" rx="6" fill="#0b3d91"/>
+  <text x="385" y="178" fill="#ffffff" text-anchor="middle" font-weight="700">В корзину</text>
+  <g fill="#4b5563">
+    <text x="329" y="220">Объём</text>
+    <text x="329" y="240">Мощность</text>
+    <text x="329" y="260">Материал</text>
+    <text x="329" y="280">Гарантия</text>
+  </g>
+  <g fill="#1a1a1a">
+    <text x="420" y="220">1,7 л</text>
+    <text x="420" y="240">2200 Вт</text>
+    <text x="420" y="260">нержавеющая сталь</text>
+    <text x="420" y="280">2 года</text>
+  </g>
+  <g stroke="#555555" fill="none">
+    <path d="M40 336 H310 M40 330 V342 M310 330 V342"/>
+    <path d="M310 336 H329 M310 330 V342 M329 330 V342"/>
+  </g>
+  <text x="175" y="354" text-anchor="middle" fill="#334155" font-size="12">колонка 480</text>
+  <text x="320" y="372" text-anchor="middle" fill="#334155" font-size="12">зазор 32; ширина страницы 960 по центру</text>
+</svg>

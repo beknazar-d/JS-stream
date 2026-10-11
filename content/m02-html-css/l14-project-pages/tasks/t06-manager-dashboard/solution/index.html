@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Панель менеджера — Домотека</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page" id="main">
+    <h1 class="page__title">Панель менеджера</h1>
+    <section class="kpis" aria-label="Сводка">
+      <article class="kpi" data-kpi>
+        <p class="kpi__label">Новые заказы</p>
+        <p class="kpi__value">12</p>
+      </article>
+      <article class="kpi" data-kpi>
+        <p class="kpi__label">В доставке</p>
+        <p class="kpi__value">7</p>
+      </article>
+      <article class="kpi kpi--warning" data-kpi>
+        <p class="kpi__label">Нет в наличии</p>
+        <p class="kpi__value">3</p>
+      </article>
+    </section>
+    <form class="toolbar" role="search" aria-label="Фильтры заказов">
+      <div class="toolbar__field toolbar__field--grow">
+        <label class="visually-hidden" for="q">Поиск по номеру или клиенту</label>
+        <input class="toolbar__control" id="q" type="search" placeholder="Номер или клиент">
+      </div>
+      <div class="toolbar__field">
+        <label class="visually-hidden" for="status">Статус заказа</label>
+        <select class="toolbar__control" id="status">
+          <option>Все статусы</option>
+          <option>Оплачен</option>
+          <option>В доставке</option>
+          <option>Ждёт поставки</option>
+        </select>
+      </div>
+      <button class="toolbar__reset" type="reset">Сбросить</button>
+    </form>
+    <div class="orders-scroll" data-scroll role="region" aria-label="Список заказов" tabindex="0">
+      <table class="orders" data-table>
+        <caption class="visually-hidden">Заказы за последние пять дней</caption>
+        <thead>
+          <tr class="orders__row orders__row--head" data-head>
+            <th scope="col" class="orders__cell orders__cell--number" data-col="number">№ заказа</th>
+            <th scope="col" class="orders__cell orders__cell--customer" data-col="customer">Клиент</th>
+            <th scope="col" class="orders__cell orders__cell--status" data-col="status">Статус</th>
+            <th scope="col" class="orders__cell orders__cell--total" data-col="total">Сумма</th>
+            <th scope="col" class="orders__cell orders__cell--date" data-col="date">Дата</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="orders__row" data-row>
+            <th scope="row" class="orders__cell orders__cell--number" data-col="number">ДМ-1042</th>
+            <td class="orders__cell orders__cell--customer" data-col="customer">Ирина Соколова</td>
+            <td class="orders__cell orders__cell--status" data-col="status"><span class="status status--paid">Оплачен</span></td>
+            <td class="orders__cell orders__cell--total" data-col="total">12 480 ₽</td>
+            <td class="orders__cell orders__cell--date" data-col="date">11.10.2026</td>
+          </tr>
+          <tr class="orders__row" data-row>
+            <th scope="row" class="orders__cell orders__cell--number" data-col="number">ДМ-1043</th>
+            <td class="orders__cell orders__cell--customer" data-col="customer">Павел Громов</td>
+            <td class="orders__cell orders__cell--status" data-col="status"><span class="status status--shipping">В доставке</span></td>
+            <td class="orders__cell orders__cell--total" data-col="total">5 290 ₽</td>
+            <td class="orders__cell orders__cell--date" data-col="date">11.10.2026</td>
+          </tr>
+          <tr class="orders__row" data-row>
+            <th scope="row" class="orders__cell orders__cell--number" data-col="number">ДМ-1044</th>
+            <td class="orders__cell orders__cell--customer" data-col="customer">Ольга Ким</td>
+            <td class="orders__cell orders__cell--status" data-col="status"><span class="status status--waiting">Ждёт оплаты</span></td>
+            <td class="orders__cell orders__cell--total" data-col="total">2 190 ₽</td>
+            <td class="orders__cell orders__cell--date" data-col="date">10.10.2026</td>
+          </tr>
+          <tr class="orders__row" data-row>
+            <th scope="row" class="orders__cell orders__cell--number" data-col="number">ДМ-1045</th>
+            <td class="orders__cell orders__cell--customer" data-col="customer">Сергей Лебедев</td>
+            <td class="orders__cell orders__cell--status" data-col="status"><span class="status status--cancelled">Отменён</span></td>
+            <td class="orders__cell orders__cell--total" data-col="total">7 990 ₽</td>
+            <td class="orders__cell orders__cell--date" data-col="date">09.10.2026</td>
+          </tr>
+          <tr class="orders__row" data-row>
+            <th scope="row" class="orders__cell orders__cell--number" data-col="number">ДМ-1046</th>
+            <td class="orders__cell orders__cell--customer" data-col="customer">Мария Орлова</td>
+            <td class="orders__cell orders__cell--status" data-col="status"><span class="status status--backorder">Ждёт поставки</span></td>
+            <td class="orders__cell orders__cell--total" data-col="total">18 900 ₽</td>
+            <td class="orders__cell orders__cell--date" data-col="date">09.10.2026</td>
+          </tr>
+          <tr class="orders__row" data-row>
+            <th scope="row" class="orders__cell orders__cell--number" data-col="number">ДМ-1047</th>
+            <td class="orders__cell orders__cell--customer" data-col="customer">Антон Белов</td>
+            <td class="orders__cell orders__cell--status" data-col="status"><span class="status status--paid">Оплачен</span></td>
+            <td class="orders__cell orders__cell--total" data-col="total">3 490 ₽</td>
+            <td class="orders__cell orders__cell--date" data-col="date">08.10.2026</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <nav class="pager" aria-label="Страницы заказов">
+      <button class="pager__button" type="button" disabled>Назад</button>
+      <p class="pager__info">Страница 1 из 5</p>
+      <button class="pager__button" type="button">Вперёд</button>
+    </nav>
+  </main>
+</body>
+</html>

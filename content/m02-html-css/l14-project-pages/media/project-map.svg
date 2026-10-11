@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" width="640" height="330" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="14" fill="currentColor">
+  <title id="t">Шесть этапов проекта P2 и три страницы</title>
+  <desc id="d">Три колонки по страницам: карточка товара, форма заказа, панель менеджера. В карточке товара этапы 1, 2 и 4, где этап 4 помечен как изменение требований. В форме этап 3. В панели менеджера этапы 5 и 6. Внизу стрелка к самопроверке и публикации.</desc>
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="16" y="40" width="190" height="190" rx="10" opacity="0.7"/>
+    <rect x="225" y="40" width="190" height="190" rx="10" opacity="0.7"/>
+    <rect x="434" y="40" width="190" height="190" rx="10" opacity="0.7"/>
+    <rect x="36" y="64" width="150" height="38" rx="6"/>
+    <rect x="36" y="112" width="150" height="38" rx="6"/>
+    <rect x="36" y="160" width="150" height="38" rx="6" stroke-dasharray="6 4"/>
+    <rect x="245" y="88" width="150" height="38" rx="6"/>
+    <rect x="454" y="64" width="150" height="38" rx="6"/>
+    <rect x="454" y="112" width="150" height="38" rx="6"/>
+    <path d="M320 250 V280 M314 272 L320 280 L326 272"/>
+    <rect x="160" y="284" width="320" height="38" rx="8"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="111" y="30" font-weight="700">Карточка товара</text>
+    <text x="320" y="30" font-weight="700">Форма заказа</text>
+    <text x="529" y="30" font-weight="700">Панель менеджера</text>
+    <text x="111" y="88" font-size="13">1. Разметка и десктоп</text>
+    <text x="111" y="136" font-size="13">2. Адаптив</text>
+    <text x="111" y="178" font-size="13">4. Нет в наличии</text>
+    <text x="111" y="192" font-size="11" opacity="0.8">изменение требований</text>
+    <text x="320" y="112" font-size="13">3. Форма и доступность</text>
+    <text x="529" y="88" font-size="13">5. Таблица заказов</text>
+    <text x="529" y="136" font-size="13">6. Итоговая панель</text>
+    <text x="320" y="308">Самопроверка и публикация</text>
+  </g>
+</svg>

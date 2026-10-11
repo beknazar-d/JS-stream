@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" width="640" height="330" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="13">
+  <title id="t">Макет: обычная карточка и состояние «нет в наличии»</title>
+  <desc id="d">Две карточки рядом. Слева обычная: яркая картинка, заголовок, цена, синяя кнопка «В корзину». Справа состояние без товара: красноватый бейдж «Нет в наличии» над заголовком, серая бледная картинка, серая цена без старой цены, вместо кнопки ссылка с синей рамкой «Сообщить о поступлении».</desc>
+  <rect width="640" height="330" fill="#ffffff"/>
+  <text x="160" y="24" text-anchor="middle" font-weight="700" fill="#334155">Обычная карточка</text>
+  <text x="480" y="24" text-anchor="middle" font-weight="700" fill="#334155">Класс product--sold-out</text>
+  <rect x="20" y="36" width="280" height="276" rx="8" fill="none" stroke="#9aa5b1"/>
+  <rect x="340" y="36" width="280" height="276" rx="8" fill="none" stroke="#9aa5b1"/>
+  <rect x="36" y="48" width="248" height="96" rx="4" fill="#b8cbe6" stroke="#6b7a90"/>
+  <rect x="356" y="48" width="248" height="96" rx="4" fill="#e6e8eb" stroke="#9aa5b1"/>
+  <text x="480" y="102" text-anchor="middle" fill="#6b7280" font-size="11">серая, opacity 0.6</text>
+  <text x="36" y="172" font-weight="700" font-size="16" fill="#1a1a1a">Чайник Домотека ЧЭ-17</text>
+  <rect x="356" y="152" width="112" height="22" rx="11" fill="#fde8e8"/>
+  <text x="412" y="167" text-anchor="middle" fill="#9b1c1c" font-weight="700" font-size="12">Нет в наличии</text>
+  <text x="356" y="198" font-weight="700" font-size="16" fill="#1a1a1a">Чайник Домотека ЧЭ-17</text>
+  <text x="36" y="200" font-weight="700" fill="#1a1a1a">3 490 ₽</text>
+  <text x="100" y="200" fill="#6b7280" text-decoration="line-through">4 190 ₽</text>
+  <text x="356" y="224" font-weight="700" fill="#4b5563">3 490 ₽ (серая, без старой)</text>
+  <rect x="36" y="216" width="112" height="30" rx="6" fill="#0b3d91"/>
+  <text x="92" y="236" text-anchor="middle" fill="#ffffff" font-weight="700">В корзину</text>
+  <rect x="357" y="240" width="140" height="30" rx="6" fill="#ffffff" stroke="#0b3d91" stroke-width="2"/>
+  <text x="427" y="260" text-anchor="middle" fill="#0b3d91" font-weight="700" font-size="11">Сообщить о поступлении</text>
+  <text x="160" y="292" text-anchor="middle" fill="#555555" font-size="11">кнопка 200 × 48</text>
+  <text x="480" y="292" text-anchor="middle" fill="#555555" font-size="11">ссылка 200 × 48, на телефоне на всю ширину</text>
+</svg>

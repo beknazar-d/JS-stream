@@ -1,0 +1,35 @@
+- id: breakpoints-check
+  front: "На каких ширинах окна проверять страницу перед сдачей?"
+  back: "Минимум 375 (телефон), 768 (планшет) и 1024 (ноутбук). Плюс границы медиазапросов: например 599 и 600."
+- id: mobile-first
+  front: "Что значит mobile-first в CSS?"
+  back: "Базовые правила описывают узкий экран, а @media (min-width: ...) добавляют возможности для широких."
+  answer: mobile-first
+- id: horizontal-scroll
+  front: "Как понять, что страница вылезает за экран на телефоне?"
+  back: "Появляется горизонтальная прокрутка. Причина обычно в фиксированной ширине (width в пикселях). Не лечится overflow-x: hidden."
+- id: modifier-for-change
+  front: "Как добавить новое состояние компонента, не сломав старый вид?"
+  back: "Модификатором: .product--sold-out. Новые правила записаны под ним, базовые не тронуты. Старый вид проверяют тестами."
+- id: table-semantics
+  front: "Какими элементами размечают таблицу данных?"
+  back: "table, caption, thead, tbody, tr, th scope=«col» и scope=«row», td. Не div с role."
+  answer: table
+- id: scroll-region
+  front: "Что нужно прокручиваемой области, чтобы ею можно было пользоваться с клавиатуры?"
+  back: 'tabindex="0", role="region" и aria-label.'
+  answer: tabindex="0"
+- id: label-visible
+  front: "Чем нельзя заменять подпись поля формы?"
+  back: "Подсказкой placeholder: она исчезает при вводе. Нужен видимый label с for и id."
+  answer: label
+- id: autocomplete
+  front: "Какой атрибут помогает браузеру подставить сохранённые имя, адрес и телефон?"
+  back: 'autocomplete: name, tel, email, street-address, postal-code.'
+  answer: autocomplete
+- id: pages-paths
+  front: "Какие пути в ссылках нужны для публикации на GitHub Pages в подпапке проекта?"
+  back: 'Относительные: href="styles.css", а не href="/styles.css". Иначе файлы не найдутся по адресу пользователь.github.io/проект/.'
+- id: html-validator
+  front: "Чем проверить разметку на ошибки?"
+  back: "Валидатором Nu HTML Checker (validator.w3.org/nu): он находит незакрытые теги, дубли id, неверные атрибуты."

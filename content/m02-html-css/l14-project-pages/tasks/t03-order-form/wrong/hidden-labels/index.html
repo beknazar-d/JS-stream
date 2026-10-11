@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Оформление заказа — Домотека</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page">
+    <form class="order" action="/order" method="post">
+      <h1 class="order__title">Оформление заказа</h1>
+      <fieldset class="order__group">
+        <legend class="order__legend">Контакты</legend>
+        <div class="order__row">
+        <div class="field">
+          <label class="field__label" for="name">Имя</label>
+          <input class="field__input" id="name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label class="field__label" for="phone">Телефон</label>
+          <input class="field__input" id="phone" name="phone" type="tel" autocomplete="tel" required>
+        </div>
+        </div>
+        <div class="order__row order__row--single">
+        <div class="field">
+          <label class="field__label" for="email">Электронная почта</label>
+          <input class="field__input" id="email" name="email" type="email" autocomplete="email" required>
+        </div>
+        </div>
+      </fieldset>
+      <fieldset class="order__group">
+        <legend class="order__legend">Доставка</legend>
+        <div class="order__choices">
+          <label class="choice"><input type="radio" name="delivery" value="courier" checked> Курьером</label>
+          <label class="choice"><input type="radio" name="delivery" value="pickup"> Самовывоз из магазина</label>
+        </div>
+        <div class="order__row order__row--single">
+        <div class="field">
+          <label class="field__label" for="address">Улица, дом, квартира</label>
+          <input class="field__input" id="address" name="address" type="text" autocomplete="street-address" required>
+        </div>
+        </div>
+        <div class="order__row order__row--address">
+        <div class="field">
+          <label class="field__label" for="city">Город</label>
+          <input class="field__input" id="city" name="city" type="text" autocomplete="address-level2" required>
+        </div>
+        <div class="field">
+          <label class="field__label" for="zip">Индекс</label>
+          <input class="field__input" id="zip" name="zip" type="text" autocomplete="postal-code" required>
+        </div>
+        </div>
+        <div class="order__row order__row--single">
+          <div class="field">
+            <label class="field__label" for="comment">Комментарий для курьера</label>
+            <textarea class="field__input field__input--area" id="comment" name="comment" autocomplete="off"></textarea>
+          </div>
+        </div>
+      </fieldset>
+      <div class="order__footer">
+        <p class="order__total">Итого: <strong>12 480 ₽</strong></p>
+        <button class="order__submit" type="submit">Оформить заказ</button>
+      </div>
+    </form>
+  </main>
+</body>
+</html>

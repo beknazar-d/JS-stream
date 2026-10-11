@@ -84,3 +84,17 @@
 | [HTML Living Standard (WHATWG)](https://html.spec.whatwg.org/) | Правила отправки формы (поля без `name` и выключенные не отправляются), токены `autocomplete` | CC BY 4.0 (только факты) |
 
 Значения DOM и сообщения (`tabIndex`, `type` при неверном значении, `labels.length`, ширины `offsetWidth`, `SyntaxError` у `querySelector`) получены запуском в Chromium (playwright). Не проверялось на других браузерах.
+
+## Модуль 2, уроки 2.12–2.14 «Доступность», «Организация стилей», «Проект P2: три страницы по макету»
+
+Тексты, примеры и задания написаны с нуля, со своими данными (магазин «Домотека»). Прямых заимствований нет.
+
+| Источник | Что использовано | Лицензия |
+| --- | --- | --- |
+| [WCAG 2.1 (W3C): 1.1.1, 1.4.3, 1.4.11, 2.4.3, 2.4.7, 4.1.2](https://www.w3.org/TR/WCAG21/) | Пороги контраста 4,5 : 1, 3 : 1 и определение крупного текста (18pt, 14pt жирным), формула относительной яркости и контраста (в тексте 2.1 порог канала 0,03928; в sRGB 0,04045, для 8-битных цветов результат совпадает) | W3C Document License (только факты) |
+| [MDN Web Docs: :focus-visible, @layer, cascade layers, ARIA, table, aria-label](https://developer.mozilla.org/ru/docs/Web) | Поведение `:focus-visible`, порядок слоёв, `!important` в слоях, правила для `scope` и `caption`. Текст не копировался | CC BY-SA 2.5 (атрибуция «Mozilla Contributors») |
+| [Using ARIA (W3C): First Rule of ARIA Use](https://www.w3.org/TR/using-aria/) | Идея «не используй ARIA, если хватает HTML» | W3C Document License (только идея) |
+| [БЭМ (ru.bem.info): методология именования](https://ru.bem.info/methodology/) | Идея блок, элемент, модификатор; примеры написаны свои | Только идея |
+| [GitHub Docs: Configuring a publishing source for GitHub Pages](https://docs.github.com/pages) | Шаги публикации: Settings, Pages, Deploy from a branch | Только факты |
+
+Поведение Chromium проверено запуском через playwright: порядок слоёв при `!important` обратный, правило вне слоя сильнее любого слоя, `:focus-visible` срабатывает при программном `focus()`, сообщение консоли `Failed to load resource: the server responded with a status of 404 (Not Found)`. Сообщения V8 (`Cannot read properties of null (reading 'focus')`, `Cannot convert undefined or null to object`) и Git (`fatal: not a git repository`) получены запуском. Страницы GitHub Pages и WCAG на w3.org в среде недоступны: шаги публикации и формула сверены по документации и поиску, а не по прямому чтению спецификации.
