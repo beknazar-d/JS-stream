@@ -1,0 +1,30 @@
+order: 5
+title: "Тесты для номера заказа"
+type: write-tests
+role: main
+difficulty: 3
+minutes: 20
+language: js
+tags: [тесты, строки, padStart, граничные случаи, типы]
+show: [subject/index.js]
+hints:
+  - "Направление: подумайте, где функции легко сломать. Короткий номер проверяет дополнение нулями, длинный проверяет, что ничего не обрезается, а разбор проверяет тип результата."
+  - "Шаг: formatOrderNumber(7, 2024) ловит потерю нулей, formatOrderNumber(12345, 2025) ловит обрезку, parseOrderNumber(...) нужно сравнивать с числом, а не со строкой."
+  - "Почти решение: formatOrderNumber(7, 2024) равно \"ORD-2024-0007\", formatOrderNumber(12345, 2025) равно \"ORD-2025-12345\", parseOrderNumber(\"ORD-2024-0042\") равно 42."
+mutants:
+  - name: no-padding
+    description: "Порядковый номер не дополняется нулями. Для 7 получается ORD-2024-7."
+  - name: truncates-long
+    description: "Порядковый номер обрезается до четырёх последних цифр. Для 12345 получается ORD-2025-2345."
+  - name: parse-as-text
+    description: "parseOrderNumber возвращает строку «0042», а не число 42."
+wrong:
+  - name: happy-path-only
+    kind: partial
+    explanation: "Тесты используют только номер из четырёх цифр, которому нули не нужны, и не проверяют разбор. Все три ошибки остаются незамеченными."
+  - name: no-parse-tests
+    kind: common-mistake
+    explanation: "Тесты проверяют сборку номера, но не вызывают parseOrderNumber. Ошибка с возвращаемой строкой вместо числа остаётся незамеченной."
+  - name: short-only
+    kind: edge-case
+    explanation: "Тесты проверяют короткий номер и разбор, но не берут номер длиннее четырёх цифр. Ошибка с обрезкой остаётся незамеченной."

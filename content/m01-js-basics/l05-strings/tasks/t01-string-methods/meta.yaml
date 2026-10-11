@@ -1,0 +1,22 @@
+order: 1
+title: "Четыре метода строк для склада"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 8
+language: js
+tags: [строки, trim, toUpperCase, padStart, startsWith, slice]
+hints:
+  - "Направление: для каждой функции есть свой метод строки. Артикул чистят и поднимают регистр, номер дополняют нулями, телефон проверяют по началу, год вырезают по индексам."
+  - "Шаг: padStart есть только у строк, число сначала превращается через String(). В slice конечный индекс не входит."
+  - "Почти решение: return raw.trim().toUpperCase(); return \"№\" + String(orderNumber).padStart(6, \"0\"); return orderNumber.slice(4, 8);"
+wrong:
+  - name: unfinished
+    kind: partial
+    explanation: "Готовы две функции из четырёх, остальные пусты и возвращают undefined. Каждый метод нужно уметь набрать по памяти."
+  - name: pad-number
+    kind: common-mistake
+    explanation: "padStart вызван у числа, а не у строки. Метод есть только у строк, поэтому получается TypeError: orderNumber.padStart is not a function. Сначала нужно String(orderNumber)."
+  - name: no-trim
+    kind: edge-case
+    explanation: "В normalizeSku регистр меняется, а пробелы по краям остаются. Артикул с пробелом по-прежнему не совпадёт с базой."
