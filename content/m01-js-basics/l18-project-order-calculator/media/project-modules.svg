@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" width="640" height="340" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="16" fill="currentColor">
+  <title id="t">Файлы проекта и порядок расчёта</title>
+  <desc id="d">Шесть файлов проекта. Внизу errors.js, money.js и cart.js: ошибки, деньги и корзина. Выше discounts.js считает скидки по корзине, delivery.js считает доставку по сумме после скидок, vat.js считает НДС по итогу. Наверху index.js собирает результат из всех модулей.</desc>
+
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="230" y="16" width="180" height="50" rx="10"/>
+    <rect x="20" y="130" width="170" height="50" rx="10"/>
+    <rect x="235" y="130" width="170" height="50" rx="10"/>
+    <rect x="450" y="130" width="170" height="50" rx="10"/>
+    <rect x="20" y="260" width="170" height="50" rx="10" stroke-dasharray="6 4"/>
+    <rect x="235" y="260" width="170" height="50" rx="10" stroke-dasharray="6 4"/>
+    <rect x="450" y="260" width="170" height="50" rx="10" stroke-dasharray="6 4"/>
+    <path d="M275 66 L120 130 M320 66 V130 M365 66 L535 130"/>
+    <path d="M105 180 V260 M320 180 V260 M535 180 L535 260"/>
+    <path d="M120 180 L300 260 M120 180 L300 260"/>
+  </g>
+
+  <g text-anchor="middle">
+    <text x="320" y="46" font-weight="700">index.js</text>
+    <text x="105" y="152" font-weight="700">discounts.js</text>
+    <text x="105" y="170" font-size="13" opacity="0.8">скидки</text>
+    <text x="320" y="152" font-weight="700">delivery.js</text>
+    <text x="320" y="170" font-size="13" opacity="0.8">доставка по сумме после скидок</text>
+    <text x="535" y="152" font-weight="700">vat.js</text>
+    <text x="535" y="170" font-size="13" opacity="0.8">НДС по итогу</text>
+    <text x="105" y="282" font-weight="700">cart.js</text>
+    <text x="105" y="300" font-size="13" opacity="0.8">корзина</text>
+    <text x="320" y="282" font-weight="700">money.js</text>
+    <text x="320" y="300" font-size="13" opacity="0.8">копейки и формат</text>
+    <text x="535" y="282" font-weight="700">errors.js</text>
+    <text x="535" y="300" font-size="13" opacity="0.8">ValidationError</text>
+  </g>
+</svg>

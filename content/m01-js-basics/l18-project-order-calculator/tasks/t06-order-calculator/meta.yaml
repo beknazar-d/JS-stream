@@ -1,0 +1,22 @@
+order: 6
+title: Калькулятор заказа
+type: implement
+role: real
+difficulty: 4
+minutes: 40
+language: js
+tags: [проект P1, калькулятор заказа, скидки, НДС, доставка, модули, граничные случаи]
+hints:
+  - "Направление: сначала решите, в каком порядке идут вычисления: скидки, потом сумма товаров, потом доставка по этой сумме, потом НДС от итога. Каждое число зависит от предыдущего."
+  - "Шаг: discountSummary уже возвращает subtotal, volume, promo и total (это goods). Передайте goods в deliveryCost. НДС считайте от суммы goods плюс доставка. Строки заказа соберите через map, не меняя позиции."
+  - "Почти решение: const { subtotal, volume, promo, total: goods } = discountSummary(cart, promoCode); const delivery = deliveryCost(goods); const total = goods + delivery; вернуть объект с vat: vatIncluded(total)."
+wrong:
+  - name: delivery-before-discount
+    kind: common-mistake
+    explanation: "Порог бесплатной доставки проверяется по сумме до скидок. Заказ на 3 000 ₽ с промокодом MINUS500 получает бесплатную доставку, хотя после скидки сумма товаров 2 500 ₽ ниже порога."
+  - name: free-delivery-over
+    kind: edge-case
+    explanation: "Условие «сумма больше порога» вместо «не меньше». Заказ ровно на 3 000 ₽ платит за доставку, хотя по ТЗ она бесплатна от порога включительно."
+  - name: no-vat
+    kind: partial
+    explanation: "НДС не посчитан (vat равен 0). Остальная раскладка верна, но чек без НДС не пройдёт бухгалтерию."

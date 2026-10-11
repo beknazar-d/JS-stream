@@ -1,0 +1,22 @@
+order: 5
+title: Новое правило скидок посреди проекта
+type: implement
+role: main
+difficulty: 4
+minutes: 25
+language: js
+tags: [проект P1, скидки, изменение требований, регрессия, округление]
+hints:
+  - "Направление: сначала запишите порядок вычислений по письму заказчика: сумма, скидка за количество, сумма после неё, промокод, итог. Потом сопоставьте его с кодом discountSummary."
+  - "Шаг: volumeDiscount — это reduce по позициям с условием qty >= 10 и Math.round на каждой позиции. В discountSummary промокод теперь считается от sum - volume. Старые поля subtotal, promo и total остаются."
+  - "Почти решение: const afterVolume = sum - volume; const promo = applyPromo(afterVolume, code); return { subtotal: sum, volume, promo, total: afterVolume - promo };"
+wrong:
+  - name: summary-not-updated
+    kind: partial
+    explanation: "volumeDiscount написана, но discountSummary по-прежнему считает промокод от полной суммы и не возвращает volume. Новое правило нигде не применяется."
+  - name: over-ten
+    kind: edge-case
+    explanation: "Условие qty > 10 вместо qty >= 10. Ровно десять штук скидки не получают, хотя по письму «10 штук и больше»."
+  - name: mutates-cart
+    kind: common-mistake
+    explanation: "Скидка за количество применена уменьшением цены в самих позициях корзины. Расчёт получился верный, но корзина изменилась: при следующем пересчёте скидка применится ещё раз, а интерфейс покажет другие цены."

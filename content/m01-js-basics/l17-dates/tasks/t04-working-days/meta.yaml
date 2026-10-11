@@ -1,0 +1,22 @@
+order: 4
+title: Срок доставки в рабочих днях
+type: implement
+role: main
+difficulty: 3
+minutes: 20
+language: js
+tags: [Date, getUTCDay, setUTCDate, цикл, выходные, проверка входа]
+hints:
+  - "Направление: считать рабочие дни проще всего по одному: сдвигайтесь на сутки вперёд и увеличивайте счётчик, только если день подходит."
+  - "Шаг: заведите копию start и счётчик. Пока счётчик меньше days, сдвигайте копию на день через setUTCDate. День рабочий, если getUTCDay не 0 и не 6, а его запись toISOString().slice(0, 10) не входит в holidays."
+  - "Почти решение: while (counted < days) { result.setUTCDate(result.getUTCDate() + 1); if (!isWeekend(result) && !holidays.includes(result.toISOString().slice(0, 10))) { counted++; } }"
+wrong:
+  - name: no-holidays
+    kind: partial
+    explanation: "Выходные пропускаются, а список праздников игнорируется. Доставка, которая должна прийти 5 мая, назначается на 1 мая, праздничный день."
+  - name: mutates-start
+    kind: common-mistake
+    explanation: "Цикл двигает саму переданную дату вместо копии. После вызова исходная дата оказывается в будущем, и вызывающий код считает следующий срок от неверного дня."
+  - name: no-validation
+    kind: edge-case
+    explanation: "Проверки срока нет. Для отрицательного или дробного количества дней функция молча возвращает дату без ошибки, хотя по условию должна выбросить Error."

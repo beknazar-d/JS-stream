@@ -46,3 +46,14 @@
 | [Chrome DevTools: Sources и горячие клавиши](https://developer.chrome.com/docs/devtools) | Клавиши F8, F10, F11, Shift+F11 | Только факты |
 
 Вывод терминала, Git и стектрейсы получены запуском команд в Node.js 22.22.0 и Git 2.43.0 (Linux, bash). Исключения, не проверенные запуском: поведение PowerShell и cmd на Windows, формат стектрейса с путём Windows (используется только в скрытом тесте), клавиши DevTools.
+
+## Модуль 1, уроки 14–18 «Деструктуризация, spread и rest», «Ошибки», «ES-модули и JSON», «Даты и время», «Проект P1»
+
+Тексты, примеры и задания написаны с нуля, со своими данными. Прямых заимствований нет.
+
+| Источник | Что использовано | Лицензия |
+| --- | --- | --- |
+| [MDN Web Docs: Destructuring, Spread syntax, Rest parameters, Error, try...catch, JavaScript modules, JSON, Date, Intl.DateTimeFormat](https://developer.mozilla.org/ru/docs/Web/JavaScript) | Перечень возможностей и поведение (месяцы в Date с нуля, `JSON.stringify` пропускает `undefined`, значения по умолчанию только для `undefined`). Использованы только факты и порядок тем, текст не копировался | CC BY-SA 2.5 (атрибуция «Mozilla Contributors») |
+| [The Odin Project](https://www.theodinproject.com/), [Exercism: JavaScript track](https://exercism.org/tracks/javascript) | Идея формата «ТЗ, этапы, тесты» для мини-проекта | CC BY-NC-SA 4.0 и MIT (только идея, материалы не использованы) |
+
+Сообщения консоли в разделах «Типичные ошибки», формат вывода `Intl.DateTimeFormat('ru-RU')` и сообщения `JSON.parse` получены запуском в Node.js 22.22.0 (движок V8).

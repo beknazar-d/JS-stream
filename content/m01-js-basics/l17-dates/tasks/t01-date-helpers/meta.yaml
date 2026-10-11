@@ -1,0 +1,22 @@
+order: 1
+title: Помощники для работы с датами
+type: recall
+role: warmup
+difficulty: 2
+minutes: 10
+language: js
+tags: [Date, Date.UTC, UTC, ISO, месяцы с нуля]
+hints:
+  - "Направление: месяцы в Date нумеруются с нуля, а дни месяца с единицы. Для даты на полночь UTC есть отдельный статический метод."
+  - "Шаг: Date.UTC(год, месяц - 1, день) возвращает число миллисекунд, которое оборачивают в new Date. Для строки удобно взять toISOString и отрезать первые десять символов. Для addDays сначала скопируйте дату."
+  - "Почти решение: const result = new Date(date); result.setUTCDate(result.getUTCDate() + days); return result; setUTCDate сам переходит через границу месяца."
+wrong:
+  - name: month-from-zero
+    kind: common-mistake
+    explanation: "В makeDate месяц передан в Date.UTC как есть. Март (3) становится апрелем, потому что в Date месяцы идут с нуля. Нужно вычитать единицу."
+  - name: unfinished
+    kind: partial
+    explanation: "Написаны makeDate и isoDay, а addDays ничего не возвращает. Нужны все три функции."
+  - name: mutates-input
+    kind: edge-case
+    explanation: "addDays меняет переданную дату и возвращает её же. Вызывающий код, который хранил исходную дату, получает изменённую."
