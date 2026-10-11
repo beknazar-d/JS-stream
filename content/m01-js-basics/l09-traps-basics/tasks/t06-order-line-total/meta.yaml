@@ -1,0 +1,22 @@
+order: 6
+title: "Сумма строки заказа без ловушек"
+type: implement
+role: real
+difficulty: 4
+minutes: 30
+language: js
+tags: ["??", "NaN", "Number", "===", "валидация", "функции"]
+hints:
+  - "Направление: разделите работу на проверки по полям и итоговый расчёт. Для скидки сначала решите, заполнено ли поле, и только потом превращайте его в число."
+  - "Шаг: пустое поле скидки — это undefined, null или строка из пробелов. Number(\"\") равно 0, поэтому пустую строку надо отловить до Number. Для NaN используйте Number.isNaN или Number.isFinite, для остатка — проверку на undefined и null."
+  - "Почти решение: let discount = 5; if (discountText !== undefined && discountText !== null && String(discountText).trim() !== \"\") { discount = Number(discountText); } потом проверьте, что discount конечное число от 0 до 100."
+wrong:
+  - name: ignores-stock
+    kind: partial
+    explanation: "Остаток на складе не проверяется. Заказ на 3 штуки при остатке 2 проходит и возвращает сумму вместо null."
+  - name: zero-discount-replaced
+    kind: edge-case
+    explanation: "Скидка считается как Number(discountText) || 5. Явно введённый «0» ложный и заменяется на 5%, поэтому вместо 2000 возвращается 1900."
+  - name: nan-compare
+    kind: common-mistake
+    explanation: "Проверка написана как price === NaN. Она всегда ложна, поэтому для текста вместо цены наружу уходит NaN вместо null."

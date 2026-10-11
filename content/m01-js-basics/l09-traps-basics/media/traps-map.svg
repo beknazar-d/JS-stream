@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="14" fill="currentColor">
+  <title id="t">Карта восьми ловушек</title>
+  <desc id="d">Таблица из трёх колонок: выражение, что получится и чем это заменить. Восемь строк: строка плюс число склеивается; ноль равен пустой строке при двойном равно; NaN не равен самому себе; оператор или заменяет ноль; строки сравниваются как текст; return с переносом строки возвращает undefined; стрелка с фигурными скобками без return возвращает undefined; внутренняя переменная закрывает внешнюю.</desc>
+
+  <g stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.7">
+    <rect x="8" y="8" width="624" height="384" rx="8"/>
+    <path d="M8 48 H632"/>
+    <path d="M230 8 V392 M410 8 V392"/>
+  </g>
+  <g stroke="currentColor" stroke-width="1" fill="none" opacity="0.35">
+    <path d="M8 91 H632"/>
+    <path d="M8 134 H632"/>
+    <path d="M8 177 H632"/>
+    <path d="M8 220 H632"/>
+    <path d="M8 263 H632"/>
+    <path d="M8 306 H632"/>
+    <path d="M8 349 H632"/>
+  </g>
+  <g font-weight="700">
+    <text x="20" y="34">Выражение</text>
+    <text x="242" y="34">Что получим</text>
+    <text x="422" y="34">Чем заменить</text>
+  </g>
+  <text x="20" y="75" font-family="ui-monospace, monospace" font-size="13">"5" + 3</text>
+  <text x="242" y="75" font-size="13">"53" (склейка)</text>
+  <text x="422" y="75" font-family="ui-monospace, monospace" font-size="13">Number("5") + 3</text>
+  <text x="20" y="118" font-family="ui-monospace, monospace" font-size="13">0 == ""</text>
+  <text x="242" y="118" font-size="13">true (приведение)</text>
+  <text x="422" y="118" font-family="ui-monospace, monospace" font-size="13">0 === ""</text>
+  <text x="20" y="161" font-family="ui-monospace, monospace" font-size="13">NaN === NaN</text>
+  <text x="242" y="161" font-size="13">false</text>
+  <text x="422" y="161" font-family="ui-monospace, monospace" font-size="13">Number.isNaN(x)</text>
+  <text x="20" y="204" font-family="ui-monospace, monospace" font-size="13">0 || 10</text>
+  <text x="242" y="204" font-size="13">10 (ноль потерян)</text>
+  <text x="422" y="204" font-family="ui-monospace, monospace" font-size="13">0 ?? 10</text>
+  <text x="20" y="247" font-family="ui-monospace, monospace" font-size="13">"10" &lt; "9"</text>
+  <text x="242" y="247" font-size="13">true (как текст)</text>
+  <text x="422" y="247" font-family="ui-monospace, monospace" font-size="13">Number(a) &lt; Number(b)</text>
+  <text x="20" y="290" font-family="ui-monospace, monospace" font-size="13">return + новая строка</text>
+  <text x="242" y="290" font-size="13">undefined</text>
+  <text x="422" y="290" font-size="13">значение рядом с return</text>
+  <text x="20" y="333" font-family="ui-monospace, monospace" font-size="13">(x) =&gt; { x * 2 }</text>
+  <text x="242" y="333" font-size="13">undefined</text>
+  <text x="422" y="333" font-size="13">убрать {} или добавить return</text>
+  <text x="20" y="376" font-family="ui-monospace, monospace" font-size="13">let x в блоке</text>
+  <text x="242" y="376" font-size="13">закрывает внешний x</text>
+  <text x="422" y="376" font-size="13">другое имя</text>
+</svg>
