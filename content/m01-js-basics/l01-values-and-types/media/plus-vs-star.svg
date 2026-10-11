@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" width="640" height="330" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="16" fill="currentColor">
+  <title id="t">Как JavaScript считает "2" + 1 и "2" * 3</title>
+  <desc id="d">Слева оператор плюс видит строку и склеивает значения в строку "21". Справа оператор умножения превращает строку в число и считает 6.</desc>
+
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="16" y="16" width="290" height="298" rx="10" opacity="0.7"/>
+    <rect x="334" y="16" width="290" height="298" rx="10" opacity="0.7"/>
+    <rect x="56" y="72" width="210" height="48" rx="8"/>
+    <rect x="374" y="72" width="210" height="48" rx="8"/>
+    <rect x="56" y="160" width="210" height="48" rx="8" stroke-dasharray="6 4"/>
+    <rect x="374" y="160" width="210" height="48" rx="8" stroke-dasharray="6 4"/>
+    <rect x="56" y="248" width="210" height="48" rx="8"/>
+    <rect x="374" y="248" width="210" height="48" rx="8"/>
+    <path d="M161 120 V160 M161 208 V248 M479 120 V160 M479 208 V248"/>
+    <path d="M155 152 L161 160 L167 152 M155 240 L161 248 L167 240 M473 152 L479 160 L485 152 M473 240 L479 248 L485 240"/>
+  </g>
+
+  <g text-anchor="middle">
+    <text x="161" y="46" font-weight="700">Плюс: есть строка</text>
+    <text x="479" y="46" font-weight="700">Умножение: всегда числа</text>
+
+    <text x="161" y="102" font-family="ui-monospace, monospace" font-size="18">"2" + 1</text>
+    <text x="479" y="102" font-family="ui-monospace, monospace" font-size="18">"2" * 3</text>
+
+    <text x="161" y="182">1 становится "1"</text>
+    <text x="161" y="200" font-size="13" opacity="0.8">строка слева, значит склейка</text>
+    <text x="479" y="182">"2" становится 2</text>
+    <text x="479" y="200" font-size="13" opacity="0.8">умножать можно только числа</text>
+
+    <text x="161" y="278" font-family="ui-monospace, monospace" font-size="18">"21"</text>
+    <text x="161" y="293" font-size="12" opacity="0.8">тип: string</text>
+    <text x="479" y="278" font-family="ui-monospace, monospace" font-size="18">6</text>
+    <text x="479" y="293" font-size="12" opacity="0.8">тип: number</text>
+  </g>
+</svg>

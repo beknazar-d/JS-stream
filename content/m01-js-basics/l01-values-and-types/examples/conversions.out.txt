@@ -1,0 +1,10 @@
+52
+3
+10
+7
+0
+NaN
+false
+true
+true
+false

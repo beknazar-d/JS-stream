@@ -1,0 +1,22 @@
+order: 1
+title: "Остатки со склада: три превращения"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 5
+language: js
+tags: [преобразование типов, Number, String, NaN]
+hints:
+  - "Направление: для явного превращения в число и в строку в JavaScript есть функции с теми же именами, что и типы."
+  - "Шаг: вызовите Number(value) и String(value). Для проверки на NaN нужна функция, которая лежит внутри Number."
+  - "Почти решение: return Number(value); return String(value); return Number.isNaN(value);"
+wrong:
+  - name: unfinished
+    kind: partial
+    explanation: "Две функции готовы, а isNotANumber осталась пустой и возвращает undefined. Проверку NaN нужно уметь набрать так же уверенно, как Number и String."
+  - name: parse-int
+    kind: edge-case
+    explanation: "parseInt обрезает дробную часть, поэтому \"12.5\" превращается в 12, а пустая строка даёт NaN вместо 0. Number() разбирает строку целиком и ведёт себя иначе."
+  - name: compare-with-nan
+    kind: common-mistake
+    explanation: "Сравнение value === NaN всегда даёт false, потому что NaN не равен даже самому себе. Для проверки нужен Number.isNaN."
