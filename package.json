@@ -1,20 +1,20 @@
 {
-  "name": "study-platform",
-  "private": true,
-  "version": "0.1.0",
-  "license": "MIT",
-  "engines": {
-    "node": ">=22.22.0"
-  },
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
-  "scripts": {
-    "dev": "npm --workspace site run dev",
-    "build": "npm --workspace site run build",
-    "lint": "npm --workspace site run lint",
-    "test": "echo \"No platform tests yet\" && exit 0",
-    "verify": "echo \"No content yet\" && exit 0"
-  }
+    "name": "study-platform",
+    "private": true,
+    "version": "0.1.0",
+    "license": "MIT",
+    "engines": {
+        "node": ">=22.22.0"
+    },
+    "workspaces": [
+        "apps/*",
+        "packages/*"
+    ],
+    "scripts": {
+        "dev": "npm --workspace site run dev",
+        "build": "npm --workspace site run build",
+        "lint": "npm --workspace site run lint && npm --workspace @platform/tasks-kit run lint",
+        "test": "npm --workspace @platform/tasks-kit run test",
+        "verify": "npm --workspace @platform/tasks-kit run verify --"
+    }
 }
