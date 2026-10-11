@@ -1,0 +1,22 @@
+order: 1
+title: "Шесть команд Git по памяти"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 5
+language: js
+tags: [git, init, status, add, commit, push]
+hints:
+  - "Направление: вспомните путь изменения по схеме: создать репозиторий, посмотреть состояние, отложить в индекс, зафиксировать, посмотреть историю, отправить на GitHub."
+  - "Шаг: подпись коммита задаётся ключом -m и берётся в кавычки. Для первой отправки нужны ключ -u, имя origin и имя ветки."
+  - "Почти решение: git init, git status, git add ., git commit -m \"Добавить README\", git log --oneline, git push -u origin main."
+wrong:
+  - name: three-of-six
+    kind: partial
+    explanation: "Заполнены только три команды из шести. Остальные константы остались пустыми, а тест проверяет каждую."
+  - name: no-m-flag
+    kind: common-mistake
+    explanation: "В команде коммита нет ключа -m. Git решает, что текст в кавычках — имя файла, и отвечает ошибкой pathspec did not match any file(s) known to git."
+  - name: push-without-upstream
+    kind: edge-case
+    explanation: "Для первой отправки написано просто git push. Если репозиторий не связан с GitHub, Git ответит fatal: No configured push destination. В первый раз нужно git push -u origin main."

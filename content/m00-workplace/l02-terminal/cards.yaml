@@ -1,0 +1,35 @@
+- id: pwd
+  front: Какая команда печатает текущую папку?
+  back: "pwd (print working directory). В cmd на Windows: cd без аргументов."
+  answer: pwd
+- id: ls
+  front: Какая команда показывает содержимое текущей папки?
+  back: "ls на macOS, Linux и в PowerShell. В cmd на Windows: dir."
+  answer: ls
+- id: cd
+  front: Как перейти в папку src?
+  back: cd src — относительный путь от текущей папки.
+  answer: cd src
+- id: mkdir
+  front: Как создать папку reports?
+  back: mkdir reports. Если папка уже есть, будет сообщение «File exists».
+  answer: mkdir reports
+- id: dotdot
+  front: Что означают . и .. в пути?
+  back: . — текущая папка, .. — папка на уровень выше. Из src путь ../docs ведёт в соседнюю папку docs.
+- id: cd-up
+  front: Как подняться на уровень выше?
+  back: cd .. — между cd и точками стоит пробел.
+  answer: cd ..
+- id: abs-vs-rel
+  front: Чем абсолютный путь отличается от относительного?
+  back: Абсолютный начинается от корня (/ или C:\) и работает откуда угодно. Относительный считается от текущей папки.
+- id: spaces
+  front: Как перейти в папку с пробелом в имени, например price lists?
+  back: 'Взять имя в кавычки: cd "price lists". Иначе будет cd: too many arguments.'
+- id: home
+  front: Что означает ~ в пути?
+  back: "Домашняя папка пользователя: /home/anna на Linux, /Users/anna на macOS. cd ~ или просто cd приведёт туда."
+- id: wrong-folder
+  front: Скрипт запущен, но Node.js пишет Cannot find module. Что проверить в первую очередь?
+  back: Текущую папку (pwd) и путь в сообщении. Относительный путь node src/index.js ищется от текущей папки.

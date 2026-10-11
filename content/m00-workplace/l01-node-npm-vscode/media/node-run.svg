@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 250" width="640" height="250" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="15" fill="currentColor">
+  <title id="t">Путь от файла hello.js до вывода в терминале</title>
+  <desc id="d">Четыре блока слева направо. Редактор VS Code хранит файл hello.js. Команда node hello.js в терминале запускает Node.js. Node.js читает файл и выполняет его. Результат появляется в терминале как строки вывода.</desc>
+
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="12" y="50" width="130" height="90" rx="10"/>
+    <rect x="172" y="50" width="130" height="90" rx="10"/>
+    <rect x="332" y="50" width="130" height="90" rx="10"/>
+    <rect x="492" y="50" width="136" height="90" rx="10"/>
+    <path d="M142 95 H172 M302 95 H332 M462 95 H492"/>
+    <path d="M165 89 L172 95 L165 101 M325 89 L332 95 L325 101 M485 89 L492 95 L485 101"/>
+    <path d="M77 140 V190 H560 V140" stroke-dasharray="6 4" opacity="0.6"/>
+    <path d="M553 148 L560 140 L567 148" opacity="0.6"/>
+  </g>
+
+  <g text-anchor="middle">
+    <text x="77" y="30" font-weight="700">1. Редактор</text>
+    <text x="237" y="30" font-weight="700">2. Терминал</text>
+    <text x="397" y="30" font-weight="700">3. Node.js</text>
+    <text x="560" y="30" font-weight="700">4. Результат</text>
+
+    <text x="77" y="92" font-family="ui-monospace, monospace">hello.js</text>
+    <text x="77" y="115" font-size="13" opacity="0.8">VS Code</text>
+    <text x="237" y="92" font-family="ui-monospace, monospace">node hello.js</text>
+    <text x="237" y="115" font-size="13" opacity="0.8">вы вводите команду</text>
+    <text x="397" y="92">читает файл</text>
+    <text x="397" y="115" font-size="13" opacity="0.8">и выполняет код</text>
+    <text x="560" y="92">строки вывода</text>
+    <text x="560" y="115" font-size="13" opacity="0.8">видны в терминале</text>
+
+    <text x="320" y="214" font-size="14" opacity="0.85">Изменили файл — запустите команду снова и получите новый результат</text>
+  </g>
+</svg>

@@ -1,0 +1,38 @@
+- id: first-index
+  front: С какого индекса начинается нумерация элементов массива?
+  back: "С нуля. cart[0] — первый элемент, cart[1] — второй."
+  answer: "0"
+- id: last-element
+  front: Как получить последний элемент массива без вычислений с length?
+  back: "cart.at(-1). Отрицательный индекс считается с конца. Старый способ: cart[cart.length - 1]."
+  answer: at(-1)
+- id: missing-index
+  front: Что вернёт cart[10], если в массиве три элемента?
+  back: "undefined. Ошибки нет, пока вы не обратились к свойству этого значения."
+  answer: undefined
+- id: push-returns
+  front: Что возвращает push?
+  back: "Новую длину массива. Метод добавляет элемент в конец и мутирует массив."
+  answer: длину
+- id: shift-pop
+  front: Какой метод убирает первый элемент и возвращает его?
+  back: "shift(). Последний убирает pop(). Оба мутируют массив."
+  answer: shift
+- id: slice-copies
+  front: Какой из методов, slice или splice, не меняет исходный массив?
+  back: "slice(от, до) копирует кусок. Элемент с индексом до в кусок не входит. splice вырезает из самого массива."
+  answer: slice
+- id: splice-mutates
+  front: Что делает queue.splice(0, 2)?
+  back: "Вырезает из queue первые два элемента, возвращает их массивом. Сама queue становится короче."
+- id: indexof-missing
+  front: Что вернёт indexOf, если элемента нет в массиве?
+  back: "-1. Передавать -1 в splice нельзя: он удалит последний элемент. Сначала проверьте index !== -1."
+  answer: "-1"
+- id: includes
+  front: Как проверить, что в массиве есть элемент, не зная его индекса?
+  back: "cart.includes(x) вернёт true или false. Сравнение строгое, как ===."
+  answer: includes
+- id: for-of
+  front: Как обойти все элементы массива по очереди?
+  back: "for (const item of cart) { ... }"

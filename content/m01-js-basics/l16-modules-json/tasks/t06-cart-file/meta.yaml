@@ -1,0 +1,22 @@
+order: 6
+title: Сохранение корзины в файл
+type: implement
+role: real
+difficulty: 4
+minutes: 35
+language: js
+tags: [import, export, JSON, миграция формата, ошибки, деньги]
+hints:
+  - "Направление: сначала schema.js, он ни от чего не зависит. Потом cart-file.js, который использует schema.js. Потом index.js, который использует cart-file.js. Каждый файл можно проверить отдельно."
+  - "Шаг: цену из строки в копейки переводите так: Math.round(Number(price) * 100). Округление обязательно, потому что 19.99 * 100 даёт 1998.9999999999998. try/catch ставьте только вокруг JSON.parse и бросайте свою ошибку из catch."
+  - "Почти решение: в importCart сначала let parsed; try { parsed = JSON.parse(text); } catch (error) { throw new Error('Файл повреждён: это не JSON'); }, затем const data = migrate(parsed); затем проверка items и map с проверкой каждой позиции."
+wrong:
+  - name: no-migration
+    kind: partial
+    explanation: "importCart не вызывает migrate, поэтому файлы версии 1 не открываются. А это как раз файлы, которые уже лежат у людей в почте."
+  - name: no-rounding
+    kind: edge-case
+    explanation: "Цена переводится в копейки умножением на 100 без округления. Для 1200.50 всё работает, а для 19.99 получается 1998.9999999999998, не целое число, и позиция отклоняется как некорректная."
+  - name: wide-catch
+    kind: common-mistake
+    explanation: "try/catch окружает и разбор, и миграцию. Любая ошибка, включая «Неподдерживаемая версия файла: 3», превращается в «Файл повреждён: это не JSON». Пользователь получает неверный диагноз."

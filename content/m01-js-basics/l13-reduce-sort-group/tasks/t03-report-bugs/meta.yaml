@@ -1,0 +1,22 @@
+order: 3
+title: "Баг: в отчёте корзины сумма [object Object] и сбит порядок"
+type: fix-bug
+role: warmup
+difficulty: 2
+minutes: 10
+language: js
+tags: [reduce, sort, начальное значение, мутация, баг]
+hints:
+  - "Направление: в cartTotal первым значением накопителя становится целый объект. В cheapestFirst sort переставляет сам массив корзины."
+  - "Шаг: добавьте второй аргумент reduce, чтобы накопитель начинался с числа. Для сортировки сделайте копию и передайте компаратор, возвращающий число."
+  - "Почти решение: items.reduce((sum, item) => sum + item.price * item.quantity, 0) и items.toSorted((a, b) => a.price - b.price)."
+wrong:
+  - name: total-only
+    kind: partial
+    explanation: "Исправлена только сумма. cheapestFirst по-прежнему сортирует саму корзину, и порядок позиций у покупателя меняется после открытия отчёта."
+  - name: default-compare
+    kind: common-mistake
+    explanation: "Сортировка идёт на копии, но без компаратора. Объекты превращаются в строки «[object Object]», все равны между собой, и порядок остаётся прежним."
+  - name: boolean-compare
+    kind: edge-case
+    explanation: "Компаратор a.price > b.price возвращает true или false вместо числа. Движок не получает отрицательных значений и оставляет порядок почти без изменений, ошибки при этом нет."

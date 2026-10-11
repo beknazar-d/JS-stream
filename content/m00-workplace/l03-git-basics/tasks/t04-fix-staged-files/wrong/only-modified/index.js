@@ -1,0 +1,10 @@
+export function stagedFiles(statusLines) {
+  const staged = [];
+  for (const line of statusLines) {
+    const code = line.slice(0, 2);
+    if (code === "M ") {
+      staged.push(line.slice(3));
+    }
+  }
+  return staged;
+}

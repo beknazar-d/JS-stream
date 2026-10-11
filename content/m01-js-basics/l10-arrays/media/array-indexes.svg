@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 250" width="640" height="250" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="16" fill="currentColor">
+  <title id="t">Индексы массива с тремя товарами</title>
+  <desc id="d">Массив из трёх ячеек: кроссовки, носки, кепка. Над ячейками индексы 0, 1, 2, под ячейками отрицательные индексы -3, -2, -1 для метода at. Длина массива равна 3.</desc>
+
+  <text x="320" y="28" text-anchor="middle" font-weight="700">cart = ["кроссовки", "носки", "кепка"]</text>
+
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="70" y="90" width="150" height="56" rx="8"/>
+    <rect x="245" y="90" width="150" height="56" rx="8"/>
+    <rect x="420" y="90" width="150" height="56" rx="8"/>
+    <rect x="570" y="90" width="50" height="56" rx="8" stroke-dasharray="6 4" opacity="0.6"/>
+  </g>
+
+  <g text-anchor="middle">
+    <text x="145" y="124">кроссовки</text>
+    <text x="320" y="124">носки</text>
+    <text x="495" y="124">кепка</text>
+    <text x="595" y="124" opacity="0.7">пусто</text>
+
+    <text x="145" y="76" font-family="ui-monospace, monospace">cart[0]</text>
+    <text x="320" y="76" font-family="ui-monospace, monospace">cart[1]</text>
+    <text x="495" y="76" font-family="ui-monospace, monospace">cart[2]</text>
+    <text x="595" y="76" font-family="ui-monospace, monospace" opacity="0.7">cart[3]</text>
+
+    <text x="145" y="176" font-family="ui-monospace, monospace" font-size="14">at(-3)</text>
+    <text x="320" y="176" font-family="ui-monospace, monospace" font-size="14">at(-2)</text>
+    <text x="495" y="176" font-family="ui-monospace, monospace" font-size="14">at(-1)</text>
+    <text x="595" y="176" font-size="13" opacity="0.8">undefined</text>
+
+    <text x="320" y="222" font-size="15">length равна 3: последний индекс на единицу меньше, чем length</text>
+  </g>
+</svg>

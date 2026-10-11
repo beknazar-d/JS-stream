@@ -1,0 +1,23 @@
+order: 2
+title: "Что выведет код с ценами каталога"
+type: predict
+role: warmup
+difficulty: 2
+minutes: 8
+language: js
+tags: [map, filter, find, findIndex, some, every]
+show: [tests/snippet.js]
+hints:
+  - "Направление: определите для каждой строки, что возвращает метод: массив, один элемент, число или true/false. Исходный массив prices ни одним из методов не меняется."
+  - "Шаг: find возвращает элемент, а не массив, и undefined, если ничего не подошло. findIndex при неудаче даёт -1. На пустом массиве every отвечает true."
+  - "Почти решение: первые две строки — [2400, 600, 9000, 1600] и [1200, 4500]. Дальше 300, undefined, 2, true, false, true и последняя строка — исходный массив без изменений."
+wrong:
+  - name: first-half
+    kind: partial
+    explanation: "Верны только первые четыре строки, остальные не заполнены. Предсказать нужно каждый вызов console.log."
+  - name: find-returns-array
+    kind: common-mistake
+    explanation: "Ответ считает, что find возвращает массив: [300] и [] вместо 300 и undefined. Метод find возвращает сам элемент, а filter — массив."
+  - name: every-empty-false
+    kind: edge-case
+    explanation: "Ответ считает, что every на пустом массиве даёт false. На пустом массиве нет элемента, нарушающего условие, поэтому every возвращает true."

@@ -1,0 +1,22 @@
+order: 4
+title: "Телефон в едином формате"
+type: implement
+role: main
+difficulty: 3
+minutes: 20
+language: js
+tags: [строки, replaceAll, slice, startsWith, length, нормализация]
+hints:
+  - "Направление: сначала уберите всё лишнее, потом приведите начало к +7, в самом конце проверьте длину."
+  - "Шаг: для четырёх разных символов нужны четыре replaceAll. Если номер начинается с 8, итоговая строка собирается как \"+7\" плюс phone.slice(1)."
+  - "Почти решение: if (phone.startsWith(\"8\")) { phone = \"+7\" + phone.slice(1); } else if (phone.startsWith(\"7\")) { phone = \"+\" + phone; } и затем проверка phone.startsWith(\"+7\") && phone.length === 12."
+wrong:
+  - name: only-eight
+    kind: partial
+    explanation: "Обработаны номера с 8 и с +7, а номера, начинающиеся с 7 без плюса, не обработаны, и функция возвращает для них пустую строку."
+  - name: replace-first-only
+    kind: common-mistake
+    explanation: "Для очистки использован replace, а не replaceAll. Он убирает только первый пробел, первый дефис и так далее. В телефоне с несколькими разделителями остаётся мусор."
+  - name: no-length-check
+    kind: edge-case
+    explanation: "Нет проверки длины в конце. Номер с недостающей или лишней цифрой возвращается как будто он корректный."

@@ -1,0 +1,22 @@
+order: 1
+title: "Каталог: названия, наличие, поиск по артикулу"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 8
+language: js
+tags: [map, filter, find, some]
+hints:
+  - "Направление: названия — это преобразование каждого элемента, наличие — отбор, поиск по артикулу — первый подходящий, вопрос «есть ли хоть один» — отдельный метод."
+  - "Шаг: map, filter, find и some. Колбэк получает товар product и возвращает значение или условие."
+  - "Почти решение: filter((product) => product.quantity > 0). Условие «в наличии» — строго больше нуля."
+wrong:
+  - name: unfinished
+    kind: partial
+    explanation: "Написаны только productNames и availableProducts. Функции findProduct и hasOutOfStock не заполнены и возвращают undefined."
+  - name: find-returns-array
+    kind: common-mistake
+    explanation: "Для поиска по артикулу использован filter. Он возвращает массив, а не товар, и для отсутствующего артикула даёт пустой массив вместо undefined."
+  - name: zero-is-available
+    kind: edge-case
+    explanation: "Условие quantity >= 0 считает товар с нулевым остатком имеющимся в наличии. Нулевой остаток — это «нет в наличии»."

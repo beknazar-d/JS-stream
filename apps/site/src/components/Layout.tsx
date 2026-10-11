@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router'
 import { isPersistent, useProgress } from '../progress/store.ts'
 import { reviewQueue } from '../progress/review.ts'
+import { REMIND_AFTER_SOLVED, solvedSinceExport } from '../progress/backup.ts'
 
 type Theme = 'system' | 'light' | 'dark'
 const THEME_LABELS: Record<Theme, string> = { system: 'как в системе', light: 'светлая', dark: 'тёмная' }
@@ -68,6 +69,7 @@ export function Layout() {
               Повторение{reviewCount > 0 ? ` (${reviewCount})` : ''}
             </NavLink>
             <NavLink to="/progress">Прогресс</NavLink>
+            <NavLink to="/search">Поиск</NavLink>
           </nav>
           <ThemeSwitch />
         </div>
@@ -77,6 +79,14 @@ export function Layout() {
           <p className="alert" role="status">
             Браузер не даёт сохранять данные (например, в приватном режиме). Прогресс пропадёт после закрытия
             вкладки. Скачайте его на странице «Прогресс», чтобы не потерять.
+          </p>
+        </div>
+      )}
+      {isPersistent() && solvedSinceExport(progress) >= REMIND_AFTER_SOLVED && location.pathname !== '/progress' && (
+        <div className="page page--wide">
+          <p className="alert" role="status">
+            С последней резервной копии решено заданий: {solvedSinceExport(progress)}. Прогресс хранится только в этом
+            браузере — <Link to="/progress">скачайте копию</Link>, чтобы не потерять его.
           </p>
         </div>
       )}

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" width="640" height="330" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="16" fill="currentColor">
+  <title id="t">Цепочка filter и map над ценами</title>
+  <desc id="d">Исходный массив из четырёх цен 1200, 300, 4500, 800. Метод filter с условием цена больше 1000 оставляет 1200 и 4500. Метод map с умножением на 0,9 даёт 1080 и 4050. Исходный массив при этом не меняется.</desc>
+
+  <text x="40" y="26" font-weight="700">prices (исходный массив, он не меняется)</text>
+
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="40" y="40" width="110" height="44" rx="6"/>
+    <rect x="170" y="40" width="110" height="44" rx="6" opacity="0.5" stroke-dasharray="6 4"/>
+    <rect x="300" y="40" width="110" height="44" rx="6"/>
+    <rect x="430" y="40" width="110" height="44" rx="6" opacity="0.5" stroke-dasharray="6 4"/>
+
+    <rect x="40" y="150" width="110" height="44" rx="6"/>
+    <rect x="300" y="150" width="110" height="44" rx="6"/>
+    <rect x="40" y="260" width="110" height="44" rx="6"/>
+    <rect x="300" y="260" width="110" height="44" rx="6"/>
+
+    <path d="M95 84 V150 M355 84 V150 M95 194 V260 M355 194 V260"/>
+    <path d="M89 142 L95 150 L101 142 M349 142 L355 150 L361 142 M89 252 L95 260 L101 252 M349 252 L355 260 L361 252"/>
+  </g>
+
+  <g text-anchor="middle" font-family="ui-monospace, monospace">
+    <text x="95" y="68">1200</text>
+    <text x="225" y="68" opacity="0.6">300</text>
+    <text x="355" y="68">4500</text>
+    <text x="485" y="68" opacity="0.6">800</text>
+    <text x="95" y="178">1200</text>
+    <text x="355" y="178">4500</text>
+    <text x="95" y="288">1080</text>
+    <text x="355" y="288">4050</text>
+  </g>
+
+  <g font-size="14">
+    <text x="440" y="168">filter: цена больше 1000</text>
+    <text x="440" y="188" opacity="0.8">300 и 800 отсеяны</text>
+    <text x="440" y="278">map: цена умножается на 0,9</text>
+    <text x="440" y="298" opacity="0.8">видит только два значения</text>
+  </g>
+</svg>

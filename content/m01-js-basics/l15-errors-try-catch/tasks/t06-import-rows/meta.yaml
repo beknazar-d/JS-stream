@@ -1,0 +1,22 @@
+order: 6
+title: Импорт строк оптового заказа
+type: implement
+role: real
+difficulty: 4
+minutes: 30
+language: js
+tags: [throw, try/catch, instanceof, свои ошибки, пробрасывание, строки из файла]
+hints:
+  - "Направление: разделите работу на две функции. parseRow только проверяет и бросает ValidationError. importRows перебирает строки, ловит именно этот вид ошибки и записывает его в отчёт."
+  - "Шаг: в parseRow очистите артикул через trim, превратите количество в число и проверьте, что оно целое и больше нуля (пустая строка станет нулём). В importRows оберните вызов parseRow в try/catch, а в catch проверьте error instanceof ValidationError."
+  - "Почти решение: catch (error) { if (!(error instanceof ValidationError)) { throw error; } errors.push({ row: index + 1, message: error.message }); }"
+wrong:
+  - name: stops-at-first
+    kind: partial
+    explanation: "importRows не ловит ошибки, поэтому на первой же плохой строке выбрасывает исключение и остальные строки не разбираются. Отчёт по всем строкам не получается."
+  - name: zero-allowed
+    kind: edge-case
+    explanation: "Количество проверяется только на NaN и отрицательные числа. Пустое поле и «0» превращаются в 0 и принимаются как корректные позиции с нулевой суммой."
+  - name: catch-all
+    kind: common-mistake
+    explanation: "Блок catch записывает в отчёт любую ошибку. Недоступный справочник товаров превращается в «ошибку строки 1», а баг с null маскируется. Нужно ловить только ValidationError и пробрасывать остальное."

@@ -1,0 +1,35 @@
+- id: month-from-zero
+  front: С какого числа в Date нумеруются месяцы? Как создать 5 марта 2025 в UTC?
+  back: "С нуля: январь 0, декабрь 11. new Date(Date.UTC(2025, 2, 5)). День месяца считается с единицы."
+- id: date-utc
+  front: Чем Date.UTC отличается от new Date(год, месяц, день)?
+  back: "Date.UTC считает по UTC и возвращает число миллисекунд. Конструктор с числами считает по часовому поясу компьютера, результат зависит от места запуска."
+  answer: Date.UTC
+- id: iso-string
+  front: Как получить строку 2025-03-05 из даты?
+  back: "date.toISOString().slice(0, 10) — всегда по UTC."
+  answer: toISOString
+- id: iso-parse
+  front: Как разбирается строка '2025-03-05' и как '2025-03-05T10:00'?
+  back: "Только дата (без времени) — по UTC. Дата со временем без буквы Z — по часовому поясу компьютера. Чтобы не гадать, добавляйте Z: '2025-03-05T10:00:00Z'."
+- id: utc-getters
+  front: Какие методы читают части даты в UTC?
+  back: "getUTCFullYear(), getUTCMonth() (с нуля), getUTCDate(), getUTCDay() (0 это воскресенье), getUTCHours()."
+  answer: getUTC
+- id: add-days
+  front: Как прибавить дни к дате, не меняя исходную?
+  back: "const r = new Date(date); r.setUTCDate(r.getUTCDate() + days); Сначала копия: Date изменяемый."
+- id: compare-dates
+  front: Как проверить, что две даты совпадают по времени?
+  back: "a.getTime() === b.getTime(). Оператор === сравнивает объекты по ссылке и даёт false. < и > работают."
+  answer: getTime
+- id: days-between
+  front: Как посчитать число календарных дней между двумя датами?
+  back: "Привести обе к полуночи UTC и разделить разницу на 86400000 (24 * 60 * 60 * 1000)."
+  answer: "86400000"
+- id: invalid-date
+  front: Как проверить, что дата не Invalid Date?
+  back: "Number.isNaN(date.getTime()) — истина для плохой даты. toISOString() на ней бросает RangeError."
+- id: intl-format
+  front: Как показать дату по-русски независимо от часового пояса компьютера?
+  back: "new Intl.DateTimeFormat('ru-RU', { timeZone: 'UTC', day: 'numeric', month: 'long', year: 'numeric' }).format(date) даёт «5 марта 2025 г.»"

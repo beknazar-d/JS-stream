@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="16" fill="currentColor">
+  <title id="t">let и const: полки с ярлыками</title>
+  <desc id="d">Слева переменная stock через let: значение 40 заменяется на 35. Справа переменная vatPercent через const: значение 20 запечатано, присвоить другое нельзя.</desc>
+
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="16" y="16" width="290" height="268" rx="10" opacity="0.7"/>
+    <rect x="334" y="16" width="290" height="268" rx="10" opacity="0.7"/>
+    <rect x="56" y="70" width="210" height="36" rx="8"/>
+    <rect x="56" y="130" width="90" height="60" rx="8" stroke-dasharray="6 4" opacity="0.7"/>
+    <rect x="176" y="130" width="90" height="60" rx="8"/>
+    <path d="M150 160 H172"/>
+    <path d="M164 154 L172 160 L164 166"/>
+    <rect x="374" y="70" width="210" height="36" rx="8"/>
+    <rect x="414" y="130" width="130" height="60" rx="8"/>
+    <rect x="465" y="210" width="28" height="22" rx="4"/>
+    <path d="M471 210 V202 C471 190 487 190 487 202 V210"/>
+  </g>
+
+  <g text-anchor="middle">
+    <text x="161" y="45" font-weight="700">let</text>
+    <text x="479" y="45" font-weight="700">const</text>
+
+    <text x="161" y="94" font-family="ui-monospace, monospace" font-size="18">stock</text>
+    <text x="479" y="94" font-family="ui-monospace, monospace" font-size="18">vatPercent</text>
+
+    <text x="101" y="165" font-family="ui-monospace, monospace" font-size="20" opacity="0.7">40</text>
+    <text x="101" y="182" font-size="12" opacity="0.8">было</text>
+    <text x="221" y="165" font-family="ui-monospace, monospace" font-size="20">35</text>
+    <text x="221" y="182" font-size="12" opacity="0.8">стало</text>
+    <text x="161" y="220" font-family="ui-monospace, monospace" font-size="14">stock = 35;</text>
+    <text x="161" y="250" font-size="14">значение можно заменить</text>
+
+    <text x="479" y="165" font-family="ui-monospace, monospace" font-size="20">20</text>
+    <text x="479" y="182" font-size="12" opacity="0.8">навсегда</text>
+    <text x="479" y="262" font-size="14">присвоить другое нельзя</text>
+  </g>
+</svg>

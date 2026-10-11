@@ -1,0 +1,22 @@
+order: 1
+title: Вынести форматирование в отдельный файл
+type: recall
+role: warmup
+difficulty: 1
+minutes: 8
+language: js
+tags: [import, export, export default, модули]
+hints:
+  - "Направление: у экспорта есть два вида. Главное из файла отдают «по умолчанию», остальное по именам. При импорте они пишутся по-разному."
+  - "Шаг: перед объявлением ставят слово export. Для главного экспорта пишут export default. При импорте по умолчанию имя пишут без скобок, именованные берут в фигурных скобках через запятую."
+  - "Почти решение: export default function formatRub(amount) и export function formatQty(qty), export const CURRENCY. В index.js: import formatRub, { formatQty, CURRENCY } from './format.js';"
+wrong:
+  - name: named-instead-of-default
+    kind: common-mistake
+    explanation: "formatRub экспортирована по имени, а не по умолчанию. Внутри index.js это можно обойти, но остальной код сайта импортирует её по умолчанию, и там получится undefined. Нужен export default."
+  - name: unfinished
+    kind: partial
+    explanation: "Экспорты в format.js открыты, но describeLine в index.js не написана. Нужны обе части."
+  - name: no-currency-export
+    kind: edge-case
+    explanation: "Константа CURRENCY осталась без export. Импорт не падает, он даёт undefined, и в строке появляется «(undefined)» вместо «(RUB)»."

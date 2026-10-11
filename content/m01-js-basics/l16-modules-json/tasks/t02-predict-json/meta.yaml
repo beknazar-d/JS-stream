@@ -1,0 +1,23 @@
+order: 2
+title: Что станет с заказом после JSON
+type: predict
+role: warmup
+difficulty: 3
+minutes: 10
+language: js
+tags: [JSON, stringify, parse, Date, undefined, NaN]
+show: [tests/snippet.js]
+hints:
+  - "Направление: JSON знает только строки, числа, true, false, null, массивы и объекты. Всё остальное он либо выбрасывает, либо заменяет."
+  - "Шаг: свойства со значением undefined пропадают из объекта, а внутри массива заменяются на null. NaN становится null. Дата превращается в строку ISO. Обратно из JSON дата уже не возвращается датой."
+  - "Почти решение: первая строка начинается с {\"id\":7, в ней нет ключа note, total равен null, дата записана строкой с буквой Z на конце. Третья строка — string, шестая — undefined."
+wrong:
+  - name: date-stays-date
+    kind: common-mistake
+    explanation: "В третьей строке ответ object. JSON.parse не умеет возвращать даты: дата сохраняется строкой, и после загрузки это обычная string. Дату нужно создавать заново через new Date."
+  - name: keeps-undefined
+    kind: edge-case
+    explanation: "В первой строке ключ note и значение undefined или null. JSON.stringify пропускает свойства со значением undefined полностью. Внутри массива undefined превращается в null, а свойство объекта исчезает."
+  - name: half
+    kind: partial
+    explanation: "Выписана только половина вывода. Предсказать нужно каждый console.log."

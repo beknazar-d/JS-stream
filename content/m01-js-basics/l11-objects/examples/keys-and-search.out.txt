@@ -1,0 +1,10 @@
+["RUN-42", "SOCK-07", "CAP-01"]
+[7, 0, 15]
+[["RUN-42", 7], ["SOCK-07", 0], ["CAP-01", 15]]
+RUN-42 -> 7
+SOCK-07 -> 0
+CAP-01 -> 15
+true
+false
+undefined
+15

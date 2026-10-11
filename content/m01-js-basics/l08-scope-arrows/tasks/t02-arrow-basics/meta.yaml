@@ -1,0 +1,22 @@
+order: 2
+title: "Три коротких расчёта"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 6
+language: js
+tags: [стрелочные функции, неявный возврат, параметры]
+hints:
+  - "Направление: запись такая: export const имя = (параметры) => выражение;. Без параметров скобки пустые."
+  - "Шаг: при записи без фигурных скобок return не нужен, значение выражения возвращается само."
+  - "Почти решение: export const toRubles = (kopecks) => kopecks / 100; export const orderTotal = (price, quantity) => price * quantity; export const freeShipping = () => 0;"
+wrong:
+  - name: missing-free-shipping
+    kind: partial
+    explanation: "Объявлены только две функции из трёх. Вызов freeShipping() заканчивается TypeError, потому что такого экспорта нет."
+  - name: whole-rubles
+    kind: edge-case
+    explanation: "Для округления вниз до целых рублей использован Math.floor, и копейки пропали: 1999 копеек дают 19 рублей вместо 19.99."
+  - name: braces-without-return
+    kind: common-mistake
+    explanation: "У orderTotal стоят фигурные скобки, но нет return. Выражение считается и выбрасывается, функция возвращает undefined."

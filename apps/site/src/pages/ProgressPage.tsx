@@ -5,6 +5,7 @@ import { ProgressBar } from '../components/status.tsx'
 import { useTitle } from '../components/useTitle.ts'
 import { allLessons, allTasks, lessonUrl } from '../content.ts'
 import { reviewQueue } from '../progress/review.ts'
+import { markExported } from '../progress/backup.ts'
 import { exportProgress, importProgress, isPersistent, resetProgress, useProgress } from '../progress/store.ts'
 
 export function ProgressPage() {
@@ -27,6 +28,7 @@ export function ProgressPage() {
     link.download = `js-stream-progress-${new Date().toISOString().slice(0, 10)}.json`
     link.click()
     URL.revokeObjectURL(url)
+    markExported()
     setMessage({ ok: true, text: 'Файл прогресса скачан.' })
   }
 

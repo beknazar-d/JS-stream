@@ -1,0 +1,23 @@
+order: 2
+title: "Что выведет код со сменой остатков"
+type: predict
+role: warmup
+difficulty: 2
+minutes: 8
+language: js
+tags: [let, const, присваивание, undefined, typeof]
+show: [tests/snippet.js]
+hints:
+  - "Направление: идите по строкам сверху вниз и записывайте, что лежит в каждой переменной после каждого присваивания."
+  - "Шаг: переменная backup получила число в момент создания. Позже stock изменился, но backup остался прежним. А typeof от несуществующего имени не падает."
+  - "Почти решение: первые три строки — 35, 35, 25. Дальше let без значения хранит undefined, typeof несуществующего имени даёт строку undefined, а последняя строка — склейка SKU-5."
+wrong:
+  - name: only-first-half
+    kind: partial
+    explanation: "Верно только начало, остальные строки не заполнены. Предсказать нужно каждый вызов console.log, а не только первые три."
+  - name: copy-follows
+    kind: common-mistake
+    explanation: "Во второй строке ответ 25 означает, что копия backup следует за оригиналом. Но число скопировалось в момент объявления, и позже backup остаётся равным 35."
+  - name: typeof-throws
+    kind: edge-case
+    explanation: "В пятой строке ответ ReferenceError означает, что typeof упал на несуществующем имени. Но typeof — единственный оператор, который в этом случае не падает, а возвращает строку undefined."

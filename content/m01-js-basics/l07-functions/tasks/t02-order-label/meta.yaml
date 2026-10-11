@@ -1,0 +1,22 @@
+order: 2
+title: "Подпись номера заказа"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 6
+language: js
+tags: [функции, return, строки, padStart]
+hints:
+  - "Направление: объявление функции состоит из слов export function, имени, параметров в скобках и тела в фигурных скобках. Результат отдаёт return."
+  - "Шаг: номер надо превратить в строку (String(number)) и дополнить нулями слева до четырёх символов. Для этого у строк есть метод padStart."
+  - "Почти решение: export function orderLabel(number) { return `Заказ №${String(number).padStart(4, \"0\")}`; }"
+wrong:
+  - name: no-padding
+    kind: partial
+    explanation: "Номер подставлен как есть, без нулей: получается «Заказ №42». Функция работает для четырёхзначных номеров, но не для коротких."
+  - name: cut-long-numbers
+    kind: edge-case
+    explanation: "Номер обрезается до последних четырёх цифр через slice(-4), поэтому 12345 превращается в 2345 и разные заказы получают одинаковые подписи."
+  - name: prints-instead-of-returns
+    kind: common-mistake
+    explanation: "Функция печатает подпись через console.log, но ничего не возвращает. Вызывающий код получает undefined, а в тестах нет самой строки."

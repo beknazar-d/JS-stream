@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" width="640" height="280" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="16" fill="currentColor">
+  <title id="t">Индексы строки и slice</title>
+  <desc id="d">Строка ORD-2024-0042 разложена по ячейкам с индексами от 0 до 12. slice(4, 8) возвращает символы с индексами 4, 5, 6, 7, то есть 2024. slice(-4) возвращает последние четыре символа, то есть 0042.</desc>
+
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="40" y="60" width="40" height="44"/><rect x="80" y="60" width="40" height="44"/><rect x="120" y="60" width="40" height="44"/><rect x="160" y="60" width="40" height="44"/>
+    <rect x="200" y="60" width="40" height="44" stroke-width="4"/><rect x="240" y="60" width="40" height="44" stroke-width="4"/><rect x="280" y="60" width="40" height="44" stroke-width="4"/><rect x="320" y="60" width="40" height="44" stroke-width="4"/>
+    <rect x="360" y="60" width="40" height="44"/>
+    <rect x="400" y="60" width="40" height="44" stroke-dasharray="6 3"/><rect x="440" y="60" width="40" height="44" stroke-dasharray="6 3"/><rect x="480" y="60" width="40" height="44" stroke-dasharray="6 3"/><rect x="520" y="60" width="40" height="44" stroke-dasharray="6 3"/>
+    <path d="M200 120 V130 H360 V120"/>
+    <path d="M400 190 V200 H560 V190" stroke-dasharray="6 3"/>
+  </g>
+
+  <g text-anchor="middle" font-family="ui-monospace, monospace" font-size="20">
+    <text x="60" y="89">O</text><text x="100" y="89">R</text><text x="140" y="89">D</text><text x="180" y="89">-</text>
+    <text x="220" y="89">2</text><text x="260" y="89">0</text><text x="300" y="89">2</text><text x="340" y="89">4</text>
+    <text x="380" y="89">-</text>
+    <text x="420" y="89">0</text><text x="460" y="89">0</text><text x="500" y="89">4</text><text x="540" y="89">2</text>
+  </g>
+
+  <g text-anchor="middle" font-size="13" opacity="0.85">
+    <text x="60" y="52">0</text><text x="100" y="52">1</text><text x="140" y="52">2</text><text x="180" y="52">3</text>
+    <text x="220" y="52">4</text><text x="260" y="52">5</text><text x="300" y="52">6</text><text x="340" y="52">7</text>
+    <text x="380" y="52">8</text><text x="420" y="52">9</text><text x="460" y="52">10</text><text x="500" y="52">11</text><text x="540" y="52">12</text>
+  </g>
+
+  <g text-anchor="middle">
+    <text x="280" y="150" font-family="ui-monospace, monospace" font-size="16">slice(4, 8) возвращает "2024"</text>
+    <text x="480" y="220" font-family="ui-monospace, monospace" font-size="16">slice(-4) возвращает "0042"</text>
+    <text x="320" y="262" font-size="14">length равен 13, последний индекс равен 12</text>
+  </g>
+</svg>

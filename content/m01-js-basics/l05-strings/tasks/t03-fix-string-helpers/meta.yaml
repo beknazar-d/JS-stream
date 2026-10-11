@@ -1,0 +1,22 @@
+order: 3
+title: "Баг: результат методов строк теряется"
+type: fix-bug
+role: warmup
+difficulty: 2
+minutes: 12
+language: js
+tags: [строки, trim, toUpperCase, replaceAll, шаблонные строки]
+hints:
+  - "Направление: ошибок в консоли нет, значит, каждая функция работает, но делает не то. Спросите себя: куда уходит результат метода? Сколько раз заменяется каждый символ? Какие кавычки у строки?"
+  - "Шаг: в cleanSku результаты trim и toUpperCase нигде не сохраняются. В compactPhone replace заменяет только первое вхождение. В orderLabel подстановка работает только в обратных кавычках."
+  - "Почти решение: return raw.trim().toUpperCase(); подряд четыре вызова replaceAll; return `Заказ №${id}`;"
+wrong:
+  - name: fixed-first-two
+    kind: partial
+    explanation: "Исправлены cleanSku и compactPhone, а orderLabel по-прежнему выводит текст ${id} вместо номера."
+  - name: spaces-only
+    kind: common-mistake
+    explanation: "compactPhone теперь убирает все пробелы, но скобки и дефисы остаются. Для очистки телефона нужны четыре замены: пробел, дефис и обе скобки."
+  - name: trim-start
+    kind: edge-case
+    explanation: "В cleanSku использован trimStart, который убирает пробелы только слева. Артикул с пробелом справа остаётся «грязным»."

@@ -1,0 +1,32 @@
+- id: const-vs-let
+  front: 'Чем const отличается от let?'
+  back: "const нельзя присвоить заново, let можно. По умолчанию пишут const, а let берут, когда значение меняется."
+  answer: 'const'
+- id: declare-const
+  front: 'Как объявить постоянную vatPercent со значением 20?'
+  back: "const vatPercent = 20;"
+- id: reassign
+  front: 'Как изменить значение переменной stock, объявленной через let? Нужно ли снова писать let?'
+  back: "stock = 35; Слово let второй раз не пишется."
+- id: const-error
+  front: 'Какая ошибка бывает, если присвоить новое значение const?'
+  back: "TypeError: Assignment to constant variable."
+  answer: 'TypeError'
+- id: tdz-error
+  front: 'Что значит ошибка «Cannot access ''price'' before initialization»?'
+  back: "Переменную читают выше строки, где она объявлена. Это временная мёртвая зона (TDZ). Поднимите объявление вверх."
+- id: not-defined
+  front: 'Что значит ошибка «prce is not defined»?'
+  back: "Такого имени нет. Обычно это опечатка."
+  answer: 'ReferenceError'
+- id: camel-case
+  front: 'Как называется стиль имён вроде maxItemsPerOrder?'
+  back: "camelCase: слова слитно, каждое слово кроме первого с заглавной буквы."
+  answer: 'camelCase'
+- id: name-rules
+  front: 'Какие имена переменных нельзя использовать?'
+  back: "Начинающиеся с цифры, с пробелом или дефисом внутри, а также занятые языком слова: let, const, class, return."
+- id: empty-let
+  front: 'Что лежит в переменной, объявленной через let без значения?'
+  back: "undefined."
+  answer: 'undefined'

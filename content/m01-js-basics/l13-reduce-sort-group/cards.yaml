@@ -1,0 +1,36 @@
+- id: reduce-signature
+  front: Как записать сумму цен через reduce?
+  back: "items.reduce((sum, item) => sum + item.price, 0). Второй аргумент — начальное значение acc."
+- id: reduce-initial
+  front: Зачем нужно начальное значение у reduce?
+  back: "Без него acc берёт первый элемент. Для объектов получится склейка «[object Object]...», а пустой массив даст TypeError."
+- id: reduce-empty-error
+  front: Какая ошибка будет у [].reduce((a, b) => a + b)?
+  back: "TypeError: Reduce of empty array with no initial value. Лечится начальным значением."
+- id: reduce-return
+  front: Что вернёт reduce, если в колбэке с фигурными скобками забыли return?
+  back: "undefined. Колбэк должен вернуть новый acc на каждом шаге."
+  answer: undefined
+- id: sort-default
+  front: Что вернёт [10, 9, 1].sort()?
+  back: "[1, 10, 9]. Без компаратора sort сравнивает элементы как строки."
+  answer: "[1, 10, 9]"
+- id: sort-comparator
+  front: Какой компаратор сортирует числа по возрастанию?
+  back: "(a, b) => a - b. По убыванию: (a, b) => b - a. Результат — число, а не true или false."
+  answer: (a, b) => a - b
+- id: sort-mutates
+  front: Меняет ли sort исходный массив?
+  back: "Да, меняет и возвращает его же. Копия: items.toSorted(...) или items.slice().sort(...)."
+  answer: да
+- id: to-sorted
+  front: Какой метод сортирует и возвращает копию, не меняя оригинал?
+  back: "toSorted(compare). Он новый (Node.js 20+, современные браузеры). Запасной вариант: slice().sort(compare)."
+  answer: toSorted
+- id: sort-strings
+  front: Как сравнить строки при сортировке по русскому алфавиту?
+  back: 'a.name.localeCompare(b.name, "ru"). Он возвращает отрицательное число, ноль или положительное.'
+  answer: localeCompare
+- id: group-by
+  front: Как сгруппировать заказы по статусу в объект?
+  back: "reduce с начальным значением {}: если ключа нет, создать пустой массив groups[status] = [], потом push. Готовая Object.groupBy новая и есть не везде."

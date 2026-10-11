@@ -1,0 +1,22 @@
+order: 6
+title: "Проверка заявки на бронирование и цена"
+type: implement
+role: real
+difficulty: 4
+minutes: 30
+language: js
+tags: [if, else if, ранний выход, Number, валидация, скидки, граничные случаи]
+hints:
+  - "Направление: сначала превратите гостей и ночи в числа. Потом идите по списку проверок сверху вниз, и после каждой плохой проверки сразу возвращайте текст ошибки."
+  - "Шаг: целое число проверяет Number.isInteger(value). Для строки \"abc\" Number даёт NaN, а Number.isInteger(NaN) ложно, поэтому условие !Number.isInteger(guestCount) отсекает и текст, и дробь. Для скидки заведите переменную percent и выберите значение цепочкой if, else if."
+  - "Почти решение: после всех проверок верните \"ok\". В bookingTotal: let percent = 0; if (nights >= 14) { percent = 15; } else if (nights >= 7) { percent = 10; } return Math.round((nights * pricePerNight * (100 - percent)) / 100);"
+wrong:
+  - name: no-booking-total
+    kind: partial
+    explanation: "validateBooking готова, а bookingTotal осталась пустой и возвращает undefined. Тикет закрыт наполовину."
+  - name: last-error-wins
+    kind: common-mistake
+    explanation: "Проверки идут без раннего выхода: каждая перезаписывает общее сообщение. Если ошибок несколько, возвращается последняя вместо первой. Для 'abc' гостей и 40 ночей получится ошибка про ночи."
+  - name: no-integer-check
+    kind: edge-case
+    explanation: "Проверка числа гостей только сравнивает с единицей. Для \"abc\" Number даёт NaN, а NaN < 1 ложно, и заявка проходит. Дробные \"1.5\" гостей тоже проходят."

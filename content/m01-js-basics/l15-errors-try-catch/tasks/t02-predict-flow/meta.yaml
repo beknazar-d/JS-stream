@@ -1,0 +1,23 @@
+order: 2
+title: Что выведет код с throw и finally
+type: predict
+role: warmup
+difficulty: 2
+minutes: 8
+language: js
+tags: [throw, try/catch, finally, instanceof, свои ошибки]
+show: [tests/snippet.js]
+hints:
+  - "Направление: после throw код внутри try дальше не идёт, управление переходит в catch. А finally выполняется в любом случае."
+  - "Шаг: у ошибки есть name и message. Для своего класса name задан в конструкторе. Проверка instanceof смотрит, из какого класса создана ошибка и от кого он наследуется."
+  - "Почти решение: первые две строки — старт и 7. Потом идут StockError, текст ошибки с остатком 10, true true, готово и последняя строка с Error: x."
+wrong:
+  - name: continues-after-throw
+    kind: common-mistake
+    explanation: "В ответе есть строка «не выведется». После throw выполнение блока try прекращается, и следующий console.log вообще не вызывается."
+  - name: name-is-error
+    kind: edge-case
+    explanation: "В третьей строке ответ Error. Но в конструкторе класса есть строка this.name = 'StockError', поэтому у пойманной ошибки именно такое имя, а не Error."
+  - name: half
+    kind: partial
+    explanation: "Выписана только половина вывода. Предсказать нужно каждый console.log, включая вызов из finally."

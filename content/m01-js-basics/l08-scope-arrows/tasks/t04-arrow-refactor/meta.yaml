@@ -1,0 +1,22 @@
+order: 4
+title: "Переписать утилиты стрелками"
+type: refactor
+role: main
+difficulty: 2
+minutes: 15
+language: js
+tags: [стрелочные функции, неявный возврат, тернарный оператор, рефакторинг]
+hints:
+  - "Направление: каждая функция превращается в export const имя = (параметры) => выражение;. Сначала перепишите самые простые, у которых в теле один return."
+  - "Шаг: у parcelKind два return в if. Замените if на тернарный оператор условие ? первое : второе, и тело станет одним выражением. Значение по умолчанию остаётся в списке параметров."
+  - "Почти решение: export const parcelKind = (weightKg) => (weightKg > 3 ? \"Тяжёлая\" : \"Обычная\"); export const discounted = (price, percent = 0) => price - (price * percent) / 100;"
+wrong:
+  - name: only-simple
+    kind: partial
+    explanation: "Переписаны три простые функции, а parcelKind и orderNumber остались через function. Проверка, что все пять — стрелки, не проходит."
+  - name: lost-default
+    kind: edge-case
+    explanation: "У discounted потерялось значение по умолчанию: percent = 0 превратился в обычный параметр. Вызов discounted(2000) даёт NaN, потому что 2000 * undefined это NaN."
+  - name: braces-without-return
+    kind: common-mistake
+    explanation: "У lineTotal оставлены фигурные скобки, но return пропал. Функция больше ничего не возвращает: результат undefined."

@@ -1,0 +1,22 @@
+order: 6
+title: "Итог заказа на странице оформления"
+type: implement
+role: real
+difficulty: 4
+minutes: 30
+language: js
+tags: [функции, композиция функций, значения по умолчанию, преобразование типов, NaN, валидация]
+hints:
+  - "Направление: сначала напишите две маленькие функции и убедитесь, что они работают. Потом в checkoutTotal превратите строки в числа, проверьте их и вызовите маленькие функции."
+  - "Шаг: price = Number(priceText), quantity = Number(quantityText). Для цены проверьте Number.isFinite и больше нуля, для количества Number.isInteger и не меньше единицы, для процента typeof, Number.isNaN и диапазон. Пустая строка превращается в 0 (урок 1.1), поэтому проверка «больше нуля» отсеет и пустое поле. Доставка зависит от суммы после скидки."
+  - "Почти решение: const goods = price * quantity; const discounted = applyDiscount(goods, couponPercent); return discounted + shippingFor(discounted);"
+wrong:
+  - name: no-shipping
+    kind: partial
+    explanation: "Итог считается только как товары со скидкой, доставка не прибавляется. Первое же сравнение с «2750» показывает недостачу 350 рублей."
+  - name: shipping-before-discount
+    kind: edge-case
+    explanation: "Бесплатная доставка определяется по сумме до скидки. Заказ на 6000 рублей с купоном 20% получает бесплатную доставку, хотя после скидки сумма 4800 и доставка должна быть платной."
+  - name: nan-leaks
+    kind: common-mistake
+    explanation: "Строки превращаются в числа, но результат не проверяется. Для «12 шт» или пустого поля наружу уходит NaN вместо null, и NaN доезжает до экрана покупателя, как в уроке 1.1."

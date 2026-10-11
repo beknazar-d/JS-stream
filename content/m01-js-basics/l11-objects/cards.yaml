@@ -1,0 +1,38 @@
+- id: read-field
+  front: Как прочитать поле status у объекта order, если имя поля лежит в переменной field?
+  back: "order[field]. Точка нужна, когда имя написано прямо в коде: order.status."
+  answer: order[field]
+- id: missing-field
+  front: Что вернёт order.phone, если у объекта нет такого поля?
+  back: "undefined. Ошибки нет, пока вы не читаете дальше: order.phone.number упадёт с TypeError."
+  answer: undefined
+- id: optional-chaining
+  front: Как безопасно прочитать order.customer.address.city, если customer может отсутствовать?
+  back: "order.customer?.address?.city. Если слева undefined или null, цепочка останавливается и возвращает undefined."
+  answer: "?."
+- id: optional-with-default
+  front: Как задать запасное значение для order.customer?.address?.city?
+  back: 'order.customer?.address?.city ?? "город не указан"'
+- id: object-keys
+  front: Какой метод возвращает массив ключей объекта?
+  back: "Object.keys(obj). Значения: Object.values(obj). Пары: Object.entries(obj)."
+  answer: Object.keys
+- id: has-own
+  front: Чем проверить, есть ли у объекта собственное поле с именем sku?
+  back: "Object.hasOwn(obj, sku). Работает и для значений 0 и undefined. Проверка if (obj[sku]) принимает 0 за «поля нет»."
+  answer: Object.hasOwn
+- id: assignment-reference
+  front: Создаёт ли const preview = original копию объекта?
+  back: "Нет. Копируется ссылка: два имени, один объект. Изменение через preview видно в original."
+  answer: нет
+- id: object-equality
+  front: "Чему равно { id: 1 } === { id: 1 }?"
+  back: "false. Оператор === сравнивает ссылки, а это два разных объекта."
+  answer: "false"
+- id: const-object
+  front: Можно ли менять поля объекта, объявленного через const?
+  back: "Можно. const запрещает только присвоить переменной другое значение, а не менять содержимое объекта."
+  answer: можно
+- id: dynamic-key
+  front: Как добавить в counts поле, имя которого лежит в переменной status?
+  back: "counts[status] = 1. Запись counts.status создала бы поле с буквальным именем status."

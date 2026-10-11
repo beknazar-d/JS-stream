@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" width="640" height="330" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="15" fill="currentColor">
+  <title id="t">Дерево папок проекта и пути между ними</title>
+  <desc id="d">Дерево папок сверху вниз: корень, home, anna, shop. Внутри shop лежат две папки: docs и src. Терминал стоит в папке src. Две точки означают папку shop, путь две точки косая черта docs ведёт в docs, одна точка означает саму папку src.</desc>
+
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="20" y="16" width="90" height="36" rx="8"/>
+    <rect x="20" y="76" width="90" height="36" rx="8"/>
+    <rect x="20" y="136" width="90" height="36" rx="8"/>
+    <rect x="20" y="196" width="90" height="36" rx="8"/>
+    <rect x="190" y="166" width="90" height="36" rx="8"/>
+    <rect x="190" y="226" width="90" height="36" rx="8" stroke-width="4"/>
+    <path d="M65 52 V76 M65 112 V136 M65 172 V196"/>
+    <path d="M110 214 H150 V184 H190 M150 214 V244 H190"/>
+  </g>
+
+  <g>
+    <text x="65" y="40" text-anchor="middle" font-family="ui-monospace, monospace">/</text>
+    <text x="65" y="100" text-anchor="middle" font-family="ui-monospace, monospace">home</text>
+    <text x="65" y="160" text-anchor="middle" font-family="ui-monospace, monospace">anna</text>
+    <text x="65" y="220" text-anchor="middle" font-family="ui-monospace, monospace">shop</text>
+    <text x="235" y="190" text-anchor="middle" font-family="ui-monospace, monospace">docs</text>
+    <text x="235" y="250" text-anchor="middle" font-family="ui-monospace, monospace" font-weight="700">src</text>
+
+    <text x="135" y="38" font-weight="700">Корень</text>
+    <text x="135" y="58" font-size="13" opacity="0.8">отсюда начинаются все полные пути</text>
+    <text x="135" y="124" font-weight="700">Полный (абсолютный) путь до src</text>
+    <text x="135" y="144" font-family="ui-monospace, monospace" font-size="14">/home/anna/shop/src</text>
+
+    <text x="310" y="188" font-weight="700">Вы стоите в папке src</text>
+    <text x="310" y="212" font-size="14"><tspan font-family="ui-monospace, monospace">.</tspan> — эта же папка src</text>
+    <text x="310" y="236" font-size="14"><tspan font-family="ui-monospace, monospace">..</tspan> — папка shop</text>
+    <text x="310" y="260" font-size="14"><tspan font-family="ui-monospace, monospace">../docs</tspan> — вверх и в docs</text>
+    <text x="310" y="296" font-size="13" opacity="0.8">Жирная рамка — где вы сейчас</text>
+  </g>
+</svg>

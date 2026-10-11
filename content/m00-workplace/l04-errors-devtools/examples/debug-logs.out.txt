@@ -1,0 +1,8 @@
+weightKg: 2.5
+ratePerKg: 40
+cost: 250
+Итого: 250
+weightKg: 2.5
+ratePerKg: undefined
+cost: NaN
+Итого: NaN

@@ -1,0 +1,36 @@
+- id: loose-equality
+  front: Что даст 0 == "" и чем заменить ==?
+  back: 'true: == приводит типы. Используйте === (0 === "" это false).'
+  answer: "true"
+- id: plus-concat
+  front: Что даст "5" + 3 и как получить 8?
+  back: '"53": плюс со строкой склеивает. Для числа сначала Number("5") + 3.'
+  answer: "53"
+- id: string-compare
+  front: Что даст "10" < "9"?
+  back: "true: строки сравниваются как текст посимвольно. Сравнивайте числа: Number(a) < Number(b)."
+  answer: "true"
+- id: nan-check
+  front: Почему x === NaN не работает и как проверить NaN?
+  back: "NaN не равен даже самому себе. Проверка: Number.isNaN(x)."
+- id: or-vs-nullish
+  front: Чем || отличается от ?? в выражении value || 10?
+  back: "|| заменяет любое ложное значение (0, пустую строку, NaN, null, undefined). ?? заменяет только null и undefined."
+- id: nullish-zero
+  front: Чему равно 0 ?? 10?
+  back: "0. Ноль не null и не undefined, поэтому ?? его оставляет. А 0 || 10 даст 10."
+  answer: "0"
+- id: shadowing-trap
+  front: Что значит затенение и чем оно опасно?
+  back: "Внутренняя переменная с тем же именем закрывает внешнюю. Формула может молча взять не то значение. Давайте переменным разные имена и передавайте значения через параметры."
+- id: tdz
+  front: Какая ошибка будет, если прочитать let или const до строки объявления?
+  back: "ReferenceError: Cannot access 'x' before initialization (временная мёртвая зона). Переносите объявление выше."
+- id: asi-return
+  front: Что вернёт функция, если после return стоит перенос строки?
+  back: "undefined: JavaScript сам ставит точку с запятой после return. Пишите значение на той же строке."
+  answer: undefined
+- id: arrow-braces-trap
+  front: Что вернёт (x) => { x * 2 }?
+  back: "undefined: фигурные скобки требуют return. Либо (x) => x * 2, либо { return x * 2; }."
+  answer: undefined

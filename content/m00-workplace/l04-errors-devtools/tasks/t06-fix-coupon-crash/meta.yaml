@@ -1,0 +1,22 @@
+order: 6
+title: "Баг: заказ без купона падает при расчёте"
+type: fix-bug
+role: real
+difficulty: 3
+minutes: 25
+language: js
+tags: [отладка, стектрейс, TypeError, undefined, NaN, строки]
+hints:
+  - "Направление: по стектрейсу снизу вверх найдите, кто передал undefined. Падает самая верхняя функция, parsePercent, но исправлять можно там, где лучше всего решить, что делать без купона."
+  - "Шаг: в parsePercent до вызова replace проверьте, что text не undefined и не null (для них скидка 0). После превращения в число проверьте Number.isNaN: некорректный текст тоже даёт скидку 0."
+  - "Почти решение: if (text === undefined || text === null) { return 0; } const percent = Number(text.replace(\"%\", \"\").trim()); if (Number.isNaN(percent)) { return 0; } return percent;"
+wrong:
+  - name: only-undefined
+    kind: partial
+    explanation: "Проверяется только undefined. Если купон передан как null (так приходит значение из JSON и некоторых форм), replace по-прежнему падает с TypeError."
+  - name: zero-total
+    kind: common-mistake
+    explanation: "Для заказа без купона вся функция возвращает 0, а нужна полная цена. Отсутствие скидки означает, что скидка равна нулю, а не что платить нечего."
+  - name: nan-total
+    kind: edge-case
+    explanation: "Падение при undefined и null исправлено, но текст, который не получается превратить в число (например, «abc»), даёт NaN. Итог заказа становится NaN: ошибки нет, а сумма сломана."

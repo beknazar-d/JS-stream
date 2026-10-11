@@ -1,0 +1,22 @@
+order: 3
+title: "Баг: не та ветка в карточке заказа"
+type: fix-bug
+role: warmup
+difficulty: 2
+minutes: 12
+language: js
+tags: [if, switch, break, "=== и =", истинные и ложные значения]
+hints:
+  - "Направление: во всех трёх функциях код выполняется без ошибок, но срабатывает не та ветка. Для каждой найдите, где именно выбор ломается."
+  - "Шаг: в isSoldOut стоит одиночный знак равенства. В statusText не хватает break. В describeStock условие «значение есть» принимает ноль за отсутствие."
+  - "Почти решение: stock === 0; после каждой строки с text добавьте break; в describeStock проверяйте отдельно stock === undefined или stock === null, отдельно stock === 0."
+wrong:
+  - name: fixed-first-two
+    kind: partial
+    explanation: "Исправлены isSoldOut и statusText, а describeStock по-прежнему принимает ноль за «нет данных». Остаток 0 показывается неверно."
+  - name: break-only-last
+    kind: common-mistake
+    explanation: "Break добавлен только к последнему case. Для \"new\" выполнение по-прежнему проваливается через \"paid\" в \"shipped\", и подпись получается «Отправлен». Break нужен после каждого варианта."
+  - name: undefined-only
+    kind: edge-case
+    explanation: "В describeStock проверяется только undefined. Значение null (поле пришло пустым из JSON) уходит в ветку «В наличии: null»."

@@ -1,0 +1,32 @@
+- id: what-is-node
+  front: Что такое Node.js?
+  back: "Среда выполнения (runtime): программа, которая запускает JavaScript вне браузера, прямо на компьютере."
+- id: lts
+  front: Какую версию Node.js ставить для работы и учёбы?
+  back: LTS (Long Term Support) — версию с долгой поддержкой. Она стабильная. Версию Current для работы не берут.
+  answer: LTS
+- id: check-node
+  front: Какая команда показывает версию Node.js?
+  back: node -v выведет, например, v22.22.0. Если видно версию, Node.js установлен.
+  answer: node -v
+- id: check-npm
+  front: Какая команда показывает версию npm?
+  back: npm -v выведет, например, 10.9.4. npm ставится вместе с Node.js.
+  answer: npm -v
+- id: run-file
+  front: Как запустить файл hello.js через Node.js?
+  back: node hello.js — в терминале, в папке, где лежит файл.
+  answer: node hello.js
+- id: console-log
+  front: Как напечатать значение в вывод?
+  back: 'console.log("Заказов:", 12) печатает «Заказов: 12». Несколько значений через запятую выводятся через пробел.'
+  answer: console.log
+- id: case-matters
+  front: Почему console.Log("Привет") даёт ошибку?
+  back: "Заглавные и строчные буквы в JavaScript — разные. Правильно console.log. Сообщение: TypeError: console.Log is not a function."
+- id: command-not-found
+  front: Что делать, если терминал отвечает «command not found» после установки Node.js?
+  back: Проверить написание команды, затем закрыть терминал и открыть новый. Старый терминал ещё не видит свежеустановленный Node.js.
+- id: progress-storage
+  front: Где хранится прогресс в курсе и как его не потерять?
+  back: В IndexedDB вашего браузера, на этом устройстве. Очистка данных сайта его удалит, поэтому периодически делайте экспорт в файл.

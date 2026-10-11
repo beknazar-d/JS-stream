@@ -1,0 +1,22 @@
+order: 4
+title: "Остаток на конец смены"
+type: implement
+role: main
+difficulty: 2
+minutes: 15
+language: js
+tags: [let, присваивание, Number, преобразование типов]
+hints:
+  - "Направление: заведите let stock и меняйте его по шагам: сначала положите начальный остаток, потом прибавьте поставки, потом вычтите продажи и списания."
+  - "Шаг: значения из формы приходят строками. Плюс склеит строки, поэтому каждое значение сначала превратите в число через Number()."
+  - "Почти решение: let stock = Number(opening); stock = stock + Number(delivered); stock = stock - Number(sold); stock = stock - Number(writtenOff); return stock;"
+wrong:
+  - name: ignores-written-off
+    kind: partial
+    explanation: "Списания не вычитаются. Остаток получается завышенным: брак и бой остаются в учёте как годный товар."
+  - name: string-concat
+    kind: common-mistake
+    explanation: "Значения не превращаются в числа, поэтому плюс склеивает строки: \"40\" + \"10\" даёт \"4010\". Для чисел решение работает, для данных из формы нет."
+  - name: parse-int
+    kind: edge-case
+    explanation: "parseInt отбрасывает дробную часть: \"12.5\" превращается в 12. Остатки в килограммах получаются неверными."

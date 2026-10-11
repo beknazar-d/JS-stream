@@ -1,0 +1,4 @@
+file:///home/anna/shop/src/delivery.js:2:22
+4
+строка 2
+столбец 22

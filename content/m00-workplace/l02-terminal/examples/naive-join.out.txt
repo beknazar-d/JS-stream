@@ -1,0 +1,5 @@
+/home/anna/shop/src/orders.js
+/home/anna/shop/src/../docs
+/home/anna/shop/src/.
+7
+..

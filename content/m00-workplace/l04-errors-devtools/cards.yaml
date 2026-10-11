@@ -1,0 +1,33 @@
+- id: error-parts
+  front: Из каких частей состоит сообщение об ошибке?
+  back: Место (файл и строка), тип ошибки, текст и стектрейс — список вызовов, которые привели к ошибке.
+- id: stack-read
+  front: В каком порядке читать стектрейс и что в нём пропускать?
+  back: Сверху вниз. Первая строка со своим файлом — место ошибки. Строки node:internal — внутренности Node.js, их пропускают.
+- id: stack-frame
+  front: Что означает запись at parseWeight (…/delivery.js:2:22)?
+  back: Функция parseWeight, файл delivery.js, строка 2, столбец 22.
+- id: syntax-error
+  front: Что такое SyntaxError?
+  back: "Код нарушает правила языка (не закрыта скобка или кавычка). Программа не стартует. Пример: missing ) after argument list."
+- id: reference-error
+  front: "Что значит ReferenceError: totl is not defined?"
+  back: "Имя totl не объявлено. Чаще всего опечатка: сверьте с объявлением."
+  answer: ReferenceError
+- id: type-error-undefined
+  front: "Что значит TypeError: Cannot read properties of undefined (reading 'name')?"
+  back: Слева от точки стоит undefined, а читали свойство name. Ищите, почему значение не появилось.
+  answer: TypeError
+- id: console-levels
+  front: Какие три метода console печатают сообщения разных уровней?
+  back: console.log — обычное, console.warn — предупреждение, console.error — ошибка.
+- id: breakpoint
+  front: Что такое точка останова и как поставить её в DevTools?
+  back: "Отметка на строке: программа дойдёт до неё и остановится. DevTools (F12) → Sources → щелчок по номеру строки."
+- id: step-keys
+  front: "Какие клавиши в DevTools: продолжить, шаг через строку, шаг внутрь?"
+  back: Resume F8, Step over F10, Step into F11, Step out Shift+F11.
+- id: debugger
+  front: Каким словом в коде поставить точку останова?
+  back: debugger; — браузер остановится на этой строке, если DevTools открыты.
+  answer: debugger

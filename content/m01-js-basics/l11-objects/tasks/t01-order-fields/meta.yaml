@@ -1,0 +1,22 @@
+order: 1
+title: "Поля заказа: ключи, наличие поля, город доставки"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 8
+language: js
+tags: [объекты, Object.keys, Object.hasOwn, "?."]
+hints:
+  - "Направление: для списка названий полей есть метод Object. Для проверки наличия поля тоже. Для безопасного чтения вложенных данных нужен специальный оператор из двух символов."
+  - "Шаг: Object.keys(order) даёт названия. Object.hasOwn(order, field) проверяет поле. Цепочка order.customer?.address?.city не падает, если чего-то нет, а ?? подставляет запасное значение."
+  - "Почти решение: return order.customer?.address?.city ?? \"город не указан\";"
+wrong:
+  - name: unfinished
+    kind: partial
+    explanation: "Сделаны только fieldNames и hasField. Функция deliveryCity не заполнена и возвращает undefined, поэтому город прочитать нельзя."
+  - name: in-operator
+    kind: edge-case
+    explanation: "Оператор in видит и унаследованные свойства. Для имени toString он вернёт true у любого объекта, хотя в заказе такого поля нет. Object.hasOwn проверяет только свои поля."
+  - name: no-optional-chaining
+    kind: common-mistake
+    explanation: "Цепочка order.customer.address.city читает поля подряд без ?. У заказа самовывоза нет адреса, и код падает с TypeError вместо запасного значения."

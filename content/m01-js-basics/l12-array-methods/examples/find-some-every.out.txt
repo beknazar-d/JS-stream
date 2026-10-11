@@ -1,0 +1,7 @@
+{ id: "A-103", status: "paid", total: 1200 }
+undefined
+1
+true
+false
+false
+true

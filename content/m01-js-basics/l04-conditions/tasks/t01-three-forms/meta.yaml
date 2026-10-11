@@ -1,0 +1,22 @@
+order: 1
+title: "Три формы условия: switch, if и тернарный оператор"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 8
+language: js
+tags: [switch, if, else, тернарный оператор]
+hints:
+  - "Направление: у каждой функции своя форма. switch перебирает коды зон, if и else if разбирают диапазоны остатка, тернарный оператор выбирает из двух строк."
+  - "Шаг: в switch после каждого case ставьте return или break, а default пишите последним. В stockLabel граница включена: остаток 5 всё ещё «Мало»."
+  - "Почти решение: return isExpress ? \"Экспресс\" : \"Обычная\"; а в stockLabel: если stock равно 0, если stock не больше 5, иначе."
+wrong:
+  - name: unfinished
+    kind: partial
+    explanation: "Готова одна функция из трёх, остальные пусты и возвращают undefined. Каждую форму условия нужно уметь набрать по памяти."
+  - name: switch-without-break
+    kind: common-mistake
+    explanation: "В switch нет break, поэтому выполнение проваливается через все case до default и всегда оставляет 7. Для зоны \"A\" получается 7 вместо 1."
+  - name: strict-boundary
+    kind: edge-case
+    explanation: "Граница «Мало» записана как stock < 5, поэтому остаток 5 попадает в «В наличии». В условии «от 1 до 5 включительно» нужно stock <= 5."

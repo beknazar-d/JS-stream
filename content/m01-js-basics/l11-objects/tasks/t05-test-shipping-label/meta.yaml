@@ -1,0 +1,30 @@
+order: 5
+title: "Тесты для подписи адреса на этикетке"
+type: write-tests
+role: main
+difficulty: 3
+minutes: 20
+language: js
+tags: [тесты, объекты, "?.", граничные случаи]
+show: [subject/index.js]
+hints:
+  - "Направление: функция читает вложенные данные. Подумайте, на каком уровне вложенности данных может не быть: у заказа, у клиента, у адреса, у города, у улицы."
+  - "Шаг: проверьте полный адрес, заказ без customer, заказ с customer без address, адрес со значением null, адрес без улицы и адрес без города."
+  - "Почти решение: нужны отдельные тесты для order без customer, для address равного null и для address, у которого есть только city."
+mutants:
+  - name: no-customer-crash
+    description: "Адрес читается как order.customer.address без ?. Заказ без клиента роняет функцию."
+  - name: null-address-crash
+    description: "Проверяется только address === undefined. Если в адресе пришёл null, функция падает на чтении address.city."
+  - name: street-ignored
+    description: "Улица пропала: функция всегда возвращает только город."
+wrong:
+  - name: happy-path-only
+    kind: partial
+    explanation: "Проверен только полный адрес. Пустые данные не пробованы, поэтому две из трёх ошибок остаются незамеченными."
+  - name: no-null-address
+    kind: edge-case
+    explanation: "Тесты пробуют заказ без клиента и без улицы, но не пробуют address равный null. Ошибка с проверкой только на undefined проходит незамеченной."
+  - name: no-missing-customer
+    kind: common-mistake
+    explanation: "Тесты пробуют полный адрес, null, адрес без улицы, но заказ без customer пропущен. А именно такие заказы (самовывоз) чаще всего ломают чтение вложенных данных."

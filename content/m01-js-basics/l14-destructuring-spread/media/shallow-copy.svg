@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="16" fill="currentColor">
+  <title id="t">Поверхностная копия объекта</title>
+  <desc id="d">Две переменные, order и copy, содержат разные объекты верхнего уровня, но поле address у обоих указывает на один и тот же объект с городом Казань.</desc>
+
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="30" y="30" width="220" height="110" rx="10"/>
+    <rect x="390" y="30" width="220" height="110" rx="10"/>
+    <rect x="210" y="200" width="220" height="70" rx="10" stroke-dasharray="6 4"/>
+    <path d="M230 112 L290 200"/>
+    <path d="M410 112 L350 200"/>
+    <path d="M281 190 L290 200 L296 189 M359 190 L350 200 L344 189"/>
+  </g>
+
+  <g>
+    <text x="45" y="56" font-weight="700">order</text>
+    <text x="45" y="84" font-family="ui-monospace, monospace" font-size="14">id: 1042</text>
+    <text x="45" y="108" font-family="ui-monospace, monospace" font-size="14">address: ссылка</text>
+    <text x="405" y="56" font-weight="700">copy = { ...order }</text>
+    <text x="405" y="84" font-family="ui-monospace, monospace" font-size="14">id: 1042</text>
+    <text x="405" y="108" font-family="ui-monospace, monospace" font-size="14">address: ссылка</text>
+    <text x="320" y="228" text-anchor="middle" font-weight="700">один общий address</text>
+    <text x="320" y="252" text-anchor="middle" font-family="ui-monospace, monospace" font-size="14">city: "Казань"</text>
+    <text x="320" y="170" text-anchor="middle" font-size="13" opacity="0.8">две ссылки на один объект</text>
+  </g>
+</svg>

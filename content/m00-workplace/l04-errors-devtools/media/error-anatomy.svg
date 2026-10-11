@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="14" fill="currentColor">
+  <title id="t">Из чего состоит сообщение об ошибке</title>
+  <desc id="d">Сообщение об ошибке разобрано на четыре части. Сверху место в коде: файл и строка. Затем тип ошибки TypeError и её текст. Ниже стектрейс: список вызовов от места ошибки к началу программы. Первая строка стектрейса из вашего кода указывает, где искать.</desc>
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="12" y="12" width="616" height="276" rx="10"/>
+    <path d="M30 70 H610 M30 130 H610 M30 170 H610" opacity="0.35"/>
+  </g>
+  <g font-family="ui-monospace, monospace" font-size="14">
+    <text x="30" y="40">file:///home/anna/shop/src/delivery.js:2</text>
+    <text x="30" y="100">TypeError: Cannot read properties of undefined (reading 'replace')</text>
+    <text x="30" y="160">at parseWeight (…/delivery.js:2:22)</text>
+    <text x="30" y="200">at shippingCost (…/delivery.js:6:14)</text>
+    <text x="30" y="224">at orderShipping (…/delivery.js:11:10)</text>
+    <text x="30" y="248">at …/index.js:4:26</text>
+  </g>
+  <g font-weight="700" font-size="13">
+    <text x="470" y="40">1. Где: файл, строка</text>
+    <text x="30" y="60" opacity="0.85" font-weight="400">  </text>
+    <text x="30" y="120">2. Что: тип ошибки и текст</text>
+    <text x="30" y="150">3. Стектрейс: кто кого вызвал, сверху вниз</text>
+    <text x="30" y="276">4. Читайте сверху: первая строка из вашей папки — место поиска</text>
+  </g>
+</svg>

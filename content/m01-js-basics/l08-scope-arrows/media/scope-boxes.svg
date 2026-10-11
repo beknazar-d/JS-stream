@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" width="640" height="340" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="16" fill="currentColor">
+  <title id="t">Вложенные области видимости</title>
+  <desc id="d">Три вложенных прямоугольника. Внешний — файл с переменной shopName. В нём функция makeLabel с переменной prefix. В ней блок if с переменной message. Стрелка вверх показывает, что поиск имени идёт изнутри наружу. Снаружи внутреннюю переменную не видно.</desc>
+
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="16" y="16" width="450" height="308" rx="10"/>
+    <rect x="46" y="86" width="390" height="204" rx="10" stroke-dasharray="8 4"/>
+    <rect x="76" y="166" width="330" height="94" rx="10" stroke-dasharray="3 4"/>
+    <path d="M550 270 V110"/>
+    <path d="M542 120 L550 108 L558 120"/>
+  </g>
+
+  <g font-family="ui-monospace, monospace" font-size="15">
+    <text x="32" y="44" font-weight="700" font-family="system-ui, sans-serif">Файл (внешняя область)</text>
+    <text x="32" y="68">const shopName = "Лавка"</text>
+    <text x="62" y="114" font-weight="700" font-family="system-ui, sans-serif">Функция makeLabel</text>
+    <text x="62" y="138">const prefix = "Товар"</text>
+    <text x="92" y="194" font-weight="700" font-family="system-ui, sans-serif">Блок if</text>
+    <text x="92" y="220">const message = "Есть"</text>
+    <text x="92" y="244" font-size="13" opacity="0.8">видит message, prefix и shopName</text>
+  </g>
+  <g font-size="14" text-anchor="middle">
+    <text x="550" y="60">имя ищут</text>
+    <text x="550" y="80">изнутри наружу</text>
+    <text x="550" y="296" opacity="0.9">снаружи внутренние</text>
+    <text x="550" y="314" opacity="0.9">имена не видны</text>
+  </g>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="16" fill="currentColor">
+  <title id="t">Путь выполнения через try, catch и finally</title>
+  <desc id="d">Код входит в блок try. Если ошибки нет, выполняется весь блок try и управление переходит в finally. Если на какой-то строке выброшена ошибка, остаток try пропускается, выполняется catch, затем finally. После finally программа идёт дальше.</desc>
+
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="240" y="16" width="160" height="44" rx="8"/>
+    <rect x="60" y="110" width="200" height="60" rx="8"/>
+    <rect x="380" y="110" width="200" height="60" rx="8"/>
+    <rect x="240" y="220" width="160" height="44" rx="8"/>
+    <rect x="240" y="300" width="160" height="44" rx="8" stroke-dasharray="6 4"/>
+    <path d="M300 60 L180 110"/>
+    <path d="M340 60 L480 110"/>
+    <path d="M180 170 L300 220"/>
+    <path d="M480 170 L340 220"/>
+    <path d="M320 264 V300"/>
+    <path d="M312 292 L320 300 L328 292"/>
+    <path d="M290 212 L300 220 L304 209 M350 212 L340 220 L336 209"/>
+  </g>
+
+  <g text-anchor="middle">
+    <text x="320" y="44" font-weight="700">try</text>
+    <text x="160" y="136" font-weight="700">ошибки не было</text>
+    <text x="160" y="157" font-size="13" opacity="0.8">try выполнен целиком</text>
+    <text x="480" y="136" font-weight="700">выброшен throw</text>
+    <text x="480" y="157" font-size="13" opacity="0.8">остаток try пропущен, работает catch</text>
+    <text x="320" y="248" font-weight="700">finally</text>
+    <text x="320" y="328" font-weight="700">дальше по программе</text>
+  </g>
+</svg>

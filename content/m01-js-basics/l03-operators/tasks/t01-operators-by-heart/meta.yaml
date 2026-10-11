@@ -1,0 +1,22 @@
+order: 1
+title: "Чётность, куб и поставка: три оператора"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 5
+language: js
+tags: [операторы, "%", "**", "+="]
+hints:
+  - "Направление: чётное число делится на 2 без остатка. Степень в JavaScript записывается двумя звёздочками."
+  - "Шаг: isEvenOrder сравнивает orderNumber % 2 с нулём. boxVolume возводит side в степень 3. В restock сначала превратите значения в числа."
+  - "Почти решение: return orderNumber % 2 === 0; return side ** 3; let total = Number(stock); total += Number(delivered); return total;"
+wrong:
+  - name: unfinished
+    kind: partial
+    explanation: "Готова одна функция из трёх. Вторая и третья остались пустыми и возвращают undefined. Каждый оператор нужно уметь набрать по памяти."
+  - name: caret-power
+    kind: common-mistake
+    explanation: "Символ ^ в JavaScript не возводит в степень, это побитовое исключающее ИЛИ. Для степени есть двойная звёздочка, и boxVolume(3) должна дать 27, а не 0."
+  - name: no-number
+    kind: edge-case
+    explanation: "Сокращённая запись += работает со значениями как есть. Для строк \"40\" и \"5\" плюс склеивает их в \"405\". Перед прибавлением значения нужно превратить в числа."

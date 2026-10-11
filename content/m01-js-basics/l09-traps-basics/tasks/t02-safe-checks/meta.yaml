@@ -1,0 +1,22 @@
+order: 2
+title: "Три проверки без ловушек"
+type: recall
+role: warmup
+difficulty: 2
+minutes: 8
+language: js
+tags: ["??", "===", "NaN", "ложные значения"]
+hints:
+  - "Направление: вспомните шпаргалку урока. Для запасного значения, которое не трогает ноль, нужен оператор из двух вопросительных знаков. Для строгого сравнения — три знака равенства."
+  - "Шаг: NaN не равен самому себе, поэтому сравнивать с NaN нельзя. У объекта Number есть метод для этой проверки."
+  - "Почти решение: export const quantityOrOne = (value) => value ?? 1; export const sameValue = (a, b) => a === b; export const isNotANumber = (value) => Number.isNaN(value);"
+wrong:
+  - name: missing-nan-check
+    kind: partial
+    explanation: "Объявлены только две функции из трёх. Вызов isNotANumber(NaN) заканчивается TypeError, потому что такой функции нет."
+  - name: or-instead-of-nullish
+    kind: edge-case
+    explanation: "Запасное значение написано через ||. Ноль и пустая строка считаются ложными и заменяются единицей, хотя они настоящие значения: quantityOrOne(0) даёт 1 вместо 0."
+  - name: compare-with-nan
+    kind: common-mistake
+    explanation: "Проверка value === NaN всегда даёт false, потому что NaN не равен даже себе. isNotANumber(NaN) возвращает false вместо true."

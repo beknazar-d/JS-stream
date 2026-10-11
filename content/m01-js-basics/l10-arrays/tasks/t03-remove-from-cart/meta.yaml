@@ -1,0 +1,22 @@
+order: 3
+title: "Баг: из корзины пропала не та кепка"
+type: fix-bug
+role: warmup
+difficulty: 2
+minutes: 10
+language: js
+tags: [массивы, splice, indexOf, баг]
+hints:
+  - "Направление: что вернёт indexOf, если товара в корзине нет? И что делает splice с таким числом в качестве первого аргумента?"
+  - "Шаг: indexOf вернёт -1, а splice(-1, 1) удаляет последний элемент. Проверьте индекс до вызова splice. Для ненайденного товара верните false."
+  - "Почти решение: const index = cart.indexOf(sku); if (index === -1) return false; потом cart.splice(index, 1) и return true."
+wrong:
+  - name: copy-only
+    kind: partial
+    explanation: "Проверка на -1 есть, но splice вызывается у копии cart.slice(). Исходная корзина не меняется, хотя функция возвращает true. Нужно менять тот же массив, который передали."
+  - name: skip-first
+    kind: edge-case
+    explanation: "Условие index > 0 исключает индекс 0. Если нужный товар лежит в корзине первым, он не удаляется. Ненайденный товар имеет индекс -1, а не 0, поэтому проверять нужно именно -1."
+  - name: remove-all
+    kind: common-mistake
+    explanation: "Цикл удаляет все совпадения, а не первое. Если покупатель добавил две пары носков и нажал «убрать», должна уйти одна пара."

@@ -1,0 +1,22 @@
+order: 5
+title: "Три функции без ошибок, но с неверным результатом"
+type: fix-bug
+role: main
+difficulty: 3
+minutes: 15
+language: js
+tags: ["ASI", "return", "стрелочные функции", "TDZ", "область видимости"]
+hints:
+  - "Направление: разберите функции по одной. Какое значение получает вызывающий код у каждой? Где находится return и стоит ли значение рядом с ним? Есть ли return у стрелки с фигурными скобками? Можно ли читать переменную на этой строке?"
+  - "Шаг: в lineTotal значение переносится на новую строку после return. В withShipping фигурные скобки без return. В stockLabel переменная unit читается раньше, чем объявлена."
+  - "Почти решение: поставьте price * quantity в одну строку с return; в withShipping добавьте return перед amount + shipping; в stockLabel объявите unit до строки с label."
+wrong:
+  - name: lost-shipping-fix
+    kind: partial
+    explanation: "Исправлены только lineTotal и withShipping, а stockLabel осталась прежней. Вызов stockLabel по-прежнему падает с ReferenceError, потому что unit читается до объявления."
+  - name: or-default
+    kind: edge-case
+    explanation: "В withShipping значение по умолчанию заменено на shipping || 350. Явно переданный ноль считается ложным и заменяется на 350, поэтому withShipping(1000, 0) возвращает 1350 вместо 1000."
+  - name: late-assignment
+    kind: common-mistake
+    explanation: "В stockLabel добавлено объявление let unit без значения до строки с label, а само значение присваивается ниже. Ошибка ReferenceError исчезла, но unit в момент чтения undefined, и получается строка «Остаток: 5undefined»."

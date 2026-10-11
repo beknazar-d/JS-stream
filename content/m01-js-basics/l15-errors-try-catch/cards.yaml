@@ -1,0 +1,34 @@
+- id: throw-error
+  front: Как остановить функцию с понятным сообщением об ошибке?
+  back: "throw new Error('Количество должно быть больше нуля');"
+  answer: throw
+- id: try-catch
+  front: Как поймать ошибку и достать её текст?
+  back: "try { ... } catch (error) { console.log(error.message); }"
+  answer: catch
+- id: finally
+  front: Когда выполняется блок finally?
+  back: "Всегда: и после успеха, и после ошибки, и даже после return в try. Нужен для уборки: снять блокировку, закрыть соединение."
+  answer: всегда
+- id: custom-error
+  front: Как объявить свой вид ошибки с именем ValidationError?
+  back: "class ValidationError extends Error { constructor(message) { super(message); this.name = 'ValidationError'; } } Сначала super, потом this."
+  answer: extends Error
+- id: instanceof-check
+  front: Как поймать только свою ошибку, а остальные пропустить?
+  back: "catch (error) { if (!(error instanceof ValidationError)) { throw error; } ... }"
+  answer: instanceof
+- id: error-fields
+  front: Какие поля есть у ошибки?
+  back: "error.name (вид, например TypeError), error.message (текст), error.stack (путь по вызовам, для разработчика)."
+- id: to-throw-test
+  front: Как проверить в тесте, что функция выбрасывает ошибку?
+  back: "expect(() => checkQuantity(0)).toThrow('текст'); Функцию передают в expect, не вызывая."
+  answer: toThrow
+- id: throw-error-object
+  front: "Что нужно выбрасывать: строку или объект Error?"
+  back: "Объект Error (или его потомка). У строки нет message и stack: throw 'Нет' даёт error.message равное undefined."
+  answer: Error
+- id: swallow
+  front: Что плохого в пустом catch или в catch с одним console.log?
+  back: "Ошибка пропадает, программа идёт дальше с неверными данными. Ловите там, где знаете, что делать; иначе пропускайте выше."

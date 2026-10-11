@@ -1,0 +1,22 @@
+export function planShift(queue, urgent, capacity) {
+  const urgentOrders = [];
+  const regularOrders = [];
+
+  for (const orderId of queue) {
+    if (urgent.includes(orderId)) {
+      urgentOrders.push(orderId);
+    } else {
+      regularOrders.push(orderId);
+    }
+  }
+
+  const plan = urgentOrders;
+  for (const orderId of regularOrders) {
+    plan.push(orderId);
+  }
+
+  return {
+    batch: plan.slice(0, capacity),
+    left: plan.slice(capacity),
+  };
+}

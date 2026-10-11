@@ -1,0 +1,22 @@
+order: 3
+title: "Цена с НДС не возвращается"
+type: fix-bug
+role: warmup
+difficulty: 2
+minutes: 8
+language: js
+tags: [функции, return, значения по умолчанию, undefined]
+hints:
+  - "Направление: посмотрите на последнюю строку функции. Посчитано ли значение? Отдаётся ли оно вызывающему коду?"
+  - "Шаг: добавьте return. Потом обратите внимание на строку с ||: оператор || заменяет любое ложное значение, а ноль тоже ложный. В списке параметров есть более точный способ."
+  - "Почти решение: function withVat(price, rate = 0.2) { return price * (1 + rate); }"
+wrong:
+  - name: return-only
+    kind: edge-case
+    explanation: "Добавлен только return, а проверка rate || 0.2 осталась. Ставка 0 считается ложной и заменяется на 0.2, поэтому товары без налога дорожают на 20%."
+  - name: no-default
+    kind: partial
+    explanation: "Значение по умолчанию убрано совсем, ставка просто не используется как запасная. Вызов withVat(100) даёт NaN, потому что 1 + undefined это NaN."
+  - name: prints-instead-of-returns
+    kind: common-mistake
+    explanation: "Результат печатается через console.log, но не возвращается. Вызывающий код получает undefined, и в цене на сайте снова пустое место."

@@ -1,0 +1,22 @@
+order: 3
+title: "Тип и текст из строки ошибки"
+type: implement
+role: warmup
+difficulty: 2
+minutes: 12
+language: js
+tags: [ошибки, строки, indexOf, slice, trim]
+hints:
+  - "Направление: тип ошибки и текст разделены двоеточием и пробелом. Найдите первое такое место в строке и разрежьте по нему."
+  - "Шаг: line.indexOf(\": \") возвращает номер места или -1, если такого места нет. Тип — slice(0, номер), текст — slice(номер + 2). Не забудьте trim() для строки целиком."
+  - "Почти решение: const text = line.trim(); const at = text.indexOf(\": \"); if (at === -1) { return { name: \"Error\", message: text }; } return { name: text.slice(0, at), message: text.slice(at + 2) };"
+wrong:
+  - name: split-colon
+    kind: common-mistake
+    explanation: "Строка режется split по каждому «: », берутся два первых куска. Если в тексте ошибки есть ещё одно двоеточие с пробелом (например, «Error: Failed: timeout»), часть текста теряется."
+  - name: no-fallback
+    kind: edge-case
+    explanation: "Нет обработки строки без «: ». indexOf возвращает -1, slice(0, -1) обрезает последний символ, и результат получается мусорным. Для строки без типа нужно вернуть имя Error и весь текст."
+  - name: name-only
+    kind: partial
+    explanation: "Возвращается только имя, а текст остаётся пустым. Функция должна вернуть оба значения."
