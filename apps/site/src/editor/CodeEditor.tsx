@@ -47,6 +47,7 @@ function languageOf(file: string) {
   if (/\.tsx?$/.test(file)) return 'typescript'
   if (/\.html?$/.test(file)) return 'html'
   if (/\.css$/.test(file)) return 'css'
+  if (/\.(txt|md)$/.test(file)) return 'plaintext'
   return 'javascript'
 }
 

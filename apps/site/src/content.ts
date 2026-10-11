@@ -14,7 +14,7 @@ const taskMetas = import.meta.glob<TaskMeta>('../../../content/*/*/tasks/*/meta.
 const lessonBodies = import.meta.glob<MdxModule>('../../../content/*/*/lesson.mdx')
 const taskDescriptions = import.meta.glob<MdxModule>('../../../content/*/*/tasks/*/task.md')
 const solutionNotes = import.meta.glob<MdxModule>('../../../content/*/*/tasks/*/solution/README.md')
-const taskSources = import.meta.glob<string>('../../../content/*/*/tasks/*/**/*.{js,ts,html,css,json}', {
+const taskSources = import.meta.glob<string>('../../../content/*/*/tasks/*/**/*.{js,ts,html,css,json,txt}', {
   query: '?raw',
   import: 'default',
 })
