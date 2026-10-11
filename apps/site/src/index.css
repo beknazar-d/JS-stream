@@ -795,3 +795,15 @@ figcaption {
   height: 1.1rem;
   vertical-align: -0.15rem;
 }
+
+.search-input {
+  display: block;
+  width: 100%;
+  font: inherit;
+  padding: 0.55rem 0.8rem;
+  margin: 0.4rem 0 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--text);
+}

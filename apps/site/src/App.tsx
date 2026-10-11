@@ -6,6 +6,7 @@ import { ModulePage } from './pages/ModulePage.tsx'
 import { NotFoundPage } from './pages/NotFoundPage.tsx'
 import { ProgressPage } from './pages/ProgressPage.tsx'
 import { ReviewPage } from './pages/ReviewPage.tsx'
+import { SearchPage } from './pages/SearchPage.tsx'
 import { TaskPage } from './pages/TaskPage.tsx'
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
         <Route index element={<HomePage />} />
         <Route path="review" element={<ReviewPage />} />
         <Route path="progress" element={<ProgressPage />} />
+        <Route path="search" element={<SearchPage />} />
         <Route path=":moduleSlug" element={<ModulePage />} />
         <Route path=":moduleSlug/:lessonSlug" element={<LessonPage />} />
         <Route path=":moduleSlug/:lessonSlug/:taskSlug" element={<TaskPage />} />
