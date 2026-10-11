@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="15" fill="currentColor">
+  <title id="t">Схема страницы из семантических тегов</title>
+  <desc id="d">Страница сверху вниз: header с вложенным nav, main с article и aside, внизу footer.</desc>
+
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="20" y="16" width="600" height="368" rx="10" opacity="0.6"/>
+    <rect x="40" y="36" width="560" height="64" rx="8"/>
+    <rect x="360" y="52" width="224" height="34" rx="6" stroke-dasharray="6 4"/>
+    <rect x="40" y="116" width="560" height="190" rx="8"/>
+    <rect x="56" y="156" width="330" height="136" rx="8"/>
+    <rect x="74" y="200" width="140" height="78" rx="6" stroke-dasharray="6 4"/>
+    <rect x="230" y="200" width="140" height="78" rx="6" stroke-dasharray="6 4"/>
+    <rect x="402" y="156" width="182" height="136" rx="8"/>
+    <rect x="40" y="322" width="560" height="46" rx="8"/>
+  </g>
+
+  <g>
+    <text x="56" y="62" font-weight="700" font-family="ui-monospace, monospace">header</text>
+    <text x="56" y="84" font-size="13" opacity="0.8">шапка сайта</text>
+    <text x="472" y="74" font-family="ui-monospace, monospace" font-size="14" text-anchor="middle">nav (меню)</text>
+
+    <text x="56" y="140" font-weight="700" font-family="ui-monospace, monospace">main</text>
+    <text x="110" y="140" font-size="13" opacity="0.8">основное содержимое, один на странице</text>
+
+    <text x="72" y="178" font-weight="700" font-family="ui-monospace, monospace">article</text>
+    <text x="130" y="178" font-size="13" opacity="0.8">товар</text>
+    <text x="144" y="236" font-family="ui-monospace, monospace" font-size="13" text-anchor="middle">section</text>
+    <text x="144" y="256" font-size="12" text-anchor="middle" opacity="0.8">Описание</text>
+    <text x="300" y="236" font-family="ui-monospace, monospace" font-size="13" text-anchor="middle">section</text>
+    <text x="300" y="256" font-size="12" text-anchor="middle" opacity="0.8">Отзывы</text>
+
+    <text x="418" y="178" font-weight="700" font-family="ui-monospace, monospace">aside</text>
+    <text x="418" y="202" font-size="13" opacity="0.8">Похожие</text>
+    <text x="418" y="220" font-size="13" opacity="0.8">товары</text>
+
+    <text x="56" y="350" font-weight="700" font-family="ui-monospace, monospace">footer</text>
+    <text x="120" y="350" font-size="13" opacity="0.8">контакты, политика</text>
+  </g>
+</svg>

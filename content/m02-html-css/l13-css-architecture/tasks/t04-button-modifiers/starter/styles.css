@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+.catalog {
+  padding: 24px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#catalog .btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  background: #e5e7eb;
+  color: #1a1a1a;
+  font: 16px system-ui, sans-serif;
+  cursor: pointer;
+}
+
+.btn--accent {
+  background: #c2410c;
+  color: #ffffff;
+}
+
+.btn--ghost {
+  background: transparent;
+  border-color: #0b3d91;
+  color: #0b3d91;
+}
+
+.btn--small {
+  padding: 6px 12px !important;
+  font-size: 14px;
+}
+
+.btn--wide {
+  padding-left: 48px;
+  padding-right: 48px;
+}

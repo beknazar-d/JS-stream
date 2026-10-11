@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" width="640" height="330" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="16" fill="currentColor">
+  <title id="t">Слои каскада: чем позже слой, тем он сильнее</title>
+  <desc id="d">Три слоя слева направо: reset, components, utilities. Стрелка внизу показывает, что приоритет растёт вправо. В слое components правило с весом 0-3-0, в слое utilities правило с весом 0-1-0. Побеждает правило из слоя utilities, потому что слой позже.</desc>
+
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="16" y="56" width="190" height="150" rx="10" opacity="0.5"/>
+    <rect x="225" y="56" width="190" height="150" rx="10" opacity="0.75"/>
+    <rect x="434" y="56" width="190" height="150" rx="10"/>
+    <path d="M40 252 H590"/>
+    <path d="M582 244 L592 252 L582 260"/>
+  </g>
+
+  <g text-anchor="middle">
+    <text x="111" y="46" font-weight="700">reset</text>
+    <text x="320" y="46" font-weight="700">components</text>
+    <text x="529" y="46" font-weight="700">utilities</text>
+
+    <text x="111" y="108" font-family="ui-monospace, monospace" font-size="14">button</text>
+    <text x="111" y="130" font-size="13" opacity="0.8">вес 0-0-1</text>
+    <text x="111" y="174" font-size="13" opacity="0.8">слабее всех</text>
+
+    <text x="320" y="108" font-family="ui-monospace, monospace" font-size="12">.card .btn.btn--primary</text>
+    <text x="320" y="130" font-size="13" opacity="0.8">вес 0-3-0</text>
+    <text x="320" y="174" font-size="13" opacity="0.8">display: inline-flex</text>
+
+    <text x="529" y="108" font-family="ui-monospace, monospace" font-size="14">.u-hidden</text>
+    <text x="529" y="130" font-size="13" opacity="0.8">вес 0-1-0</text>
+    <text x="529" y="174" font-size="12" opacity="0.8">display: none, побеждает</text>
+
+    <text x="315" y="284">приоритет растёт вправо</text>
+    <text x="320" y="312" font-size="13" opacity="0.8">специфичность сравнивается только внутри одного слоя</text>
+  </g>
+</svg>

@@ -1,0 +1,22 @@
+order: 4
+title: "Тёмная тема: выбор человека и тема системы"
+type: implement
+role: main
+difficulty: 3
+minutes: 18
+language: html
+tags: [custom properties, тёмная тема, prefers-color-scheme, data-theme, контраст]
+hints:
+  - "Направление: компоненты уже читают переменные. Достаточно в другом блоке селекторов задать другие значения тех же переменных."
+  - "Шаг: [data-theme=«dark»] перезаписывает все шесть переменных. Тема системы живёт внутри @media (prefers-color-scheme: dark), а её селектор должен уважать выбор человека: :root:not([data-theme])."
+  - "Почти решение: [data-theme=«dark»] { --color-bg: #12161c; --color-surface: #1c232d; --color-text: #e8edf2; ... } и @media (prefers-color-scheme: dark) { :root:not([data-theme]) { те же значения } }. Фон карточки (--color-surface) тоже тёмный."
+wrong:
+  - name: only-body
+    kind: partial
+    explanation: "Заменены только --color-bg и --color-text. Фон страницы тёмный, но карточка остаётся белой (--color-surface не менялась), а текст на ней светлый: читать невозможно. В тёмной теме нужно заменить все переменные, а не только главные."
+  - name: only-system
+    kind: common-mistake
+    explanation: "Только prefers-color-scheme, без data-theme. Человек не может выбрать тему сам: переключатель на странице ничего не изменит. Настройка системы — это значение по умолчанию, а не единственный способ."
+  - name: system-beats-choice
+    kind: edge-case
+    explanation: "Селектор :root в блоке prefers-color-scheme стоит вместо :root:not([data-theme]). Если человек выбрал светлую тему при тёмной системе, страница всё равно темнеет: выбор человека должен побеждать."

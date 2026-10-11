@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+.header__logo {
+  margin: 0;
+  font-weight: 700;
+}
+
+.header__nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hero__title {
+  font-size: 2.5rem;
+}
+
+.products {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.products__item {
+  padding: 12px;
+  border: 1px solid #c8d0d8;
+  border-radius: 8px;
+}
+
+.products__item h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.products__item p {
+  margin: 0;
+  font-weight: 700;
+}

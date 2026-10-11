@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" width="640" height="280" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="13" fill="currentColor">
+  <title id="t">Оси Flexbox для row и column</title>
+  <desc id="d">Слева контейнер с тремя блоками в ряд: главная ось горизонтальна, поперечная вертикальна. Справа контейнер с тремя блоками в колонку: главная ось вертикальна, поперечная горизонтальна.</desc>
+  <g font-weight="700" text-anchor="middle"><text x="160" y="24">flex-direction: row</text><text x="480" y="24">flex-direction: column</text></g>
+  <rect x="30" y="44" width="260" height="170" rx="6" fill="none" stroke="currentColor" opacity="0.6"/>
+  <rect x="330" y="44" width="260" height="170" rx="6" fill="none" stroke="currentColor" opacity="0.6"/>
+  <g opacity="0.35"><rect x="44" y="60" width="60" height="50" rx="4"/><rect x="116" y="60" width="60" height="70" rx="4"/><rect x="188" y="60" width="60" height="40" rx="4"/></g>
+  <g opacity="0.35"><rect x="344" y="56" width="80" height="34" rx="4"/><rect x="344" y="100" width="110" height="34" rx="4"/><rect x="344" y="144" width="60" height="34" rx="4"/></g>
+  <g stroke="currentColor" stroke-width="2" fill="currentColor">
+    <path d="M44 232 H270"/><path d="M270 232 l-8 -5 v10 z"/>
+    <path d="M300 60 V190" stroke-dasharray="5 4"/><path d="M300 190 l-5 -8 h10 z"/>
+    <path d="M344 232 H570" stroke-dasharray="5 4"/><path d="M570 232 l-8 -5 v10 z"/>
+    <path d="M600 60 V190"/><path d="M600 190 l-5 -8 h10 z"/>
+  </g>
+  <text x="44" y="252">главная ось (justify-content)</text>
+  <text x="30" y="270" opacity="0.8">поперечная ось (align-items) — сверху вниз</text>
+  <text x="344" y="252" opacity="0.8">поперечная ось (align-items)</text>
+  <text x="344" y="270">главная ось (justify-content) — сверху вниз</text>
+</svg>

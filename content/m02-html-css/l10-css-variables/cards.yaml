@@ -1,0 +1,34 @@
+- id: declare-var
+  front: Как объявить переменную CSS для всей страницы?
+  back: ":root { --color-brand: #0b6e4f; }. Имя начинается с двух дефисов, объявляют на :root."
+  answer: ":root"
+- id: use-var
+  front: Как прочитать переменную --color-brand?
+  back: "var(--color-brand). Например, background: var(--color-brand);"
+  answer: var
+- id: var-fallback
+  front: Что делает второй аргумент var(--x, 16px)?
+  back: "Запасное значение. Используется, если --x нигде не объявлена. Всё после первой запятой считается запасным значением."
+- id: var-no-unit-concat
+  front: Почему var(--gap)px не работает?
+  back: "Подстановка текстовая: получается 16pxpx. Единица уже в значении. Число без единицы умножают: calc(var(--n) * 1px)."
+- id: var-scope
+  front: Кто видит переменную, объявленную на .card?
+  back: "Сама .card и её потомки. Соседи, родители и подвал вне карточки её не видят."
+- id: theme-attr
+  front: Как переключить тему через атрибут?
+  back: 'html[data-theme="dark"] или [data-theme="dark"] { --color-bg: ...; } — тот же набор переменных с другими значениями.'
+  answer: data-theme
+- id: system-theme
+  front: Как подхватить тёмную тему системы, не ломая выбор человека?
+  back: "@media (prefers-color-scheme: dark) { :root:not([data-theme]) { ... } } — блок действует только без явного выбора."
+- id: token-naming
+  front: Как называть дизайн-токены?
+  back: "По роли, а не по цвету: --color-surface, --color-brand. Тогда при смене палитры имя не теряет смысла."
+- id: contrast-min
+  front: Какой контраст текста к фону нужен по WCAG AA для обычного текста?
+  back: "Не ниже 4.5 : 1 (для крупного текста 3 : 1)."
+  answer: "4.5"
+- id: vars-in-media
+  front: "Можно ли написать @media (min-width: var(--bp))?"
+  back: "Нет. Переменные в условиях медиазапроса не работают: условие считается недействительным и не срабатывает."

@@ -1,0 +1,50 @@
+/* Базовые стили проекта */
+.card {
+  border: 1px solid #dde3ea;
+  padding: 12px;
+  margin-bottom: 8px;
+  list-style: none;
+}
+
+.catalog .price {
+  color: #222222;
+  font-size: 16px;
+}
+
+.buy {
+  background: #1f6feb;
+  color: #ffffff;
+  border: 0;
+  padding: 8px 16px;
+}
+
+/* Новые правила */
+.price {
+  color: #b32d00;
+}
+
+.old-price {
+  color: #6b7280;
+  text-decoration: line-through;
+}
+
+.old-price + .price {
+  font-size: 20px;
+}
+
+.card[data-stock="0"] {
+  opacity: 0.5;
+}
+
+.buy:disabled {
+  background: #cbd2d9;
+  color: #5a6572;
+}
+
+.card > .badge:first-child {
+  text-transform: uppercase;
+}
+
+.card:nth-child(3n) {
+  border: 1px solid #1f6feb;
+}

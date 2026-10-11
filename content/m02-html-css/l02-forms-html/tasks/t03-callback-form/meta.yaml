@@ -1,0 +1,22 @@
+order: 3
+title: "Баг: у полей формы нет подписей"
+type: fix-bug
+role: warmup
+difficulty: 2
+minutes: 10
+language: html
+tags: [label, for, id, input, type, placeholder]
+hints:
+  - "Направление: подпись и поле связаны парой атрибутов: for у label должен совпасть с id у input."
+  - "Шаг: добавьте label для телефона, почты и количества. В существующем label исправьте for: сейчас он указывает на id, которого нет."
+  - "Почти решение: label for=«phone» + input id=«phone» type=«tel», label for=«email» + input id=«email» type=«email», label for=«qty» + input id=«qty» type=«number», а у кнопки type=«submit»."
+wrong:
+  - name: aria-label
+    kind: common-mistake
+    explanation: "Подписи заменены на aria-label. Скринридер поле назовёт, но видимой подписи нет: зрячий человек видит только placeholder, а клик по подписи по-прежнему ничего не делает."
+  - name: only-labels
+    kind: partial
+    explanation: "Подписи добавлены и связаны, но типы остались text. Мобильная клавиатура не цифровая, а в поле количества по-прежнему можно ввести буквы."
+  - name: broken-for
+    kind: edge-case
+    explanation: "Подписи добавлены и типы исправлены, но у подписи «Имя» for так и указывает на несуществующий id. Подпись не связана с полем, и клик по ней не ставит курсор."

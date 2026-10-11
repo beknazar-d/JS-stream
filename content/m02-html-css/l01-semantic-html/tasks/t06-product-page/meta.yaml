@@ -1,0 +1,22 @@
+order: 6
+title: "Страница товара: разметка по ТЗ"
+type: implement
+role: real
+difficulty: 3
+minutes: 25
+language: html
+tags: [семантика, article, figure, time, aside, заголовки]
+hints:
+  - "Направление: нарисуйте на бумаге дерево страницы: body → header, main, footer. В main лежат article товара и aside. Внутри article — figure, список, кнопка и два section."
+  - "Шаг: заголовки. h1 — название товара. Разделы «Описание» и «Отзывы» — h2 внутри section. Автор отзыва — h3 внутри article отзыва. «Похожие товары» в aside — тоже h2."
+  - "Почти решение: отзыв выглядит как article > h3 + p c time datetime=«2026-03-14» + p с текстом. Фото: figure > img alt + figcaption. Меню: nav aria-label > ul > li > a."
+wrong:
+  - name: div-page
+    kind: common-mistake
+    explanation: "Все блоки сделаны div с классами. Текст на месте, внешне всё хорошо, но нет ни ориентиров страницы, ни списков, ни заголовков: проверка структуры не находит header, main, article и остальных."
+  - name: no-aside-footer
+    kind: partial
+    explanation: "Товар и отзывы размечены верно, но «Похожие товары» остались обычным div, а подвал забыт. Страница размечена наполовину."
+  - name: skipped-levels
+    kind: edge-case
+    explanation: "Структура верна, но авторы отзывов оформлены как h4 сразу после h2, а блок «Похожие товары» — как h3 без h2. Уровни заголовков пропущены."

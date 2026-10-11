@@ -1,0 +1,3 @@
+order: 7
+title: "Grid"
+summary: "Сетка из строк и столбцов: grid-template-columns и rows, fr, repeat, minmax, auto-fill и auto-fit, gap, именованные области и span."

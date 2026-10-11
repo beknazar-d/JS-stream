@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Домотека — чайники</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav" aria-label="Основное меню">
+      <a href="/catalog">Каталог</a>
+      <a href="/sale">Акции</a>
+      <a href="/delivery">Доставка</a>
+    </nav>
+    <form class="search" role="search">
+      <label class="visually-hidden" for="q">Поиск по магазину</label>
+      <input class="search__input" id="q" type="search" placeholder="Например, чайник">
+      <button class="search__button" type="submit">Найти</button>
+    </form>
+  </header>
+  <main class="content">
+    <h1>Чайники</h1>
+    <select class="sort" aria-label="Сортировка">
+      <option>Сначала дешёвые</option>
+      <option>Сначала дорогие</option>
+    </select>
+    <article class="product">
+      <h2 class="product__title">Чайник Домотека ЧЭ-17</h2>
+      <p class="product__price">3 490 ₽</p>
+      <button class="product__buy" type="button">В корзину</button>
+    </article>
+  </main>
+</body>
+</html>

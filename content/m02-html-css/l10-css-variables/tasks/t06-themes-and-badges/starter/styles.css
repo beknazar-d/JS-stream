@@ -1,0 +1,73 @@
+:root {
+  --color-bg: #f7f8fa;
+  --color-surface: #ffffff;
+  --color-text: #1d2733;
+  --color-brand: #0b6e4f;
+  --color-on-brand: #ffffff;
+  --color-accent: #0b5cad;
+  --color-on-accent: #ffffff;
+}
+
+/* Допишите:
+   1. темы [data-theme="dark"] и [data-theme="sale"] («Чёрная пятница»);
+   2. замените значения в .card, .button и .badge на переменные;
+   3. плашка .badge берёт фон из --badge-bg, а если её нет — из --color-accent;
+      то же с цветом текста: --badge-color и запасное --color-on-accent;
+   4. .badge--hot задаёт --badge-bg: #b42318 и --badge-color: #ffffff только для себя. */
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.site-header {
+  padding: 16px;
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+}
+
+.site-header__logo {
+  margin: 0;
+  font-weight: 700;
+}
+
+.catalog {
+  padding: 16px;
+}
+
+.card {
+  padding: 16px;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #1d2733;
+}
+
+.card__title {
+  margin: 0 0 4px;
+  font-size: 1.125rem;
+}
+
+.card__text {
+  margin: 0 0 8px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  background: #0b5cad;
+  color: #ffffff;
+}
+
+.button {
+  border: 0;
+  border-radius: 6px;
+  padding: 8px 16px;
+  background: #0b6e4f;
+  color: #ffffff;
+  font: inherit;
+}

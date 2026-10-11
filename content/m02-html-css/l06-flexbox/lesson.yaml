@@ -1,0 +1,3 @@
+order: 6
+title: "Flexbox"
+summary: "Ряд и колонка из элементов: главная и поперечная оси, justify-content и align-items, gap, перенос строк, flex: 1, сжатие и порядок элементов."

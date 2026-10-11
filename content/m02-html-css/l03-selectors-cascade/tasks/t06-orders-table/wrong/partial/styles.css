@@ -1,0 +1,7 @@
+.orders td.num,
+.orders th.num { text-align: right; }
+
+.orders tr[data-status="cancelled"] td {
+  color: #888888;
+  text-decoration: line-through;
+}

@@ -1,0 +1,21 @@
+/* Базовые стили проекта */
+.card {
+  border: 1px solid #dde3ea;
+  padding: 12px;
+  margin-bottom: 8px;
+  list-style: none;
+}
+
+.catalog .price {
+  color: #222222;
+  font-size: 16px;
+}
+
+.buy {
+  background: #1f6feb;
+  color: #ffffff;
+  border: 0;
+  padding: 8px 16px;
+}
+
+/* Допишите правила ниже */

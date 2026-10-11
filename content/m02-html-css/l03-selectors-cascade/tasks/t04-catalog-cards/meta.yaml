@@ -1,0 +1,22 @@
+order: 4
+title: "Оформление карточек каталога"
+type: implement
+role: main
+difficulty: 3
+minutes: 20
+language: html
+tags: [селекторы, комбинаторы, псевдоклассы, атрибуты, специфичность]
+hints:
+  - "Направление: для каждого правила подберите селектор: соседний элемент, атрибут, :disabled, :first-child, :nth-child. Затем проверьте, не побеждает ли его старое базовое правило."
+  - "Шаг: .catalog .price весит [0,2,0]. Правило с одним классом .price его не перебьёт. Нужно набрать вес не меньше, например .catalog .card .price."
+  - "Почти решение: .catalog .card .price { color: #b32d00 }, .old-price + .price { font-size: 20px } (равный вес с .catalog .price, но ниже по файлу), .card[data-stock=«0»], .buy:disabled, .card > .badge:first-child, .card:nth-child(3n)."
+wrong:
+  - name: weak-selectors
+    kind: common-mistake
+    explanation: "Правило «.price { color: #b32d00 }» написано, но цена осталась чёрной: базовое «.catalog .price» весит [0,2,0] и сильнее одного класса.  Проверки цвета цен падают."
+  - name: important
+    kind: edge-case
+    explanation: "Цвет и размер цены заданы через !important. Внешне всё работает, но задание запрещает !important: такое правило будет перебивать любые следующие и сделает стили хрупкими."
+  - name: partial
+    kind: partial
+    explanation: "Сделаны цены и бейдж, но не оформлены карточки без остатка и выключенные кнопки, а рамка третьей карточки не выделена."

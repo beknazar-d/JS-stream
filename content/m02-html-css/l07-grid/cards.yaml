@@ -1,0 +1,34 @@
+- id: grid-enable
+  front: Что нужно написать у родителя, чтобы получить сетку?
+  back: "display: grid, затем grid-template-columns (и, при необходимости, rows)."
+  answer: "display: grid"
+- id: fr-unit
+  front: Что значит 1fr 2fr в grid-template-columns?
+  back: "Две колонки: свободное место делится на три доли, вторая колонка вдвое шире первой."
+- id: repeat-fn
+  front: Как короче записать три колонки по 1fr?
+  back: "repeat(3, 1fr)."
+  answer: "repeat(3, 1fr)"
+- id: minmax-fn
+  front: Что делает minmax(220px, 1fr)?
+  back: "Колонка не уже 220px и не шире доли свободного места."
+- id: auto-fill-recipe
+  front: Как записать колонки по 220px минимум, сколько поместится, без медиазапросов?
+  back: "grid-template-columns: repeat(auto-fill, minmax(220px, 1fr))."
+- id: fill-vs-fit
+  front: Чем auto-fit отличается от auto-fill, если карточек мало?
+  back: "auto-fill оставляет пустые колонки, карточки сохраняют ширину. auto-fit схлопывает пустые колонки, и карточки растягиваются."
+- id: lines-not-columns
+  front: Сколько колонок занимает grid-column 1 / 4?
+  back: "Три. Числа это номера линий, а не колонок. Линий на одну больше, чем колонок."
+  answer: "три"
+- id: full-row
+  front: Как растянуть элемент от первой до последней линии при любом числе колонок?
+  back: "grid-column: 1 / -1."
+  answer: "1 / -1"
+- id: span-keyword
+  front: Как растянуть элемент на две колонки от места, где он стоит?
+  back: "grid-column: span 2."
+- id: grid-areas
+  front: Как описать страницу областями?
+  back: "grid-template-areas со строками имён и grid-area: имя у элементов. Области должны быть прямоугольными."

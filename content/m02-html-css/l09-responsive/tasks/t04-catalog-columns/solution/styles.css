@@ -1,0 +1,54 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+.title {
+  margin: 16px;
+  font-size: 1.5rem;
+}
+
+/* Телефон: одна колонка. */
+.catalog {
+  list-style: none;
+  margin: 0;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.catalog__item {
+  padding: 16px;
+  border: 1px solid #c8d0d8;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.catalog__item h2 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.catalog__item p {
+  margin: 0;
+  font-weight: 700;
+}
+
+/* Планшет: две колонки. */
+@media (min-width: 768px) {
+  .catalog {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Компьютер: четыре колонки. */
+@media (min-width: 1024px) {
+  .catalog {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

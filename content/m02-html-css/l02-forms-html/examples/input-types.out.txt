@@ -1,0 +1,5 @@
+phone -> tel
+quantity -> number
+comment -> textarea
+deliveryDate -> date
+Полей с особым типом: 5

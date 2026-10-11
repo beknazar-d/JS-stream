@@ -1,0 +1,22 @@
+order: 1
+title: "Класс visually-hidden для кнопки корзины"
+type: recall
+role: warmup
+difficulty: 2
+minutes: 10
+language: html
+tags: [доступность, visually-hidden, кнопка-иконка]
+hints:
+  - "Направление: текст нужно сделать крошечным и обрезанным, но оставить в раскладке. Подумайте, какое положение выводит элемент из потока, чтобы он не влиял на соседей."
+  - "Шаг: position: absolute, width и height по 1px, overflow: hidden. Остальное (margin, clip, white-space) защищает от краевых случаев."
+  - "Почти решение: position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap."
+wrong:
+  - name: display-none
+    kind: common-mistake
+    explanation: "display: none убирает элемент из дерева доступности целиком. Скринридер текст не прочитает, и кнопка снова безымянная. Скрыть нужно только глазами."
+  - name: clip-only
+    kind: partial
+    explanation: "Обрезка без position: absolute и без размера 1 на 1. Элемент остаётся в потоке и занимает место, поэтому кнопка расширилась до ширины текста."
+  - name: no-overflow
+    kind: edge-case
+    explanation: "Размер 1 на 1 есть, а overflow: hidden забыли. Текст длиннее одного пикселя вылезает за границы элемента и становится видимым, особенно когда подпись длинная."

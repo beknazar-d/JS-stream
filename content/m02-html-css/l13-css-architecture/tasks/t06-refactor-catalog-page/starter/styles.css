@@ -1,0 +1,146 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  color: #1a1a1a;
+}
+
+#top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  padding: 0 24px;
+  background: #0b3d91;
+  color: #ffffff;
+}
+
+#top .logo {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+#top .nav {
+  display: flex;
+}
+
+#top .nav a {
+  margin-left: 16px;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+#top .nav a.active {
+  border-bottom-color: #ffd23f;
+}
+
+#catalog {
+  padding: 24px;
+}
+
+#catalog .h {
+  margin: 0 0 16px;
+  font-size: 28px;
+}
+
+#catalog .grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+#catalog .grid .card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+}
+
+#catalog .grid .card.hot {
+  border-color: #c2410c;
+}
+
+#catalog .grid .card .pic {
+  height: 100px;
+  border-radius: 4px;
+  background: #dfe7f1;
+}
+
+#catalog .grid .card .t {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+#catalog .grid .card.hot .t {
+  color: #c2410c;
+}
+
+#catalog .grid .card .p {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+#catalog .grid .card .p.old {
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: line-through;
+}
+
+#catalog .grid .card a.b {
+  align-self: flex-start;
+  padding: 8px 16px;
+  border-radius: 6px;
+  background: #0b3d91;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+#catalog .grid .card.hot a.b {
+  background: #c2410c;
+}
+
+#catalog .note {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+#bottom {
+  padding: 24px;
+  background: #f3f4f6;
+  color: #374151;
+  font-size: 14px;
+}
+
+.mt {
+  margin-top: 32px !important;
+}
+
+@media (max-width: 767px) {
+  #catalog .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 479px) {
+  #top {
+    padding: 0 12px;
+  }
+
+  #top .nav a {
+    margin-left: 8px;
+  }
+
+  #catalog .grid {
+    grid-template-columns: 1fr;
+  }
+}

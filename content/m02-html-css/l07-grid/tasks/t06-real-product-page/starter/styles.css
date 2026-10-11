@@ -1,0 +1,60 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, "Segoe UI", Arial, sans-serif;
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.gallery {
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e8eefc;
+  border-radius: 8px;
+  font-size: 1.5rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.75rem;
+}
+
+.price {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 24px;
+  background: #1b5fd1;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+h2 {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+}
+
+.about p,
+.reviews p {
+  margin: 0;
+}
+
+.specs ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+/* Допишите раскладку .product по макету */

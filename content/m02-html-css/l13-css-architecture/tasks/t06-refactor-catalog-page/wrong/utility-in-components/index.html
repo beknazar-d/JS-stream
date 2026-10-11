@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Домотека — каталог</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="site-header" data-header>
+    <a class="site-header__logo" href="/" data-logo>Домотека</a>
+    <div class="site-header__nav" data-nav>
+      <a href="/catalog" class="site-header__link site-header__link--active" data-nav-link>Каталог</a>
+      <a href="/sale" class="site-header__link" data-nav-link>Акции</a>
+      <a href="/delivery" class="site-header__link" data-nav-link>Доставка</a>
+    </div>
+  </div>
+  <div class="catalog" data-page>
+    <h1 class="catalog__title" data-page-title>Чайники и мультиварки</h1>
+    <div class="catalog__list" data-grid>
+      <div class="product-card" data-card>
+        <div class="product-card__image" data-image></div>
+        <div class="product-card__title" data-title>Чайник Домотека ЧЭ-17</div>
+        <div class="product-card__price" data-price>3 490 ₽</div>
+        <a class="product-card__button" href="/p/che-17" data-button>В корзину</a>
+      </div>
+      <div class="product-card product-card--sale" data-card>
+        <div class="product-card__image" data-image></div>
+        <div class="product-card__title" data-title>Чайник Домотека ЧС-30</div>
+        <div class="product-card__price product-card__price--old" data-old-price>6 290 ₽</div>
+        <div class="product-card__price" data-price>5 290 ₽</div>
+        <a class="product-card__button" href="/p/chs-30" data-button>В корзину</a>
+      </div>
+      <div class="product-card" data-card>
+        <div class="product-card__image" data-image></div>
+        <div class="product-card__title" data-title>Мультиварка Домотека МВ-5</div>
+        <div class="product-card__price" data-price>7 990 ₽</div>
+        <a class="product-card__button" href="/p/mv-5" data-button>В корзину</a>
+      </div>
+      <div class="product-card" data-card>
+        <div class="product-card__image" data-image></div>
+        <div class="product-card__title" data-title>Тостер Домотека Т-2</div>
+        <div class="product-card__price" data-price>2 190 ₽</div>
+        <a class="product-card__button" href="/p/t-2" data-button>В корзину</a>
+      </div>
+    </div>
+    <p class="catalog__note u-mt-24" data-note>Цены указаны с НДС. Доставка по городу от одного дня.</p>
+  </div>
+  <div class="site-footer u-mt-32" data-footer>© Домотека, 2026. Бытовая техника для кухни.</div>
+</body>
+</html>

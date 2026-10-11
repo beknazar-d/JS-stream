@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Поддержка — Домотека</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <h1>Написать в поддержку</h1>
+    <form class="support" action="/support" method="post">
+      <div>
+        <label for="name">Ваше имя</label>
+        <input id="name" type="text" name="name" placeholder="Анна" autocomplete="name">
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input id="email" type="email" name="email" placeholder="anna@example.ru" autocomplete="email" required>
+      </div>
+      <div>
+        <label for="order">Номер заказа</label>
+        <input id="order" type="text" name="order" placeholder="DT-10542">
+      </div>
+      <fieldset>
+        <legend>Тема обращения</legend>
+        <input id="topic-delivery" type="radio" name="topic" value="delivery">
+        <label for="topic-delivery">Доставка</label>
+        <input id="topic-return" type="radio" name="topic" value="return">
+        <label for="topic-return">Возврат</label>
+        <input id="topic-other" type="radio" name="topic" value="other">
+        <label for="topic-other">Другое</label>
+      </fieldset>
+      <div>
+        <label for="message">Сообщение</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+      <div>
+        <input id="agree" type="checkbox" name="agree" required>
+        <label for="agree">Согласен на обработку данных</label>
+      </div>
+      <button type="submit" class="send">Отправить</button>
+    </form>
+  </body>
+</html>

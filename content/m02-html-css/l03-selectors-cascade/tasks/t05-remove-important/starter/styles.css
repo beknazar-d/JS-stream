@@ -1,0 +1,26 @@
+#menu a {
+  color: #333333 !important;
+}
+
+#menu a.active {
+  color: #dd0000 !important;
+  font-weight: 700 !important;
+}
+
+#content .note {
+  background: #eeeeff !important;
+  padding: 8px !important;
+}
+
+#content .warning {
+  background: #ffeeee !important;
+}
+
+#content .btn {
+  background: #1f6feb !important;
+  color: #ffffff !important;
+}
+
+#content .danger {
+  background: #dd0000 !important;
+}

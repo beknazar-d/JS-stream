@@ -16,7 +16,7 @@ import {
   validateTaskMeta,
   type TaskMeta,
 } from '../src/meta.ts';
-import { loadContent, type LessonOnDisk } from '../node/load.ts';
+import { loadContent, yamlErrors, type LessonOnDisk } from '../node/load.ts';
 import { createPool } from '../node/pool.ts';
 import { createPageRunner } from '../node/page-runner.ts';
 
@@ -160,6 +160,9 @@ async function verifyLesson(lesson: LessonOnDisk) {
 }
 
 const modules = loadContent(contentRoot);
+for (const error of yamlErrors) {
+  if (!filter || error.includes(filter)) fail('YAML', error.replace(`${contentRoot}/`, ''));
+}
 for (const module of modules) {
   if (filter && !module.id.includes(filter) && !module.lessons.some((l) => l.id.includes(filter))) continue;
   for (const error of validateModuleMeta(module.meta)) fail(`${module.id}/module.yaml`, error);

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="15" fill="currentColor">
+  <title id="t">Как считается вес селектора</title>
+  <desc id="d">Три колонки: идентификаторы, классы вместе с атрибутами и псевдоклассами, теги. Ниже примеры: тег p весит 0-0-1, класс btn весит 0-1-0, селектор «#cart .btn» весит 1-1-0. Сравнение идёт слева направо.</desc>
+
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="20" y="20" width="190" height="110" rx="10"/>
+    <rect x="225" y="20" width="190" height="110" rx="10"/>
+    <rect x="430" y="20" width="190" height="110" rx="10"/>
+    <path d="M200 150 H440" opacity="0.6"/>
+    <path d="M432 144 L440 150 L432 156" opacity="0.6"/>
+    <rect x="20" y="180" width="600" height="150" rx="10" opacity="0.7"/>
+  </g>
+
+  <g text-anchor="middle">
+    <text x="115" y="50" font-weight="700">Идентификаторы</text>
+    <text x="115" y="78" font-family="ui-monospace, monospace" font-size="18">#cart</text>
+    <text x="115" y="108" font-size="13" opacity="0.8">первая цифра</text>
+
+    <text x="320" y="50" font-weight="700">Классы</text>
+    <text x="320" y="78" font-family="ui-monospace, monospace" font-size="16">.btn  [href]  :hover</text>
+    <text x="320" y="108" font-size="13" opacity="0.8">вторая цифра</text>
+
+    <text x="525" y="50" font-weight="700">Теги</text>
+    <text x="525" y="78" font-family="ui-monospace, monospace" font-size="18">p  td  a</text>
+    <text x="525" y="108" font-size="13" opacity="0.8">третья цифра</text>
+
+    <text x="320" y="176" font-size="13" opacity="0.8">сравниваем слева направо</text>
+  </g>
+
+  <g font-family="ui-monospace, monospace" font-size="16">
+    <text x="44" y="216">p</text>
+    <text x="300" y="216">0-0-1</text>
+    <text x="44" y="246">.btn</text>
+    <text x="300" y="246">0-1-0</text>
+    <text x="44" y="276">table.grid td</text>
+    <text x="300" y="276">0-1-2</text>
+    <text x="44" y="306">#cart .btn</text>
+    <text x="300" y="306">1-1-0</text>
+  </g>
+  <g font-size="13" opacity="0.85">
+    <text x="420" y="216">один тег</text>
+    <text x="420" y="246">один класс</text>
+    <text x="420" y="276">класс и два тега</text>
+    <text x="420" y="306">сильнее любых классов</text>
+  </g>
+</svg>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="13" fill="currentColor">
+  <title id="t">Макет каталога на трёх ширинах</title>
+  <desc id="d">Слева экран 375 пикселей: шесть карточек в одну колонку. В центре экран 768: две колонки. Справа экран 1024: четыре колонки. Везде отступы и зазоры по 16 пикселей.</desc>
+  <g stroke="currentColor" stroke-width="1.5" fill="none">
+    <rect x="10" y="30" width="90" height="250" rx="6" opacity="0.7"/>
+    <rect x="20" y="40" width="70" height="36" rx="3"/>
+    <rect x="20" y="82" width="70" height="36" rx="3"/>
+    <rect x="20" y="124" width="70" height="36" rx="3"/>
+    <rect x="20" y="166" width="70" height="36" rx="3"/>
+    <rect x="20" y="208" width="70" height="36" rx="3"/>
+    <rect x="20" y="250" width="70" height="24" rx="3" stroke-dasharray="4 3"/>
+
+    <rect x="130" y="30" width="190" height="250" rx="6" opacity="0.7"/>
+    <rect x="140" y="40" width="80" height="60" rx="3"/>
+    <rect x="228" y="40" width="82" height="60" rx="3"/>
+    <rect x="140" y="108" width="80" height="60" rx="3"/>
+    <rect x="228" y="108" width="82" height="60" rx="3"/>
+    <rect x="140" y="176" width="80" height="60" rx="3"/>
+    <rect x="228" y="176" width="82" height="60" rx="3"/>
+
+    <rect x="350" y="30" width="280" height="250" rx="6" opacity="0.7"/>
+    <rect x="360" y="40" width="58" height="70" rx="3"/>
+    <rect x="424" y="40" width="58" height="70" rx="3"/>
+    <rect x="488" y="40" width="58" height="70" rx="3"/>
+    <rect x="552" y="40" width="68" height="70" rx="3"/>
+    <rect x="360" y="118" width="58" height="70" rx="3"/>
+    <rect x="424" y="118" width="58" height="70" rx="3"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="55" y="20" font-weight="700">375 px</text>
+    <text x="225" y="20" font-weight="700">768 px</text>
+    <text x="490" y="20" font-weight="700">1024 px</text>
+    <text x="55" y="296" font-size="12">1 колонка</text>
+    <text x="225" y="296" font-size="12">2 колонки</text>
+    <text x="490" y="230" font-size="12">4 колонки</text>
+    <text x="490" y="248" font-size="12">отступ и зазор — 16 px</text>
+  </g>
+</svg>

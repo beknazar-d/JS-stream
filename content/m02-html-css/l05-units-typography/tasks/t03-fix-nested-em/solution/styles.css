@@ -1,0 +1,9 @@
+.menu {
+  margin: 0;
+  padding: 0 0 0 1rem;
+}
+
+.menu li {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}

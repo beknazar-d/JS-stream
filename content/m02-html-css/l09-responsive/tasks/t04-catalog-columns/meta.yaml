@@ -1,0 +1,22 @@
+order: 4
+title: "Каталог: 1, 2 и 4 колонки по макету"
+type: layout
+role: main
+difficulty: 3
+minutes: 15
+language: html
+tags: [адаптив, Grid, медиазапросы, mobile-first, макет]
+hints:
+  - "Направление: список можно сделать сеткой (display: grid). Число колонок задаёт grid-template-columns, зазор — gap."
+  - "Шаг: базовые стили — одна колонка. Для 768 px и 1024 px добавьте по одному медиазапросу min-width, которые меняют только grid-template-columns."
+  - "Почти решение: .catalog { display: grid; gap: 16px; grid-template-columns: 1fr; } @media (min-width: 768px) { .catalog { grid-template-columns: repeat(2, 1fr); } } и то же для 1024px с четырьмя колонками."
+wrong:
+  - name: no-desktop
+    kind: partial
+    explanation: "Одна и две колонки сделаны, а правила для 1024 px нет. На компьютере остаются две широкие карточки в ряду, четыре колонки по макету не получились."
+  - name: late-breakpoint
+    kind: edge-case
+    explanation: "Четыре колонки включаются от 1000 px вместо 1024 px. На экране 1023 px вместо двух колонок получается четыре: точку нужно брать из макета, а не округлять на глаз."
+  - name: fixed-columns
+    kind: common-mistake
+    explanation: "Четыре колонки по 240 px заданы без медиазапросов. На телефоне они вылезают за экран: страница прокручивается вбок, а карточки не складываются в одну колонку."

@@ -1,0 +1,22 @@
+order: 5
+title: "Рефакторинг: от компьютера к «сначала телефон»"
+type: refactor
+role: main
+difficulty: 3
+minutes: 15
+language: html
+tags: [mobile-first, медиазапросы, рефакторинг, каскад]
+hints:
+  - "Направление: какие значения нужны телефону? Именно они должны стоять в обычных правилах, без медиазапроса."
+  - "Шаг: перенесите значения из блока max-width в базовые правила .nav и .features. Старые значения для компьютера уйдут в новый блок min-width: 768px."
+  - "Почти решение: .nav { flex-direction: column; gap: 8px; } .features { grid-template-columns: 1fr; } @media (min-width: 768px) { .nav { flex-direction: row; gap: 16px; } .features { grid-template-columns: repeat(3, 1fr); } }"
+wrong:
+  - name: one-max-left
+    kind: partial
+    explanation: "Меню переписано на min-width, а колонки преимуществ остались в блоке max-width. Раскладка работает, но задача рефакторинга не выполнена: половина стилей по-прежнему пишется «сверху вниз»."
+  - name: late-breakpoint
+    kind: edge-case
+    explanation: "Точка сдвинута на 800 px. На экране 768 px (обычный планшет) остаётся телефонная раскладка. Граница должна совпадать с исходной: 768 px."
+  - name: media-first
+    kind: common-mistake
+    explanation: "Блок @media стоит выше базовых правил. У правил одинаковая специфичность, поэтому побеждает то, что ниже: базовая колонка перебивает широкую раскладку, и на 1024 px меню остаётся в столбик. Запросы пишут после основных стилей."

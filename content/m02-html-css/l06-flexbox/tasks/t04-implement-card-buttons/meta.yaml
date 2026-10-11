@@ -1,0 +1,22 @@
+order: 4
+title: "Кнопки на одной линии внизу карточек"
+type: implement
+role: main
+difficulty: 3
+minutes: 15
+language: html
+tags: [flex, flex-direction, margin auto, карточки]
+hints:
+  - "Направление: задача из двух уровней. Список карточек — контейнер в ряд. Каждая карточка — контейнер в колонку."
+  - "Шаг: у .cards включите flex и gap. У .card задайте flex: 1, display: flex и flex-direction: column. Кнопке нужен автоматический верхний отступ."
+  - "Почти решение: .cards { display: flex; gap: 16px; } .card { flex: 1; display: flex; flex-direction: column; } .btn { margin-top: auto; }"
+wrong:
+  - name: no-bottom-pin
+    kind: partial
+    explanation: "Карточки стоят в ряд одинаковой ширины, но кнопка идёт сразу после цены. У карточки с короткой подписью кнопка оказывается выше, чем у остальных."
+  - name: flex-auto
+    kind: edge-case
+    explanation: "flex: auto берёт ширину из содержимого. Карточка с длинным описанием получается шире соседей. Нужен flex: 1, где базовая ширина равна нулю."
+  - name: absolute-button
+    kind: common-mistake
+    explanation: "Высота карточки задана жёстко, а кнопка прижата через position: absolute. Выглядит хорошо, пока описание короткое. Если описание длиннее, цена и кнопка налезают друг на друга."

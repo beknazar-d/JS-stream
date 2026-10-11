@@ -1,0 +1,22 @@
+order: 5
+title: "Рефакторинг формы обращения"
+type: refactor
+role: main
+difficulty: 3
+minutes: 15
+language: html
+tags: [label, fieldset, radio, checkbox, рефакторинг, доступность]
+hints:
+  - "Направление: пройдитесь по каждой строке формы и спросите: чем подписано это поле для человека, который не видит экрана? Затем: может ли браузер сам проверить введённое?"
+  - "Шаг: подписи оформите через label for и id. Переключатели темы соберите в fieldset с legend. Согласие подпишите тоже label, а на кнопке поставьте type=«submit»."
+  - "Почти решение: input id=«email» type=«email» name=«email» required, textarea id=«message» name=«message» required, input id=«agree» type=«checkbox» name=«agree» required с label, кнопка button type=«submit»."
+wrong:
+  - name: aria-labels
+    kind: common-mistake
+    explanation: "Подписи заменены на aria-label. Скринридер поля назовёт, но видимых подписей по-прежнему нет, и клик по тексту не активирует поле."
+  - name: half-way
+    kind: partial
+    explanation: "Исправлены только текстовые поля. Переключатели темы остались без fieldset, а у чекбокса согласия нет label и нет required."
+  - name: renamed-fields
+    kind: edge-case
+    explanation: "Разметка исправлена, но при переписывании изменились name у полей (user_email, text). Серверный обработчик ожидает старые имена, и обращения перестанут приходить."

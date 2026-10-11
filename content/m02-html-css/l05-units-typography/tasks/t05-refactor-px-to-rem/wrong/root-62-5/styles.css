@@ -1,0 +1,43 @@
+html {
+  font-size: 62.5%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 2.4rem;
+  font-family: system-ui, "Segoe UI", Arial, sans-serif;
+}
+
+.card {
+  width: 32rem;
+  padding: 2rem;
+  border: 1px solid #b8b8c4;
+  border-radius: 8px;
+}
+
+.card h2 {
+  margin: 0 0 1.2rem;
+  font-size: 2.4rem;
+  line-height: 1.25;
+}
+
+.card p {
+  margin: 0 0 1.6rem;
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
+.btn {
+  display: inline-block;
+  padding: 1.2rem 2.4rem;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  background: #1b5fd1;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 6px;
+}

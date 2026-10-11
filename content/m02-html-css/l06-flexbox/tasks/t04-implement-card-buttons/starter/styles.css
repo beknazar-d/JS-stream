@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, "Segoe UI", Arial, sans-serif;
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.cards {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  padding: 16px;
+  border: 1px solid #b8b8c4;
+  border-radius: 8px;
+}
+
+.card h3,
+.card p {
+  margin: 0 0 8px;
+}
+
+.price {
+  font-weight: 700;
+}
+
+.btn {
+  display: block;
+  padding: 10px 16px;
+  text-align: center;
+  background: #1b5fd1;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 6px;
+}

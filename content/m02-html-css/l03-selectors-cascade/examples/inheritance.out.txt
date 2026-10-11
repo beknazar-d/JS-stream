@@ -1,0 +1,4 @@
+color: #222222
+font-size: 16px
+border: по умолчанию
+margin: по умолчанию

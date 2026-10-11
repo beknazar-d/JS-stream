@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  color: #1d2733;
+}
+
+.catalog-section {
+  --gap: 16px;
+  --color-accent: #b42318;
+  padding: 16px;
+}
+
+.card {
+  padding: 12px;
+  border: 1px solid #d5dbe1;
+  margin-bottom: var(--gap)px;
+}
+
+.card__title {
+  margin: 0 0 4px;
+  font-size: 1rem;
+}
+
+.card__price {
+  margin: 0;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.site-footer {
+  padding: var(--gap);
+  background: #f1f4f7;
+}
+
+.site-footer__link {
+  color: var(--color-accent);
+}

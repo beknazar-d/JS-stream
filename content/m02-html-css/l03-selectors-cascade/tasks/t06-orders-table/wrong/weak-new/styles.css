@@ -1,0 +1,21 @@
+/* Суммы справа: .orders td.num весит [0,2,1] против [0,1,2] у библиотеки */
+.orders td.num,
+.orders th.num {
+  text-align: right;
+}
+
+/* Отменённые: [0,2,2] против [0,1,2] у цвета td */
+.orders tr[data-status="cancelled"] td {
+  color: #888888;
+  text-decoration: line-through;
+}
+
+/* Новые: [0,3,2] перебивает зебру [0,2,4] в чётных строках */
+.orders tr[data-status="new"] td {
+  background: #e7f1ff;
+}
+
+/* Срочные: полоса у первой ячейки */
+.orders .urgent td:first-child {
+  border-left: 4px solid #dd0000;
+}

@@ -1,0 +1,22 @@
+order: 6
+title: "Три темы витрины и плашки с собственными переменными"
+type: implement
+role: real
+difficulty: 4
+minutes: 30
+language: html
+tags: [дизайн-токены, темы, custom properties, контраст, var с запасным значением]
+hints:
+  - "Направление: сначала замените значения в .card, .button и .badge на var() и убедитесь, что светлая тема не изменилась. Потом добавляйте темы: каждая — это блок с теми же семью переменными."
+  - "Шаг: плашке нужна цепочка запасных значений: var(--badge-bg, var(--color-accent)). Переменную --badge-bg задаёт .badge--hot у себя, а не сама плашка. Для sale подбирайте цвета по контрасту, а не «на глаз»."
+  - "Почти решение: .badge { background: var(--badge-bg, var(--color-accent)); color: var(--badge-color, var(--color-on-accent)); } .badge--hot { --badge-bg: #b42318; --badge-color: #ffffff; } [data-theme=«sale»] { --color-bg: #2b0a0a; --color-text: #fff1f0; --color-brand: #ff4d4f; ... }"
+wrong:
+  - name: no-sale
+    kind: partial
+    explanation: "Тёмная тема готова, а sale нет: атрибут data-theme=«sale» не совпадает ни с одним блоком, и страница остаётся светлой. Шапка не красная, фон светлый."
+  - name: low-contrast
+    kind: edge-case
+    explanation: "В теме sale текст #b04040 лежит на тёмно-красном фоне #7a1414: цвета похожи по яркости, контраст ниже 4.5 : 1. Тема выглядит броско, но читать текст тяжело. Контраст проверяют расчётом, а не глазами."
+  - name: badge-literal
+    kind: common-mistake
+    explanation: "Плашка «Хит продаж» перекрашена напрямую через background, и на экране она красная. Но плашка не принимает собственных переменных: --badge-bg и --badge-color ничего не меняют. Такие плашки нельзя настроить точечно, в отличие от решения с запасными значениями."

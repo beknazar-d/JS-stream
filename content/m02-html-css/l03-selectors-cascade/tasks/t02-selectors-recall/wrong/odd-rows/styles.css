@@ -1,0 +1,6 @@
+.card-title { font-size: 18px; }
+.price { color: #b32d00; }
+.card-sale .price { color: #d00000; }
+.card:nth-child(odd) { background-color: #f3f5f7; }
+a[href^="https"] { color: #0066cc; }
+.price + a { margin-top: 8px; }

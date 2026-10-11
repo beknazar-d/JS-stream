@@ -1,0 +1,27 @@
+:root {
+  --color-brand: #0b6e4f;
+  --space-md: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+.order {
+  padding: var(--space-md);
+}
+
+.button {
+  border: 0;
+  border-radius: 6px;
+  background: var(--color-brand);
+  color: #ffffff;
+  padding: 8px var(--space-md);
+  font: inherit;
+}
+
+.badge {
+  font-weight: 700;
+  color: var(--badge-color, #b42318);
+}

@@ -1,0 +1,22 @@
+order: 2
+title: "Плитки категорий с переносом"
+type: layout
+role: warmup
+difficulty: 2
+minutes: 12
+language: html
+tags: [flex-wrap, gap, плитки]
+hints:
+  - "Направление: список li нужно выстроить в ряд и разрешить переносы. Промежутки между плитками и между строками разные."
+  - "Шаг: на .chips нужны три свойства: display, flex-wrap и gap. В gap можно написать два значения: сначала между строками, потом между столбцами."
+  - "Почти решение: .chips { display: flex; flex-wrap: wrap; gap: 8px 12px; }"
+wrong:
+  - name: no-wrap
+    kind: partial
+    explanation: "Без flex-wrap все плитки остаются в одной строке и сжимаются: текст внутри плиток переносится на несколько строк. Проверка ожидает минимум две строки плиток и одну высоту у всех."
+  - name: same-gap
+    kind: edge-case
+    explanation: "gap: 12px ставит одинаковый промежуток и по строке, и между строками. По макету между строками 8px: можно записать gap: 8px 12px."
+  - name: inline-block
+    kind: common-mistake
+    explanation: "display: inline-block у li даёт переносы, но промежуток по строке получается из пробела между тегами (около 4px), а между строками его нет вовсе. Flexbox с gap задаёт промежутки явно."

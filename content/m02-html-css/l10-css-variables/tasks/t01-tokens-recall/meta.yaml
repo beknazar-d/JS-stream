@@ -1,0 +1,22 @@
+order: 1
+title: "По памяти: переменные бренда и запасное значение"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 8
+language: html
+tags: [custom properties, var, :root, запасное значение]
+hints:
+  - "Направление: имя пользовательского свойства начинается с двух дефисов. Объявляют его там, откуда его увидят все: в :root. Читают через var()."
+  - "Шаг: :root { --color-brand: #0b6e4f; } и background: var(--color-brand). У var() есть второй аргумент через запятую — запасное значение."
+  - "Почти решение: color: var(--badge-color, #b42318); padding: 8px var(--space-md);"
+wrong:
+  - name: literal-values
+    kind: common-mistake
+    explanation: "Переменные объявлены, но в кнопке и отступах остались прежние значения. Выглядит правильно, а смена --color-brand ничего не меняет: переменная объявлена и не используется."
+  - name: no-fallback
+    kind: partial
+    explanation: "var(--badge-color) без запасного значения. Пока переменная не задана, значение недействительно, и плашка наследует цвет текста страницы, а не красный."
+  - name: tokens-on-button
+    kind: edge-case
+    explanation: "Переменные объявлены внутри .button, а не в :root. Кнопка выглядит правильно, но остальная страница их не видит: --space-md нельзя использовать в .order, а смена на :root не доходит до кнопки."

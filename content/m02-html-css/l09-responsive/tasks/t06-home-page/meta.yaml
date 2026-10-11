@@ -1,0 +1,22 @@
+order: 6
+title: "Главная «Домотеки»: адаптив по макету"
+type: implement
+role: real
+difficulty: 4
+minutes: 30
+language: html
+tags: [адаптив, clamp, viewport, Flexbox, Grid, max-width]
+hints:
+  - "Направление: список из критериев — это список правил. Сначала сделайте стили телефона целиком, потом одним блоком min-width: 768px добавьте перестройку шапки и товаров."
+  - "Шаг: ширину контента ограничивает max-width: 960px вместе с margin: 0 auto. Размер заголовка задаёт функция clamp(минимум, предпочтительное, максимум), в предпочтительном значении нужны единицы vw. Картинке нужны max-width: 100% и height: auto."
+  - "Почти решение: .hero__title { font-size: clamp(1.5rem, 0.75rem + 3vw, 2.5rem); } Шапку на телефоне делает display: flex с flex-direction: column, на 768 px — flex-direction: row и justify-content: space-between."
+wrong:
+  - name: plain-vw
+    kind: common-mistake
+    explanation: "Размер заголовка 5vw растёт вместе с экраном без границ: на 375 px он 18,75 px (мельче 24 px), а на 1440 px — 72 px. Нужен clamp(), который ограничивает снизу и сверху."
+  - name: no-wrapper-limit
+    kind: edge-case
+    explanation: "Контент не ограничен по ширине. Всё работает на 375 и 1024 px, но на мониторе 1440 px картинка растягивается до 1408 px и страница теряет читаемую колонку. Нужен max-width: 960px и margin: 0 auto."
+  - name: no-auto-height
+    kind: partial
+    explanation: "У картинки есть max-width: 100%, но нет height: auto. Атрибут height=600 остаётся в силе, и на телефоне картинка вытягивается в высоту. Пропорции должны сохраняться."
