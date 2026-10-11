@@ -2,6 +2,7 @@
 // Модуль typescript передаётся снаружи: в браузере он грузится лениво в Worker.
 
 import type * as TS from 'typescript';
+import { guardLoops, type FullTypeScript } from './loop-guard.ts';
 
 export type TypeScriptModule = Pick<typeof TS, 'transpileModule' | 'ModuleKind' | 'ScriptTarget' | 'flattenDiagnosticMessageText'>;
 
@@ -51,4 +52,16 @@ export function compileAll(ts: TypeScriptModule, files: Record<string, string>) 
 export function formatCompileError(error: CompileError): string {
   const where = error.line ? `${error.file}, строка ${error.line}, позиция ${error.column}` : error.file;
   return `${where}: ${error.message}`;
+}
+
+// Скрипты страницы с защитой от бесконечных циклов (нужен полный модуль typescript).
+export function guardPageScripts(ts: FullTypeScript, files: Record<string, string>) {
+  const result: Record<string, string> = {};
+  const errors: CompileError[] = [];
+  for (const [file, source] of Object.entries(files)) {
+    const guarded = guardLoops(ts, file, source);
+    result[file] = guarded.code;
+    errors.push(...guarded.errors);
+  }
+  return { files: result, errors };
 }

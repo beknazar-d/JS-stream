@@ -7,6 +7,8 @@ export const TASK_TYPES = {
   implement: 'Реализовать по тикету',
   refactor: 'Рефакторинг',
   'write-tests': 'Написать тесты',
+  layout: 'Вёрстка по макету',
+  api: 'Интеграция с API',
 } as const;
 
 export const TASK_ROLES = {
@@ -47,7 +49,8 @@ export interface TaskMeta {
   role: TaskRole;
   difficulty: 1 | 2 | 3 | 4 | 5;
   minutes: number;
-  language: 'js' | 'ts';
+  // html — страница в iframe: index.html, styles.css, script.js и DOM-тесты.
+  language: 'js' | 'ts' | 'html';
   tags: string[];
   hints: [string, string, string];
   wrong: WrongMeta[];
@@ -89,7 +92,7 @@ export function validateTaskMeta(raw: unknown): Errors {
   if (!isString(m.role) || !(m.role in TASK_ROLES)) errors.push(`role: одно из ${Object.keys(TASK_ROLES).join(', ')}`);
   if (!isInt(m.difficulty, 1, 5)) errors.push('difficulty: целое число от 1 до 5');
   if (!isInt(m.minutes, 1, 600)) errors.push('minutes: время в минутах, целое число');
-  if (m.language !== 'js' && m.language !== 'ts') errors.push('language: js или ts');
+  if (m.language !== 'js' && m.language !== 'ts' && m.language !== 'html') errors.push('language: js, ts или html');
   if (!Array.isArray(m.tags) || m.tags.length === 0 || !m.tags.every(isString)) errors.push('tags: непустой список строк');
   if (!Array.isArray(m.hints) || m.hints.length !== 3 || !m.hints.every(isString)) {
     errors.push('hints: ровно три подсказки (направление, шаг, почти решение)');
