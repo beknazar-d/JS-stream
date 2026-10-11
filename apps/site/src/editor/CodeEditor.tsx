@@ -95,7 +95,6 @@ export default function CodeEditor({ files, active, readOnlyFiles = [], onChange
       fontSize: 14,
       tabSize: 2,
       scrollBeyondLastLine: false,
-      ariaLabel: label,
       theme: currentTheme(),
       accessibilitySupport: 'auto',
     })
@@ -112,6 +111,11 @@ export default function CodeEditor({ files, active, readOnlyFiles = [], onChange
       for (const model of models.values()) model.dispose()
       models.clear()
     }
+    // Редактор создаётся один раз: подпись и файл меняются без пересоздания.
+  }, [])
+
+  useEffect(() => {
+    editorRef.current?.updateOptions({ ariaLabel: label })
   }, [label])
 
   useEffect(() => {
