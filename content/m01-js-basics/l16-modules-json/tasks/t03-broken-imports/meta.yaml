@@ -1,0 +1,22 @@
+order: 3
+title: Счёт не собирается после выноса в модули
+type: fix-bug
+role: warmup
+difficulty: 2
+minutes: 10
+language: js
+tags: [import, export, именованный экспорт, экспорт по умолчанию, ошибки модулей]
+hints:
+  - "Направление: откройте money.js и tax.js и посмотрите, как именно каждый файл экспортирует свою функцию: по имени или по умолчанию, и как она называется."
+  - "Шаг: в money.js функция называется formatPrice и экспортирована по имени. В tax.js функция называется calcTax и тоже экспортирована по имени. Импорт по имени пишется в фигурных скобках и с точно таким же именем."
+  - "Почти решение: import { formatPrice } from './money.js'; import { calcTax } from './tax.js'; а в теле вызывайте formatPrice(price * qty) и calcTax(price * qty)."
+wrong:
+  - name: one-import
+    kind: partial
+    explanation: "Исправлен только импорт formatPrice. Функция calcTax по-прежнему подключена как экспорт по умолчанию, которого в tax.js нет, и вызов падает."
+  - name: renamed-export
+    kind: common-mistake
+    explanation: "Вместо исправления импорта переименован экспорт в money.js. Для index.js это работает, но остальные файлы сайта импортируют formatPrice, и там всё сломается. Менять нужно импорт, а не чужой экспорт."
+  - name: tax-per-unit
+    kind: edge-case
+    explanation: "НДС считается от цены одной штуки. Пока количество равно единице, результат верный. При количестве больше единицы налог занижен."

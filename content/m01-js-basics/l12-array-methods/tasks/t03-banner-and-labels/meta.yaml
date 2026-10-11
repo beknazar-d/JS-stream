@@ -1,0 +1,22 @@
+order: 3
+title: "Баг: ценники с undefined и баннер, который горит всегда"
+type: fix-bug
+role: warmup
+difficulty: 2
+minutes: 10
+language: js
+tags: [map, some, filter, return, баг]
+hints:
+  - "Направление: в priceLabels после стрелки открыты фигурные скобки. А в hasUnpaid условием служит массив. Что в JavaScript считается истиной?"
+  - "Шаг: в priceLabels нужен return внутри колбэка. В hasUnpaid ответ на вопрос «есть ли хоть один» даёт метод some, а не filter."
+  - "Почти решение: map((product) => { return product.name + \": \" + product.price + \" ₽\"; }) и orders.some((order) => order.status !== \"paid\")."
+wrong:
+  - name: labels-only
+    kind: partial
+    explanation: "Исправлены только ценники. В hasUnpaid остался filter как условие, и баннер по-прежнему всегда включён, даже когда все заказы оплачены."
+  - name: every-for-some
+    kind: common-mistake
+    explanation: "Вместо some использован every. Он отвечает «все ли заказы не оплачены». Если оплаченный заказ есть среди неоплаченных, баннер пропадает, хотя должен гореть."
+  - name: free-item-dropped
+    kind: edge-case
+    explanation: "Цена 0 обрабатывается через ||: ноль считается ложью, и подпись превращается в «цена по запросу». Бесплатный товар должен получить подпись «0 ₽»."

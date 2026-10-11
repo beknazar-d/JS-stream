@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" width="640" height="330" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="16" fill="currentColor">
+  <title id="t">Цепочка if, else if, else</title>
+  <desc id="d">Первый вопрос: сумма не меньше 5000. Если да, доставка 0. Если нет, второй вопрос: сумма не меньше 2000. Если да, доставка 150. Если нет, доставка 350.</desc>
+
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="30" y="20" width="260" height="56" rx="10"/>
+    <rect x="30" y="130" width="260" height="56" rx="10"/>
+    <rect x="30" y="250" width="260" height="56" rx="10" stroke-dasharray="6 4"/>
+    <rect x="410" y="20" width="200" height="56" rx="10"/>
+    <rect x="410" y="130" width="200" height="56" rx="10"/>
+    <rect x="410" y="250" width="200" height="56" rx="10"/>
+    <path d="M290 48 H410"/>
+    <path d="M290 158 H410"/>
+    <path d="M160 76 V130"/>
+    <path d="M160 186 V250"/>
+    <path d="M154 122 L160 130 L166 122 M154 242 L160 250 L166 242"/>
+    <path d="M402 42 L410 48 L402 54 M402 152 L410 158 L402 164 M402 272 L410 278 L402 284" />
+    <path d="M290 278 H410"/>
+  </g>
+
+  <g text-anchor="middle">
+    <text x="160" y="53" font-family="ui-monospace, monospace" font-size="15">if (orderSum &gt;= 5000)</text>
+    <text x="160" y="163" font-family="ui-monospace, monospace" font-size="15">else if (orderSum &gt;= 2000)</text>
+    <text x="160" y="283" font-family="ui-monospace, monospace" font-size="15">else</text>
+    <text x="510" y="53">доставка 0 ₽</text>
+    <text x="510" y="163">доставка 150 ₽</text>
+    <text x="510" y="283">доставка 350 ₽</text>
+  </g>
+  <g text-anchor="middle" font-size="13" opacity="0.85">
+    <text x="350" y="40">да</text>
+    <text x="350" y="150">да</text>
+    <text x="350" y="270">иначе</text>
+    <text x="190" y="108" text-anchor="start">нет</text>
+    <text x="190" y="224" text-anchor="start">нет</text>
+  </g>
+</svg>

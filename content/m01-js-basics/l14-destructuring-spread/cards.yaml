@@ -1,0 +1,30 @@
+- id: destructure-object
+  front: Как одной строкой достать id и status из объекта order?
+  back: "const { id, status } = order;"
+- id: destructure-default
+  front: Как задать значение по умолчанию при распаковке объекта? Когда оно сработает?
+  back: "const { city = 'не указан' } = address; Только когда свойства нет или оно равно undefined. На null и 0 значение по умолчанию не срабатывает."
+- id: destructure-rename
+  front: Как достать свойство id в переменную с другим именем orderId?
+  back: "const { id: orderId } = order;"
+  answer: "id: orderId"
+- id: destructure-nested
+  front: Как достать name из вложенного объекта order.customer?
+  back: "const { customer: { name } } = order; Переменной customer при этом не появится."
+- id: destructure-array
+  front: Как взять из массива первый элемент отдельно, а остальные собрать в новый массив?
+  back: "const [first, ...rest] = items;"
+  answer: "...rest"
+- id: spread-object
+  front: Как скопировать объект order и заменить status?
+  back: "{ ...order, status: 'paid' } Поле, записанное после spread, перезаписывает старое."
+  answer: "..."
+- id: spread-array
+  front: Как получить новый массив с добавленным в конец элементом, не меняя старый?
+  back: "[...items, item]"
+- id: rest-params
+  front: Как объявить функцию, которая принимает любое число аргументов?
+  back: "function sum(...prices) { ... } prices всегда массив. Rest-параметр должен быть последним."
+- id: shallow-copy
+  front: Что копирует spread для объекта с вложенным объектом?
+  back: "Только верхний уровень. Вложенный объект остаётся общим у оригинала и копии. Чтобы изменить вложенное поле, скопируйте и вложенный объект: { ...order, address: { ...order.address, city } }"

@@ -1,0 +1,22 @@
+order: 4
+title: Обновление заказа без изменения старого
+type: implement
+role: main
+difficulty: 3
+minutes: 20
+language: js
+tags: [spread, иммутабельность, вложенные объекты, массивы]
+hints:
+  - "Направление: каждая функция должна собрать новый объект. Верхний уровень копируется через spread, но вложенные уровни, которые меняются, тоже нужно копировать."
+  - "Шаг: для города копируйте три уровня: заказ, customer и address. Для строк заказа используйте map, чтобы заменить одну позицию на новый объект, или квадратные скобки с spread, чтобы дописать в конец."
+  - "Почти решение: { ...order, customer: { ...order.customer, address: { ...order.customer.address, city } } }. Для addLine сначала проверьте some, есть ли такой sku, затем либо map с { ...item, qty: item.qty + line.qty }, либо [...order.lines, line]."
+wrong:
+  - name: unfinished
+    kind: partial
+    explanation: "Готовы setStatus и addLine, а changeCity ничего не возвращает. Задание требует три функции."
+  - name: shallow-city
+    kind: common-mistake
+    explanation: "Копия верхнего уровня создана, но город меняется внутри общего объекта address. Новый заказ получился правильным, зато исходный изменился тоже: spread копирует только первый уровень."
+  - name: always-append
+    kind: edge-case
+    explanation: "addLine всегда дописывает новую строку. Если такой sku уже есть, в заказе появляются две строки вместо одной с суммой количеств."

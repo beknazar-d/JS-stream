@@ -1,0 +1,22 @@
+order: 4
+title: "Сколько коробок нужно для заказа"
+type: implement
+role: main
+difficulty: 2
+minutes: 15
+language: js
+tags: [операторы, "%", деление, Math.floor, Math.ceil]
+hints:
+  - "Направление: деление даёт дробное число. Целая часть — это полные коробки, а остаток от деления — штуки россыпью."
+  - "Шаг: fullBoxes — Math.floor(items / perBox), looseItems — items % perBox. Для boxesToShip округляйте частное вверх. Россыпи нет, если остаток равен нулю."
+  - "Почти решение: return Math.ceil(items / perBox); return items % perBox === 0;"
+wrong:
+  - name: unfinished
+    kind: partial
+    explanation: "Готовы только две функции из четырёх. boxesToShip и isLastBoxFull остались пустыми и возвращают undefined."
+  - name: no-floor
+    kind: common-mistake
+    explanation: "fullBoxes возвращает результат деления без округления: для 47 и 12 получается 3.9166666666666665 вместо 3. Число полных коробок должно быть целым."
+  - name: floor-plus-one
+    kind: edge-case
+    explanation: "boxesToShip считает как Math.floor(items / perBox) + 1. Для 47 и 12 это 4, но когда штук ровно на целое число коробок (48 и 12), добавляется лишняя пустая коробка. Для нулевого заказа тоже получается 1 вместо 0."

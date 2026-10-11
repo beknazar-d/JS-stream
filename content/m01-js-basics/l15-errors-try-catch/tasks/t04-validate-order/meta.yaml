@@ -1,0 +1,22 @@
+order: 4
+title: Проверка заказа на входе
+type: implement
+role: main
+difficulty: 3
+minutes: 20
+language: js
+tags: [throw, class, extends Error, проверка входа, Number.isInteger]
+hints:
+  - "Направление: сначала напишите класс ошибки, потом функцию. В функции идут проверки от общего к частному: сам заказ, список позиций, каждая позиция."
+  - "Шаг: класс — это class ValidationError extends Error с конструктором, в котором сначала вызывается super(message), а потом задаётся this.name. Внутри validateOrder в цикле for...of проверьте qty через Number.isInteger и положительность, потом цену через Number.isFinite."
+  - "Почти решение: if (!order) throw new ValidationError('Заказ не передан'); if (!Array.isArray(order.lines) || order.lines.length === 0) throw ...; for (const line of order.lines) { проверка qty; проверка price } return order;"
+wrong:
+  - name: no-qty-check
+    kind: partial
+    explanation: "Проверка количества не написана. Заказ с количеством 0 или -1 проходит как корректный, хотя это главная причина поломок на складе."
+  - name: loose-qty
+    kind: edge-case
+    explanation: "Проверяется только qty <= 0. Дробное количество 1.5, строка '2' и NaN (для NaN сравнение с нулём всегда ложно) проходят, потому что нужна проверка Number.isInteger."
+  - name: no-name
+    kind: common-mistake
+    explanation: "Конструктор не задаёт this.name, поэтому у ошибки имя Error. В логах и в проверках по name такую ошибку не отличить от обычной."

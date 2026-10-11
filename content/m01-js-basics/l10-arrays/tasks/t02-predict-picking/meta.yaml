@@ -1,0 +1,23 @@
+order: 2
+title: "Что останется в списке сборки"
+type: predict
+role: warmup
+difficulty: 2
+minutes: 8
+language: js
+tags: [массивы, slice, splice, indexOf, push]
+show: [tests/snippet.js]
+hints:
+  - "Направление: после каждой строки держите в голове, как выглядит массив picked. slice его не меняет, splice меняет."
+  - "Шаг: splice(1, 2) вырезает два элемента, начиная с индекса 1, и возвращает их. После этого в picked остаются первый и последний элементы. Элемент, которого нет в массиве, даёт indexOf равный -1."
+  - "Почти решение: первые две строки — [\"A-2\", \"A-3\"] и 4. Последняя строка — A-9. Между ними посчитайте длину после push: это значение, которое push возвращает."
+wrong:
+  - name: first-half
+    kind: partial
+    explanation: "Верны только первые три строки, остальные не заполнены. Предсказать нужно каждый вызов console.log."
+  - name: splice-copies
+    kind: common-mistake
+    explanation: "Ответ считает, что splice только копирует кусок, как slice. На самом деле splice вырезает элементы из picked, поэтому в четвёртой строке остаются A-1 и A-4, а индекс A-3 равен -1."
+  - name: missing-is-undefined
+    kind: edge-case
+    explanation: "indexOf для отсутствующего элемента возвращает -1, а не undefined. Исключений в этом нет, а undefined дают чтение по несуществующему индексу и пустой pop или shift."

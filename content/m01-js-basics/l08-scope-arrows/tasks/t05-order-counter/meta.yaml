@@ -1,0 +1,22 @@
+order: 5
+title: "Нумерация заказов для двух систем"
+type: implement
+role: main
+difficulty: 3
+minutes: 15
+language: js
+tags: [замыкание, область видимости, стрелочные функции, значения по умолчанию]
+hints:
+  - "Направление: вам нужна переменная, которая живёт между вызовами и принадлежит конкретному счётчику. Где её объявить, чтобы она не обнулялась и не была общей?"
+  - "Шаг: объявите let current внутри createOrderCounter, но снаружи возвращаемой функции. Возвращаемая функция увеличивает current и возвращает значение. Проследите, чтобы первый вызов вернул именно startFrom."
+  - "Почти решение: export function createOrderCounter(startFrom = 1) { let current = startFrom - 1; return () => { current++; return current; }; }"
+wrong:
+  - name: skips-first-number
+    kind: partial
+    explanation: "Счётчик считает по порядку, но сначала увеличивает значение и только потом возвращает. Для createOrderCounter(1000) первый номер получается 1001, хотя должен быть 1000."
+  - name: shared-counter
+    kind: edge-case
+    explanation: "Текущий номер хранится в переменной на уровне модуля, а не в замыкании. Второй вызов createOrderCounter сбрасывает номер первого счётчика, и системы мешают друг другу."
+  - name: counter-inside
+    kind: common-mistake
+    explanation: "Переменная current объявлена внутри возвращаемой функции, поэтому при каждом вызове создаётся заново. Счётчик всегда возвращает startFrom и никогда не двигается вперёд."

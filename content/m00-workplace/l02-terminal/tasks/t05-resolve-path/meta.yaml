@@ -1,0 +1,22 @@
+order: 5
+title: "Куда приведёт cd: вычисление пути"
+type: implement
+role: main
+difficulty: 4
+minutes: 25
+language: js
+tags: [пути, split, join, массивы, push, pop, цикл]
+hints:
+  - "Направление: склейте текущую папку и путь в одну строку, режьте по косой черте и пройдите по частям. Результат собирайте в массив: обычное имя добавляйте, «..» убирайте последнее имя, «.» и пустые части пропускайте."
+  - "Шаг: для абсолютного пути (начинается с /) текущую папку не берите вообще. В цикле: if (part === \"\" || part === \".\") continue; потом if (part === \"..\") { stack.pop(); continue; } и иначе stack.push(part). Метод pop на пустом массиве ничего не делает — это и есть «нельзя выше корня»."
+  - "Почти решение: const full = target.startsWith(\"/\") ? target : cwd + \"/\" + target; затем цикл for (const part of full.split(\"/\")), в конце return \"/\" + stack.join(\"/\"). Для пустого stack получится ровно «/»."
+wrong:
+  - name: ignores-dotdot
+    kind: partial
+    explanation: "Две точки добавляются в результат как обычное имя папки: cd .. из /home/anna/shop даёт /home/anna/shop/.. вместо /home/anna. Нужно убирать последнюю папку."
+  - name: absolute-as-relative
+    kind: common-mistake
+    explanation: "Путь, начинающийся с /, всё равно приклеивается к текущей папке. Из /home/anna/shop команда cd /tmp приведёт в /home/anna/shop/tmp вместо /tmp."
+  - name: empty-parts
+    kind: edge-case
+    explanation: "Пустые части не пропускаются. В корне склейка даёт «//src», а двойные и конечные косые черты оставляют пустые имена в результате: получается //src или /home/anna/ вместо /src и /home/anna."

@@ -1,0 +1,22 @@
+order: 4
+title: "Фильтр списка заказов в кабинете оператора"
+type: implement
+role: main
+difficulty: 3
+minutes: 15
+language: js
+tags: [filter, строки, toLowerCase, includes, условия]
+hints:
+  - "Направление: один filter, внутри которого проверяются все условия. Если условие фильтра не задано, оно не должно отсеивать заказы."
+  - "Шаг: для каждого условия напишите проверку вида «условие не задано или заказ ему подходит». Объедините проверки через &&. Для поиска по имени приведите обе строки к нижнему регистру."
+  - "Почти решение: const matchesStatus = filters.status === undefined || order.status === filters.status; аналогично для minTotal (>=) и для query (includes после toLowerCase)."
+wrong:
+  - name: ignores-query
+    kind: partial
+    explanation: "Поддержаны status и minTotal, а поиск по имени клиента не учитывается. Поле query в фильтре ничего не делает."
+  - name: strict-greater
+    kind: edge-case
+    explanation: "Для суммы использовано строго больше. Заказ ровно на 1000 при фильтре «от 1000» пропадает, хотя граница включена."
+  - name: case-sensitive
+    kind: common-mistake
+    explanation: "Имя клиента сравнивается без приведения к одному регистру. Запрос «ирина» не находит клиента «Ирина», а оператор вводит имя как придётся."

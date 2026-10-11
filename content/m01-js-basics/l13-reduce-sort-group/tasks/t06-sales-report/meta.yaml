@@ -1,0 +1,22 @@
+order: 6
+title: "Сводка заказов для руководителя"
+type: implement
+role: real
+difficulty: 4
+minutes: 25
+language: js
+tags: [reduce, sort, группировка, filter, slice]
+hints:
+  - "Направление: три независимые части. Группировка по статусам — это reduce с объектом. Выручка — это reduce с числом по оплаченным заказам. Топ — это сортировка копии оплаченных заказов и первые limit штук."
+  - "Шаг: для группировки заведите в reduce для каждого нового статуса объект { count: 0, total: 0 } и увеличивайте его поля. Для топа сначала сравните b.total - a.total, а если ноль, то a.id.localeCompare(b.id). Первые limit элементов даёт slice(0, limit)."
+  - "Почти решение: const paid = orders.filter(...); const top = paid.toSorted(compare).slice(0, limit).map((order) => order.id); а revenue считайте reduce((sum, order) => sum + order.total, 0)."
+wrong:
+  - name: no-tiebreak
+    kind: partial
+    explanation: "Топ сортируется только по сумме. Заказы с одинаковой суммой остаются в порядке исходного списка, а не по номеру, и итог зависит от порядка заказов в выгрузке."
+  - name: no-initial-value
+    kind: edge-case
+    explanation: "Выручка считается через reduce без начального значения. Если оплаченных заказов нет, получается TypeError: Reduce of empty array with no initial value."
+  - name: sorts-input
+    kind: common-mistake
+    explanation: "Заказы сортируются на месте через sort и только потом фильтруются. Результат верный, но переданный список заказов оказывается переставленным."

@@ -1,0 +1,22 @@
+order: 3
+title: "Баг: три функции падают с ошибками"
+type: fix-bug
+role: warmup
+difficulty: 2
+minutes: 10
+language: js
+tags: [const, let, TDZ, ReferenceError, TypeError]
+hints:
+  - "Направление: прочитайте каждое сообщение об ошибке. Одно говорит про const, второе про порядок строк, третье про имя."
+  - "Шаг: в stockAfterSale значение меняется, значит, нужен let. В priceWithVat переменную vat используют раньше, чем объявили. В shippingLabel имя переменной написано по-разному."
+  - "Почти решение: let left = stock; ... В priceWithVat сначала объявите vat, потом считайте сумму, и не забудьте Number(price), чтобы строка не склеилась. В shippingLabel возвращайте label."
+wrong:
+  - name: fixed-first-only
+    kind: partial
+    explanation: "Исправлена только stockAfterSale. Остальные две функции по-прежнему падают с ReferenceError."
+  - name: declared-but-empty
+    kind: common-mistake
+    explanation: "Переменная vat объявлена выше через let, но значение присвоено после расчёта суммы. В момент сложения в vat лежит undefined, и сумма даёт NaN. Нужно не просто объявить имя, а положить в него значение до использования."
+  - name: no-number
+    kind: edge-case
+    explanation: "Все три ошибки исправлены, но цена не превращается в число. Для строки \"250\" плюс склеивает значения и даёт \"25050\" вместо 300."

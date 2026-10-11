@@ -1,0 +1,22 @@
+order: 1
+title: "Корзина: суммы и сортировка цен"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 8
+language: js
+tags: [reduce, sort, начальное значение, компаратор]
+hints:
+  - "Направление: две суммы — это свёртка списка в число, то есть reduce. Сортировка цен — sort с компаратором, но на копии."
+  - "Шаг: reduce((sum, price) => sum + price, 0). Для корзины прибавляйте price * quantity. Для сортировки сделайте копию и передайте sort функцию (a, b) => a - b."
+  - "Почти решение: return prices.toSorted((a, b) => a - b); Начальное значение 0 обязательно, иначе пустой список упадёт."
+wrong:
+  - name: unfinished
+    kind: partial
+    explanation: "Написаны только sumPrices и cartTotal. Функция sortPricesAscending не заполнена и возвращает undefined."
+  - name: no-initial-value
+    kind: edge-case
+    explanation: "В sumPrices нет начального значения. Для непустого списка чисел это работает, но пустой список даёт TypeError: Reduce of empty array with no initial value."
+  - name: default-sort
+    kind: common-mistake
+    explanation: "Сортировка без компаратора сравнивает числа как строки: [900, 1200, 300] превращается в [1200, 300, 900], потому что строка \"1200\" меньше строки \"300\". Нужен компаратор (a, b) => a - b."

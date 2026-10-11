@@ -1,0 +1,22 @@
+order: 2
+title: "Подпись со всеми номерами мест"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 6
+language: js
+tags: [for, строки, счётчик]
+hints:
+  - "Направление: заведите строку-накопитель и счётчик от 1 до count. На каждой итерации добавляйте номер к строке."
+  - "Шаг: пробел нужен только между номерами. Добавьте пробел перед номером, если строка уже не пустая."
+  - "Почти решение: let line = \"\"; for (let seat = 1; seat <= count; seat++) { if (line !== \"\") { line += \" \"; } line += seat; } return line;"
+wrong:
+  - name: no-separator
+    kind: partial
+    explanation: "Номера склеены без пробелов: получается \"1234\". Функция проходит весь цикл, но разделитель не добавляется."
+  - name: runs-once-for-zero
+    kind: edge-case
+    explanation: "При count равном 0 функция возвращает \"1\": цикл организован так, что тело выполняется хотя бы один раз. Условие должно проверяться до первой итерации."
+  - name: off-by-one
+    kind: common-mistake
+    explanation: "В условии стоит seat < count вместо seat <= count, и последнее место теряется: для 4 мест получится \"1 2 3\"."

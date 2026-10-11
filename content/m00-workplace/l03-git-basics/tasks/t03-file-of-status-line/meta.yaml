@@ -1,0 +1,22 @@
+order: 3
+title: "Имя файла из строки git status"
+type: implement
+role: warmup
+difficulty: 2
+minutes: 10
+language: js
+tags: [git status, строки, slice, startsWith, endsWith]
+hints:
+  - "Направление: строка формата git status --short: два символа кода, пробел, имя. Имя начинается с четвёртого символа, то есть с индекса 3."
+  - "Шаг: line.slice(3) возвращает всё, начиная с индекса 3. Если имя содержит пробел, Git берёт его в двойные кавычки. Кавычки нужно убрать с обоих краёв: slice(1, -1)."
+  - "Почти решение: let name = line.slice(3); if (name.startsWith('\"') && name.endsWith('\"')) { name = name.slice(1, -1); } return name;"
+wrong:
+  - name: slice-two
+    kind: common-mistake
+    explanation: "slice(2) оставляет в начале имени пробел-разделитель: получается \" src/cart.js\" вместо \"src/cart.js\". Код занимает два символа, а имя начинается после пробела, с индекса 3."
+  - name: split-by-space
+    kind: partial
+    explanation: "Строка режется по пробелам, берётся элемент с индексом 2. Это работает для кодов из двух символов с пробелом внутри, например \"A  file\", но ломается на коде из двух непробельных символов: у \"?? notes.txt\" третьего элемента нет."
+  - name: keeps-quotes
+    kind: edge-case
+    explanation: "Имя возвращается как есть. Для файла с пробелом в имени Git печатает его в кавычках, и функция вернёт имя вместе с кавычками, которых в реальном имени файла нет."

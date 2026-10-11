@@ -1,0 +1,22 @@
+order: 4
+title: "Сводка: сколько заказов в каждом статусе"
+type: implement
+role: main
+difficulty: 3
+minutes: 15
+language: js
+tags: [объекты, массивы объектов, счётчик, квадратные скобки]
+hints:
+  - "Направление: нужен объект-счётчик. Ключ — статус, значение — сколько раз он встретился. Имя ключа лежит в переменной, поэтому точка не подходит."
+  - "Шаг: обойдите заказы через for...of. Для каждого возьмите status, а в счётчик запишите counts[status] = (counts[status] ?? 0) + 1. Если у заказа нет status, используйте ключ \"unknown\"."
+  - "Почти решение: const status = order.status ?? \"unknown\"; counts[status] = (counts[status] ?? 0) + 1;"
+wrong:
+  - name: dot-instead-of-brackets
+    kind: common-mistake
+    explanation: "Запись counts.status создаёт поле с буквальным именем status, а не поле с названием из переменной. В результате вместо счётчика по статусам получается один ключ status."
+  - name: known-statuses-only
+    kind: partial
+    explanation: "Считаются только три известных статуса. Заказы со статусом cancelled или refunded теряются, хотя по условию должны попасть в сводку."
+  - name: undefined-key
+    kind: edge-case
+    explanation: "Заказ без поля status даёт ключ с названием undefined вместо unknown. Сводка получается с непонятным ключом."

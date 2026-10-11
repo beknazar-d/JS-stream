@@ -1,0 +1,22 @@
+order: 6
+title: "Счёт для юридического лица в копейках"
+type: implement
+role: real
+difficulty: 3
+minutes: 25
+language: js
+tags: [const, let, Number, деньги, округление, преобразование типов]
+hints:
+  - "Направление: расчёт состоит из четырёх шагов. Для каждого заведите свою переменную через const, потому что значения шагов потом не меняются."
+  - "Шаг: priceKopecks = Math.round(Number(price) * 100); netAmount = priceKopecks * Number(quantity); vat = Math.round((netAmount * vatPercent) / 100)."
+  - "Почти решение: верните netAmount + vat + shippingKopecks."
+wrong:
+  - name: no-shipping
+    kind: partial
+    explanation: "Доставка не прибавляется к итогу. Счёт получается заниженным на стоимость доставки."
+  - name: no-rounding
+    kind: common-mistake
+    explanation: "Цена переводится в копейки умножением без округления: 19.99 * 100 даёт 1998.9999999999998. Итог получается дробным числом, а бухгалтерия принимает только целые копейки."
+  - name: vat-per-unit
+    kind: edge-case
+    explanation: "НДС считается и округляется для одной штуки, а потом умножается на количество. Для 10,10 рубля, трёх штук и ставки 5 процентов получается 153 копейки вместо 152, потому что ошибка округления умножается."

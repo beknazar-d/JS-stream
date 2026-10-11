@@ -1,0 +1,22 @@
+order: 6
+title: "Выплата продавцу маркетплейса"
+type: implement
+role: real
+difficulty: 3
+minutes: 25
+language: js
+tags: [операторы, "??", "&&", "!", деньги, округление, граничные случаи]
+hints:
+  - "Направление: сначала определите значения комиссии и премии с подстановкой по умолчанию. Потом посчитайте комиссию в копейках и итог. Для canPayOut соберите три условия через &&."
+  - "Шаг: const percent = commissionPercent ?? 10; const bonus = bonusKopecks ?? 0; const commission = Math.round((saleKopecks * percent) / 100). В canPayOut нужны сравнение с порогом и отрицания для выходного и блокировки."
+  - "Почти решение: return saleKopecks - commission + bonus; и return payoutKopecks >= 100000 && !isWeekend && !isBlocked;"
+wrong:
+  - name: unfinished-can-pay-out
+    kind: partial
+    explanation: "sellerPayout готова, а canPayOut осталась пустой и возвращает undefined. Задача не закрыта, пока не работают обе функции."
+  - name: or-default
+    kind: common-mistake
+    explanation: "Для комиссии по умолчанию использован ||. Он принимает 0 за «значения нет» и подставляет 10, поэтому партнёры без комиссии платят 10 процентов."
+  - name: no-bonus-default
+    kind: edge-case
+    explanation: "Премия прибавляется как есть. Если она не передана, в вычислении оказывается undefined, и выплата превращается в NaN. Для отсутствующей премии нужен ноль."

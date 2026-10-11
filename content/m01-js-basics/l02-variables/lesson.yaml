@@ -1,0 +1,3 @@
+order: 2
+title: "Переменные: let и const"
+summary: Как хранить значение под именем, чем let отличается от const, как называть переменные и что значат ошибки «Assignment to constant variable» и «Cannot access before initialization».

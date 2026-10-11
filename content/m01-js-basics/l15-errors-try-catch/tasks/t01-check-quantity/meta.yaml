@@ -1,0 +1,22 @@
+order: 1
+title: Проверка количества в корзине
+type: recall
+role: warmup
+difficulty: 1
+minutes: 8
+language: js
+tags: [throw, try/catch, Error, проверка входа, NaN]
+hints:
+  - "Направление: проверка и обработка — две разные функции. Первая останавливает работу командой throw, вторая ловит остановку конструкцией try/catch."
+  - "Шаг: в checkQuantity проверьте условие через Number.isInteger и знак, и если оно не выполнено, напишите throw new Error(...) с нужным текстом. В tryQuantity вызов checkQuantity положите в блок try, а в catch достаньте error.message."
+  - "Почти решение: try { return { ok: true, value: checkQuantity(Number(text)) }; } catch (error) { return { ok: false, error: error.message }; }"
+wrong:
+  - name: returns-false
+    kind: common-mistake
+    explanation: "Функция возвращает false вместо выбрасывания ошибки. Вызывающий код легко забывает проверить такой результат, а ошибка не проходит мимо: throw нельзя проигнорировать. Тест ждёт именно ошибку."
+  - name: unfinished
+    kind: partial
+    explanation: "Написана только checkQuantity, а tryQuantity не вернула объект. Нужны обе функции."
+  - name: allows-fraction
+    kind: edge-case
+    explanation: "Проверяется только знак (больше нуля), поэтому 1.5 проходит. Дробное количество штук недопустимо, нужна проверка Number.isInteger."

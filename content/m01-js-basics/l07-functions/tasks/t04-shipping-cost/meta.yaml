@@ -1,0 +1,22 @@
+order: 4
+title: "Единая формула доставки"
+type: implement
+role: main
+difficulty: 3
+minutes: 20
+language: js
+tags: [функции, параметры, значения по умолчанию, return, чистые функции]
+hints:
+  - "Направление: сначала проверьте входные данные и верните null для неподходящих. Потом считайте стоимость по шагам: база, доплата за вес, доплата за расстояние, экспресс."
+  - "Шаг: доплата за вес равна (weightKg - 3) * 40, но только если вес больше 3. Доплата за расстояние 300, только если расстояние строго больше 100. Экспресс умножает итог на 2. Следите, чтобы return был на всех путях."
+  - "Почти решение: проверки (Number.isInteger(weightKg), weightKg >= 1, typeof distanceKm === \"number\", distanceKm >= 0); let cost = 200; if (weightKg > 3) { cost += (weightKg - 3) * 40; } if (distanceKm > 100) { cost += 300; } if (express) { cost = cost * 2; } return cost;"
+wrong:
+  - name: ignores-express
+    kind: partial
+    explanation: "Функция считает базу, вес и расстояние, но параметра express не знает. Экспресс-заказ стоит как обычный: вместо 400 получается 200."
+  - name: inclusive-boundary
+    kind: edge-case
+    explanation: "Для расстояния написан знак больше или равно. Ровно 100 км уже получают доплату 300 рублей, хотя по тарифу эта граница входит в базу. Вместо 200 получается 500."
+  - name: return-only-in-if
+    kind: common-mistake
+    explanation: "return стоит только внутри блока if для экспресса. Для обычной доставки выполнение доходит до конца функции без return, и результат undefined."

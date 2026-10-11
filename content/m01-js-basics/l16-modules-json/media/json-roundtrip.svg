@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="16" fill="currentColor">
+  <title id="t">Путь данных через JSON</title>
+  <desc id="d">Объект в памяти превращается функцией stringify в строку JSON, а функцией parse из строки получается новый объект. Внизу перечислено, что теряется по дороге: undefined и функции пропадают, NaN становится null, дата становится строкой.</desc>
+
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="16" y="40" width="170" height="80" rx="10"/>
+    <rect x="235" y="40" width="170" height="80" rx="10" stroke-dasharray="6 4"/>
+    <rect x="454" y="40" width="170" height="80" rx="10"/>
+    <path d="M186 80 H235 M405 80 H454"/>
+    <path d="M227 74 L235 80 L227 86 M446 74 L454 80 L446 86"/>
+    <rect x="16" y="170" width="608" height="110" rx="10" opacity="0.7"/>
+  </g>
+
+  <g text-anchor="middle">
+    <text x="101" y="76" font-weight="700">объект</text>
+    <text x="101" y="98" font-size="13" opacity="0.8">в памяти</text>
+    <text x="320" y="76" font-weight="700">строка JSON</text>
+    <text x="320" y="98" font-size="13" opacity="0.8">текст, можно хранить</text>
+    <text x="539" y="76" font-weight="700">новый объект</text>
+    <text x="539" y="98" font-size="13" opacity="0.8">копия, не оригинал</text>
+    <text x="210" y="62" font-size="13" font-family="ui-monospace, monospace">stringify</text>
+    <text x="430" y="62" font-size="13" font-family="ui-monospace, monospace">parse</text>
+  </g>
+
+  <g>
+    <text x="36" y="200" font-weight="700">Что теряется по дороге</text>
+    <text x="36" y="224" font-size="14">undefined и функции: свойство пропадает</text>
+    <text x="36" y="246" font-size="14">NaN и Infinity: становятся null</text>
+    <text x="36" y="268" font-size="14">Date: становится строкой, обратно датой не вернётся</text>
+  </g>
+</svg>

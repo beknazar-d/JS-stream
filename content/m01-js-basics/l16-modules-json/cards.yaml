@@ -1,0 +1,32 @@
+- id: export-named
+  front: Как отдать функцию formatPrice из файла по имени?
+  back: "export function formatPrice(rub) { ... }  — подключают так: import { formatPrice } from './money.js';"
+  answer: export
+- id: export-default
+  front: Как отдать главное значение файла по умолчанию и как его подключить?
+  back: "export default function discountFor(qty) { ... }  — import discountFor from './discount.js'; Скобок нет, имя можно выбрать любое. В файле один default."
+  answer: export default
+- id: import-path
+  front: Что должно быть в пути соседнего файла при import?
+  back: "Точка с косой чертой и расширение: './money.js'. Без ./ это будет пакет, без .js Node.js не найдёт файл."
+- id: import-alias
+  front: Как подключить именованный экспорт под другим именем?
+  back: "import { formatPrice as fp } from './money.js';"
+  answer: as
+- id: json-stringify
+  front: Как превратить объект в строку JSON?
+  back: "JSON.stringify(order). Для читаемого вида с отступом: JSON.stringify(order, null, 2)"
+  answer: JSON.stringify
+- id: json-parse
+  front: Как превратить строку JSON в объект?
+  back: "JSON.parse(text). Если текст не JSON, бросает SyntaxError — оборачивайте в try/catch."
+  answer: JSON.parse
+- id: json-lost
+  front: Что теряется при JSON.stringify?
+  back: "Свойства с undefined и функции пропадают, undefined в массиве и NaN становятся null, дата становится строкой ISO. Обратно дата датой не вернётся: new Date(text)."
+- id: json-quotes
+  front: Какие кавычки допустимы в JSON и что нельзя?
+  back: "Ключи и строки только в двойных кавычках. Нельзя одинарные кавычки, комментарии и запятую после последнего элемента."
+- id: json-copy
+  front: Чем JSON.parse(JSON.stringify(x)) отличается от spread-копии?
+  back: "Копирует все уровни вложенности, но теряет даты, undefined и функции. Это не универсальный способ копирования."

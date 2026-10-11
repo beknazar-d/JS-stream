@@ -1,0 +1,33 @@
+- id: for-parts
+  front: Из каких трёх частей состоит заголовок for?
+  back: "for (начало; условие; шаг). Например: for (let i = 0; i < 5; i++)."
+- id: for-order
+  front: В каком порядке for выполняет части?
+  back: "Начало (один раз) → проверка условия → тело → шаг → снова проверка. Когда условие ложно, цикл заканчивается."
+- id: while-use
+  front: Когда удобнее while, чем for?
+  back: "Когда число повторений заранее неизвестно: пока остаток больше нуля, пока не выдали нужное число мест."
+- id: do-while
+  front: Чем do...while отличается от while?
+  back: "Условие проверяется после тела, поэтому тело выполняется хотя бы один раз."
+- id: break
+  front: Что делает break в цикле?
+  back: "Сразу выходит из цикла целиком."
+  answer: break
+- id: continue
+  front: Что делает continue в цикле?
+  back: "Пропускает остаток тела и переходит к следующей итерации (в for — сначала к шагу)."
+  answer: continue
+- id: string-loop
+  front: Как записать цикл по всем символам строки text?
+  back: "for (let i = 0; i < text.length; i++) { const char = text[i]; }"
+- id: string-index
+  front: Какой индекс у последнего символа строки?
+  back: "text.length - 1. Индексы идут с нуля, поэтому text[text.length] даёт undefined."
+  answer: "text.length - 1"
+- id: infinite-loop
+  front: Что такое бесконечный цикл и как его заметить?
+  back: "Условие никогда не становится ложным, обычно забыли шаг. Проверьте: меняется ли в теле то, что стоит в условии, и в нужную ли сторону."
+- id: const-counter
+  front: Почему счётчик цикла for объявляют через let, а не const?
+  back: "Шаг i++ меняет значение. Для const будет TypeError: Assignment to constant variable."

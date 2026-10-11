@@ -1,0 +1,22 @@
+order: 4
+title: "Рейтинг товаров по продажам"
+type: implement
+role: main
+difficulty: 3
+minutes: 15
+language: js
+tags: [sort, toSorted, компаратор, localeCompare]
+hints:
+  - "Направление: сортировка по двум признакам. Сначала по продажам от большего к меньшему. Если продажи равны, решает название по алфавиту."
+  - "Шаг: в компараторе посчитайте разницу продаж b.sold - a.sold. Если она не ноль, верните её. Иначе верните a.name.localeCompare(b.name, \"ru\"). Сортируйте копию."
+  - "Почти решение: products.toSorted((a, b) => { const bySold = b.sold - a.sold; return bySold !== 0 ? bySold : a.name.localeCompare(b.name, \"ru\"); });"
+wrong:
+  - name: no-tiebreak
+    kind: partial
+    explanation: "Сортировка идёт только по продажам. Товары с одинаковыми продажами остаются в исходном порядке, а не по алфавиту."
+  - name: ascending
+    kind: common-mistake
+    explanation: "Разница a.sold - b.sold даёт порядок по возрастанию. В рейтинге лидер должен быть первым, поэтому нужна разница b.sold - a.sold."
+  - name: sorts-in-place
+    kind: edge-case
+    explanation: "Результат верный, но сортируется сам переданный массив. Каталог на витрине после построения рейтинга оказывается переставленным."

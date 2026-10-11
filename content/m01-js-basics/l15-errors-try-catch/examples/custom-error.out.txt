@@ -1,0 +1,6 @@
+ValidationError
+Не указан артикул
+ValidationError: Не указан артикул
+true
+true
+баг в коде: TypeError

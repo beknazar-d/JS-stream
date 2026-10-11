@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 370" width="640" height="370" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="16" fill="currentColor">
+  <title id="t">Как работает цикл for</title>
+  <desc id="d">Сначала один раз выполняется начало: let month = 1. Затем проверяется условие month &lt;= 4. Если оно истинно, выполняется тело цикла, потом шаг month++ и снова проверка условия. Если условие ложно, цикл заканчивается.</desc>
+
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="220" y="16" width="200" height="44" rx="8"/>
+    <path d="M320 100 L420 140 L320 180 L220 140 Z"/>
+    <rect x="220" y="220" width="200" height="44" rx="8"/>
+    <rect x="220" y="304" width="200" height="44" rx="8"/>
+    <rect x="490" y="118" width="130" height="44" rx="8" stroke-dasharray="6 4"/>
+    <path d="M320 60 V100"/>
+    <path d="M320 180 V220"/>
+    <path d="M320 264 V304"/>
+    <path d="M220 326 H90 V140 H220"/>
+    <path d="M420 140 H490"/>
+  </g>
+  <g fill="currentColor">
+    <path d="M314 92 L320 100 L326 92 Z"/>
+    <path d="M314 212 L320 220 L326 212 Z"/>
+    <path d="M314 296 L320 304 L326 296 Z"/>
+    <path d="M212 134 L220 140 L212 146 Z"/>
+    <path d="M482 134 L490 140 L482 146 Z"/>
+  </g>
+
+  <g text-anchor="middle" font-family="ui-monospace, monospace">
+    <text x="320" y="44">let month = 1</text>
+    <text x="320" y="146">month &lt;= 4 ?</text>
+    <text x="320" y="248">тело цикла</text>
+    <text x="320" y="332">month++</text>
+  </g>
+  <g text-anchor="middle">
+    <text x="555" y="145">выход</text>
+  </g>
+  <g font-size="14">
+    <text x="332" y="205">да</text>
+    <text x="440" y="130">нет</text>
+    <text x="436" y="42" opacity="0.8">1. начало, один раз</text>
+    <text x="436" y="246" opacity="0.8">2. тело</text>
+    <text x="436" y="330" opacity="0.8">3. шаг</text>
+    <text x="102" y="236" opacity="0.8">4. снова</text>
+    <text x="102" y="254" opacity="0.8">проверка</text>
+  </g>
+</svg>

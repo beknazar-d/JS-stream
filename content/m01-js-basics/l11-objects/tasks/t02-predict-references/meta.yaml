@@ -1,0 +1,23 @@
+order: 2
+title: "Что выведет код с общим заказом"
+type: predict
+role: warmup
+difficulty: 2
+minutes: 8
+language: js
+tags: [объекты, ссылки, ===, Object.keys, Object.hasOwn]
+show: [tests/snippet.js]
+hints:
+  - "Направление: после каждой строки держите в голове, сколько объектов существует. Присваивание объекта переменной создаёт новый объект или новое имя для старого?"
+  - "Шаг: second и first — одно имя для одного объекта, а copy собран заново и от них не зависит. Оператор === для объектов сравнивает ссылки. Поле, которого нет, даёт undefined."
+  - "Почти решение: первая строка paid, вторая true, третья false. Четвёртая строка тоже paid: copy не влияет на first. Последние три строки: [\"id\", \"status\"], undefined, false."
+wrong:
+  - name: first-half
+    kind: partial
+    explanation: "Верны только первые три строки, остальные не заполнены. Предсказать нужно каждый вызов console.log."
+  - name: assignment-copies
+    kind: common-mistake
+    explanation: "Ответ считает, что second — копия first. Но присваивание копирует ссылку: после изменения статуса через second в first тоже paid, а first === second даёт true."
+  - name: equal-by-content
+    kind: edge-case
+    explanation: "Ответ считает, что два объекта с одинаковыми полями равны через ===. Оператор сравнивает ссылки, а литералы создают два разных объекта, поэтому результат false."

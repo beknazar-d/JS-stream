@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="16" fill="currentColor">
+  <title id="t">Как reduce считает сумму цен 1200, 300, 4500</title>
+  <desc id="d">Начальное значение итога 0. Шаг 1: к 0 прибавляется 1200, итог 1200. Шаг 2: к 1200 прибавляется 300, итог 1500. Шаг 3: к 1500 прибавляется 4500, итог 6000. Итог последнего шага — результат reduce.</desc>
+
+  <text x="40" y="30" font-weight="700" font-family="ui-monospace, monospace">[1200, 300, 4500].reduce((acc, price) =&gt; acc + price, 0)</text>
+
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="30" y="70" width="110" height="60" rx="8" stroke-dasharray="6 4"/>
+    <rect x="190" y="70" width="110" height="60" rx="8"/>
+    <rect x="350" y="70" width="110" height="60" rx="8"/>
+    <rect x="510" y="70" width="110" height="60" rx="8" stroke-width="3"/>
+    <path d="M140 100 H190 M300 100 H350 M460 100 H510"/>
+    <path d="M182 94 L190 100 L182 106 M342 94 L350 100 L342 106 M502 94 L510 100 L502 106"/>
+  </g>
+
+  <g text-anchor="middle">
+    <text x="85" y="96" font-size="13">начало</text>
+    <text x="85" y="118" font-family="ui-monospace, monospace" font-size="18">acc = 0</text>
+
+    <text x="245" y="96" font-size="13">шаг 1: + 1200</text>
+    <text x="245" y="118" font-family="ui-monospace, monospace" font-size="18">acc = 1200</text>
+
+    <text x="405" y="96" font-size="13">шаг 2: + 300</text>
+    <text x="405" y="118" font-family="ui-monospace, monospace" font-size="18">acc = 1500</text>
+
+    <text x="565" y="96" font-size="13">шаг 3: + 4500</text>
+    <text x="565" y="118" font-family="ui-monospace, monospace" font-size="18">acc = 6000</text>
+
+    <text x="565" y="156" font-size="14" font-weight="700">результат</text>
+  </g>
+
+  <g font-size="14">
+    <text x="30" y="200">Колбэк получает два значения: промежуточный итог acc и очередной элемент.</text>
+    <text x="30" y="224">Что колбэк вернул, то и станет acc на следующем шаге.</text>
+    <text x="30" y="248">Второй аргумент reduce (здесь 0) — значение acc до первого шага.</text>
+    <text x="30" y="272">Без него acc взял бы первый элемент, а на пустом массиве была бы ошибка.</text>
+  </g>
+</svg>

@@ -1,0 +1,22 @@
+order: 3
+title: "Баг: после предпросмотра скидки заказ стал дешевле"
+type: fix-bug
+role: warmup
+difficulty: 2
+minutes: 10
+language: js
+tags: [объекты, ссылки, копирование, баг]
+hints:
+  - "Направление: посмотрите на первую строку функции. Создаёт ли const discounted = order новый объект?"
+  - "Шаг: соберите новый объект с теми же полями: id, status, total, customer. Новую сумму запишите только в него."
+  - "Почти решение: return { id: order.id, status: order.status, total: Math.round(order.total * (100 - percent) / 100), customer: order.customer };"
+wrong:
+  - name: lost-fields
+    kind: partial
+    explanation: "Новый объект собран, но в нём только id и total. Статус и клиент потерялись, а по условию должны остаться."
+  - name: zero-same-object
+    kind: edge-case
+    explanation: "При скидке 0% функция возвращает сам заказ. Это снова тот же объект: если вызывающий код поменяет результат, изменится и оригинал. Копия нужна всегда."
+  - name: discount-amount
+    kind: common-mistake
+    explanation: "Вместо итоговой суммы считается размер скидки: total * percent / 100. Для 10% от 1000 получается 100, а должно быть 900."

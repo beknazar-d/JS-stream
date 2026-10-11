@@ -1,0 +1,3 @@
+["A-101", "A-102", "A-103", "A-104"]
+[{ id: "A-101", status: "paid", total: 4500 }, { id: "A-103", status: "paid", total: 1200 }]
+4

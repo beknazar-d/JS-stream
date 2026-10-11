@@ -1,0 +1,22 @@
+order: 4
+title: "Партии заказов для тележек сборщиков"
+type: implement
+role: main
+difficulty: 3
+minutes: 15
+language: js
+tags: [массивы, slice, for, мутация]
+hints:
+  - "Направление: нужен цикл, который идёт по очереди шагами размера size, и на каждом шаге берёт кусок. Какой из двух методов, slice или splice, оставит очередь целой?"
+  - "Шаг: цикл for с переменной start, которая растёт на size: start += size. На каждом шаге orders.slice(start, start + size) кладите в результат через push."
+  - "Почти решение: for (let start = 0; start < orders.length; start += size) { batches.push(orders.slice(start, start + size)); }"
+wrong:
+  - name: drops-tail
+    kind: partial
+    explanation: "Условие start + size <= orders.length пропускает последнюю неполную партию. Из семи заказов при размере три получатся только две партии из шести заказов, а седьмой потеряется."
+  - name: empty-batch
+    kind: edge-case
+    explanation: "Условие start <= orders.length делает лишний шаг. Если заказы делятся на партии без остатка, в конце появляется пустая партия, а пустая очередь даёт [[]] вместо []."
+  - name: mutates-input
+    kind: common-mistake
+    explanation: "Партии режутся через splice прямо из переданной очереди. Результат правильный, но сама очередь заказов опустела. Другие части системы читают тот же массив."

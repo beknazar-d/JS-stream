@@ -1,0 +1,22 @@
+order: 1
+title: "Настройки магазина в одном месте"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 5
+language: js
+tags: [const, имена, camelCase, типы]
+hints:
+  - "Направление: каждая настройка — это одна строка с ключевым словом export, затем const, затем имя, знак равно и значение."
+  - "Шаг: строка записывается в кавычках, число пишется без кавычек. Имена в camelCase: maxItemsPerOrder."
+  - "Почти решение: export const freeShippingFrom = 5000; Остальные три записываются по тому же образцу."
+wrong:
+  - name: only-two
+    kind: partial
+    explanation: "Объявлены только две константы из четырёх. Остальные импортируются как undefined, и тесты на них падают."
+  - name: snake-case
+    kind: common-mistake
+    explanation: "Имена записаны в стиле snake_case (store_name). В JavaScript принят camelCase, и тесты ищут имена storeName, freeShippingFrom и так далее."
+  - name: numbers-in-quotes
+    kind: edge-case
+    explanation: "Числа записаны в кавычках, поэтому это строки. Значение \"5000\" не равно числу 5000, а с такими строками плюс начнёт склеивать, как в прошлом уроке."

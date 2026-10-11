@@ -1,0 +1,22 @@
+order: 5
+title: "Проверка формата кода купона"
+type: implement
+role: main
+difficulty: 3
+minutes: 25
+language: js
+tags: [for, строки, индексы, return, проверка формата]
+hints:
+  - "Направление: сначала отсейте не строки и неверную длину. Потом пройдите по индексам 0–8 и для каждой группы позиций проверьте свой набор допустимых символов."
+  - "Шаг: заведите строки letters со всеми заглавными буквами и digits с цифрами. Для i меньше 4 символ должен быть в letters, для i равного 4 это дефис, для остальных символ должен быть в digits. Как только символ не подошёл, делайте return false."
+  - "Почти решение: for (let i = 0; i < code.length; i++) { const char = code[i]; if (i < 4) { if (!letters.includes(char)) { return false; } } else if (i === 4) { if (char !== \"-\") { return false; } } else if (!digits.includes(char)) { return false; } } return true;"
+wrong:
+  - name: length-and-dash-only
+    kind: partial
+    explanation: "Решение проверяет тип, длину и дефис, но не смотрит на буквы и цифры. Код «sale-2025» и «SALE-20X5» принимаются как верные."
+  - name: no-length-check
+    kind: edge-case
+    explanation: "Цикл идёт по первым девяти символам, а длина не проверяется. Код «SALE-20255» (лишняя цифра в конце) принимается. Для null код падает с TypeError."
+  - name: uppercase-compare
+    kind: common-mistake
+    explanation: "Проверка буквы через char.toUpperCase() === char считает заглавными ещё и цифры, и дефис, потому что они от регистра не меняются. Код «1ALE-2025» принимается, хотя на первой позиции должна быть буква."

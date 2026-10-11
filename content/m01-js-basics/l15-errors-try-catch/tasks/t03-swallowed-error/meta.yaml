@@ -1,0 +1,22 @@
+order: 3
+title: Ошибка резерва потерялась
+type: fix-bug
+role: warmup
+difficulty: 2
+minutes: 10
+language: js
+tags: [throw, try/catch, не глотать ошибки, склад]
+hints:
+  - "Направление: подумайте, кто в этой паре функций знает, что делать с ошибкой: тот, кто резервирует, или тот, кто оформляет заказ."
+  - "Шаг: уберите try/catch из reserve, пусть она просто выбрасывает ошибку. Добавьте try/catch в placeOrder и верните из catch объект с ok: false и текстом ошибки."
+  - "Почти решение: в reserve оставьте if (qty > stock) { throw new Error('...'); } return stock - qty;. В placeOrder: try { return { ok: true, left: reserve(stock, qty) }; } catch (error) { return { ok: false, reason: error.message }; }"
+wrong:
+  - name: only-reserve
+    kind: partial
+    explanation: "Ошибка из reserve теперь выбрасывается, но placeOrder её не ловит. Заказ на 30 штук падает исключением вместо ответа ok: false."
+  - name: returns-error
+    kind: common-mistake
+    explanation: "В reserve написано return new Error(...) вместо throw. Объект ошибки просто возвращается как обычное значение, и placeOrder принимает его за остаток. Ошибка не остановила работу."
+  - name: off-by-one
+    kind: edge-case
+    explanation: "Условие qty >= stock отказывает, когда заказывают ровно весь остаток. Правильная граница: отказ только при qty строго больше остатка."

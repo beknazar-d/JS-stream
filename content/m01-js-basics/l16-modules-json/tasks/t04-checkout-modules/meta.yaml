@@ -1,0 +1,22 @@
+order: 4
+title: Оформление заказа из трёх модулей
+type: implement
+role: main
+difficulty: 3
+minutes: 25
+language: js
+tags: [import, export, модули, склад, скидки, округление]
+hints:
+  - "Направление: начните с маленьких файлов. stock.js и discount.js не знают друг о друге, а index.js подключает оба. Следите, какой экспорт именованный, а какой по умолчанию."
+  - "Шаг: в stock.js используйте оператор нулевого слияния для отсутствующих товаров: stock[sku] ?? 0. В discount.js проверяйте порог от большего к меньшему. В index.js для каждой позиции спросите canReserve, потом посчитайте цену со скидкой."
+  - "Почти решение: total = Math.round(prices[sku] * qty * (1 - discountFor(qty)) * 100) / 100; общий итог суммируйте и тоже округляйте. Импорт: import discountFor from './discount.js'; import { canReserve } from './stock.js';"
+wrong:
+  - name: no-discount
+    kind: partial
+    explanation: "index.js считает сумму без скидки: discount.js написан, но не подключён. Позиция на 5 штук стоит 6000 вместо 5700."
+  - name: wrong-boundary
+    kind: edge-case
+    explanation: "canReserve использует строгое сравнение qty < остатка. Запрос ровно на весь остаток отклоняется, хотя товара хватает."
+  - name: named-discount
+    kind: common-mistake
+    explanation: "discount.js отдаёт discountFor по имени, а не по умолчанию. Импорт по умолчанию в index.js и в других файлах получает не функцию, и вызов падает."

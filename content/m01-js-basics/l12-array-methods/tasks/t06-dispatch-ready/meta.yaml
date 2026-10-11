@@ -1,0 +1,22 @@
+order: 6
+title: "Какие оплаченные заказы можно отгрузить сегодня"
+type: implement
+role: real
+difficulty: 4
+minutes: 25
+language: js
+tags: [filter, map, find, every, цепочки, массивы объектов]
+hints:
+  - "Направление: сначала оставьте оплаченные заказы. Потом для каждого проверьте строки: у каждой строки должен найтись товар на складе с достаточным остатком. Это вопрос «подходят ли все», то есть every, а поиск товара по артикулу — find."
+  - "Шаг: напишите вспомогательную проверку lineIsAvailable(line, stock): найдите товар через find и убедитесь, что он найден и остаток не меньше line.quantity. Для заблокированных заказов собирайте артикулы без остатка через filter и map."
+  - "Почти решение: const item = stock.find((entry) => entry.sku === line.sku); return item !== undefined && item.quantity >= line.quantity; Потом ready = paid.filter((order) => order.lines.every(...))."
+wrong:
+  - name: ignores-status
+    kind: partial
+    explanation: "Проверяются все заказы подряд, а не только оплаченные. Неоплаченный заказ с достаточным остатком попадает в ready, хотя отгружать его нельзя."
+  - name: unknown-sku-crash
+    kind: edge-case
+    explanation: "Результат find используется без проверки. Если артикула нет на складе, find даёт undefined, и чтение quantity падает с TypeError."
+  - name: some-instead-of-every
+    kind: common-mistake
+    explanation: "Заказ считается готовым, если хватает хотя бы одной строки (some). Но заказ можно отгрузить только целиком: должны подходить все строки (every)."

@@ -1,0 +1,36 @@
+- id: git-init
+  front: Какая команда создаёт репозиторий в текущей папке?
+  back: git init (с -b main основная ветка сразу называется main). История хранится в скрытой папке .git.
+  answer: git init
+- id: git-status
+  front: Какая команда показывает, что изменено и что войдёт в коммит?
+  back: "git status. Короткая форма: git status --short."
+  answer: git status
+- id: git-add
+  front: Как положить все изменения текущей папки в индекс?
+  back: "git add . — точка значит «текущая папка целиком». Один файл: git add README.md."
+  answer: git add .
+- id: git-commit
+  front: Как сделать коммит с подписью?
+  back: git commit -m "Добавить README". Без -m Git откроет текстовый редактор.
+  answer: git commit -m
+- id: git-log
+  front: Как посмотреть историю коммитов по одной строке на коммит?
+  back: git log --oneline — от нового коммита к старому.
+  answer: git log --oneline
+- id: status-codes
+  front: Что значат коды M, A, D и ?? в git status --short?
+  back: M изменён, A добавлен, D удалён, ?? новый файл, за которым Git ещё не следит. Первый символ — индекс, второй — рабочая папка.
+- id: status-mm
+  front: Что значит MM перед именем файла?
+  back: Часть изменений уже в индексе (первая M), а после этого файл правили ещё раз (вторая M). В коммит попадёт только версия из индекса.
+- id: gitignore
+  front: Что делает файл .gitignore и что в него записывают?
+  back: "Перечисляет файлы, за которыми Git не следит: node_modules/, .env, *.log. Создавайте его до первого git add ."
+- id: git-push
+  front: Как первый раз отправить ветку main на GitHub?
+  back: git remote add origin адрес, затем git push -u origin main. Дальше достаточно git push.
+  answer: git push -u origin main
+- id: git-identity
+  front: Что делать, если коммит ответил «Author identity unknown»?
+  back: Один раз выполнить git config --global user.name "Ваше имя" и git config --global user.email "почта".

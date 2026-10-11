@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="16" fill="currentColor">
+  <title id="t">Две переменные, один объект, и две переменные, два объекта</title>
+  <desc id="d">Слева переменные original и preview обе указывают на один объект со статусом cancelled. Справа переменные source и copy указывают на два разных объекта: у source статус new, у copy статус cancelled.</desc>
+
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="16" y="16" width="290" height="268" rx="10" opacity="0.7"/>
+    <rect x="334" y="16" width="290" height="268" rx="10" opacity="0.7"/>
+
+    <rect x="36" y="76" width="100" height="40" rx="6"/>
+    <rect x="36" y="176" width="100" height="40" rx="6"/>
+    <rect x="176" y="116" width="110" height="64" rx="8"/>
+    <path d="M136 96 L176 138 M136 196 L176 160"/>
+    <path d="M168 128 L176 138 L164 138 M168 170 L176 160 L164 156"/>
+
+    <rect x="354" y="76" width="90" height="40" rx="6"/>
+    <rect x="354" y="176" width="90" height="40" rx="6"/>
+    <rect x="504" y="60" width="100" height="64" rx="8"/>
+    <rect x="504" y="168" width="100" height="64" rx="8"/>
+    <path d="M444 96 H504 M444 196 H504"/>
+    <path d="M496 90 L504 96 L496 102 M496 190 L504 196 L496 202"/>
+  </g>
+
+  <g text-anchor="middle">
+    <text x="161" y="44" font-weight="700">Присваивание</text>
+    <text x="479" y="44" font-weight="700">Новый объект</text>
+
+    <text x="86" y="102" font-family="ui-monospace, monospace" font-size="14">original</text>
+    <text x="86" y="202" font-family="ui-monospace, monospace" font-size="14">preview</text>
+    <text x="231" y="144" font-size="13">объект</text>
+    <text x="231" y="164" font-family="ui-monospace, monospace" font-size="13">cancelled</text>
+
+    <text x="399" y="102" font-family="ui-monospace, monospace" font-size="14">source</text>
+    <text x="399" y="202" font-family="ui-monospace, monospace" font-size="14">copy</text>
+    <text x="554" y="88" font-size="13">объект 1</text>
+    <text x="554" y="108" font-family="ui-monospace, monospace" font-size="13">new</text>
+    <text x="554" y="196" font-size="13">объект 2</text>
+    <text x="554" y="216" font-family="ui-monospace, monospace" font-size="13">cancelled</text>
+
+    <text x="161" y="262" font-size="14">Меняем через одну переменную, видим через обе</text>
+    <text x="479" y="262" font-size="14">Меняем один, второй остаётся прежним</text>
+  </g>
+</svg>
