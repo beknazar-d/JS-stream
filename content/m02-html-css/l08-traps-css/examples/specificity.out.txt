@@ -1,0 +1,7 @@
+p → 0,0,1
+.price → 0,1,0
+#promo → 1,0,0
+.card .price → 0,2,0
+#app .card.sale → 1,2,0
+.card .price
+#promo

@@ -57,3 +57,19 @@
 | [The Odin Project](https://www.theodinproject.com/), [Exercism: JavaScript track](https://exercism.org/tracks/javascript) | Идея формата «ТЗ, этапы, тесты» для мини-проекта | CC BY-NC-SA 4.0 и MIT (только идея, материалы не использованы) |
 
 Сообщения консоли в разделах «Типичные ошибки», формат вывода `Intl.DateTimeFormat('ru-RU')` и сообщения `JSON.parse` получены запуском в Node.js 22.22.0 (движок V8).
+
+## Модуль 2, уроки 2.5–2.8 «Единицы и типографика», «Flexbox», «Grid», «Разбор ловушек CSS»
+
+Идеи и факты сверялись с MDN (Mozilla Contributors, CC-BY-SA 2.5): CSS values and units, Flexbox, Grid, `flex` shorthand, `auto-fill` и `auto-fit`, Mastering margin collapsing, Understanding z-index, CSS specificity, `overflow-wrap`, `text-overflow`. Тексты, примеры и задания написаны с нуля на своих данных («Домотека»). Порядок фокуса и `order`: WCAG 2.1, критерий 1.3.2 и 2.4.3.
+
+## Модуль 2, уроки 2.9–2.11 «Адаптивная вёрстка», «Переменные CSS и темы», «Переходы и анимации»
+
+Тексты, примеры и задания написаны с нуля, со своими данными. Прямых заимствований нет.
+
+| Источник | Что использовано | Лицензия |
+| --- | --- | --- |
+| [MDN Web Docs: CSS media queries, viewport meta, clamp(), srcset и sizes, custom properties и var(), prefers-color-scheme, transition, @keyframes, prefers-reduced-motion](https://developer.mozilla.org/ru/docs/Web/CSS) | Синтаксис и поведение. Использованы только факты, текст не копировался | CC BY-SA 2.5 (атрибуция «Mozilla Contributors») |
+| [WCAG 2.1: 1.4.3 Contrast, 2.3.3 Animation from Interactions](https://www.w3.org/TR/WCAG21/) | Порог контраста 4.5 : 1 и формула яркости; идея учитывать настройку уменьшения движения | W3C Document License (только факты) |
+| [web.dev: Stick to compositor-only properties](https://web.dev/articles/stick-to-compositor-only-properties-and-manage-layer-count) | Идея, что transform и opacity дёшевы для анимации | CC BY 4.0 (только идея) |
+
+Поведение Chromium (viewport без метатега даёт ширину 980 px, медиазапрос без единицы и var() в условии не срабатывают, var(--gap)px сбрасывает свойство, запасное значение var() принимает запятые) проверено запуском в Chromium через playwright.

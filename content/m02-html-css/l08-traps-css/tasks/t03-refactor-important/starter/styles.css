@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 24px;
+  font-family: system-ui, "Segoe UI", Arial, sans-serif;
+}
+
+#catalog .card {
+  display: inline-block;
+  width: 220px;
+  margin-right: 12px;
+  padding: 16px;
+  border: 1px solid #b8b8c4;
+  border-radius: 8px;
+}
+
+#catalog .card .price {
+  color: #222222;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.price.sale {
+  color: #c0261b !important;
+}
+
+.card .badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #1b5fd1 !important;
+  color: #ffffff !important;
+  font-size: 0.875rem;
+}
+
+#catalog .badge.hit {
+  background: #1b7a3a !important;
+}

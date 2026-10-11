@@ -1,0 +1,22 @@
+order: 5
+title: "Уведомление спряталось под слайдером"
+type: fix-bug
+role: main
+difficulty: 3
+minutes: 15
+language: html
+tags: [z-index, position, fixed, слои]
+hints:
+  - "Направление: посмотрите в DevTools вычисленное значение position у .toast. Вспомните, на каких элементах z-index вообще работает."
+  - "Шаг: у уведомления не хватает позиционирования, поэтому right, bottom и z-index не действуют. Нужно такое значение position, при котором элемент привязан к окну и не уезжает при прокрутке."
+  - "Почти решение: .toast { position: fixed; right: 16px; bottom: 16px; z-index: 100; ... }"
+wrong:
+  - name: position-relative
+    kind: common-mistake
+    explanation: "position: relative включает z-index, и уведомление оказывается над слайдером. Но right и bottom теперь только сдвигают его от прежнего места в потоке, и оно не прижато к правому нижнему углу окна."
+  - name: absolute-corner
+    kind: edge-case
+    explanation: "position: absolute ставит уведомление в угол первого экрана, но оно привязано к странице, а не к окну. При прокрутке уведомление уезжает вместе с контентом."
+  - name: fixed-without-z
+    kind: partial
+    explanation: "Позиция fixed поставила уведомление в угол окна, но z-index убран. Слайдер с z-index: 1 лежит выше слоя без значения, и уведомление остаётся под ним."

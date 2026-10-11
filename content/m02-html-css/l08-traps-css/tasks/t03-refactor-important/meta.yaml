@@ -1,0 +1,22 @@
+order: 3
+title: "Конец войны важностей"
+type: refactor
+role: warmup
+difficulty: 3
+minutes: 15
+language: html
+tags: [специфичность, important, каскад, рефакторинг]
+hints:
+  - "Направление: причина !important в том, что исходные правила слишком тяжёлые. Идентификатор #catalog тянет вес вверх. Начните с него."
+  - "Шаг: уберите #catalog из всех селекторов, оставьте классы. Теперь вес базовых правил 0,1,0, а правил-исключений .price.sale и .badge.hit 0,2,0: они побеждают без !important."
+  - "Почти решение: .card { ... } .price { ... } .price.sale { color: #c0261b; } .badge { ... } .badge.hit { background: #1b7a3a; }"
+wrong:
+  - name: keep-one-important
+    kind: partial
+    explanation: "Большинство !important убрано, но у цены со скидкой он остался. Задача — убрать их все, а не часть: следующий разработчик снова столкнётся с войной важностей."
+  - name: id-stays
+    kind: common-mistake
+    explanation: "!important убраны, но селекторы с #catalog остались, а исключения для них записаны ещё тяжелее: #catalog .price.sale. Идентификатор делает правила неподъёмными. Нужны лёгкие классы."
+  - name: order-flip
+    kind: edge-case
+    explanation: "Исключение записано как .sale (вес 0,1,0) и стоит выше .price (0,1,0). При равном весе побеждает правило ниже по тексту, и скидочная цена снова серая. Чтобы не зависеть от порядка, исключение должно быть тяжелее: .price.sale."

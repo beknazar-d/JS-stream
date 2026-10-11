@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 24px;
+  font-family: system-ui, "Segoe UI", Arial, sans-serif;
+}
+
+.orders {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.order {
+  width: 280px;
+  margin-bottom: 12px;
+  padding: 12px 16px;
+  border: 1px solid #b8b8c4;
+  border-radius: 8px;
+}
+
+.order p {
+  margin: 0;
+}
+
+.sum {
+  font-weight: 700;
+}
+
+.order-title {
+  /* название заказа должно занимать одну строку */
+}
