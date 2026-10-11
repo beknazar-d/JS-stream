@@ -1,0 +1,36 @@
+- id: typeof-null
+  front: Что вернёт typeof null?
+  back: '"object" — историческая особенность языка. null не объект, а «намеренно пусто».'
+  answer: object
+- id: typeof-nan
+  front: Что вернёт typeof NaN?
+  back: '"number". NaN — это «не число», но по типу всё равно number.'
+  answer: number
+- id: plus-with-string
+  front: Что получится из "2" + 1?
+  back: '"21" (строка). Плюс склеивает, если одна из сторон — строка.'
+  answer: "21"
+- id: star-with-string
+  front: Что получится из "2" * 3?
+  back: "6 (число). Умножение, вычитание и деление всегда работают с числами."
+  answer: "6"
+- id: number-from-string
+  front: Какая функция явно превращает строку из формы в число?
+  back: 'Number("12") даёт 12, Number("abc") даёт NaN.'
+  answer: Number
+- id: number-empty
+  front: Что вернёт Number("")?
+  back: "0. Пустая строка и строка из пробелов превращаются в ноль, а не в NaN."
+  answer: "0"
+- id: nan-check
+  front: Как правильно проверить, что значение — NaN?
+  back: "Number.isNaN(value). Проверка value === NaN всегда даёт false."
+  answer: Number.isNaN
+- id: strict-equality
+  front: Какой оператор сравнения не приводит типы?
+  back: '=== (строгое равенство). 0 === "" это false, а 0 == "" это true.'
+  answer: "==="
+- id: string-from-number
+  front: Какая функция явно превращает значение в строку?
+  back: 'String(1042) даёт "1042", String(null) даёт "null".'
+  answer: String

@@ -1,10 +1,18 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>site</title>
+    <meta name="description" content="Бесплатный открытый курс JavaScript, TypeScript, Node.js и CSS до уровня Middle. Без регистрации." />
+    <meta name="color-scheme" content="light dark" />
+    <title>JS Stream — курс JavaScript до уровня Middle</title>
+    <script>
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>

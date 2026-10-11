@@ -1,0 +1,14 @@
+{
+  "name": "@platform/runner",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@platform/tasks-kit": "0.1.0",
+    "typescript": "6.0.3"
+  }
+}

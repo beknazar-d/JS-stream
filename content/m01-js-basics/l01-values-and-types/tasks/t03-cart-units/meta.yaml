@@ -1,0 +1,22 @@
+order: 3
+title: "Баг: в шапке корзины 0123 вместо 15"
+type: fix-bug
+role: warmup
+difficulty: 2
+minutes: 10
+language: js
+tags: [преобразование типов, Number, NaN, баг]
+hints:
+  - "Направление: посмотрите, какого типа line.quantity. Что делает оператор плюс, когда одна из сторон — строка?"
+  - "Шаг: превратите количество в число до сложения, а потом проверьте результат превращения через Number.isNaN."
+  - "Почти решение: const quantity = Number(line.quantity); если Number.isNaN(quantity) ложно, прибавьте quantity к units."
+wrong:
+  - name: wrap-result
+    kind: common-mistake
+    explanation: "Number() применили к готовому итогу. Но к этому моменту строки уже склеились в \"0123\", и число из них получается 123, а не 15. Исправлять нужно до сложения."
+  - name: strings-only
+    kind: partial
+    explanation: "Решение превращает в число только строки и пропускает количество, заданное числом. Корзина со смешанными типами считается неверно."
+  - name: nan-poison
+    kind: edge-case
+    explanation: "Number(line.quantity) добавляется без проверки. Одно поле с текстом, например \"abc\", превращает весь итог в NaN. Некорректный ввод нужно пропускать."
