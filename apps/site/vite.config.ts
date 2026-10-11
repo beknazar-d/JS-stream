@@ -5,6 +5,7 @@ import react from '@vitejs/plugin-react'
 import remarkGfm from 'remark-gfm'
 import { defineConfig, type Plugin } from 'vite'
 import { parse } from 'yaml'
+import { bundleHarness } from '../../packages/tasks-kit/node/bundle-page.ts'
 
 const repoRoot = fileURLToPath(new URL('../..', import.meta.url))
 
@@ -19,9 +20,25 @@ function yaml(): Plugin {
   }
 }
 
+// Обвязка заданий на страницу (iframe) как строка: virtual:page-harness.
+function pageHarness(): Plugin {
+  const id = 'virtual:page-harness'
+  let code: Promise<string> | undefined
+  return {
+    name: 'page-harness',
+    resolveId: (source) => (source === id ? `\0${id}` : undefined),
+    async load(source) {
+      if (source !== `\0${id}`) return
+      code ??= bundleHarness()
+      return `export default ${JSON.stringify(await code)};`
+    },
+  }
+}
+
 export default defineConfig({
   plugins: [
     yaml(),
+    pageHarness(),
     {
       enforce: 'pre',
       ...mdx({

@@ -14,11 +14,13 @@ const taskMetas = import.meta.glob<TaskMeta>('../../../content/*/*/tasks/*/meta.
 const lessonBodies = import.meta.glob<MdxModule>('../../../content/*/*/lesson.mdx')
 const taskDescriptions = import.meta.glob<MdxModule>('../../../content/*/*/tasks/*/task.md')
 const solutionNotes = import.meta.glob<MdxModule>('../../../content/*/*/tasks/*/solution/README.md')
-const taskSources = import.meta.glob<string>('../../../content/*/*/tasks/*/**/*.{js,ts}', {
+const taskSources = import.meta.glob<string>('../../../content/*/*/tasks/*/**/*.{js,ts,html,css,json}', {
   query: '?raw',
   import: 'default',
 })
 const exampleSources = import.meta.glob<string>('../../../content/*/*/examples/*', { query: '?raw', import: 'default' })
+// Макеты заданий на вёрстку: tasks/<задание>/mockup.png|svg|jpg.
+const mockupUrls = import.meta.glob<string>('../../../content/*/*/tasks/*/mockup.*', { eager: true, query: '?url', import: 'default' })
 const mediaUrls = import.meta.glob<string>('../../../content/*/*/media/*', { eager: true, query: '?url', import: 'default' })
 
 const PREFIX = '../../../content/'
@@ -125,6 +127,7 @@ export function mediaUrl(lessonId: string, name: string): string | undefined {
 }
 
 export interface LoadedTask {
+  mockup?: string
   bundle: TaskBundle
   Description: MdxModule['default']
   SolutionNotes?: MdxModule['default']
@@ -141,7 +144,9 @@ export async function loadTask(task: TaskInfo): Promise<LoadedTask> {
   )
   const description = await taskDescriptions[`${base}task.md`]?.()
   const notes = await solutionNotes[`${base}solution/README.md`]?.()
+  const mockup = Object.entries(mockupUrls).find(([path]) => path.startsWith(`${base}mockup.`))?.[1]
   return {
+    mockup,
     bundle: { id: task.id, meta: task.meta, description: '', files },
     Description: description?.default ?? (() => null),
     SolutionNotes: notes?.default,

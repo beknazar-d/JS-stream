@@ -11,6 +11,7 @@ declare global {
     __pageErrors: string[];
     __pageLogs: { level: LogEntry['level']; args: unknown[] }[];
     __api: { calls: unknown[] };
+    __history: { entries: { state: unknown; url: string }[]; current: { state: unknown; url: string } };
   }
 }
 
@@ -115,6 +116,8 @@ const helpers = {
     return (el.textContent ?? '').trim();
   },
   api: () => window.__api,
+  // Текущий адрес страницы после pushState/replaceState: путь и параметры.
+  currentUrl: () => window.__history.current.url,
 };
 
 Object.assign(window, helpers);

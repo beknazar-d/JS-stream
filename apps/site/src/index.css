@@ -807,3 +807,49 @@ figcaption {
   background: var(--bg);
   color: var(--text);
 }
+
+.preview {
+  margin-top: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.preview__bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 0.4rem 0.6rem;
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+
+.preview__bar button[aria-pressed='true'] {
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.preview__viewport {
+  overflow: auto;
+  background: repeating-conic-gradient(var(--bg-soft) 0% 25%, var(--bg) 0% 50%) 50% / 16px 16px;
+  max-height: 560px;
+}
+
+.preview__viewport iframe {
+  display: block;
+  height: 540px;
+  border: 0;
+  background: #fff;
+}
+
+.mockup img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+}

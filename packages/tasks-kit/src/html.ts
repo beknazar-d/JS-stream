@@ -29,6 +29,8 @@ export interface MockRoute {
 
 export interface MockApi {
   routes: MockRoute[];
+  // Начальное содержимое localStorage страницы.
+  storage?: Record<string, string>;
 }
 
 const escapeScript = (code: string) => code.replace(/<\/script/gi, '<\\/script');
@@ -50,6 +52,39 @@ export function mockScript(api: MockApi | undefined): string {
       original(...args);
     };
   }
+  // Хранилища и история в памяти: у страницы в sandbox нет своего источника,
+  // и настоящие localStorage и pushState браузер запрещает.
+  const makeStorage = (initial) => {
+    const data = new Map(Object.entries(initial || {}));
+    const storage = {
+      get length() { return data.size; },
+      key: (i) => [...data.keys()][i] ?? null,
+      getItem: (k) => (data.has(String(k)) ? data.get(String(k)) : null),
+      setItem: (k, v) => { data.set(String(k), String(v)); },
+      removeItem: (k) => { data.delete(String(k)); },
+      clear: () => data.clear(),
+    };
+    return storage;
+  };
+  Object.defineProperty(window, 'localStorage', { configurable: true, value: makeStorage(${JSON.stringify(api?.storage ?? {})}) });
+  Object.defineProperty(window, 'sessionStorage', { configurable: true, value: makeStorage({}) });
+  const entries = [{ state: null, url: '/' }];
+  let index = 0;
+  const resolveUrl = (url) => (url == null ? entries[index].url : new URL(String(url), 'https://shop.example' + entries[index].url).pathname + new URL(String(url), 'https://shop.example' + entries[index].url).search);
+  window.__history = { entries, get current() { return entries[index]; } };
+  history.pushState = (state, _title, url) => { entries.splice(index + 1); entries.push({ state, url: resolveUrl(url) }); index++; };
+  history.replaceState = (state, _title, url) => { entries[index] = { state, url: resolveUrl(url) }; };
+  const go = (delta) => {
+    const next = index + delta;
+    if (next < 0 || next >= entries.length) return;
+    index = next;
+    setTimeout(() => window.dispatchEvent(new PopStateEvent('popstate', { state: entries[index].state })), 0);
+  };
+  history.back = () => go(-1);
+  history.forward = () => go(1);
+  history.go = (d = 0) => go(d);
+  Object.defineProperty(history, 'state', { configurable: true, get: () => entries[index].state });
+
   const routes = ${JSON.stringify(api?.routes ?? [])};
   const counters = new Map();
   const calls = [];

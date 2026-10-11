@@ -2,8 +2,10 @@ import { Component, lazy, Suspense, useCallback, useEffect, useMemo, useState, t
 import { Link, useParams } from 'react-router'
 import type { Report } from '@platform/runner'
 import { editableFiles, filesIn } from '@platform/tasks-kit/evaluate'
+import type { MockApi } from '@platform/tasks-kit/html'
 import { TASK_ROLES, TASK_TYPES, WRONG_KINDS } from '@platform/tasks-kit/meta'
 import { Breadcrumbs } from '../components/Breadcrumbs.tsx'
+import { Preview } from '../components/Preview.tsx'
 import { Results } from '../components/Results.tsx'
 import { TaskStatus } from '../components/status.tsx'
 import { useTitle } from '../components/useTitle.ts'
@@ -76,6 +78,14 @@ function TaskWorkspace({ task, loaded }: { task: TaskInfo; loaded: LoadedTask })
   const [running, setRunning] = useState(false)
   const [tab, setTab] = useState<Tab>('task')
 
+  const api = useMemo(() => {
+    const raw = bundle.files['tests/api.mock.json']
+    try {
+      return raw ? (JSON.parse(raw) as MockApi) : undefined
+    } catch {
+      return undefined
+    }
+  }, [bundle])
   const publicTests = Object.entries(filesIn(bundle.files, 'tests')).filter(([name]) => name.endsWith('.test.js') || name.endsWith('.test.ts')).filter(([name]) => !name.includes('hidden'))
   const shown = (meta.show ?? []).map((path) => [path, bundle.files[path] ?? ''] as const)
   const attempts = state?.attempts ?? 0
@@ -161,6 +171,12 @@ function TaskWorkspace({ task, loaded }: { task: TaskInfo; loaded: LoadedTask })
           {tab === 'task' && (
             <>
               <Description />
+              {loaded.mockup && (
+                <figure className="mockup">
+                  <figcaption>Макет</figcaption>
+                  <img src={loaded.mockup} alt={`Макет к заданию «${meta.title}»: сравните с ним свою страницу в предпросмотре`} />
+                </figure>
+              )}
               {shown.map(([path, source]) => (
                 <figure key={path}>
                   <figcaption>
@@ -257,6 +273,7 @@ function TaskWorkspace({ task, loaded }: { task: TaskInfo; loaded: LoadedTask })
             </span>
           </div>
         </div>
+        {meta.language === 'html' && <Preview files={files} api={api} />}
         <div className="results" aria-live="polite">
           {report && <Results report={report} />}
           {report?.status === 'passed' && <NextStep task={task} />}

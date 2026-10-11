@@ -42,6 +42,16 @@ const bundle: TaskBundle = {
           expect($$('.grid li')).toHaveLength(1);
           expect(api().calls[0].path).toBe('/api/products');
         });
+        it('localStorage и история работают', async () => {
+          localStorage.setItem('cart', '[1]');
+          expect(localStorage.getItem('cart')).toBe('[1]');
+          history.pushState({ page: 2 }, '', '?page=2');
+          expect(currentUrl()).toBe('/?page=2');
+          const popped = new Promise((r) => window.addEventListener('popstate', (e) => r(e.state), { once: true }));
+          history.back();
+          expect(await popped).toBe(null);
+          expect(currentUrl()).toBe('/');
+        });
         it('клик не вешает страницу', async () => {
           await click('button');
           expect(labelOf('button')).toBe('Добавить в корзину');
