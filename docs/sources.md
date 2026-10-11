@@ -73,3 +73,14 @@
 | [web.dev: Stick to compositor-only properties](https://web.dev/articles/stick-to-compositor-only-properties-and-manage-layer-count) | Идея, что transform и opacity дёшевы для анимации | CC BY 4.0 (только идея) |
 
 Поведение Chromium (viewport без метатега даёт ширину 980 px, медиазапрос без единицы и var() в условии не срабатывают, var(--gap)px сбрасывает свойство, запасное значение var() принимает запятые) проверено запуском в Chromium через playwright.
+
+## Модуль 2, уроки 2.1–2.4 «Семантическая разметка», «Формы», «Селекторы, каскад и специфичность», «Блочная модель»
+
+Тексты, примеры и задания написаны с нуля, со своими данными (магазин «Домотека»). Прямых заимствований нет.
+
+| Источник | Что использовано | Лицензия |
+| --- | --- | --- |
+| [MDN Web Docs: HTML elements, Constraint validation, Cascade and inheritance, Specificity, Box model, Mastering margin collapsing](https://developer.mozilla.org/ru/docs/Web) | Список тегов и атрибутов, правила подсчёта специфичности, схлопывание отступов, значения `autocomplete`. Текст не копировался | CC BY-SA 2.5 (атрибуция «Mozilla Contributors») |
+| [HTML Living Standard (WHATWG)](https://html.spec.whatwg.org/) | Правила отправки формы (поля без `name` и выключенные не отправляются), токены `autocomplete` | CC BY 4.0 (только факты) |
+
+Значения DOM и сообщения (`tabIndex`, `type` при неверном значении, `labels.length`, ширины `offsetWidth`, `SyntaxError` у `querySelector`) получены запуском в Chromium (playwright). Не проверялось на других браузерах.

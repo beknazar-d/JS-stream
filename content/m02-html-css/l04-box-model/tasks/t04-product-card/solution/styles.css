@@ -1,0 +1,32 @@
+body {
+  margin: 24px;
+  font-family: system-ui, sans-serif;
+}
+
+.card {
+  box-sizing: border-box;
+  width: 320px;
+  padding: 16px;
+  border: 1px solid #dde3ea;
+}
+
+.photo {
+  height: 160px;
+  background: #e8ecef;
+}
+
+.title {
+  margin: 12px 0 0;
+}
+
+.price {
+  margin: 4px 0 0;
+}
+
+.buy {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 40px;
+  margin: 16px 0 0;
+}

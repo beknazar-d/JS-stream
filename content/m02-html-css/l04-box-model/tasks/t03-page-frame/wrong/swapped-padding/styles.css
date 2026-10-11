@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+.page {
+  box-sizing: border-box;
+  width: 800px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  border: 1px solid #dde3ea;
+}
+
+.page h1 {
+  margin: 0 0 16px;
+}

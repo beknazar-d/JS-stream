@@ -1,0 +1,22 @@
+order: 3
+title: "Колонка по центру: короткая запись"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 7
+language: html
+tags: [margin, padding, border, box-sizing, центрирование]
+hints:
+  - "Направление: чтобы ширина 800 включала рамку и внутренние отступы, нужно особое значение box-sizing. Центрирование блока делают автоматическими внешними отступами по бокам."
+  - "Шаг: padding с двумя значениями: первое — сверху и снизу, второе — слева и справа. Margin с тремя значениями: сверху, по бокам, снизу."
+  - "Почти решение: box-sizing: border-box; width: 800px; margin: 0 auto; padding: 24px 32px; border: 1px solid #dde3ea; у заголовка margin: 0 0 16px."
+wrong:
+  - name: content-box
+    kind: common-mistake
+    explanation: "Ширина 800px задана, но box-sizing не менялся. Рамка и внутренние отступы прибавились, колонка стала 866px шириной и сместилась влево."
+  - name: left-only
+    kind: edge-case
+    explanation: "Вместо margin: 0 auto задан только margin-left: auto. Колонка прижата к правому краю, а не стоит по центру."
+  - name: swapped-padding
+    kind: partial
+    explanation: "В padding перепутан порядок значений: 32px 24px даёт 32px сверху и снизу и 24px по бокам, а нужно наоборот."

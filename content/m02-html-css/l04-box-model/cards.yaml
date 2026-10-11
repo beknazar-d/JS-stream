@@ -1,0 +1,31 @@
+- id: box-parts
+  front: Из каких четырёх частей состоит коробка элемента, изнутри наружу?
+  back: "content, padding, border, margin."
+- id: border-box
+  front: Какое свойство делает так, что width включает padding и border?
+  back: "box-sizing: border-box. Обычно задают всем: * { box-sizing: border-box }."
+  answer: border-box
+- id: default-sizing
+  front: Какой box-sizing у элементов по умолчанию и что от него происходит?
+  back: "content-box. width задаёт только содержимое, padding и border прибавляются: width 300 + 40 + 4 = 344."
+  answer: content-box
+- id: margin-collapse
+  front: Чему равно расстояние между блоками с margin-bottom 30px и margin-top 20px?
+  back: "30px. Вертикальные отступы соседей схлопываются: берётся больший, а не сумма."
+  answer: 30px
+- id: center-block
+  front: Как выровнять блок с заданной шириной по центру?
+  back: "margin: 0 auto. Свободное место делится поровну между левым и правым отступами."
+- id: margin-short
+  front: В каком порядке идут значения в margin и padding из четырёх чисел?
+  back: "Сверху, справа, снизу, слева (по часовой стрелке). Два числа: сверху-снизу и слева-справа."
+- id: display-types
+  front: Чем отличаются block, inline и inline-block?
+  back: "block занимает строку и принимает width. inline течёт как слово и игнорирует width. inline-block течёт как слово, но принимает width и height."
+- id: overflow
+  front: Какие три свойства нужны, чтобы длинный текст обрезался многоточием?
+  back: "white-space: nowrap; overflow: hidden; text-overflow: ellipsis."
+- id: flow-root
+  front: Чем остановить протекание отступа ребёнка сквозь родителя?
+  back: "display: flow-root у родителя (или рамка, padding)."
+  answer: flow-root
