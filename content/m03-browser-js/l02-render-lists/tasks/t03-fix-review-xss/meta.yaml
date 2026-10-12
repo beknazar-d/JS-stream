@@ -1,0 +1,22 @@
+order: 3
+title: "Отзывы с XSS"
+type: fix-bug
+role: warmup
+difficulty: 3
+minutes: 12
+language: html
+tags: [innerHTML, textContent, XSS, безопасность, createElement]
+hints:
+  - "Направление: опасное место — всё, что склеивает строки с данными пользователя и присваивает результат в innerHTML. Данные надо вставлять как текст."
+  - "Шаг: создайте li и два span через createElement, текст запишите в textContent, затем добавьте в список через append. Класс задайте через className."
+  - "Почти решение: const li = document.createElement('li'); li.className = 'review'; const author = document.createElement('span'); author.className = 'review__author'; author.textContent = review.author; и то же для текста, потом li.append(author, text); list.append(li);"
+wrong:
+  - name: text-only
+    kind: partial
+    explanation: "Текст отзыва вставлен через textContent, а имя автора осталось в innerHTML. Третий отзыв по-прежнему создаёт элемент img из имени, и код onerror выполняется. Защищать нужно каждое поле, пришедшее от пользователя."
+  - name: no-ampersand
+    kind: edge-case
+    explanation: "Самодельное экранирование заменяет только скобки. Строка &quot; в тексте отзыва превращается в кавычку при разборе innerHTML, и на экране не то, что написал покупатель. Корректное экранирование начинается с амперсанда, а проще вообще не использовать innerHTML."
+  - name: strip-tags
+    kind: common-mistake
+    explanation: "Теги вырезаются регулярным выражением. Опасный img исчезает, но вместе с ним пропадает и честный текст в скобках: «Кнопка <Купить> не нажимается» теряет слово. Вырезание данных — не то же самое, что безопасная вставка."

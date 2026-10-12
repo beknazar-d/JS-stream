@@ -1,0 +1,30 @@
+- id: create-element
+  front: Как создать элемент li и положить в него текст?
+  back: "const li = document.createElement('li'); li.textContent = 'Чайник'; потом list.append(li)."
+  answer: "document.createElement('li')"
+- id: append-vs-appendchild
+  front: Чем append отличается от appendChild?
+  back: "append принимает несколько аргументов, в том числе строки. appendChild принимает один узел и не принимает строки (TypeError)."
+- id: prepend-remove
+  front: Как добавить элемент в начало списка и как удалить элемент?
+  back: "list.prepend(item) — в начало, list.append(item) — в конец, item.remove() — удалить."
+- id: replace-children
+  front: Как очистить список перед повторной отрисовкой?
+  back: "list.replaceChildren(). Без очистки каждый вызов рендера добавит дубликаты."
+  answer: "replaceChildren"
+- id: template
+  front: Как использовать template для шаблона карточки?
+  back: "const node = template.content.cloneNode(true); заполнить через node.querySelector(...), потом list.append(node). Клонируйте, иначе заберёте узлы из шаблона."
+- id: text-content
+  front: Каким свойством вставляют текст пользователя?
+  back: "textContent. Разметка внутри строки не разбирается, поэтому вставить чужой тег нельзя."
+  answer: "textContent"
+- id: inner-html
+  front: Почему нельзя вставлять имя или комментарий пользователя через innerHTML?
+  back: "Браузер разберёт строку как разметку. Тег img с onerror создаст элемент и выполнит код: это XSS (межсайтовый скриптинг)."
+- id: render-array
+  front: Как построить список из массива объектов?
+  back: "Очистить список и для каждого объекта создать элемент (map или for...of), заполнить его, добавить в список. Одна функция renderList(items)."
+- id: empty-state
+  front: Что нужно показать, если массив пуст?
+  back: "Сообщение «Ничего не найдено» вместо пустого места. Показывайте и скрывайте его через hidden."

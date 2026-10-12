@@ -1,0 +1,22 @@
+order: 1
+title: "Удаление строк одним обработчиком"
+type: recall
+role: warmup
+difficulty: 2
+minutes: 8
+language: html
+tags: [делегирование, closest, remove, всплытие]
+hints:
+  - "Направление: обработчик клика вешается на сам список. Внутри нужно понять, попал ли клик в кнопку удаления, и если да, найти её строку."
+  - "Шаг: кнопку ищет event.target.closest('.remove'), строку ищет button.closest('.cart-row'). Если кнопки нет, выходите из обработчика."
+  - "Почти решение: list.addEventListener('click', (event) => { const button = event.target.closest('.remove'); if (!button) return; button.closest('.cart-row').remove(); updateCount(); });"
+wrong:
+  - name: per-button
+    kind: partial
+    explanation: "Обработчик подключён к каждой существующей кнопке. Исходные строки удаляются, но строка, добавленная позже, остаётся без обработчика, и её кнопка не работает."
+  - name: parent-element
+    kind: common-mistake
+    explanation: "Строка находится как event.target.parentElement. Для клика по кнопке это строка, но для клика по значку внутри кнопки родитель — сама кнопка, и удаляется только она, а строка остаётся с пустым местом."
+  - name: any-click
+    kind: edge-case
+    explanation: "Проверки, что клик пришёл по кнопке, нет: удаляется строка при клике в любое место внутри неё, в том числе по названию товара. Так покупатель удаляет товар случайным нажатием."

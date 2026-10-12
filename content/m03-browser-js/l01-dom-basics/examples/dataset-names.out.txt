@@ -1,0 +1,6 @@
+productId
+stock
+data-product-id
+data-old-price-rub
+string
+true

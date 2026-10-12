@@ -1,0 +1,22 @@
+body {
+  margin: 16px;
+  font-family: system-ui, "Segoe UI", Arial, sans-serif;
+}
+
+.catalog {
+  display: flex;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  padding: 12px;
+  border: 1px solid #b8b8c4;
+  border-radius: 8px;
+}
+
+.card--out {
+  opacity: 0.5;
+}

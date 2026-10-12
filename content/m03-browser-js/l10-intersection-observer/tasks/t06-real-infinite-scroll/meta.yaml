@@ -1,0 +1,22 @@
+order: 6
+title: "Бесконечная лента товаров"
+type: implement
+role: real
+difficulty: 4
+minutes: 40
+language: html
+tags: [IntersectionObserver, пагинация, fetch, rootMargin, неясности]
+hints:
+  - "Направление: заведите состояние: номер следующей страницы, флаг «идёт загрузка» и флаг «есть ещё страницы». Колбэк наблюдателя только решает, пора ли грузить, а загрузку выполняет отдельная async-функция."
+  - "Шаг: в начале loadNextPage выйдите, если идёт загрузка или страниц больше нет. После ответа добавьте товары через textContent, обновите номер страницы и признак «есть ещё» по totalPages. В колбэке наблюдателя запускайте загрузку, только если среди записей есть isIntersecting."
+  - "Почти решение: async function loadNextPage() { if (loading || !hasMore) return; loading = true; status.hidden = false; const response = await fetch(`/api/products?page=${nextPage}&limit=6`); const data = await response.json(); appendItems(data.items); hasMore = data.page < data.totalPages; nextPage = data.page + 1; loading = false; status.hidden = true; if (!hasMore) { end.hidden = false; observer.unobserve(sentinel); } }"
+wrong:
+  - name: no-guard
+    kind: race
+    explanation: "Нет флага «идёт загрузка». Пока сервер отвечает, колбэк срабатывает ещё раз, и та же страница запрашивается дважды. Номер следующей страницы меняется только после ответа, поэтому в списке появляются дубли товаров."
+  - name: no-stop
+    kind: edge-case
+    explanation: "Код не смотрит на totalPages. После последней страницы колбэк просит страницу 5, API отвечает 404, а response.json() возвращает объект без items. Страница падает на добавлении товаров."
+  - name: ignores-intersecting
+    kind: common-mistake
+    explanation: "Колбэк запускает загрузку на любую запись. Сразу после observe браузер сообщает о сторожe, даже если он далеко внизу (isIntersecting: false), и вся лента подгружается без прокрутки."

@@ -1,0 +1,22 @@
+order: 6
+title: "Корзина, которая не теряется"
+type: implement
+role: real
+difficulty: 4
+minutes: 35
+language: html
+tags: [localStorage, sessionStorage, JSON, корзина, неясности]
+hints:
+  - "Направление: держите корзину в массиве cart, а страницу рисуйте функцией render(), которая строит список заново из этого массива. После любого изменения: saveCart(cart) и render()."
+  - "Шаг: каталог превратите в словарь id → { title, price } при загрузке. В render для каждой позиции возьмите данные из словаря. Кнопки внутри строк обрабатывайте одним обработчиком на #cart-items через event.target.closest. Панель открывается функцией setOpen(open): hidden, aria-expanded и sessionStorage."
+  - "Почти решение: loadCart: try { data = JSON.parse(localStorage.getItem('cart')) } catch { return [] }, потом Array.isArray и filter с Number.isInteger. В обработчике add: найдите позицию по id, увеличьте qty или добавьте { id, qty: 1 }, затем saveCart(cart); render()."
+wrong:
+  - name: no-session-state
+    kind: partial
+    explanation: "Корзина сохраняется, а панель просто открывается и закрывается. Состояние в sessionStorage не пишется, поэтому после перезагрузки внутри той же вкладки корзина снова закрыта, хотя покупатель её открывал."
+  - name: no-validation
+    kind: edge-case
+    explanation: "loadCart ловит ошибку разбора, но не проверяет форму данных. Для значения {\"id\":1} или позиций с qty строкой страница падает при отрисовке или показывает NaN. Данные из хранилища надо проверять."
+  - name: save-only-on-add
+    kind: common-mistake
+    explanation: "saveCart вызывается только при добавлении. Изменения количества и удаление видны на экране, но в хранилище остаётся старый вариант, и после перезагрузки удалённые товары возвращаются."

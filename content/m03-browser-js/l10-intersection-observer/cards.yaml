@@ -1,0 +1,34 @@
+- id: io-purpose
+  front: Для чего нужен IntersectionObserver?
+  back: "Сообщает, когда элемент входит в область видимости или выходит из неё. Без обработчика scroll и ручных расчётов."
+- id: io-create
+  front: Как создать наблюдателя и начать слежение?
+  back: "const observer = new IntersectionObserver(callback, options); observer.observe(element). Элементов можно наблюдать сколько угодно."
+  answer: observe
+- id: io-entry
+  front: Что приходит в колбэк наблюдателя?
+  back: "Массив записей entries и сам наблюдатель. У записи есть target (элемент), isIntersecting (виден ли) и intersectionRatio (доля видимой части)."
+- id: io-initial
+  front: Почему колбэк срабатывает сразу после observe и чем это опасно?
+  back: "Браузер сообщает текущее состояние каждого элемента, в том числе невидимого (isIntersecting: false). Без проверки isIntersecting все картинки загрузятся сразу."
+  answer: isIntersecting
+- id: io-batch
+  front: Почему в колбэке нельзя читать только entries[0]?
+  back: "Записи приходят пачкой: за один кадр могли появиться несколько элементов. Обходите весь массив."
+- id: io-rootmargin
+  front: Что делает rootMargin и в каком формате он записывается?
+  back: "Расширяет или сужает область слежения, как margin в CSS. Строка с единицами: '200px 0px'. Число 200 вызовет SyntaxError."
+  answer: rootMargin
+- id: io-threshold
+  front: Что означает threshold?
+  back: "Какая доля элемента должна быть видна, чтобы сработал колбэк: 0 — любое пересечение, 1 — виден целиком. Можно массив порогов."
+- id: io-unobserve
+  front: Чем unobserve отличается от disconnect?
+  back: "unobserve прекращает слежение за одним элементом, disconnect отключает наблюдателя от всех элементов."
+  answer: unobserve
+- id: io-lazy
+  front: Как устроена ленивая загрузка картинки?
+  back: "Адрес лежит в data-src, а src пуст. Когда картинка в области слежения: img.src = img.dataset.src и unobserve."
+- id: io-sentinel
+  front: Как сделать бесконечную прокрутку через IntersectionObserver?
+  back: "Следите за пустым «сторожем» в конце списка. Когда он появился: загрузить следующую страницу, если не идёт загрузка и страницы остались. Флаги loading и hasMore защищают от дублей."

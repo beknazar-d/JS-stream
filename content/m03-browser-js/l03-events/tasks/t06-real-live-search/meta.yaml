@@ -1,0 +1,22 @@
+order: 6
+title: "Живой поиск по каталогу"
+type: implement
+role: real
+difficulty: 4
+minutes: 30
+language: html
+tags: [input, keydown, submit, preventDefault, hidden, фильтрация]
+hints:
+  - "Направление: вынесите фильтрацию в одну функцию applyFilter(query), которую вызывают все три источника: input, Escape и сброс. Состояние страницы целиком определяется строкой запроса."
+  - "Шаг: приведите запрос к виду query.trim().toLowerCase() и сравнивайте с title.toLowerCase().includes(...). Для каждого li пишите hidden = !подходит. Число найденных считайте после цикла. Для submit и ссылки вызовите event.preventDefault()."
+  - "Почти решение: function applyFilter(raw) { const q = raw.trim().toLowerCase(); let found = 0; for (const li of items) { const match = li.textContent.toLowerCase().includes(q); li.hidden = !match; if (match) found += 1; } status.textContent = 'Найдено: ' + found; empty.hidden = found > 0; }"
+wrong:
+  - name: filter-only
+    kind: partial
+    explanation: "Фильтр на input работает, но Enter перезагружает страницу (нет preventDefault на submit), Escape ничего не делает, а ссылка «Сбросить» переходит по адресу. Полноценный поиск должен обрабатывать все способы работы с полем."
+  - name: no-trim
+    kind: edge-case
+    explanation: "Запрос не обрезается по краям: строка ' b-50 ' с пробелами не находит «Блендер B-50», хотя человек, вставляя запрос из буфера обмена, легко захватывает пробел."
+  - name: regexp
+    kind: common-mistake
+    explanation: "Запрос превращается в регулярное выражение через new RegExp(query). Обычный текст работает, но запрос из одной скобки вызывает SyntaxError: Invalid regular expression, и поиск замирает. Для поиска подстроки хватает includes."

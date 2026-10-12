@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="13" fill="currentColor">
+  <title id="t">Всплытие события по дереву</title>
+  <desc id="d">Слева вложенные прямоугольники: список, в нём строка, в ней кнопка, в ней значок. Справа стрелка вверх от значка через кнопку и строку до списка с подписями: сначала сработают обработчики кнопки, потом строки, потом списка. Внизу пояснение: target всегда значок, currentTarget меняется по пути.</desc>
+  <g fill="none" stroke="currentColor" stroke-width="1.5">
+    <rect x="20" y="16" width="330" height="230" rx="8"/>
+    <rect x="40" y="56" width="290" height="170" rx="8"/>
+    <rect x="60" y="96" width="250" height="110" rx="8"/>
+    <rect x="120" y="136" width="130" height="50" rx="8"/>
+  </g>
+  <g>
+    <text x="34" y="38" font-weight="700">ul: список</text>
+    <text x="54" y="78" font-weight="700">li: строка</text>
+    <text x="74" y="118" font-weight="700">button: кнопка</text>
+    <text x="185" y="166" text-anchor="middle">span: значок</text>
+  </g>
+  <g stroke="currentColor" stroke-width="2" fill="currentColor">
+    <path d="M440 190 V60" fill="none"/><path d="M440 52 l-6 10 h12 z"/>
+  </g>
+  <g>
+    <text x="460" y="190">1. нажали на значок (target)</text>
+    <text x="460" y="150">2. обработчик button</text>
+    <text x="460" y="110">3. обработчик li</text>
+    <text x="460" y="70">4. обработчик ul</text>
+  </g>
+  <text x="320" y="276" text-anchor="middle" opacity="0.85">event.target — всегда значок; event.currentTarget — тот, чей обработчик сейчас работает</text>
+</svg>

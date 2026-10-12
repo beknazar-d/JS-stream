@@ -1,0 +1,22 @@
+order: 4
+title: "Каталог по шаблону"
+type: implement
+role: main
+difficulty: 3
+minutes: 18
+language: html
+tags: [template, cloneNode, replaceChildren, hidden, рендер]
+hints:
+  - "Направление: функция делает четыре вещи по порядку: очищает список, переключает сообщение «пусто», проходит по товарам, на каждый клонирует шаблон, заполняет и добавляет."
+  - "Шаг: шаблон клонируется через template.content.cloneNode(true). Внутри клона ищите элементы через clone.querySelector, а у самой карточки вызовите clone.querySelector('.card'): клон является фрагментом, у него нет dataset."
+  - "Почти решение: const fragment = template.content.cloneNode(true); const card = fragment.querySelector('.card'); card.dataset.id = product.id; card.querySelector('.card__title').textContent = product.title; ... card.classList.toggle('card--out', product.stock === 0); list.append(fragment);"
+wrong:
+  - name: no-empty
+    kind: partial
+    explanation: "Карточки строятся верно, но сообщение «Ничего не найдено» не управляется: при пустом массиве страница остаётся пустой, а при непустом сообщение, показанное прошлым вызовом, остаётся на экране."
+  - name: duplicates
+    kind: edge-case
+    explanation: "Список не очищается перед отрисовкой. Первый вызов даёт правильный результат, а при втором (например, при смене фильтра) карточки дописываются к прежним."
+  - name: inner-html
+    kind: common-mistake
+    explanation: "Название и цена вставляются через innerHTML. Для обычных названий результат тот же, но название с тегом создаёт элемент b вместо текста. Так же вставка данных каталога открывает дорогу XSS."

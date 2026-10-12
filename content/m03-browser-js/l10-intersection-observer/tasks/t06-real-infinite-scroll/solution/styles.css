@@ -1,0 +1,3 @@
+#results { list-style: none; padding: 0; }
+#results li { padding: 24px 0; border-bottom: 1px solid #ddd; }
+#sentinel { height: 1px; }

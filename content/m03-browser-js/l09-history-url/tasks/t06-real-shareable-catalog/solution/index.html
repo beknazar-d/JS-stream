@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Каталог «Домотеки»</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Каталог</h1>
+  <form id="filters" aria-label="Фильтры">
+    <label for="category">Категория</label>
+    <select id="category">
+      <option value="all">Все товары</option>
+      <option value="kettles">Чайники</option>
+      <option value="blenders">Блендеры</option>
+      <option value="grills">Грили</option>
+      <option value="coffee">Кофемашины</option>
+    </select>
+    <label for="sort">Сортировка</label>
+    <select id="sort">
+      <option value="popular">Популярные</option>
+      <option value="price-asc">Сначала дешёвые</option>
+      <option value="price-desc">Сначала дорогие</option>
+    </select>
+    <label><input type="checkbox" id="in-stock"> Только в наличии</label>
+  </form>
+  <p>Найдено: <span id="count">0</span></p>
+  <p id="empty" hidden>Ничего не найдено. Сбросьте фильтры.</p>
+  <ul id="results"></ul>
+  <script src="script.js"></script>
+</body>
+</html>

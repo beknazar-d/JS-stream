@@ -1,0 +1,5 @@
+/catalog?category=kettles&inStock=1
+/catalog
+{"category":"blenders","inStock":false}
+{"category":"all","inStock":false}
+true

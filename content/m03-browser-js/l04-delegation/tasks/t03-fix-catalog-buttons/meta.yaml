@@ -1,0 +1,22 @@
+order: 3
+title: "Кнопки новых карточек не работают"
+type: fix-bug
+role: warmup
+difficulty: 3
+minutes: 12
+language: html
+tags: [делегирование, closest, target, динамические элементы]
+hints:
+  - "Направление: сейчас обработчик подключается к кнопкам, существовавшим при загрузке, и проверяет event.target. У этого две проблемы: для новых карточек обработчика нет, а для значка target не совпадает с кнопкой."
+  - "Шаг: перенесите обработчик на #catalog и ищите кнопку через event.target.closest('.add'). Если результат null, сразу выходите."
+  - "Почти решение: catalog.addEventListener('click', (event) => { const button = event.target.closest('.add'); if (!button) return; count += 1; cartCount.textContent = 'В корзине: ' + count; });"
+wrong:
+  - name: closest-per-button
+    kind: partial
+    explanation: "Проверка исправлена на closest, и значок теперь работает, но обработчик по-прежнему подключается к кнопкам, найденным при загрузке. Карточки, добавленные через addProduct, остаются без обработчика."
+  - name: matches
+    kind: common-mistake
+    explanation: "Обработчик перенесён на каталог, но кнопка определяется через event.target.matches('.add'). Для клика по значку target — это span с классом add__icon, matches возвращает false, и счётчик не растёт."
+  - name: no-null-check
+    kind: edge-case
+    explanation: "Кнопка найдена через closest, но результат не проверяется: счётчик растёт при любом клике по каталогу, в том числе по названию товара. Нужно выйти из обработчика, если closest вернул null."

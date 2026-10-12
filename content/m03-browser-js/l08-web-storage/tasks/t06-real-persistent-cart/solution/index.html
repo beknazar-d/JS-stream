@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Домотека</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Домотека</h1>
+    <button id="cart-toggle" type="button" aria-expanded="false" aria-controls="cart-panel">
+      Корзина (<span id="cart-count">0</span>)
+    </button>
+  </header>
+
+  <main>
+    <ul id="products">
+      <li data-id="1" data-title="Чайник Bosch" data-price="3490">
+        <span class="title">Чайник Bosch</span>, <span class="price">3490</span> ₽
+        <button class="add" type="button">В корзину</button>
+      </li>
+      <li data-id="2" data-title="Блендер Philips" data-price="5990">
+        <span class="title">Блендер Philips</span>, <span class="price">5990</span> ₽
+        <button class="add" type="button">В корзину</button>
+      </li>
+      <li data-id="3" data-title="Тостер Tefal" data-price="2190">
+        <span class="title">Тостер Tefal</span>, <span class="price">2190</span> ₽
+        <button class="add" type="button">В корзину</button>
+      </li>
+      <li data-id="4" data-title="Кофемашина DeLonghi" data-price="12990">
+        <span class="title">Кофемашина DeLonghi</span>, <span class="price">12990</span> ₽
+        <button class="add" type="button">В корзину</button>
+      </li>
+    </ul>
+
+    <section id="cart-panel" hidden>
+      <h2>Корзина</h2>
+      <p id="cart-empty">Корзина пуста</p>
+      <ul id="cart-items"></ul>
+      <p>Итого: <span id="cart-total">0</span> ₽</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

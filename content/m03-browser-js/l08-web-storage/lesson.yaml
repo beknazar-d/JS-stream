@@ -1,0 +1,3 @@
+order: 8
+title: Web Storage
+summary: Как запомнить корзину и настройки покупателя в браузере. localStorage и sessionStorage хранят только строки, а данные в них надо проверять при чтении.

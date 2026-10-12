@@ -1,0 +1,7 @@
+body
+  header.site-header
+    a.logo
+  main
+    ul.catalog
+      li.card
+      li.card.card--sale

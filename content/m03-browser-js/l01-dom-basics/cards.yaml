@@ -1,0 +1,32 @@
+- id: query-one
+  front: Как найти первый элемент с классом card?
+  back: "document.querySelector('.card') — вернёт элемент или null, если ничего нет."
+  answer: "document.querySelector('.card')"
+- id: query-all
+  front: Как получить все карточки, чтобы обойти их циклом?
+  back: "document.querySelectorAll('.card') — вернёт список (NodeList), пустой, если совпадений нет. Обходите его через for...of."
+  answer: "document.querySelectorAll('.card')"
+- id: text-content
+  front: Как поменять текст элемента безопасно?
+  back: "element.textContent = 'Новый текст'. Теги внутри строки не разбираются, текст остаётся текстом."
+  answer: "textContent"
+- id: class-list
+  front: Как добавить, убрать и переключить класс, не затирая остальные?
+  back: "element.classList.add('x'), .remove('x'), .toggle('x'). Свойство className целиком заменяет все классы."
+- id: attributes
+  front: Как прочитать и записать атрибут href?
+  back: "link.getAttribute('href') и link.setAttribute('href', '/cart'). Для многих атрибутов есть свойства: link.href, input.value."
+- id: dataset
+  front: Как прочитать атрибут data-product-id?
+  back: "element.dataset.productId. Дефисы превращаются в camelCase, а значение всегда строка: '0' в условии истинно."
+  answer: "dataset.productId"
+- id: hidden
+  front: Как скрыть элемент и потом показать его?
+  back: "element.hidden = true и element.hidden = false. Атрибут hidden работает по наличию: hidden='false' всё равно скрывает."
+  answer: "hidden"
+- id: script-position
+  front: Куда ставить script, чтобы элементы уже были в документе?
+  back: "В конец body или с атрибутом defer в head. Скрипт в начале body без defer не увидит элементов ниже."
+- id: null-check
+  front: Что вернёт querySelector, если элемента нет, и чем это опасно?
+  back: "null. Обращение к свойству null падает: Cannot read properties of null. Проверьте селектор и место подключения скрипта."

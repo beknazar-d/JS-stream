@@ -1,0 +1,22 @@
+order: 1
+title: "Заполнить карточку товара"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 8
+language: html
+tags: [querySelector, textContent, classList, dataset, hidden]
+hints:
+  - "Направление: найдите каждый элемент через document.querySelector, а потом меняйте нужное свойство. Для текста есть textContent, для классов classList, для видимости hidden."
+  - "Шаг: бейдж показывают присваиванием badge.hidden = false. Класс добавляют методом classList.add. Атрибут href ставят через setAttribute, а data-product-id — через dataset.productId."
+  - "Почти решение: title.textContent = 'Чайник K-200'; price.textContent = '3 490 ₽'; badge.hidden = false; badge.classList.add('badge--sale'); link.setAttribute('href', '/cart/add?id=k200'); link.dataset.productId = 'k200';"
+wrong:
+  - name: only-text
+    kind: partial
+    explanation: "Заголовок и цена обновлены, но бейдж остался скрытым и без класса, а ссылка не получила href и data-product-id. Карточка выглядит наполовину обновлённой."
+  - name: class-name
+    kind: common-mistake
+    explanation: "className = 'badge--sale' заменяет все классы сразу: класс badge пропадает, и бейдж теряет своё оформление. Нужен classList.add, который добавляет класс к остальным."
+  - name: hidden-string
+    kind: edge-case
+    explanation: "Запись badge.hidden = 'false' присваивает непустую строку, а она истинна. Атрибут hidden остаётся на элементе, и бейдж по-прежнему скрыт. Для показа нужно значение false."

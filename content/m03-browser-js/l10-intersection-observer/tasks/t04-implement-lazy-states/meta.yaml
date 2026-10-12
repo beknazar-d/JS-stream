@@ -1,0 +1,22 @@
+order: 4
+title: "Загрузка заранее и состояния картинок"
+type: implement
+role: main
+difficulty: 3
+minutes: 20
+language: html
+tags: [IntersectionObserver, rootMargin, load, error, состояния]
+hints:
+  - "Направление: настройки наблюдателя передаются вторым аргументом конструктора: объект с rootMargin и threshold. Состояния картинки меняют события load и error самой картинки."
+  - "Шаг: rootMargin записывается строкой с единицами, например '200px 0px'. Число 200 браузер отвергнет. Обработчики load и error навесьте на картинку до присвоения src, чтобы не пропустить событие."
+  - "Почти решение: img.addEventListener('load', () => img.classList.replace('is-loading', 'is-loaded')); img.addEventListener('error', () => img.classList.replace('is-loading', 'is-broken')); img.classList.add('is-loading'); img.src = img.dataset.src; img.removeAttribute('data-src'); observer.unobserve(img);"
+wrong:
+  - name: no-states
+    kind: partial
+    explanation: "Загрузка стартует заранее, но состояний нет: ни is-loading, ни is-loaded. Дизайнер не сможет показать скелетон и плавное появление."
+  - name: no-error
+    kind: edge-case
+    explanation: "Есть is-loading и is-loaded, но на error никто не реагирует. Битая картинка навсегда остаётся в состоянии «загружается» и показывает вечный скелетон."
+  - name: margin-number
+    kind: common-mistake
+    explanation: "rootMargin: 200 передан числом. Браузер требует строку с единицами и бросает SyntaxError: rootMargin must be specified in pixels or percent. Страница остаётся без ленивой загрузки."

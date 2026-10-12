@@ -1,0 +1,22 @@
+order: 6
+title: "Каталог с фильтрами в адресе"
+type: implement
+role: real
+difficulty: 4
+minutes: 40
+language: html
+tags: [History API, popstate, URLSearchParams, fetch, фильтры, неясности]
+hints:
+  - "Направление: держите одно «текущее состояние фильтров». Любая функция работает с ним: show(filters) обновляет элементы и список. Изменение элементов вызывает pushState, popstate и applyUrl вызывают show и ничего не пишут в историю."
+  - "Шаг: товары храните в переменной products, пока она пустая, список пуст. После загрузки вызовите render ещё раз с текущими фильтрами. Сортируйте копию массива: [...items].sort(...). Для popstate: show(event.state ?? DEFAULTS)."
+  - "Почти решение: form.addEventListener('change', () => { const f = readControls(); current = f; render(f); history.pushState(f, '', buildUrl(f)); }); window.addEventListener('popstate', (e) => show(e.state ?? { ...DEFAULTS })); function applyUrl(url) { show(parseFilters(url)); }"
+wrong:
+  - name: no-popstate
+    kind: partial
+    explanation: "Фильтры записываются в историю, но обработчика popstate нет. Адрес в строке браузера меняется при «Назад», а страница остаётся такой же. Поделиться ссылкой можно, но «Назад» бесполезна."
+  - name: location-search
+    kind: common-mistake
+    explanation: "После popstate состояние читается из location.search. В настоящем браузере это работает. В тренажёре location не меняется, поэтому страница сбрасывается к значениям по умолчанию. Надёжнее брать данные из event.state, который вы сами записали."
+  - name: checkbox-stuck
+    kind: edge-case
+    explanation: "Состояние применяется строкой «если inStock, то поставить флажок», а снять его никто не пробует. После «Назад» от фильтра «в наличии» флажок остаётся включённым, хотя список уже показан без фильтра."

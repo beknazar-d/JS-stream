@@ -1,0 +1,22 @@
+order: 5
+title: "Адрес без ручной склейки"
+type: refactor
+role: main
+difficulty: 3
+minutes: 15
+language: html
+tags: [URLSearchParams, URL, рефакторинг, кодирование]
+hints:
+  - "Направление: оба метода можно заменить на URLSearchParams. В buildUrl он собирает строку запроса, в parseFilters читает её."
+  - "Шаг: в buildUrl создайте new URLSearchParams(), добавляйте set('q', ...) и set('category', ...) только если значение непустое и отличается от значения по умолчанию, итог собирайте через toString(). В parseFilters возьмите new URL(url, 'https://domoteka.example').searchParams и методом get прочитайте оба поля, подставляя значения по умолчанию через ??."
+  - "Почти решение: function parseFilters(url) { const params = new URL(url, 'https://domoteka.example').searchParams; return { q: params.get('q') ?? '', category: params.get('category') ?? 'all' }; }"
+wrong:
+  - name: parse-by-hand
+    kind: partial
+    explanation: "buildUrl переписан на URLSearchParams, а parseFilters остался ручным. Адрес теперь содержит + вместо пробела, а decodeURIComponent его не раскодирует: поиск «кофе & чай» после перезагрузки превращается в «кофе+&+чай»."
+  - name: null-query
+    kind: edge-case
+    explanation: "parseFilters возвращает params.get('q') как есть. Когда параметра нет, get даёт null, а не пустую строку. Поле поиска показывает «null», а q.toLowerCase() падает."
+  - name: object-as-is
+    kind: common-mistake
+    explanation: "new URLSearchParams(filters) принимает объект и пишет в адрес все поля, в том числе пустые и значения по умолчанию: /catalog?q=&category=all. Адрес без фильтров должен быть чистым: /catalog."

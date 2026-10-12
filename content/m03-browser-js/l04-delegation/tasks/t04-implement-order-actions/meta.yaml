@@ -1,0 +1,22 @@
+order: 4
+title: "Действия над заказами в таблице"
+type: implement
+role: main
+difficulty: 3
+minutes: 20
+language: html
+tags: [делегирование, closest, data-action, таблицы, состояние]
+hints:
+  - "Направление: обработчик на tbody ищет кнопку через closest('[data-action]'), а строку через closest('tr'). Дальше действие выбирается по значению button.dataset.action."
+  - "Шаг: статус хранится в row.dataset.status, а текст в ячейке — отдельно. Заведите объект с подписями статусов. Не забудьте пересчитать «Новых» после каждого действия, в том числе после удаления."
+  - "Почти решение: const button = event.target.closest('[data-action]'); if (!button) return; const row = button.closest('tr'); switch (button.dataset.action) { case 'delete': row.remove(); break; ... } updateSummary();"
+wrong:
+  - name: per-button
+    kind: partial
+    explanation: "Обработчики подключены к каждой существующей кнопке. Исходные строки работают, но заказ, добавленный в таблицу позже, остаётся без обработчиков, и его кнопки не реагируют."
+  - name: target-only
+    kind: common-mistake
+    explanation: "Действие читается из event.target.dataset.action. Для клика по значку внутри кнопки «Отменить» target — это значок без data-action, действие не определяется и ничего не происходит. Данные нужно читать с найденной через closest кнопки."
+  - name: no-status-guard
+    kind: edge-case
+    explanation: "Правило «отменённый заказ подтвердить нельзя» не реализовано: confirm безусловно меняет статус. Отменённый заказ снова становится подтверждённым."

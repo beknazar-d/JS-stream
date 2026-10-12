@@ -1,0 +1,20 @@
+body {
+  margin: 16px;
+  font-family: system-ui, "Segoe UI", Arial, sans-serif;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #ececf2;
+}
+
+.badge--sale {
+  background: #c62828;
+  color: #ffffff;
+}
+
+.badge[hidden] {
+  display: none;
+}

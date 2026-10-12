@@ -1,0 +1,4 @@
+.photo { display: block; margin-bottom: 400px; background: #ddd; }
+.is-loading { opacity: 0.4; }
+.is-loaded { opacity: 1; transition: opacity 0.3s; }
+.is-broken { outline: 2px dashed #b00020; }

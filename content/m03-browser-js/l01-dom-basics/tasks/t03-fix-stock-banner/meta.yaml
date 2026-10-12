@@ -1,0 +1,22 @@
+order: 3
+title: "Скрипт страницы товара ничего не меняет"
+type: fix-bug
+role: warmup
+difficulty: 2
+minutes: 10
+language: html
+tags: [querySelector, "null", classList, textContent, опечатки]
+hints:
+  - "Направление: откройте консоль. Первая ошибка останавливает весь скрипт, поэтому остальные баги видны только после её исправления. Читайте сообщение целиком."
+  - "Шаг: в селекторе класса нужна точка, а у classList.add имя класса пишут без точки. Свойство называется textContent, регистр важен. В документе два элемента с классом product-title, нужен тот, что внутри main."
+  - "Почти решение: document.querySelector('main .product-title'), badge.classList.add('visible'), note.textContent = 'Осталось 3 шт.'"
+wrong:
+  - name: title-only
+    kind: partial
+    explanation: "Исправлен только первый селектор. Заголовок обновляется, но скрипт дальше добавляет класс с точкой и пишет в несуществующее свойство textcontent: бейдж остаётся скрытым, подпись не меняется."
+  - name: first-title
+    kind: edge-case
+    explanation: "Селектор .product-title находит первый элемент в документе, а им оказывается заголовок блока «Похожие товары» (он стоит выше). Название главного товара не меняется, а у похожего меняется. Нужно уточнить селектор: main .product-title."
+  - name: collection
+    kind: common-mistake
+    explanation: "getElementsByClassName возвращает коллекцию, а не элемент. Присваивание textContent коллекции ничего не меняет и не выдаёт ошибки: подпись остаётся прежней. Нужен конкретный элемент, например querySelector."

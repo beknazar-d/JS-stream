@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="13" fill="currentColor">
+  <title id="t">Путь данных через Web Storage</title>
+  <desc id="d">Слева массив в памяти страницы. Стрелка JSON.stringify ведёт к строке в хранилище. Стрелка JSON.parse возвращает строку в массив. Ниже два блока: localStorage живёт между визитами, sessionStorage живёт, пока открыта вкладка.</desc>
+  <g font-weight="700" text-anchor="middle"><text x="320" y="22">Данные в браузере покупателя</text></g>
+  <rect x="20" y="44" width="190" height="84" rx="8" fill="none" stroke="currentColor" opacity="0.7"/>
+  <text x="115" y="70" text-anchor="middle" font-weight="700">Память страницы</text>
+  <text x="115" y="94" text-anchor="middle">cart = [ { id: 1, qty: 2 } ]</text>
+  <text x="115" y="114" text-anchor="middle" opacity="0.7">пропадёт при перезагрузке</text>
+  <rect x="430" y="44" width="190" height="84" rx="8" fill="none" stroke="currentColor" opacity="0.7"/>
+  <text x="525" y="70" text-anchor="middle" font-weight="700">Хранилище</text>
+  <text x="525" y="94" text-anchor="middle">cart → "[{&quot;id&quot;:1,&quot;qty&quot;:2}]"</text>
+  <text x="525" y="114" text-anchor="middle" opacity="0.7">ключ и значение — строки</text>
+  <g stroke="currentColor" stroke-width="2" fill="currentColor">
+    <path d="M214 74 H420"/><path d="M420 74 l-8 -5 v10 z"/>
+    <path d="M426 104 H220" stroke-dasharray="5 4"/><path d="M220 104 l8 -5 v10 z"/>
+  </g>
+  <text x="320" y="66" text-anchor="middle">JSON.stringify + setItem</text>
+  <text x="320" y="124" text-anchor="middle">getItem + JSON.parse</text>
+  <rect x="20" y="164" width="290" height="110" rx="8" fill="none" stroke="currentColor" opacity="0.7"/>
+  <text x="165" y="190" text-anchor="middle" font-weight="700">localStorage</text>
+  <text x="165" y="214" text-anchor="middle">живёт между визитами</text>
+  <text x="165" y="234" text-anchor="middle">общий для всех вкладок сайта</text>
+  <text x="165" y="256" text-anchor="middle" opacity="0.7">корзина, настройки, сортировка</text>
+  <rect x="330" y="164" width="290" height="110" rx="8" fill="none" stroke="currentColor" opacity="0.7" stroke-dasharray="6 4"/>
+  <text x="475" y="190" text-anchor="middle" font-weight="700">sessionStorage</text>
+  <text x="475" y="214" text-anchor="middle">живёт, пока открыта вкладка</text>
+  <text x="475" y="234" text-anchor="middle">у каждой вкладки своё</text>
+  <text x="475" y="256" text-anchor="middle" opacity="0.7">открытая панель, черновик формы</text>
+</svg>

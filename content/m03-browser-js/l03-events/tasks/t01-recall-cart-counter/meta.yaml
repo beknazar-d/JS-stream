@@ -1,0 +1,22 @@
+order: 1
+title: "Счётчик корзины"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 8
+language: html
+tags: [addEventListener, click, textContent, состояние]
+hints:
+  - "Направление: нужна переменная для счёта вне функций-обработчиков и два обработчика click: один увеличивает, другой обнуляет. Текст показывайте через textContent."
+  - "Шаг: пишите addEventListener('click', имяФункции) без скобок. Сброс должен менять и переменную, и текст на странице."
+  - "Почти решение: let count = 0; function render() { counter.textContent = 'Корзина: ' + count; } addBtn.addEventListener('click', () => { count += 1; render(); }); clearBtn.addEventListener('click', () => { count = 0; render(); });"
+wrong:
+  - name: no-clear
+    kind: partial
+    explanation: "Счётчик растёт, но кнопка «Очистить» не подключена. Клик по ней ничего не меняет, а число остаётся прежним."
+  - name: call-now
+    kind: common-mistake
+    explanation: "После имени функции стоят скобки: addEventListener('click', addItem()). Функция вызывается один раз при загрузке страницы, поэтому счётчик сразу показывает единицу, а клики ничего не делают."
+  - name: stale-count
+    kind: edge-case
+    explanation: "Очистка меняет только текст на странице, а переменная count остаётся прежней. Следующий клик по «Добавить» покажет старое число плюс единица вместо единицы."

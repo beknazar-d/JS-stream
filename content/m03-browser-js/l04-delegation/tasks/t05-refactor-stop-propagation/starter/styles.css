@@ -1,0 +1,29 @@
+body {
+  margin: 16px;
+  font-family: system-ui, "Segoe UI", Arial, sans-serif;
+}
+
+#cards {
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  border: 1px solid #b8b8c4;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.card.is-selected {
+  border-color: #1b5fd1;
+  background: #eef3fd;
+}
+
+.heart.is-fav {
+  color: #c62828;
+}

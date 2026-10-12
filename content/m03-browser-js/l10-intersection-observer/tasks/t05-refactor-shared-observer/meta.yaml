@@ -1,0 +1,22 @@
+order: 5
+title: "Один наблюдатель вместо сорока"
+type: refactor
+role: main
+difficulty: 3
+minutes: 15
+language: html
+tags: [IntersectionObserver, рефакторинг, unobserve, disconnect]
+hints:
+  - "Направление: наблюдатель умеет следить за многими элементами. Колбэк получает запись с полем target, поэтому замыкание на конкретную картинку не нужно."
+  - "Шаг: вынесите создание наблюдателя из цикла. Колбэк пройдёт по всем записям, а для каждой видимой возьмёт entry.target. Прекращать слежение за одной картинкой нужно через observer.unobserve(img), а не disconnect()."
+  - "Почти решение: const observer = new IntersectionObserver((entries) => { for (const entry of entries) { if (!entry.isIntersecting) continue; entry.target.src = entry.target.dataset.src; observer.unobserve(entry.target); } }); document.querySelectorAll('img[data-src]').forEach((img) => observer.observe(img));"
+wrong:
+  - name: disconnect-all
+    kind: edge-case
+    explanation: "Наблюдатель один, но после первой же загрузки вызван observer.disconnect(). Он прекращает слежение за всеми картинками, и остальные никогда не загрузятся. Для одного элемента нужен unobserve."
+  - name: first-entry-only
+    kind: common-mistake
+    explanation: "Наблюдатель один, но колбэк читает только entries[0]. Когда две картинки пришли в одном уведомлении, вторая остаётся пустой. В прежнем коде каждая картинка получала своё уведомление, а в общем наблюдателе записи приходят пачкой."
+  - name: keeps-observing
+    kind: partial
+    explanation: "Один наблюдатель создан, но unobserve забыт. Загруженные картинки остаются под наблюдением, и колбэк каждый раз присваивает src заново."

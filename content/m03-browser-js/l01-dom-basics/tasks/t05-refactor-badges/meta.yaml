@@ -1,0 +1,22 @@
+order: 5
+title: "Классы и скрытие без className и style"
+type: refactor
+role: main
+difficulty: 3
+minutes: 15
+language: html
+tags: [classList, dataset, hidden, рефакторинг]
+hints:
+  - "Направление: каждую строку старого скрипта нужно заменить на аналог из DOM-API. Склейку классов заменяет classList.add, getAttribute('data-new') — dataset.new, style.display = 'none' — hidden."
+  - "Шаг: значение dataset.new — строка, и строка 'false' истинна. Сравнивайте со строкой 'true' напрямую. Для hidden пишите note.hidden = true."
+  - "Почти решение: for (const card of document.querySelectorAll('.card')) { if (card.dataset.new === 'true') card.classList.add('card--new'); } document.querySelector('.empty-note').hidden = true;"
+wrong:
+  - name: display-left
+    kind: partial
+    explanation: "Классы переписаны на classList, но сообщение по-прежнему прячется через style.display. Из-за inline-стиля правила в CSS для атрибута hidden не работают, а проверка на отсутствие style.display не проходит."
+  - name: truthy-string
+    kind: edge-case
+    explanation: "Условие if (card.dataset.new) для строки 'false' истинно, потому что непустая строка в логическом контексте истинна. Тостер с data-new='false' ошибочно получает класс «новинка»."
+  - name: class-name
+    kind: common-mistake
+    explanation: "Присваивание className = 'card--new' затирает остальные классы: у карточки card--featured и сам базовый класс card пропадают, оформление ломается. Нужен classList.add."

@@ -1,0 +1,19 @@
+body {
+  margin: 16px;
+  font-family: system-ui, "Segoe UI", Arial, sans-serif;
+}
+
+.cart-list {
+  padding: 0;
+  list-style: none;
+}
+
+.cart-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.cart-row__qty {
+  color: #6b6b78;
+}

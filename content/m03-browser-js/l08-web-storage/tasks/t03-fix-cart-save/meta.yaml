@@ -1,0 +1,22 @@
+order: 3
+title: "Корзина пропадает после перезагрузки"
+type: fix-bug
+role: warmup
+difficulty: 2
+minutes: 10
+language: html
+tags: [localStorage, JSON.stringify, массивы]
+hints:
+  - "Направление: откройте в консоли localStorage.getItem('cart') после добавления товара. Похоже ли значение на JSON?"
+  - "Шаг: setItem превращает значение в строку сам, а у массива объектов это строка «[object Object]». Нужно явно превратить массив в JSON-строку."
+  - "Почти решение: в функции save замените вторую часть на JSON.stringify(cart): localStorage.setItem(KEY, JSON.stringify(cart))."
+wrong:
+  - name: clear-forgets-save
+    kind: partial
+    explanation: "Добавление исправлено, но «Очистить корзину» не вызывает save(). На экране корзина пуста, а в хранилище остались старые товары. После перезагрузки они возвращаются."
+  - name: session-storage
+    kind: common-mistake
+    explanation: "JSON-строка собрана верно, но записана в sessionStorage. Она пропадёт при закрытии вкладки, а localStorage останется со старыми данными."
+  - name: clear-removes-key
+    kind: edge-case
+    explanation: "Очистка удаляет ключ через removeItem. Это выглядит логично, но тогда getItem возвращает null, и код других страниц, который делает JSON.parse(localStorage.getItem('cart')).length, падает. По критериям в хранилище должен остаться [] ."

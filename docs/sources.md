@@ -98,3 +98,27 @@
 | [GitHub Docs: Configuring a publishing source for GitHub Pages](https://docs.github.com/pages) | Шаги публикации: Settings, Pages, Deploy from a branch | Только факты |
 
 Поведение Chromium проверено запуском через playwright: порядок слоёв при `!important` обратный, правило вне слоя сильнее любого слоя, `:focus-visible` срабатывает при программном `focus()`, сообщение консоли `Failed to load resource: the server responded with a status of 404 (Not Found)`. Сообщения V8 (`Cannot read properties of null (reading 'focus')`, `Cannot convert undefined or null to object`) и Git (`fatal: not a git repository`) получены запуском. Страницы GitHub Pages и WCAG на w3.org в среде недоступны: шаги публикации и формула сверены по документации и поиску, а не по прямому чтению спецификации.
+
+## Модуль 3, уроки 3.8–3.10 «Web Storage», «Адрес страницы и History API», «Intersection Observer»
+
+Тексты, примеры и задания написаны с нуля, со своими данными («Домотека»). Прямых заимствований нет.
+
+| Источник | Что использовано | Лицензия |
+| --- | --- | --- |
+| [MDN Web Docs: Web Storage API, Storage.setItem и getItem, JSON.parse и JSON.stringify](https://developer.mozilla.org/ru/docs/Web/API/Web_Storage_API) | Поведение хранилища (только строки, `null` для отсутствующего ключа), лимит объёма. Использованы только факты, текст не копировался | CC BY-SA 2.5 (атрибуция «Mozilla Contributors») |
+| [MDN Web Docs: URL, URLSearchParams, History API (pushState, replaceState, popstate)](https://developer.mozilla.org/ru/docs/Web/API/History_API) | Методы и события, формат `URLSearchParams`. Использованы только факты | CC BY-SA 2.5 (атрибуция «Mozilla Contributors») |
+| [MDN Web Docs: Intersection Observer API](https://developer.mozilla.org/ru/docs/Web/API/Intersection_Observer_API) | Параметры `rootMargin` и `threshold`, поля записи, первое уведомление после `observe`. Использованы только факты | CC BY-SA 2.5 (атрибуция «Mozilla Contributors») |
+
+Поведение Chromium проверено запуском через playwright: тексты ошибок `QuotaExceededError`, `SecurityError` и `DataCloneError` у `pushState`, `SyntaxError`, `RangeError` и `TypeError` у конструктора `IntersectionObserver`, первое уведомление `isIntersecting: false` после `observe`, повторное уведомление после `unobserve` и `observe`, отсутствие срабатывания настоящего `IntersectionObserver` в скрытом iframe вне экрана. Сообщения `JSON.parse` и `new URL` получены запуском в Node.js 22.
+
+## Модуль 3, уроки 3.1–3.4 «DOM: поиск и изменение», «Создание элементов и списки», «События», «Всплытие и делегирование»
+
+Тексты, примеры и задания написаны с нуля, со своими данными (магазин «Домотека»). Прямых заимствований нет.
+
+| Источник | Что использовано | Лицензия |
+| --- | --- | --- |
+| [MDN Web Docs: Document Object Model, `querySelector`, `Element.classList`, `HTMLElement.dataset`, `hidden`, `Node.append`, `replaceChildren`, `HTMLTemplateElement`, `Element.innerHTML` (Security considerations), `addEventListener`, `Event`, `Event.preventDefault`, Event bubbling, `Element.closest`](https://developer.mozilla.org/ru/docs/Web/API) | Названия и поведение методов, правила `dataset` (kebab-case в camelCase), порядок всплытия, список событий, которые не всплывают. Текст не копировался | CC BY-SA 2.5 (атрибуция «Mozilla Contributors») |
+| [HTML Living Standard (WHATWG)](https://html.spec.whatwg.org/) | Атрибут `hidden` работает по наличию, `script` из `innerHTML` не выполняется, `template.content` как `DocumentFragment` | CC BY 4.0 (только факты) |
+| [OWASP: Cross Site Scripting Prevention](https://cheatsheetseries.owasp.org/) | Идея: данные пользователя вставлять как текст, не как разметку | CC BY-SA 4.0 (только идея, текст не использован) |
+
+Сообщения в разделах «Типичные ошибки» (`Cannot read properties of null`, `Failed to execute 'querySelector'`, `Failed to execute 'addEventListener'`, `Failed to execute 'appendChild'`, `InvalidCharacterError` у `classList.add`), поведение `append(null)`, `hidden = 'false'`, `dataset` и вывод `Intl.NumberFormat('ru-RU')` получены запуском в Chromium (playwright). Не проверялось на других браузерах.

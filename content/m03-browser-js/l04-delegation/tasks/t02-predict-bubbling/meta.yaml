@@ -1,0 +1,23 @@
+order: 2
+title: "Порядок всплытия и stopPropagation"
+type: predict
+role: warmup
+difficulty: 3
+minutes: 10
+language: js
+tags: [всплытие, target, currentTarget, stopPropagation]
+show: [tests/snippet.js]
+hints:
+  - "Направление: событие начинается с целевого элемента и идёт вверх по parent. В строке выводится currentTarget (кто слушает), а потом target (где случилось)."
+  - "Шаг: в первом dispatch цель — icon, у самого icon обработчиков нет, поэтому выводят button, item и list. Во втором dispatch в button добавлен второй обработчик со stopPropagation: остановка действует после всех обработчиков button."
+  - "Почти решение: button <- icon, item <- icon, list <- icon, ---, потом button <- icon, stop on button. В третьем dispatch цель уже item, поэтому дальше item <- item и list <- item."
+wrong:
+  - name: unfinished
+    kind: partial
+    explanation: "Записаны только четыре строки: первый dispatch и разделитель. Нужно предсказать и второй dispatch со stopPropagation, и третий с другой целью."
+  - name: top-down
+    kind: common-mistake
+    explanation: "В первом dispatch порядок обратный: list, item, button. Но в фазе всплытия события идут снизу вверх: сначала самый глубокий элемент с обработчиком (button), потом его родители."
+  - name: stop-ignored
+    kind: edge-case
+    explanation: "Во втором dispatch после stop on button продолжены item и list. Вызов stopPropagation останавливает путь вверх: после обработчиков кнопки выше событие не идёт."

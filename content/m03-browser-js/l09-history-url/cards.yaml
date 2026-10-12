@@ -1,0 +1,34 @@
+- id: url-parts
+  front: Как получить части адреса из строки?
+  back: "new URL(строка, база): url.pathname, url.search, url.hash, url.searchParams. База нужна для относительных адресов."
+  answer: new URL
+- id: params-get
+  front: Что возвращает params.get('page'), если параметра нет, и что — при повторе параметра?
+  back: "null, если параметра нет. При повторе — первое значение. Все значения даёт getAll."
+- id: params-build
+  front: Как собрать строку запроса без ручной склейки?
+  back: "const params = new URLSearchParams(); params.set('q', text); params.toString(). Кодирование пробелов, & и русских букв делается само."
+  answer: URLSearchParams
+- id: no-manual
+  front: Почему нельзя собирать адрес как '?q=' + text?
+  back: "Символы &, =, #, % и пробел ломают адрес: амперсанд начинает новый параметр, решётка обрезает адрес. Используйте URLSearchParams."
+- id: push-signature
+  front: Какие три аргумента у history.pushState?
+  back: "pushState(state, title, url): состояние (объект), заголовок (игнорируется, пустая строка) и новый адрес. Страница не перезагружается."
+  answer: pushState
+- id: push-vs-replace
+  front: Чем pushState отличается от replaceState?
+  back: "pushState добавляет запись в историю, replaceState подменяет текущую. Для шага, к которому можно вернуться кнопкой «Назад», нужен pushState."
+- id: popstate
+  front: Когда срабатывает popstate и что в event.state?
+  back: "При переходе по истории («Назад», «Вперёд»), но не при самом вызове pushState. В event.state лежит объект, записанный в эту запись, или null."
+  answer: popstate
+- id: no-push-in-popstate
+  front: Почему нельзя вызывать pushState внутри обработчика popstate?
+  back: "Он создаёт новую запись и стирает всё «впереди»: кнопка «Вперёд» перестаёт работать, а «Назад» может зациклиться."
+- id: location-search
+  front: Как в настоящем браузере прочитать параметры текущего адреса?
+  back: "new URLSearchParams(location.search). В тренажёре location не меняется, поэтому адрес передают функции строкой."
+- id: validate-url
+  front: Что делать со значениями параметров из адреса?
+  back: "Проверять по списку допустимых и подставлять значения по умолчанию. Ссылку мог набрать кто угодно, с опечатками и лишними параметрами."

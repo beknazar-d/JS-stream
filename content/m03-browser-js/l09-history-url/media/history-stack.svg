@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="13" fill="currentColor">
+  <title id="t">Записи истории и popstate</title>
+  <desc id="d">Три записи истории в ряд: каталог без фильтров, чайники, чайники в наличии. Текущая запись выделена. Кнопка Назад переносит выделение на предыдущую запись и вызывает popstate с её состоянием. Новый pushState после Назад стирает запись впереди.</desc>
+  <g font-weight="700" text-anchor="middle"><text x="320" y="22">Стопка записей истории</text></g>
+  <g fill="none" stroke="currentColor" opacity="0.7">
+    <rect x="20" y="40" width="180" height="76" rx="8"/>
+    <rect x="230" y="40" width="180" height="76" rx="8"/>
+    <rect x="440" y="40" width="180" height="76" rx="8" stroke-width="3" opacity="1"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="110" y="64" font-weight="700">1. /catalog</text>
+    <text x="110" y="86" opacity="0.8">state: null</text>
+    <text x="320" y="64" font-weight="700">2. ?category=kettles</text>
+    <text x="320" y="86" opacity="0.8">state: category kettles</text>
+    <text x="530" y="64" font-weight="700">3. + inStock=1</text>
+    <text x="530" y="86" opacity="0.8">state: kettles, inStock</text>
+    <text x="530" y="108" font-weight="700">текущая</text>
+  </g>
+  <g stroke="currentColor" stroke-width="2" fill="currentColor">
+    <path d="M436 150 H330"/><path d="M330 150 l8 -5 v10 z"/>
+  </g>
+  <text x="383" y="140" text-anchor="middle">Назад</text>
+  <text x="30" y="190">1. Назад: текущей становится запись 2, браузер вызывает popstate.</text>
+  <text x="30" y="212">2. В обработчике event.state хранит то, что вы записали в pushState.</text>
+  <text x="30" y="234">3. Если сейчас вызвать pushState, запись 3 будет стёрта.</text>
+  <text x="30" y="256">4. Поэтому в обработчике popstate pushState не вызывают.</text>
+  <text x="30" y="282" opacity="0.8">replaceState не добавляет запись, а подменяет текущую.</text>
+</svg>

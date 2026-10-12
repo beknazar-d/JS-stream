@@ -1,0 +1,17 @@
+body {
+  margin: 16px;
+  font-family: system-ui, "Segoe UI", Arial, sans-serif;
+}
+
+.reviews {
+  padding: 0;
+  list-style: none;
+}
+
+.review {
+  margin-bottom: 8px;
+}
+
+.review__author {
+  font-weight: 700;
+}

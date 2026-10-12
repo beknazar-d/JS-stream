@@ -1,0 +1,22 @@
+order: 6
+title: "Страница товара из данных"
+type: implement
+role: real
+difficulty: 3
+minutes: 25
+language: html
+tags: [textContent, hidden, classList, dataset, атрибуты, доступность]
+hints:
+  - "Направление: разделите функцию на блоки: тексты, цены и скидка, наличие, кнопка, картинка. В каждом блоке задавайте состояние целиком, а не только включайте его."
+  - "Шаг: для обоих состояний пользуйтесь парами. hidden = условие, classList.toggle('p-stock--ok', ok), button.disabled = !ok. Тогда повторный вызов сам снимает лишнее. Для расчёта скидки подойдёт Math.round((oldPrice - price) / oldPrice * 100)."
+  - "Почти решение: const hasDiscount = product.oldPrice > product.price; oldEl.hidden = !hasDiscount; oldEl.textContent = hasDiscount ? formatPrice(product.oldPrice) : ''; и то же для .p-discount. Картинка: photo.src = product.image; photo.alt = product.imageAlt ?? product.title."
+wrong:
+  - name: text-only
+    kind: partial
+    explanation: "Заполнены только заголовок, крошка и цена. Скидка, наличие, кнопка и картинка остались от шаблона: у товара без остатка кнопка всё ещё включена, а старой цены нет."
+  - name: no-reset
+    kind: edge-case
+    explanation: "Состояние только включается: при втором вызове с товаром без скидки старая цена и бейдж скидки остаются на странице, а при товаре в наличии кнопка остаётся отключённой от прошлого вызова. Нужно задавать состояние в обе стороны."
+  - name: no-a11y
+    kind: common-mistake
+    explanation: "Картинка получает src, но alt остаётся пустым, а у кнопки нет доступного имени с названием товара. Визуально всё верно, но программа чтения с экрана не расскажет, что за товар на картинке и какую именно кнопку нажимать."

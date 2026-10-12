@@ -1,0 +1,30 @@
+body {
+  margin: 16px;
+  font-family: system-ui, "Segoe UI", Arial, sans-serif;
+}
+
+.p-old-price {
+  text-decoration: line-through;
+  color: #6b6b78;
+}
+
+.p-discount {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #c62828;
+  color: #ffffff;
+}
+
+.p-discount[hidden],
+.p-old-price[hidden] {
+  display: none;
+}
+
+.p-stock--ok {
+  color: #1b7a3a;
+}
+
+.p-stock--out {
+  color: #b3261e;
+}

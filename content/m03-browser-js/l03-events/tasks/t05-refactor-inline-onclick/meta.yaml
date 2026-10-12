@@ -1,0 +1,22 @@
+order: 5
+title: "Без onclick в разметке"
+type: refactor
+role: main
+difficulty: 3
+minutes: 15
+language: html
+tags: [addEventListener, onclick, currentTarget, once, dataset, рефакторинг]
+hints:
+  - "Направление: в разметке оставьте только data-id, а всю логику перенесите в script.js. Обработчик на кнопку нужно повесить циклом по querySelectorAll('.buy')."
+  - "Шаг: внутри обработчика идентификатор читайте через event.currentTarget.dataset.id, а не через event.target: клик может прийти по значку внутри кнопки. Для промокода передайте третьим аргументом { once: true }."
+  - "Почти решение: for (const button of document.querySelectorAll('.buy')) { button.addEventListener('click', onBuyClick); } promoButton.addEventListener('click', applyPromo, { once: true });"
+wrong:
+  - name: promo-inline
+    kind: partial
+    explanation: "Кнопки покупки переведены на addEventListener, но у кнопки промокода остался атрибут onclick. Проверка на отсутствие inline-обработчиков не проходит, а логика страницы по-прежнему размазана между разметкой и скриптом."
+  - name: promo-twice
+    kind: edge-case
+    explanation: "Флаг убран, но вместо once ничего не добавлено. Каждый клик по промокоду прибавляет ещё 10%: после двух кликов скидка 20%. Нужно ограничить обработчик одним срабатыванием."
+  - name: target-icon
+    kind: common-mistake
+    explanation: "Идентификатор читается из event.target. Когда человек щёлкает по значку внутри кнопки, target равен значку, у которого нет data-id, и в #last попадает undefined. Данные кнопки берут из currentTarget."

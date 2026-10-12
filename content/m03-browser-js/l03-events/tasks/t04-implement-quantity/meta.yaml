@@ -1,0 +1,22 @@
+order: 4
+title: "Поле количества с кнопками"
+type: implement
+role: main
+difficulty: 3
+minutes: 20
+language: html
+tags: [input, change, click, Number, value, валидация]
+hints:
+  - "Направление: вынесите логику в две функции: одна превращает строку из поля в допустимое число (parseQty), другая рисует сумму (render). Обработчики input, change, plus и minus только вызывают их."
+  - "Шаг: в parseQty используйте Number и Math.trunc, затем проверьте NaN и границы. В обработчике input сначала проверьте строку регулярным выражением на одни цифры. Кнопки считайте так: Number(input.value) + 1, потом через parseQty."
+  - "Почти решение: const n = Math.trunc(Number(value)); if (Number.isNaN(n) || n < 1) return 1; if (n > 99) return 99; return n; Для плюса: setQty(parseQty(input.value) + 1)."
+wrong:
+  - name: no-live
+    kind: partial
+    explanation: "Подключены change и кнопки, но события input нет. Пока человек печатает, сумма не обновляется и меняется только после ухода с поля."
+  - name: nan
+    kind: edge-case
+    explanation: "Количество ограничивается через Math.min и Math.max, но значение не проверяется на NaN. Для пустой строки Number даёт 0, а для букв NaN, и в поле и в сумме появляется NaN. Недопустимый ввод нужно превращать в 1."
+  - name: string-plus
+    kind: common-mistake
+    explanation: "Кнопка плюс использует input.value + 1. Значение поля — строка, поэтому после ввода 5 нажатие плюса даёт строку 51 вместо 6. Перед сложением нужно превратить значение в число."
