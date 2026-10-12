@@ -1,0 +1,4 @@
+body { font-family: system-ui, sans-serif; margin: 24px; }
+.toolbar { display: flex; gap: 16px; align-items: center; margin-bottom: 12px; }
+#products { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; list-style: none; padding: 0; }
+.product { border: 1px solid #999; border-radius: 8px; padding: 16px; }

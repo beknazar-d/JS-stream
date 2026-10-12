@@ -1,0 +1,23 @@
+order: 2
+title: "Что лежит в FormData"
+type: predict
+role: warmup
+difficulty: 3
+minutes: 10
+language: js
+tags: [FormData, строки, Object.fromEntries]
+show: [tests/snippet.js]
+hints:
+  - "Направление: значения, которые вы кладёте через append, превращаются в строки. Сложение строки с числом склеивает, а не складывает."
+  - "Шаг: get возвращает первое значение по ключу или null, getAll возвращает все. Object.fromEntries при повторе ключа оставляет последнее значение. keys даёт ключи по одному разу на каждое значение."
+  - "Почти решение: 2, string, 21, 3, null, [\"on\", \"wrap\"], объект с gift: \"wrap\", false, а в конце после удаления остаются ключи title и qty."
+wrong:
+  - name: unfinished
+    kind: partial
+    explanation: "Заполнены только первые строки. Нужно предсказать все девять вызовов console.log, включая объект из Object.fromEntries и список ключей."
+  - name: numbers-everywhere
+    kind: common-mistake
+    explanation: "Выбран тип «число» для значения поля: typeof дал number, а сумма 3. Но FormData хранит поля формы строками: typeof равен string, а запись data.get('qty') + 1 склеивает строки и даёт 21."
+  - name: first-duplicate
+    kind: edge-case
+    explanation: "В объекте из Object.fromEntries выбран первый gift. Но при повторе ключа каждая следующая пара перезаписывает предыдущую, и остаётся последнее значение: wrap."

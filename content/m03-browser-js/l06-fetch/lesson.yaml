@@ -1,0 +1,3 @@
+order: 6
+title: "fetch и JSON-API"
+summary: "Как страница запрашивает данные у сервера: fetch, ответ и его статус, response.json(), основы async и await, try и catch вокруг сети, отправка JSON."

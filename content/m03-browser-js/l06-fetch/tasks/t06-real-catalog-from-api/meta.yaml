@@ -1,0 +1,22 @@
+order: 6
+title: "Каталог из API: список, фильтр, обновление"
+type: api
+role: real
+difficulty: 4
+minutes: 40
+language: html
+tags: [fetch, JSON, рендер списка, фильтр, неясности]
+hints:
+  - "Направление: разделите загрузку и вывод. loadProducts получает данные и кладёт их в переменную, render(products) рисует карточки с учётом чекбокса. Тогда переключатель вызывает только render и не ходит в сеть."
+  - "Шаг: в render сначала отфильтруйте массив (filter по inStock, если чекбокс отмечен), потом очистите список и создайте li.product с h3 и абзацем цены. Если в результате ничего нет, запишите сообщение в #status, иначе очистите #status."
+  - "Почти решение: let products = []; async function loadProducts() { const response = await fetch('/api/products'); if (!response.ok) { ... return; } products = await response.json(); render(); } чекбокс: addEventListener('change', render); кнопка: addEventListener('click', loadProducts)."
+wrong:
+  - name: ignores-filter
+    kind: partial
+    explanation: "Карточки выводятся, а переключатель «Только в наличии» ничего не делает. При отмеченном чекбоксе по-прежнему показаны все пять товаров."
+  - name: no-empty-message
+    kind: edge-case
+    explanation: "Когда сервер вернул пустой массив, список пуст, но сообщения нет. Покупатель видит пустую страницу и не понимает, сломалась она или товаров правда нет."
+  - name: title-innerhtml
+    kind: common-mistake
+    explanation: "Карточка собирается через innerHTML с названием товара. Если в названии окажется разметка, она станет элементами страницы. Для данных с сервера нужен textContent."

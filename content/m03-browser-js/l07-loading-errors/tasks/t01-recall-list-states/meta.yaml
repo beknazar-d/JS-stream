@@ -1,0 +1,22 @@
+order: 1
+title: "Четыре состояния списка заказов"
+type: recall
+role: warmup
+difficulty: 2
+minutes: 15
+language: html
+tags: [loading, error, empty, try/catch, retry]
+hints:
+  - "Направление: перед запросом ставим «Загрузка…» и прячем кнопку. Дальше три исхода: ошибка статуса, ошибка сети (catch), пустой список. Остальное — успех."
+  - "Шаг: оберните fetch и json() в try. Статус проверьте через if (!response.ok) и выведите сообщение со статусом. Пустой список проверяйте через orders.length === 0. В catch покажите «Нет соединения с сервером» и кнопку."
+  - "Почти решение: в начале функции status.textContent = 'Загрузка…'; retry.hidden = true; list.textContent = ''. В ветках ошибки retry.hidden = false. Обработчики: retry и reload вешают на click ту же функцию, затем вызов loadOrders()."
+wrong:
+  - name: no-retry-button
+    kind: partial
+    explanation: "Сообщение об ошибке выводится, но кнопка «Повторить» так и остаётся скрытой. Человеку остаётся перезагружать страницу целиком."
+  - name: network-error-stuck
+    kind: edge-case
+    explanation: "Нет try/catch. Если запрос вообще не дошёл до сервера, fetch выбрасывает ошибку, и на странице навсегда остаётся «Загрузка…»: ни сообщения, ни кнопки."
+  - name: list-duplicates
+    kind: common-mistake
+    explanation: "Список не очищается перед выводом. После успешной загрузки кнопка «Обновить» добавляет те же заказы второй раз."

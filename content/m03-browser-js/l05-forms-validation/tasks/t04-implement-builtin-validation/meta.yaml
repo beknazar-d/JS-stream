@@ -1,0 +1,22 @@
+order: 4
+title: "Проверка полей заказа атрибутами"
+type: implement
+role: main
+difficulty: 3
+minutes: 15
+language: html
+tags: [валидация, required, pattern, constraint validation]
+hints:
+  - "Направление: каждое правило из критериев — это один атрибут: required, type, minlength, maxlength, min, max, step или pattern."
+  - "Шаг: для телефона нужен pattern. Он проверяет значение целиком, поэтому якоря ^ и $ не нужны. Для количества: type=number, min=1, max=10. Шаг по умолчанию равен 1, поэтому 1.5 отсеется сам."
+  - "Почти решение: pattern=\"\\+7\\d{10}\" для телефона, pattern=\"\\d{6}\" для индекса, type=email, type=number min=1 max=10, minlength=2 для имени, maxlength=200 для комментария, required на пяти полях."
+wrong:
+  - name: only-required
+    kind: partial
+    explanation: "Все поля обязательные, но шаблонов и границ нет. Строка abc проходит как телефон и как индекс, адрес без @ проходит как почта, а количество 0 и 11 разрешены."
+  - name: novalidate
+    kind: common-mistake
+    explanation: "Атрибуты описаны верно, но у формы стоит novalidate. Метод checkValidity по-прежнему сообщает об ошибках, а вот сама отправка проверку пропускает: форма с неверными данными уходит на сервер."
+  - name: loose-number
+    kind: edge-case
+    explanation: "У количества нет min и max, поэтому значения 0 и 11 проходят проверку. Тип number отсекает только нечисловой ввод."

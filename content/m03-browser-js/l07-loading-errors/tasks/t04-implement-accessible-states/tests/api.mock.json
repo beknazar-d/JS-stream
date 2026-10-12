@@ -1,0 +1,33 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/deliveries",
+      "responses": [
+        {
+          "status": 503,
+          "delayMs": 300,
+          "body": {
+            "error": "Service Unavailable"
+          }
+        },
+        {
+          "status": 200,
+          "delayMs": 300,
+          "body": [
+            {
+              "id": 1042,
+              "city": "Казань",
+              "status": "в пути"
+            },
+            {
+              "id": 1043,
+              "city": "Самара",
+              "status": "собирается"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

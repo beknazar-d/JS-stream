@@ -1,0 +1,4 @@
+body { font-family: system-ui, sans-serif; margin: 24px; }
+#products { display: flex; gap: 16px; list-style: none; padding: 0; }
+.card { border: 1px solid #999; border-radius: 8px; padding: 16px; width: 200px; }
+.stock { min-height: 1.2em; }

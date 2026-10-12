@@ -1,0 +1,22 @@
+order: 6
+title: "Оформление заказа: проверка формы"
+type: implement
+role: real
+difficulty: 4
+minutes: 35
+language: html
+tags: [form, FormData, валидация, aria, неясности]
+hints:
+  - "Направление: разделите работу на три функции: собрать данные из FormData, вернуть объект ошибок по этим данным, показать ошибки и сводку. Тогда проверка не зависит от DOM."
+  - "Шаг: validate(data) возвращает объект вида { name: 'текст', phone: 'текст' } только для неверных полей. Перед показом очистите все три абзаца и все aria-invalid. Затем пройдите по ключам: покажите текст, поставьте aria-invalid и aria-describedby. Фокус на первое поле из списка name, phone, address, которое попало в ошибки."
+  - "Почти решение: const errors = validate(Object.fromEntries(new FormData(form))); clearErrors(); если ключей нет, summary.textContent = 'Заказ для ' + data.name + ': ' + METHODS[data.method]; иначе показать ошибки и сфокусировать первое поле."
+wrong:
+  - name: name-only
+    kind: partial
+    explanation: "Проверяется только имя. Пустой или неправильный телефон пропускается, и курьеру нечем звонить. Телефон обязателен по тикету."
+  - name: no-address-check
+    kind: edge-case
+    explanation: "Адрес не проверяется совсем. При доставке пустой адрес проходит, и заказ некуда привозить. Нужно требовать адрес, когда выбран способ delivery."
+  - name: errors-stay
+    kind: common-mistake
+    explanation: "Ошибки только добавляются и нигде не сбрасываются. После исправления полей старые сообщения и aria-invalid остаются на странице, а сводка не появляется."

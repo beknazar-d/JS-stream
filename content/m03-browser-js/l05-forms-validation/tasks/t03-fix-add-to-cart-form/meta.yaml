@@ -1,0 +1,22 @@
+order: 3
+title: "Форма «Добавить в корзину» не работает"
+type: fix-bug
+role: warmup
+difficulty: 2
+minutes: 12
+language: html
+tags: [form, submit, FormData, checkbox]
+hints:
+  - "Направление: ошибок три, и все про форму. Первая видна по перезагрузке страницы. Две другие прячутся в том, что FormData видит в форме и что возвращает get для флажка."
+  - "Шаг: FormData собирает только поля с атрибутом name. Невыбранный флажок в FormData не попадает совсем. Значение выбранного флажка по умолчанию равно строке on, а не true."
+  - "Почти решение: в обработчике вызовите event.preventDefault(); в index.html добавьте полю количества name=qty; наличие флажка проверяйте через data.has('gift')."
+wrong:
+  - name: still-reloads
+    kind: common-mistake
+    explanation: "Имя поля и проверка флажка исправлены, но preventDefault забыт. Итог на мгновение появляется и тут же исчезает вместе с перезагрузкой страницы."
+  - name: gift-always-on
+    kind: edge-case
+    explanation: "Проверка data.get('gift') !== undefined всегда истинна: для отсутствующего поля get возвращает null, а не undefined. Пометка про упаковку появляется и без отметки."
+  - name: no-name
+    kind: partial
+    explanation: "Скрипт исправлен, но у поля количества по-прежнему нет name. FormData его не видит, get возвращает null, Number(null) равен 0 и итог получается 0 ₽."

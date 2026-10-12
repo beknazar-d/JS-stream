@@ -122,3 +122,14 @@
 | [OWASP: Cross Site Scripting Prevention](https://cheatsheetseries.owasp.org/) | Идея: данные пользователя вставлять как текст, не как разметку | CC BY-SA 4.0 (только идея, текст не использован) |
 
 Сообщения в разделах «Типичные ошибки» (`Cannot read properties of null`, `Failed to execute 'querySelector'`, `Failed to execute 'addEventListener'`, `Failed to execute 'appendChild'`, `InvalidCharacterError` у `classList.add`), поведение `append(null)`, `hidden = 'false'`, `dataset` и вывод `Intl.NumberFormat('ru-RU')` получены запуском в Chromium (playwright). Не проверялось на других браузерах.
+
+## Модуль 3, уроки 3.5–3.7 «Формы и валидация», «fetch и JSON-API», «Загрузка и ошибки сети»
+
+Тексты, примеры и задания написаны с нуля, со своими данными (магазин «Домотека»). Прямых заимствований нет.
+
+| Источник | Что использовано | Лицензия |
+| --- | --- | --- |
+| [MDN Web Docs: `FormData`, Constraint validation, `ValidityState`, `setCustomValidity`, `Fetch API`, `Response.ok`, `AbortController`, `AbortSignal`, `ARIA live regions`, `aria-invalid`, `aria-describedby`, `aria-busy`](https://developer.mozilla.org/ru/docs/Web/API) | Названия и поведение методов и флагов, правила `FormData`, `ok` для 200–299, `fetch` не отклоняется на 404 и 500. Текст не копировался | CC BY-SA 2.5 (атрибуция «Mozilla Contributors») |
+| [HTML Living Standard (WHATWG)](https://html.spec.whatwg.org/) | `minlength`, `maxlength` действуют только при вводе пользователем, `pattern` проверяет значение целиком, `novalidate` | CC BY 4.0 (только факты) |
+
+Тексты ошибок в «Типичных ошибках» (`Failed to construct 'FormData'`, `An invalid form control ... is not focusable`, `Form submission canceled because the form is not connected`, `Failed to fetch`, `Unexpected token '<'`, `body stream already read`, `signal is aborted without reason`) получены запуском в Chromium (playwright), сообщения `await is only valid...` и `Cannot read properties of null` — в Node.js 22. Firefox и Safari не проверялись.

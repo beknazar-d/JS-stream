@@ -1,0 +1,7 @@
+{
+  "routes": [
+    { "method": "GET", "path": "/api/stock?sku=K-200", "delayMs": 30, "body": { "sku": "K-200", "left": 3 } },
+    { "method": "GET", "path": "/api/stock?sku=B-50", "delayMs": 30, "body": { "sku": "B-50", "left": 0 } },
+    { "method": "GET", "path": "/api/stock?sku=T-2", "delayMs": 30, "status": 404, "body": { "error": "Артикул не найден" } }
+  ]
+}

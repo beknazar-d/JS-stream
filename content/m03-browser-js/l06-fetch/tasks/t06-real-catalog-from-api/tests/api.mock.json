@@ -1,0 +1,16 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/products",
+      "delayMs": 40,
+      "body": [
+        { "id": 1, "title": "Чайник K-200", "price": 3490, "inStock": true },
+        { "id": 2, "title": "Блендер B-50", "price": 4990, "inStock": false },
+        { "id": 3, "title": "Тостер T-2", "price": 2190, "inStock": true },
+        { "id": 4, "title": "Пылесос V-700", "price": 12990, "inStock": true },
+        { "id": 5, "title": "Мультиварка M-5", "price": 5990, "inStock": false }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Чайник K-200</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <h1>Чайник K-200</h1>
+    <p>Цена: 3490 ₽</p>
+    <form id="add-form">
+      <label for="qty">Количество</label>
+      <input id="qty" type="number" min="1" value="1">
+      <label for="gift">
+        <input id="gift" name="gift" type="checkbox"> Подарочная упаковка
+      </label>
+      <button type="submit">Добавить в корзину</button>
+    </form>
+    <p id="summary" role="status"></p>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

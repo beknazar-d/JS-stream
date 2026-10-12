@@ -1,0 +1,22 @@
+order: 4
+title: "Проверить наличие на складе"
+type: api
+role: main
+difficulty: 3
+minutes: 20
+language: html
+tags: [fetch, query-параметры, response.ok, status, делегирование]
+hints:
+  - "Направление: из клика нужно получить карточку, из карточки артикул, из артикула адрес запроса. Потом три ветки по ответу: 404, другой неуспех, успех."
+  - "Шаг: event.target.closest('.check') найдёт кнопку, button.closest('.card') — карточку, card.dataset.sku — артикул. Статус 404 проверяйте раньше общей проверки response.ok, чтобы дать свой текст."
+  - "Почти решение: const response = await fetch('/api/stock?sku=' + encodeURIComponent(sku)); если response.status === 404, сообщение «Артикул не найден»; иначе если !response.ok, сообщение со статусом; иначе const data = await response.json() и data.left > 0 ? ... : 'Нет в наличии'."
+wrong:
+  - name: first-card-only
+    kind: common-mistake
+    explanation: "Артикул берётся у первой карточки на странице, а не у той, на чью кнопку нажали. Любая кнопка проверяет чайник K-200, и блендер показывает остаток чайника."
+  - name: zero-is-available
+    kind: edge-case
+    explanation: "Проверка только на то, что left пришло в ответе. Для блендера left равен 0, и покупатель читает «В наличии: 0 шт.» вместо «Нет в наличии»."
+  - name: no-404
+    kind: partial
+    explanation: "Статус ответа не проверяется. Для неизвестного артикула приходит тело с error, поля left нет, и в карточке появляется «В наличии: undefined шт.»."

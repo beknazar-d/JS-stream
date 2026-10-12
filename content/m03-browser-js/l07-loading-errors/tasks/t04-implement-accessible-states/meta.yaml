@@ -1,0 +1,22 @@
+order: 4
+title: "Состояния списка для скринридера"
+type: implement
+role: main
+difficulty: 4
+minutes: 25
+language: html
+tags: [aria-live, aria-busy, focus, состояния, доступность]
+hints:
+  - "Направление: сделайте две правки. В index.html добавьте абзацу #status атрибут живой области. В script.js опишите четыре исхода загрузки, а aria-busy ставьте в начале и снимайте в finally."
+  - "Шаг: блок finally выполняется после try и catch, даже если внутри был return. Поэтому aria-busy снимается в одном месте. Фокус на кнопку можно ставить только после того, как вы убрали с неё hidden: скрытый элемент получить фокус не может."
+  - "Почти решение: в ветках ошибки сначала retry.hidden = false, потом retry.focus(). В начале: list.setAttribute('aria-busy', 'true'); в finally: list.setAttribute('aria-busy', 'false')."
+wrong:
+  - name: no-live-region
+    kind: partial
+    explanation: "Скрипт полностью исправен, но #status остался обычным абзацем. Скринридер не знает, что текст в нём меняется, и новые сообщения не озвучивает. Нужен aria-live или role=status."
+  - name: busy-stuck
+    kind: common-mistake
+    explanation: "aria-busy=true ставится в начале загрузки, но нигде не снимается. После окончания загрузки скринридер по-прежнему считает список занятым и может не читать его содержимое."
+  - name: empty-silent
+    kind: edge-case
+    explanation: "Пустой массив не обрабатывается: статус очищается, а списка нет. Скринридер молчит, зрячий видит пустую страницу, и никто не знает, что доставок правда нет."

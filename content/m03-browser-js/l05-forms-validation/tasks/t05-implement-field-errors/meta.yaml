@@ -1,0 +1,22 @@
+order: 5
+title: "Свои сообщения об ошибках у полей"
+type: implement
+role: main
+difficulty: 4
+minutes: 25
+language: html
+tags: [setCustomValidity, validity, aria-invalid, aria-describedby, доступность]
+hints:
+  - "Направление: сначала сбросьте старую ошибку поля, потом проверьте field.validity.valid. Если поле неверно, найдите, какой из флагов validity поднят, и возьмите сообщение с этим именем."
+  - "Шаг: setCustomValidity(текст) делает поле неверным, пока вы не вызовете setCustomValidity(''). Поэтому очищайте его в начале каждой проверки и при вводе в поле. Для списка неверных полей используйте filter, чтобы проверились все."
+  - "Почти решение: validate(field) вызывает clearError(field), выходит при field.validity.valid, находит ключ Object.keys(MESSAGES[field.id]).find((name) => field.validity[name]), вызывает field.setCustomValidity(message) и показывает ошибку. В submit: invalid[0].focus()."
+wrong:
+  - name: message-stuck
+    kind: common-mistake
+    explanation: "Сообщение записано через setCustomValidity, но нигде не сбрасывается. После исправления значения поле остаётся неверным: пользователь вводит правильную почту, а форма всё равно считает её ошибкой и никогда не сохраняется."
+  - name: no-aria
+    kind: partial
+    explanation: "Текст ошибки появляется под полем, но у поля нет aria-invalid и aria-describedby, а фокус остаётся на кнопке. Зрячий видит ошибку, а скринридер при переходе к полю ничего о ней не скажет."
+  - name: one-message
+    kind: edge-case
+    explanation: "Для всех причин берётся одно сообщение (первое из набора), поэтому пустая почта и почта без @ выглядят одинаково. Сообщение должно объяснять именно ту ошибку, которая случилась: valueMissing, typeMismatch или patternMismatch."

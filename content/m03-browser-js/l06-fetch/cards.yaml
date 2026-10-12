@@ -1,0 +1,33 @@
+- id: fetch-returns-promise
+  front: Что возвращает fetch и как получить из этого ответ сервера?
+  back: "Обещание (Promise). Внутри async-функции: const response = await fetch(url)."
+- id: ok-status
+  front: Для каких кодов ответа response.ok равно true?
+  back: "Для 200–299. Коды 404 и 500 не вызывают ошибки в fetch: проверяйте response.ok сами."
+  answer: response.ok
+- id: json-await
+  front: Как превратить тело ответа в данные?
+  back: "const data = await response.json(). Это тоже обещание, поэтому нужен await."
+  answer: await response.json()
+- id: await-where
+  front: Где можно писать await в обычном скрипте?
+  back: "Только внутри функции с async. Снаружи будет SyntaxError: await is only valid in async functions and the top level bodies of modules."
+- id: async-returns
+  front: Что возвращает async-функция?
+  back: "Всегда обещание. Забыв await, вы получите «[object Promise]» вместо значения."
+- id: try-catch-fetch
+  front: Когда fetch выбрасывает ошибку, а когда нет?
+  back: "Выбрасывает, если ответа нет вообще (нет сети): TypeError: Failed to fetch. Ответ 404 или 500 ошибкой не считается."
+- id: post-json
+  front: Как отправить JSON через fetch?
+  back: "fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(объект) })"
+- id: error-body
+  front: Что делать, если тело ошибки может быть не JSON?
+  back: "Читать его через response.json() внутри try/catch. SyntaxError означает, что пришёл текст или HTML."
+- id: encode-uri
+  front: Как безопасно подставить значение в адрес запроса?
+  back: "encodeURIComponent(значение): пробел станет %20, амперсанд %26."
+  answer: encodeURIComponent
+- id: body-once
+  front: Сколько раз можно прочитать тело ответа?
+  back: "Один раз. Второй вызов json() или text() выдаст: body stream already read."
