@@ -50,3 +50,19 @@ declare function fn<T extends (...args: any[]) => any>(impl?: T): T & {
 };
 /** Запускает файл и возвращает строки, которые он вывел в консоль. */
 declare function runSnippet(file: string): string[];
+/** Запускает асинхронный код и через ms возвращает всё, что он вывел, по порядку. */
+declare function runSnippetAsync(file: string, ms?: number): Promise<string[]>;
+/** Управляемое время: подмена setTimeout, setInterval и Date в тестах. */
+declare const timers: {
+  useFake(start?: number | string | Date): void;
+  useReal(): void;
+  advance(ms: number): Promise<void>;
+  runAll(limit?: number): Promise<void>;
+  pending(): number;
+  now(): number;
+};
+/** Тесты типов: проверка, что тип равен true. */
+type Expect<T extends true> = T;
+type ExpectFalse<T extends false> = T;
+type Equal<A, B> = (<T>() => T extends A ? 1 : 2) extends <T>() => T extends B ? 1 : 2 ? true : false;
+type NotEqual<A, B> = true extends Equal<A, B> ? false : true;

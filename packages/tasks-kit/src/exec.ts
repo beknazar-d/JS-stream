@@ -97,7 +97,7 @@ export async function execute(job: ExecJob): Promise<ExecResult> {
       if (!fresh && cache.has(key)) return cache.get(key)!.exports;
       const module = { exports: {} as unknown };
       if (!fresh) cache.set(key, module);
-      const globals = { ...suite.globals, runSnippet, timers };
+      const globals = { ...suite.globals, runSnippet, runSnippetAsync, timers };
       const factory = new Function('require', 'module', 'exports', 'console', ...Object.keys(globals), entry.code);
       factory(require, module, module.exports, consoleImpl, ...Object.values(globals));
       return module.exports;
@@ -107,6 +107,15 @@ export async function execute(job: ExecJob): Promise<ExecResult> {
     const runSnippet = (file: string): string[] => {
       const lines: string[] = [];
       runModule(moduleKey(file), createConsole((e) => lines.push(e.text)), true);
+      return lines;
+    };
+
+    // То же для асинхронного кода (event loop): ждёт ms настоящего времени
+    // и возвращает всё, что код вывел за это время, по порядку.
+    const runSnippetAsync = async (file: string, ms = 100): Promise<string[]> => {
+      const lines: string[] = [];
+      runModule(moduleKey(file), createConsole((e) => lines.push(e.text)), true);
+      await new Promise((resolve) => realSetTimeout(resolve, ms));
       return lines;
     };
 

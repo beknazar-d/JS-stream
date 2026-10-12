@@ -251,3 +251,14 @@ describe('проверка типов (typecheck)', () => {
     await pool2.close();
   }, 30000);
 });
+
+describe('runSnippetAsync', () => {
+  it('собирает вывод в порядке event loop', async () => {
+    const modules = compileJob({
+      'snippet.js': "console.log('1'); setTimeout(() => console.log('4'), 0); Promise.resolve().then(() => console.log('3')); console.log('2');",
+      'public.test.js': "it('порядок', async () => { expect(await runSnippetAsync('snippet.js')).toEqual(['1', '2', '3', '4']); });",
+    });
+    const result = await execute({ modules, tests: [{ file: 'public.test.js', hidden: false }] });
+    expect(result.tests[0].status).toBe('passed');
+  });
+});
