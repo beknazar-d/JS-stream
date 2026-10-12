@@ -6,6 +6,7 @@ import type { CompileError } from './compile.ts';
 import { formatCompileError } from './compile.ts';
 import type { ExecJob, ExecResult, LogEntry } from './exec.ts';
 import type { HtmlRun, MockApi } from './html.ts';
+import { formatTypeDiagnostic, type TypeDiagnostic } from './typecheck.ts';
 import { TIMEOUT_EXPLANATION } from './explain.ts';
 import type { TaskMeta } from './meta.ts';
 
@@ -43,6 +44,8 @@ export interface EvaluateDeps {
   // Исполнение заданий на страницу (language: html) в iframe. Нет — задания html не поддерживаются.
   executeHtml?: (run: HtmlRun) => Promise<ExecOutcome>;
   // Защита от бесконечных циклов в скриптах страницы (см. loop-guard.ts).
+  // Проверка типов (задания с typecheck: true).
+  typecheck?: (files: Record<string, string>) => Promise<TypeDiagnostic[]>;
   guardLoops?: (files: Record<string, string>) => Promise<{ files: Record<string, string>; errors: CompileError[] }>;
 }
 
@@ -142,11 +145,42 @@ function toReport(result: ExecResult): Report {
   return { status: failed || checks.length === 0 ? 'failed' : 'passed', checks, logs: result.logs };
 }
 
+const TYPE_TEST_FILE = /\.types\.ts$/;
+
+// Проверки типов: по одной на файл человека и на каждый файл тестов типов.
+async function typeChecks(bundle: TaskBundle, userFiles: Record<string, string>, deps: EvaluateDeps): Promise<Check[]> {
+  if (!bundle.meta.typecheck || !deps.typecheck) return [];
+  const testDir = filesIn(bundle.files, 'tests');
+  const typeTests = Object.fromEntries(Object.entries(testDir).filter(([f]) => TYPE_TEST_FILE.test(f)));
+  const diagnostics = await deps.typecheck({ ...typeTests, ...userFiles });
+  const files = [...Object.keys(userFiles).filter((f) => /\.tsx?$/.test(f)), ...Object.keys(typeTests).sort()];
+  return files.map((file) => {
+    const own = diagnostics.filter((d) => d.file === file);
+    const isTest = TYPE_TEST_FILE.test(file);
+    return {
+      name: isTest ? `Тесты типов: ${file}` : `Типы в ${file} без ошибок (strict)`,
+      status: own.length ? 'failed' : 'passed',
+      hidden: file.includes('hidden'),
+      message: own.length ? own.slice(0, 8).map(formatTypeDiagnostic).join('\n') : undefined,
+      hint: own.length
+        ? isTest
+          ? 'Тест типов не прошёл: тип не совпадает с ожидаемым. Строка в сообщении указывает на проверку Expect<Equal<…>>.'
+          : 'Компилятор TypeScript нашёл ошибку типов. Код TS… удобно искать в документации и поиске.'
+        : undefined,
+    };
+  });
+}
+
 async function evaluateCode(bundle: TaskBundle, userFiles: Record<string, string>, deps: EvaluateDeps): Promise<Report> {
   const testDir = filesIn(bundle.files, 'tests');
   const testFiles = Object.keys(testDir).filter((f) => TEST_FILE.test(f)).sort(testOrder);
+  const types = await typeChecks(bundle, userFiles, deps);
   const { report, result } = await runTests(deps, { ...testDir, ...userFiles }, testFiles, Object.keys(userFiles));
-  return report ?? toReport(result!);
+  const base = report ?? toReport(result!);
+  if (types.length === 0) return base;
+  const checks = [...types, ...base.checks];
+  const status = base.status === 'passed' && types.some((c) => c.status === 'failed') ? 'failed' : base.status;
+  return { ...base, status, checks };
 }
 
 async function evaluateWriteTests(bundle: TaskBundle, userFiles: Record<string, string>, deps: EvaluateDeps): Promise<Report> {

@@ -213,3 +213,50 @@ tasks/t03-<slug>/
   задании передавайте её из `history.state` или из хелпера `currentUrl()` в тестах;
 - cookies недоступны;
 - бесконечный цикл в скрипте страницы прерывается через 1 секунду с понятной ошибкой.
+
+## Управляемое время в тестах (`timers`)
+
+Для заданий на таймауты, повторы, дебаунс и интервалы (модуль 4). Тест не ждёт по-настоящему:
+
+```js
+it('повтор через 1 и 2 секунды', async () => {
+  timers.useFake();                 // подменяет setTimeout, setInterval, clearTimeout, Date
+  const result = withRetry(load, 3, 1000);
+  await timers.advance(1000);       // сдвинуть часы и выполнить наступившие таймеры
+  expect(calls).toBe(2);
+  await timers.runAll();            // выполнить все оставшиеся таймеры
+  await expect(result).resolves.toBe('ok');
+});
+```
+
+`timers.useFake(start)` — часы стартуют с `2025-01-01T00:00:00Z` (или с `start`);
+`timers.advance(ms)` и `timers.runAll()` асинхронные — их нужно ждать через `await`;
+`timers.pending()` — сколько таймеров ждёт; `timers.now()` — текущее время. После каждого
+теста настоящие таймеры возвращаются сами.
+
+## Проверка типов (`typecheck: true`, модуль 5)
+
+В `meta.yaml` задания на TypeScript (`language: ts`) укажите `typecheck: true`. Тогда:
+
+- файлы человека проверяются компилятором в режиме `strict` (target ES2022, без DOM);
+  каждая ошибка типов — проваленная проверка «Типы в index.ts без ошибок (strict)»
+  с кодом `TS2322` и сообщением компилятора;
+- файлы `tests/*.types.ts` — тесты уровня типов, каждый файл — одна проверка.
+  Доступны помощники `Expect<T>`, `ExpectFalse<T>`, `Equal<A, B>`, `NotEqual<A, B>`:
+
+```ts
+// tests/order.types.ts
+import type { Order, OrderStatus } from './index.js';
+
+type cases = [
+  Expect<Equal<Order['status'], OrderStatus>>,
+  Expect<Equal<OrderStatus, 'new' | 'paid' | 'shipped'>>,
+];
+
+// Ожидаемая ошибка — тоже проверка:
+// @ts-expect-error статус «payed» не входит в OrderStatus
+const wrong: Order = { id: 1, status: 'payed' };
+```
+
+Импорт из файлов человека в тестах — как в обычных тестах: `'./index.js'`. Обычные
+тесты `*.test.ts` при этом тоже запускаются и проверяют поведение.

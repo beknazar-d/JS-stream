@@ -19,6 +19,8 @@ import {
 import { loadContent, yamlErrors, type LessonOnDisk } from '../node/load.ts';
 import { createPool } from '../node/pool.ts';
 import { createPageRunner } from '../node/page-runner.ts';
+import { loadTsLibs } from '../node/ts-libs.ts';
+import { typecheck } from '../src/typecheck.ts';
 
 const contentRoot = fileURLToPath(new URL('../../../content', import.meta.url));
 const filter = process.argv[2];
@@ -29,6 +31,7 @@ const deps: EvaluateDeps = {
   execute: pool.execute,
   executeHtml: pages.executeHtml,
   guardLoops: async (files) => guardPageScripts(ts, files),
+  typecheck: async (files) => typecheck(ts, files, loadTsLibs()),
 };
 
 const problems: string[] = [];

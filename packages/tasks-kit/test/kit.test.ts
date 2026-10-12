@@ -177,3 +177,77 @@ describe('evaluate', () => {
     expect(strongReport.checks[1].message).toMatch(/NaN/);
   });
 });
+
+describe('управляемое время (timers)', () => {
+  it('повторы с паузой проверяются без ожидания', async () => {
+    const modules = compileJob({
+      'index.js': `
+        export async function withRetry(load, attempts, pauseMs) {
+          for (let i = 1; ; i++) {
+            try { return await load(); }
+            catch (error) {
+              if (i >= attempts) throw error;
+              await new Promise((r) => setTimeout(r, pauseMs * i));
+            }
+          }
+        }`,
+      'public.test.js': `
+        import { withRetry } from './index.js';
+        it('третья попытка удачная', async () => {
+          timers.useFake();
+          let calls = 0;
+          const load = async () => { calls++; if (calls < 3) throw new Error('503'); return 'ok'; };
+          const result = withRetry(load, 3, 1000);
+          await timers.advance(999);
+          expect(calls, 'до первой паузы').toBe(1);
+          await timers.advance(1);
+          expect(calls).toBe(2);
+          await timers.advance(2000);
+          await expect(result).resolves.toBe('ok');
+          expect(Date.now()).toBe(Date.parse('2025-01-01T00:00:03Z'));
+        });
+        it('после теста время снова настоящее', () => {
+          expect(Date.now()).toBeGreaterThan(Date.parse('2026-01-01'));
+        });`,
+    });
+    const started = Date.now();
+    const result = await execute({ modules, tests: [{ file: 'public.test.js', hidden: false }] });
+    expect(result.tests.map((t) => [t.name, t.status, t.message])).toEqual([
+      ['третья попытка удачная', 'passed', undefined],
+      ['после теста время снова настоящее', 'passed', undefined],
+    ]);
+    expect(Date.now() - started).toBeLessThan(1000);
+  });
+});
+
+describe('проверка типов (typecheck)', () => {
+  it('ошибки типов и тесты типов становятся проверками', async () => {
+    const { typecheck } = await import('../src/typecheck.ts');
+    const { loadTsLibs } = await import('../node/ts-libs.ts');
+    const pool2 = createPool(3000, 1);
+    const deps: EvaluateDeps = {
+      compile: async (files) => compileAll(ts, files),
+      execute: pool2.execute,
+      typecheck: async (files) => typecheck(ts, files, loadTsLibs()),
+    };
+    const bundle: TaskBundle = {
+      id: 'test/types',
+      meta: meta({ language: 'ts', typecheck: true }),
+      description: '',
+      files: {
+        'starter/index.ts': '',
+        'tests/public.test.ts': "import { pay } from './index.js'; it('оплата', () => { expect(pay({ id: 1, status: 'new' }).status).toBe('paid'); });",
+        'tests/order.types.ts': "import type { Order, Status } from './index.js';\ntype cases = [Expect<Equal<Order['status'], Status>>, Expect<Equal<Status, 'new' | 'paid'>>];",
+      },
+    };
+    const good = "export type Status = 'new' | 'paid';\nexport interface Order { id: number; status: Status }\nexport function pay(o: Order): Order { return { ...o, status: 'paid' }; }";
+    const loose = "export type Status = string;\nexport interface Order { id: number; status: Status }\nexport function pay(o: Order): Order { return { ...o, status: 'paid' }; }";
+    const goodReport = await evaluate(bundle, { 'index.ts': good }, deps);
+    expect(goodReport.status).toBe('passed');
+    expect(goodReport.checks.map((c) => c.name)).toEqual(['Типы в index.ts без ошибок (strict)', 'Тесты типов: order.types.ts', 'оплата']);
+    const looseReport = await evaluate(bundle, { 'index.ts': loose }, deps);
+    expect(looseReport.status).toBe('failed');
+    expect(looseReport.checks[1].message).toMatch(/TS2344/);
+    await pool2.close();
+  }, 30000);
+});

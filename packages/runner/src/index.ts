@@ -5,6 +5,7 @@ import { evaluate, type EvaluateDeps, type ExecOutcome, type Report, type TaskBu
 import type { ExecJob, ExecResult } from '@platform/tasks-kit/exec';
 import { buildDocument, type HtmlRun, type MockApi } from '@platform/tasks-kit/html';
 import { runHtmlJob } from '@platform/tasks-kit/page-host';
+import type { TypeDiagnostic } from '@platform/tasks-kit/typecheck';
 // Обвязка страницы собирается плагином сайта (vite.config.ts) в один скрипт.
 import pageHarness from 'virtual:page-harness';
 
@@ -50,6 +51,14 @@ export function guardLoops(files: Record<string, string>) {
   });
 }
 
+function typecheckFiles(files: Record<string, string>) {
+  return new Promise<TypeDiagnostic[]>((resolve) => {
+    const id = nextId++;
+    pending.set(id, (value) => resolve((value as { diagnostics: TypeDiagnostic[] }).diagnostics));
+    getCompileWorker().postMessage({ id, kind: 'typecheck', files });
+  });
+}
+
 function executeHtml(run: HtmlRun): Promise<ExecOutcome> {
   return runHtmlJob(run, pageHarness, RUN_TIMEOUT_MS + 3000);
 }
@@ -76,7 +85,7 @@ function execute(job: ExecJob, timeoutMs = RUN_TIMEOUT_MS): Promise<ExecOutcome>
   });
 }
 
-const deps: EvaluateDeps = { compile, execute, executeHtml, guardLoops };
+const deps: EvaluateDeps = { compile, execute, executeHtml, guardLoops, typecheck: typecheckFiles };
 
 export function runTask(bundle: TaskBundle, userFiles: Record<string, string>): Promise<Report> {
   return evaluate(bundle, userFiles, deps);

@@ -56,6 +56,8 @@ export interface TaskMeta {
   wrong: WrongMeta[];
   mutants?: MutantMeta[];
   show?: string[];
+  // Проверять типы (strict) файлов человека и тесты типов tests/*.types.ts.
+  typecheck?: boolean;
 }
 
 export interface ModuleMeta {
@@ -120,6 +122,7 @@ export function validateTaskMeta(raw: unknown): Errors {
       });
     }
   }
+  if (m.typecheck !== undefined && typeof m.typecheck !== 'boolean') errors.push('typecheck: true или false');
   if (m.show !== undefined && (!Array.isArray(m.show) || !m.show.every(isString))) {
     errors.push('show: список путей к файлам, которые показываются в задании');
   }

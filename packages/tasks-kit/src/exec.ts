@@ -4,7 +4,12 @@
 
 import { cleanMessage, explainError } from './explain.ts';
 import { format } from './format.ts';
+import { createFakeTimers } from './fake-timers.ts';
 import { AssertionError, createSuite } from './test-api.ts';
+
+// Настоящие таймеры: тест может подменить глобальные через timers.useFake().
+const realSetTimeout = globalThis.setTimeout;
+const realClearTimeout = globalThis.clearTimeout;
 
 export interface ExecJob {
   // Имя файла (index.js, snippet.js, public.test.js) → код в формате CommonJS.
@@ -80,6 +85,7 @@ export async function execute(job: ExecJob): Promise<ExecResult> {
 
   for (const testFile of job.tests) {
     const suite = createSuite();
+    const timers = createFakeTimers();
     const cache = new Map<string, { exports: unknown }>();
 
     const runModule = (key: string, consoleImpl: unknown, fresh: boolean): unknown => {
@@ -91,7 +97,7 @@ export async function execute(job: ExecJob): Promise<ExecResult> {
       if (!fresh && cache.has(key)) return cache.get(key)!.exports;
       const module = { exports: {} as unknown };
       if (!fresh) cache.set(key, module);
-      const globals = { ...suite.globals, runSnippet };
+      const globals = { ...suite.globals, runSnippet, timers };
       const factory = new Function('require', 'module', 'exports', 'console', ...Object.keys(globals), entry.code);
       factory(require, module, module.exports, consoleImpl, ...Object.values(globals));
       return module.exports;
@@ -120,7 +126,7 @@ export async function execute(job: ExecJob): Promise<ExecResult> {
         await Promise.race([
           test.run(),
           new Promise((_, reject) => {
-            timer = setTimeout(
+            timer = realSetTimeout(
               () => reject(new Error(`Тест не завершился за ${testTimeout} мс. Возможно, промис никогда не выполняется.`)),
               testTimeout,
             );
@@ -137,7 +143,8 @@ export async function execute(job: ExecJob): Promise<ExecResult> {
           hint: error instanceof AssertionError ? undefined : explainError(error),
         });
       } finally {
-        clearTimeout(timer);
+        realClearTimeout(timer);
+        timers.useReal();
       }
     }
   }
