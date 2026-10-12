@@ -1,0 +1,22 @@
+order: 5
+title: "Этап 5. Изменение требований: API v2, категории и сортировка"
+type: implement
+role: main
+difficulty: 3
+minutes: 30
+language: html
+tags: [проект, изменение требований, API, фильтры, сортировка, неясности]
+hints:
+  - "Направление: новый формат касается только двух мест: как читается ответ (loadProducts) и как строится карточка (createCard, formatPrice). Остальное не трогайте. Фильтры — снова части состояния рядом с q и page."
+  - "Шаг: в loadProducts вместо data.items и data.total читайте { data, meta }. В createCard цену делите на 100, а наличие считайте по stock > 0. Добавьте category и sort в state, в buildQuery (если не значения по умолчанию) и обработчики change у selects с page: 1."
+  - "Почти решение: const { data, meta } = await response.json(); formatPrice(minor) возвращает Intl.NumberFormat('ru-RU').format(minor / 100) + ' ₽'; categorySelect.addEventListener('change', () => changeState({ category: categorySelect.value, page: 1 })); то же для sortSelect."
+wrong:
+  - name: kopecks-as-rubles
+    kind: common-mistake
+    explanation: "Формат ответа переписан, а деление на 100 забыто. Чайник за 2 990 рублей выводится как 299 000 ₽."
+  - name: page-not-reset
+    kind: edge-case
+    explanation: "Смена категории или сортировки не сбрасывает страницу. На третьей странице всего каталога выбор категории «Климат» даёт пустую страницу, хотя в категории пять товаров."
+  - name: no-sort
+    kind: partial
+    explanation: "Категории работают, а параметр sort в запрос не попадает. Выбор сортировки ничего не меняет."

@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  padding: 24px;
+  font-family: system-ui, sans-serif;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#form-error {
+  flex-basis: 100%;
+  min-height: 1.5em;
+  margin: 0;
+  color: #b91c1c;
+}
+
+table {
+  border-collapse: collapse;
+  min-width: 560px;
+}
+
+th, td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}

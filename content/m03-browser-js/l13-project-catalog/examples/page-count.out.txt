@@ -1,0 +1,4 @@
+{ label: "Страница 1 из 4", prevDisabled: true, nextDisabled: false }
+{ label: "Страница 4 из 4", prevDisabled: false, nextDisabled: true }
+{ label: "Страница 2 из 2", prevDisabled: false, nextDisabled: true }
+{ label: "Страница 1 из 1", prevDisabled: true, nextDisabled: true }

@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+  padding: 24px;
+  font-family: system-ui, sans-serif;
+}
+
+.products {
+  display: flex;
+  gap: 16px;
+  padding: 0;
+  list-style: none;
+}
+
+.products li {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.icon {
+  display: inline-block;
+  padding: 0 4px;
+}

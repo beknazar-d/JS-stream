@@ -1,0 +1,23 @@
+order: 1
+title: "Чему равен this в обработчиках"
+type: predict
+role: warmup
+difficulty: 2
+minutes: 8
+language: js
+tags: [this, стрелочные функции, call, обработчики]
+show: [tests/snippet.js]
+hints:
+  - "Направление: у обычной функции this зависит от того, как её вызвали. У стрелки своего this нет, она берёт его из места, где записана."
+  - "Шаг: стрелка arrow записана внутри createHandlers, а createHandlers вызвали через call(cart). Значит, this в стрелке всегда равен cart, как бы её ни вызывали потом."
+  - "Почти решение: plain.call(product) даёт «Чайник», arrow.call(product) даёт «Корзина», byEvent берёт название у currentTarget. Четвёртая и шестая строки — снова про cart. Пятая — про объект без title."
+wrong:
+  - name: arrow-follows-call
+    kind: common-mistake
+    explanation: "Во второй строке ответ «Чайник»: считается, что call поменял this стрелки. Стрелка игнорирует call и берёт this снаружи, поэтому в ответе «Корзина»."
+  - name: no-undefined
+    kind: edge-case
+    explanation: "В пятой строке ответ «Корзина». Но plain вызвана с пустым объектом, у которого нет свойства title, поэтому результат — undefined."
+  - name: only-half
+    kind: partial
+    explanation: "Записаны только три первые строки. Нужно предсказать все шесть вызовов console.log."

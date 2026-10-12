@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 310" width="640" height="310" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="14" fill="currentColor">
+  <title id="t">Дебаунс и троттлинг на одной оси времени</title>
+  <desc id="d">Три строки на оси времени. Верхняя: десять событий подряд, затем пауза. Средняя, дебаунс: один вызов после паузы. Нижняя, троттлинг: три вызова через равные интервалы, пока идут события.</desc>
+  <g font-weight="700">
+    <text x="20" y="28">События</text>
+    <text x="20" y="128">Дебаунс</text>
+    <text x="20" y="218">Троттлинг</text>
+  </g>
+  <g stroke="currentColor" stroke-width="2" fill="none" opacity="0.5">
+    <path d="M20 90 H620"/>
+    <path d="M20 180 H620"/>
+    <path d="M20 270 H620"/>
+  </g>
+  <g stroke="currentColor" stroke-width="3">
+    <path d="M40 45 V90 M80 45 V90 M120 45 V90 M160 45 V90 M200 45 V90 M240 45 V90 M280 45 V90 M320 45 V90 M360 45 V90 M400 45 V90"/>
+  </g>
+  <g stroke="currentColor" stroke-width="2" stroke-dasharray="5 4" opacity="0.7">
+    <path d="M400 150 H540"/>
+  </g>
+  <text x="408" y="142" font-size="12">пауза равна задержке</text>
+  <circle cx="540" cy="180" r="9"/>
+  <text x="556" y="166" font-size="12">один вызов</text>
+  <circle cx="40" cy="270" r="9"/>
+  <circle cx="200" cy="270" r="9"/>
+  <circle cx="360" cy="270" r="9"/>
+  <text x="380" y="250" font-size="12">вызов раз в интервал, пока идут события</text>
+  <text x="20" y="302" font-size="12" opacity="0.85">Кружок — момент, когда функция реально выполнилась.</text>
+</svg>

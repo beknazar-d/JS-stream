@@ -133,3 +133,13 @@
 | [HTML Living Standard (WHATWG)](https://html.spec.whatwg.org/) | `minlength`, `maxlength` действуют только при вводе пользователем, `pattern` проверяет значение целиком, `novalidate` | CC BY 4.0 (только факты) |
 
 Тексты ошибок в «Типичных ошибках» (`Failed to construct 'FormData'`, `An invalid form control ... is not focusable`, `Form submission canceled because the form is not connected`, `Failed to fetch`, `Unexpected token '<'`, `body stream already read`, `signal is aborted without reason`) получены запуском в Chromium (playwright), сообщения `await is only valid...` и `Cannot read properties of null` — в Node.js 22. Firefox и Safari не проверялись.
+
+## Модуль 3, уроки 3.11–3.13 «Дебаунс и троттлинг», «Разбор ловушек браузерного JS», «Проект P3: каталог по API»
+
+Тексты, примеры и задания написаны с нуля, со своими данными (магазин «Домотека»). Прямых заимствований нет.
+
+| Источник | Что использовано | Лицензия |
+| --- | --- | --- |
+| [MDN Web Docs: `setTimeout`, `clearTimeout`, `AbortController`, `Event.currentTarget`, `History.pushState`, `popstate`, `URLSearchParams`, `Element.insertAdjacentHTML`](https://developer.mozilla.org/ru/docs/Web/API) | Поведение методов, различие `target` и `currentTarget`, `this` в стрелочных функциях, `innerHTML` пересоздаёт элементы. Текст не копировался | CC BY-SA 2.5 (атрибуция «Mozilla Contributors») |
+
+Идея различия дебаунса и троттлинга общеизвестна. Сообщения ошибок («Типичные ошибки») получены запуском в Chromium (playwright): `d is not a function`, `Cannot read properties of undefined (reading 'id')`, `Cannot read properties of null (reading 'addEventListener')`, `signal is aborted without reason`. Поведение `NaN`, `Number('')` и `isConnected` проверено там же.

@@ -1,0 +1,22 @@
+order: 1
+title: "По памяти: сообщение «Сохранено»"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 8
+language: html
+tags: [setTimeout, clearTimeout, таймеры]
+hints:
+  - "Направление: сообщение нужно показать сразу, а убрать позже. Откладывать действие умеет setTimeout. Вторая просьба из критериев — про отмену прежнего таймера."
+  - "Шаг: setTimeout(функция, 300) возвращает номер таймера. Сохраните его в переменную снаружи обработчика и вызовите clearTimeout(номер) перед запуском нового."
+  - "Почти решение: let hideTimer; в обработчике: saved.textContent = 'Сохранено'; clearTimeout(hideTimer); hideTimer = setTimeout(() => { saved.textContent = ''; }, 300);"
+wrong:
+  - name: never-hide
+    kind: partial
+    explanation: "Сообщение показывается, но таймера нет: текст висит, пока страницу не перезагрузят. Не выполнен пункт «через 300 мс текст очищается»."
+  - name: call-now
+    kind: common-mistake
+    explanation: "В setTimeout передан результат вызова hide(), а не сама функция. Текст очищается мгновенно, и сообщение никто не успевает увидеть."
+  - name: no-clear
+    kind: edge-case
+    explanation: "Таймер ставится, но прежний не отменяется. При втором нажатии старый таймер стирает сообщение раньше, чем прошло 300 мс после последнего нажатия."

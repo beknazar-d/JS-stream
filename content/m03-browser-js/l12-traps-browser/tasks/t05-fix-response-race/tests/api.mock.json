@@ -1,0 +1,44 @@
+{
+ "routes": [
+  {
+   "path": "/api/products?category=kitchen",
+   "delayMs": 500,
+   "body": [
+    {
+     "id": 1,
+     "title": "Электрический чайник Domo K-17",
+     "price": 2990
+    },
+    {
+     "id": 2,
+     "title": "Тостер Vento T-2",
+     "price": 1990
+    }
+   ]
+  },
+  {
+   "path": "/api/products?category=cleaning",
+   "delayMs": 50,
+   "body": [
+    {
+     "id": 15,
+     "title": "Пылесос Domo V-300",
+     "price": 8990
+    },
+    {
+     "id": 16,
+     "title": "Паровая швабра Vento M-9",
+     "price": 4590
+    }
+   ]
+  },
+  {
+   "path": "/api/products?category=climate",
+   "status": 503,
+   "delayMs": 300,
+   "body": {
+    "error": "Service Unavailable"
+   }
+  }
+ ]
+}

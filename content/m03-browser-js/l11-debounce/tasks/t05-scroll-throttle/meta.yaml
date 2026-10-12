@@ -1,0 +1,22 @@
+order: 5
+title: "Троттлинг прокрутки"
+type: implement
+role: main
+difficulty: 3
+minutes: 20
+language: html
+tags: [throttle, scroll, события, Date.now]
+hints:
+  - "Направление: запомните, когда функция выполнялась в последний раз. Если с тех пор прошло меньше interval, вызов откладывается. Не забудьте про последнее событие серии."
+  - "Шаг: считайте, сколько ещё ждать: wait = interval - (Date.now() - lastCall). Если wait не больше нуля, вызывайте сразу и запоминайте время. Иначе перезапускайте таймер на wait мс."
+  - "Почти решение: function throttle(fn, interval) { let lastCall = 0; let timer; return (...args) => { const wait = interval - (Date.now() - lastCall); clearTimeout(timer); if (wait <= 0) { lastCall = Date.now(); fn(...args); } else { timer = setTimeout(() => { lastCall = Date.now(); fn(...args); }, wait); } }; } Подключите: window.addEventListener('scroll', throttle(updateBackToTop, 100));"
+wrong:
+  - name: debounce-instead
+    kind: partial
+    explanation: "Это дебаунс, а не троттлинг: функция срабатывает один раз после остановки. Во время прокрутки кнопка не обновляется вообще, а первое событие ждёт паузу."
+  - name: no-trailing
+    kind: edge-case
+    explanation: "Лишние вызовы просто отбрасываются. Если серия закончилась раньше, чем прошло 100 мс с прошлого вызова, последняя позиция не учтена, и кнопка «Наверх» остаётся видимой на самом верху."
+  - name: inside-listener
+    kind: common-mistake
+    explanation: "throttle вызывается внутри обработчика, поэтому на каждое событие создаётся новая функция со своим lastCall. Ограничения нет: updateBackToTop выполняется на каждое событие."

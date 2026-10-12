@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Домотека — остатки на складе</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <h1>Склад: остатки</h1>
+    <form id="add-form" novalidate>
+      <div class="field">
+        <label for="name">Название</label>
+        <input id="name" type="text" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="qty">Количество</label>
+        <input id="qty" type="text" inputmode="numeric" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="price">Цена, ₽</label>
+        <input id="price" type="text" inputmode="numeric" autocomplete="off">
+      </div>
+      <button type="submit">Добавить</button>
+      <p id="form-error" role="alert"></p>
+    </form>
+    <table id="stock">
+      <caption>Остатки</caption>
+      <thead>
+        <tr><th>Название</th><th>Шт.</th><th>Цена</th><th>Сумма</th><th></th></tr>
+      </thead>
+      <tbody id="rows"></tbody>
+      <tfoot>
+        <tr><th>Итого</th><td id="total-qty">0</td><td></td><td id="total-sum">0 ₽</td><td></td></tr>
+      </tfoot>
+    </table>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

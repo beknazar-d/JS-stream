@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  padding: 24px;
+  font-family: system-ui, sans-serif;
+}
+
+#saved {
+  min-height: 1.5em;
+  color: #1b6e3c;
+}

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" width="640" height="280" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="14" fill="currentColor">
+  <title id="t">Гонка ответов на оси времени</title>
+  <desc id="d">Запрос по слову «чай» уходит в момент 300 и возвращается в момент 900. Запрос по слову «чайник» уходит в момент 620 и возвращается в момент 670. Ответ на «чай» приходит позже и оказывается на экране последним.</desc>
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <path d="M30 230 H610"/>
+    <path d="M30 224 V236 M222 224 V236 M280 224 V236 M338 224 V236 M570 224 V236"/>
+  </g>
+  <g text-anchor="middle" font-size="12">
+    <text x="30" y="254">0</text>
+    <text x="222" y="254">300</text>
+    <text x="280" y="254">620</text>
+    <text x="338" y="254">670</text>
+    <text x="570" y="254">900 мс</text>
+  </g>
+  <g stroke="currentColor" stroke-width="3" fill="none">
+    <path d="M222 80 H570" opacity="0.6"/>
+    <path d="M280 140 H338"/>
+    <path d="M222 74 V86 M570 74 V86 M280 134 V146 M338 134 V146"/>
+  </g>
+  <g>
+    <text x="230" y="68">«чай»: ответ идёт долго</text>
+    <text x="286" y="128">«чайник»</text>
+    <text x="346" y="164" font-size="12">пришёл первым, список правильный</text>
+    <text x="400" y="104" font-size="12">а в 900 приходит «чай» и затирает список</text>
+  </g>
+  <text x="30" y="30" font-weight="700">На экране в итоге: список по «чай»</text>
+  <text x="30" y="274" font-size="12" opacity="0.85">Запрос, отправленный позже, не обязан вернуться позже.</text>
+</svg>
