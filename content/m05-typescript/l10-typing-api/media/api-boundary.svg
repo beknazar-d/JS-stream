@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" width="640" height="260" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="15" fill="currentColor">
+  <title id="t">Граница между сетью и программой</title>
+  <desc id="d">Слева данные из сети с типом unknown. Они проходят проверку: охранник типа или разбор. Если проверка успешна, получается надёжный тип Shipment. Если нет, получается ошибка в Result.</desc>
+
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="16" y="90" width="150" height="80" rx="10"/>
+    <rect x="230" y="90" width="160" height="80" rx="10" stroke-dasharray="6 4"/>
+    <rect x="470" y="30" width="154" height="70" rx="10"/>
+    <rect x="470" y="160" width="154" height="70" rx="10"/>
+    <path d="M166 130 H230"/>
+    <path d="M222 124 L230 130 L222 136"/>
+    <path d="M390 115 L470 70"/>
+    <path d="M390 145 L470 190"/>
+    <path d="M460 68 L470 70 L463 78"/>
+    <path d="M460 192 L470 190 L463 182"/>
+  </g>
+
+  <g text-anchor="middle">
+    <text x="91" y="125" font-weight="700">Сеть</text>
+    <text x="91" y="147" font-size="13" font-family="ui-monospace, monospace">unknown</text>
+    <text x="310" y="125" font-weight="700">Проверка</text>
+    <text x="310" y="147" font-size="13">охранник или разбор</text>
+    <text x="547" y="60" font-weight="700">Shipment</text>
+    <text x="547" y="82" font-size="13">ok: true</text>
+    <text x="547" y="190" font-weight="700">ApiError</text>
+    <text x="547" y="212" font-size="13">ok: false</text>
+    <text x="445" y="76" font-size="12" opacity="0.8">верно</text>
+    <text x="445" y="206" font-size="12" opacity="0.8">неверно</text>
+  </g>
+  <text x="16" y="250" font-size="13" opacity="0.8">Всё, что пришло извне, остаётся unknown, пока не пройдёт проверку.</text>
+</svg>

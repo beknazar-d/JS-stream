@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" width="640" height="340" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="15" fill="currentColor">
+  <title id="t">Пять способов вызова и чему равно this</title>
+  <desc id="d">Таблица из пяти строк. Вызов как метод, объект точка метод, даёт this равный объекту. Простой вызов функции даёт undefined в строгом режиме. Вызов через call, apply или bind даёт this равный переданному значению. Вызов через new даёт новый объект. Стрелочная функция берёт this из окружающего кода.</desc>
+
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="16" y="16" width="608" height="308" rx="10" opacity="0.7"/>
+    <path d="M16 64 H624" opacity="0.5"/>
+    <path d="M16 112 H624 M16 160 H624 M16 208 H624 M16 256 H624" opacity="0.25"/>
+    <path d="M340 16 V324" opacity="0.5"/>
+  </g>
+
+  <g>
+    <text x="32" y="46" font-weight="700">Как вызвали</text>
+    <text x="356" y="46" font-weight="700">Чему равно this</text>
+
+    <text x="32" y="94" font-family="ui-monospace, monospace" font-size="15">order.print()</text>
+    <text x="356" y="88">объекту слева от точки: order</text>
+
+    <text x="32" y="142" font-family="ui-monospace, monospace" font-size="15">print()</text>
+    <text x="356" y="136">undefined (в строгом режиме)</text>
+
+    <text x="32" y="190" font-family="ui-monospace, monospace" font-size="15">print.call(x)  bind(x)</text>
+    <text x="356" y="184">тому, что передали: x</text>
+
+    <text x="32" y="238" font-family="ui-monospace, monospace" font-size="15">new Parcel()</text>
+    <text x="356" y="232">новому пустому объекту</text>
+
+    <text x="32" y="286" font-family="ui-monospace, monospace" font-size="15">() =&gt; this.id</text>
+    <text x="356" y="280">тому же, что снаружи стрелки</text>
+    <text x="356" y="300" font-size="12" opacity="0.8">свой this у стрелки не появляется</text>
+  </g>
+</svg>

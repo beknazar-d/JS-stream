@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" width="640" height="260" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="15" fill="currentColor">
+  <title id="t">Два запроса подсказок и отмена первого</title>
+  <desc id="d">Ось времени слева направо. Первый запрос «Каз» стартует в начале и должен идти долго. Через 100 мс стартует второй запрос «Казань». В этот момент первый запрос отменяется (крестик) и обрывается. Второй доходит до ответа.</desc>
+
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <path d="M30 220 H610" opacity="0.5"/>
+    <path d="M30 70 H210" stroke-width="6" stroke-linecap="round"/>
+    <path d="M240 70 H610" stroke-width="6" stroke-linecap="round" stroke-dasharray="3 10" opacity="0.4"/>
+    <path d="M210 140 H570" stroke-width="6" stroke-linecap="round"/>
+    <path d="M210 60 L230 80 M230 60 L210 80" stroke-width="3"/>
+    <path d="M210 90 V130" stroke-dasharray="5 4"/>
+    <path d="M570 128 V152"/>
+  </g>
+  <g stroke="currentColor" stroke-width="1.5" opacity="0.6">
+    <path d="M30 214 V226 M210 214 V226 M570 214 V226"/>
+  </g>
+  <g>
+    <text x="30" y="42" font-weight="700">Запрос 1: «Каз»</text>
+    <text x="250" y="64" font-size="13" opacity="0.8">ответ пришёл бы поздно и не нужен</text>
+    <text x="30" y="112" font-weight="700">Запрос 2: «Казань»</text>
+    <text x="218" y="118" font-size="13" opacity="0.8">controller.abort() для запроса 1</text>
+    <text x="470" y="170" font-size="13">ответ получен</text>
+    <text x="30" y="246" font-size="13">старт</text>
+    <text x="180" y="246" font-size="13">100 мс</text>
+    <text x="548" y="246" font-size="13">300 мс</text>
+  </g>
+</svg>

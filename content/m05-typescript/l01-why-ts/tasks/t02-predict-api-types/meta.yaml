@@ -1,0 +1,23 @@
+order: 2
+title: "Что выведет код: типы и реальные данные"
+type: predict
+role: warmup
+difficulty: 2
+minutes: 8
+language: ts
+tags: [компиляция, as, JSON, рантайм, преобразование типов]
+show: [tests/snippet.ts]
+hints:
+  - "Направление: сотрите в уме все типы и слово as. Что остаётся? Обычный JavaScript, где поля id и weightKg содержат ровно те строки, что пришли в JSON."
+  - "Шаг: минус и умножение превращают строку в число, а плюс при строке склеивает. Number() превращает строку в число явно, из буквенной строки получается NaN."
+  - "Почти решение: пять строк из шести — string, 5, 2.52, false, 4.5. Последняя строка — результат Number.isNaN от Number(\"A-17\")."
+wrong:
+  - name: only-start
+    kind: partial
+    explanation: "Верно только начало. Предсказать нужно каждый вызов console.log, а не первые три."
+  - name: ts-converts
+    kind: common-mistake
+    explanation: "Ответ предполагает, что тип number в Parcel превратил значения в числа. Но as ничего не преобразует: id остаётся строкой \"A-17\", а weightKg строкой \"2.5\", поэтому плюс склеивает строки."
+  - name: nan-is-false
+    kind: edge-case
+    explanation: "В последней строке ответ false. Но Number(\"A-17\") даёт NaN, а Number.isNaN(NaN) даёт true."

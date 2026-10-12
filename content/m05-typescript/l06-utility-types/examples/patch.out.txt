@@ -1,0 +1,3 @@
+{ id: 1001, status: "paid", city: "Казань", total: 4200 }
+{ id: 1001, status: "new", city: "Омск", total: 3900 }
+new

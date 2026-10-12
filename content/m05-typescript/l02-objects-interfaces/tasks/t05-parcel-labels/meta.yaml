@@ -1,0 +1,23 @@
+order: 5
+title: "Наклейки и сводка по партии посылок"
+type: implement
+role: main
+difficulty: 3
+minutes: 20
+language: ts
+typecheck: true
+tags: [interface, необязательные свойства, вложенные типы, undefined]
+hints:
+  - "Направление: сначала опишите Summary (три числа). Потом пройдите по полям Parcel и решите, какие из них могут отсутствовать. Для них нужна проверка перед чтением."
+  - "Шаг: собирайте наклейку в массив частей и добавляйте часть только если значение есть, в конце join(\" — \"). Для квартиры сравнивайте с undefined, а не проверяйте истинность. Для хрупкости сравнивайте fragile === true."
+  - "Почти решение: const parts = []; parts.push(...); if (parcel.fragile === true) parts.push(\"ХРУПКОЕ\"); if (parcel.note !== undefined) parts.push(parcel.note); return parts.join(\" — \"). Сводку считайте циклом по массиву."
+wrong:
+  - name: no-summary
+    kind: partial
+    explanation: "Наклейки готовы, а summarize возвращает нули для любой партии. Тесты сводки падают."
+  - name: fragile-default
+    kind: edge-case
+    explanation: "Хрупкой считается посылка, у которой fragile не равно false. Для посылок без этого поля (undefined) это неверно: хрупкость там не указана, значит, посылка не хрупкая."
+  - name: optional-summary
+    kind: common-mistake
+    explanation: "Поля Summary сделаны необязательными «на всякий случай». Тогда читающий код вынужден проверять каждое поле на undefined, а проверка формы Summary падает."

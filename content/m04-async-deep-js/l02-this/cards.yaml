@@ -1,0 +1,33 @@
+- id: this-def
+  front: Чему равно this внутри метода при вызове order.print()?
+  back: "Объекту слева от точки: order. this определяется способом вызова, а не местом, где функция написана."
+- id: detached
+  front: Что будет, если сохранить метод в переменную и вызвать её без объекта?
+  back: "this станет undefined (в строгом режиме), и обращение this.name даст TypeError: Cannot read properties of undefined."
+- id: strict-modules
+  front: Почему в файлах-модулях this в обычной функции равен undefined, а не глобальному объекту?
+  back: "Модули ES и тела классов всегда работают в строгом режиме (strict mode), где простой вызов оставляет this пустым."
+- id: call
+  front: Как вызвать функцию сразу с нужным this и аргументами по одному?
+  back: "fn.call(thisValue, arg1, arg2)"
+  answer: call
+- id: apply
+  front: Как вызвать функцию с нужным this и аргументами из массива?
+  back: "fn.apply(thisValue, [arg1, arg2])"
+  answer: apply
+- id: bind
+  front: Что делает fn.bind(obj)?
+  back: "Не вызывает fn, а возвращает новую функцию с зафиксированным this. Заодно может зафиксировать первые аргументы."
+  answer: bind
+- id: bind-twice
+  front: Можно ли поменять this у функции после bind?
+  back: "Нет. call, apply и повторный bind не меняют уже привязанный this."
+- id: arrow
+  front: Откуда стрелочная функция берёт this?
+  back: "Из кода вокруг, в котором она написана. Своего this у неё нет, поэтому call и bind его не меняют."
+- id: callback-fix
+  front: Как передать метод объекта в колбэк и не потерять this?
+  back: "Обернуть в стрелку: items.forEach((item) => obj.method(item)), либо привязать: obj.method.bind(obj)."
+- id: new
+  front: Чему равно this при вызове new Parcel()?
+  back: "Новому пустому объекту, который станет результатом вызова. Подробнее про классы в следующем уроке."

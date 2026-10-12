@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 250" width="640" height="250" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="15" fill="currentColor">
+  <title id="t">Путь кода TypeScript до запуска</title>
+  <desc id="d">Файл .ts с типами проходит проверку компилятором. Если ошибок нет, типы удаляются и получается обычный JavaScript, который запускается. Если ошибки есть, до запуска дело не доходит.</desc>
+
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="12" y="50" width="140" height="70" rx="8"/>
+    <rect x="186" y="50" width="140" height="70" rx="8"/>
+    <rect x="360" y="50" width="130" height="70" rx="8"/>
+    <rect x="514" y="50" width="114" height="70" rx="8"/>
+    <path d="M152 85 H186 M326 85 H360 M490 85 H514"/>
+    <path d="M180 79 L186 85 L180 91 M354 79 L360 85 L354 91 M508 79 L514 85 L508 91"/>
+    <rect x="186" y="170" width="140" height="56" rx="8" stroke-dasharray="6 4"/>
+    <path d="M256 120 V170 M250 164 L256 170 L262 164"/>
+  </g>
+
+  <g text-anchor="middle">
+    <text x="82" y="32" font-weight="700">Вы пишете</text>
+    <text x="256" y="32" font-weight="700">До запуска</text>
+    <text x="425" y="32" font-weight="700">Результат</text>
+    <text x="571" y="32" font-weight="700">Запуск</text>
+
+    <text x="82" y="82" font-family="ui-monospace, monospace">index.ts</text>
+    <text x="82" y="102" font-size="13" opacity="0.8">код и типы</text>
+    <text x="256" y="82">Проверка типов</text>
+    <text x="256" y="102" font-size="13" opacity="0.8">компилятор tsc</text>
+    <text x="425" y="82" font-family="ui-monospace, monospace">index.js</text>
+    <text x="425" y="102" font-size="13" opacity="0.8">типов уже нет</text>
+    <text x="571" y="82">Node или</text>
+    <text x="571" y="102">браузер</text>
+
+    <text x="256" y="194">Ошибка типа:</text>
+    <text x="256" y="212" font-size="13" opacity="0.8">запуска не будет</text>
+    <text x="320" y="244" font-size="13" opacity="0.8">В рантайме работает только JavaScript</text>
+  </g>
+</svg>

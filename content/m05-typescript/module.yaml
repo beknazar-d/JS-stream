@@ -1,0 +1,4 @@
+number: 5
+title: TypeScript
+summary: "Типизация кода и данных: от базовых типов до generics, utility и условных типов."
+weeks: 7

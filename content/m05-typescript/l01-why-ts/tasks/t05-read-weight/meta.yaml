@@ -1,0 +1,23 @@
+order: 5
+title: "Вес посылки из формы, API и CSV"
+type: implement
+role: main
+difficulty: 3
+minutes: 20
+language: ts
+typecheck: true
+tags: [unknown, typeof, валидация, неясности, Number]
+hints:
+  - "Направление: с unknown нельзя ничего делать, пока не проверен тип. Проверьте typeof value по очереди: число и строка обрабатываются по-разному, всё остальное это ошибка."
+  - "Шаг: для числа проверьте Number.isFinite и value > 0. Для строки уберите проверку формата в регулярное выражение или в Number(), но следите за пустой строкой: Number(\"\") равно 0, а ноль веса быть не может."
+  - "Почти решение: if (typeof value === \"number\") weight = value; else if (typeof value === \"string\" && /^\\d+(\\.\\d+)?$/.test(value)) weight = Number(value); else weight = NaN; затем if (!Number.isFinite(weight) || weight <= 0) throw new Error(\"Вес должен быть положительным числом\"); return weight."
+wrong:
+  - name: numbers-only
+    kind: partial
+    explanation: "Решение обрабатывает только числа, а любая строка считается ошибкой. Вес из формы \"2.5\" не разбирается, хотя по тикету должен давать 2.5."
+  - name: nan-passes
+    kind: edge-case
+    explanation: "Для числа проверяется только typeof, поэтому NaN, Infinity и отрицательные числа проходят как вес. По тикету это ошибка."
+  - name: any-number
+    kind: common-mistake
+    explanation: "Параметр объявлен как any, а значение просто превращается через Number(value). Из true получается вес 1, из массива [2] вес 2, то есть мусор принимается за вес. Тип параметра теперь any вместо unknown, и проверка типов падает."

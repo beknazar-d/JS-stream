@@ -1,0 +1,22 @@
+order: 6
+title: "Опрос статуса посылки"
+type: implement
+role: real
+difficulty: 4
+minutes: 40
+language: js
+tags: [опрос, таймаут, повторы, отмена, AbortSignal, неясности]
+hints:
+  - "Направление: опрос — цикл. Внутри цикла три исхода: ответ получен, ответ не получен (неудача), опрос отменён. Отмену отличайте от неудачи по signal.aborted."
+  - "Шаг: заведите две переменные снаружи цикла: прошлый статус и счётчик неудач подряд. Запрос делайте через withTimeout, передав внешний signal третьим аргументом. В catch сначала проверьте отмену, потом считайте неудачу."
+  - "Почти решение: try { response = await withTimeout((s) => getStatus(parcelId, s), requestTimeoutMs, signal); failures = 0; } catch { if (signal?.aborted) throw signal.reason; if (++failures >= 3) throw new Error('Служба доставки недоступна'); await sleep(intervalMs, signal); continue; } Дальше: onUpdate при смене статуса, return при delivered, иначе await sleep."
+wrong:
+  - name: ignores-signal
+    kind: partial
+    explanation: "Опрос работает, но сигнал отмены никуда не передан. Клиент закрыл страницу, а запросы продолжаются, пока посылка не доставлена. Это ровно то, что запрещено в тикете."
+  - name: late-update
+    kind: race
+    explanation: "Внешний сигнал не передан в withTimeout, он проверяется только в паузе. Если отмена пришла, пока запрос в полёте, запрос не отменяется, а его поздний ответ вызывает onUpdate уже после отмены. Страница, которой нет, получает обновление."
+  - name: total-failures
+    kind: edge-case
+    explanation: "Счётчик неудач никогда не обнуляется: учитываются все неудачи за время опроса, а не подряд. После трёх разрозненных сбоев за долгую поездку опрос прекращается, хотя служба между сбоями отвечала."

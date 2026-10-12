@@ -1,0 +1,22 @@
+order: 5
+title: "debounce, который помнит this"
+type: implement
+role: main
+difficulty: 3
+minutes: 20
+language: js
+tags: [this, debounce, таймеры, call, apply]
+hints:
+  - "Направление: возвращаемая функция должна быть обычной function, чтобы получить this от вызова. Внутри таймера нужно вызвать fn с этим же this и последними аргументами."
+  - "Шаг: при каждом вызове сначала clearTimeout(timerId), потом timerId = setTimeout(...). Колбэк таймера пишите стрелкой, чтобы он видел this и args функции debounced. Вызов — fn.apply(this, args)."
+  - "Почти решение: function debounced(...args) { clearTimeout(timerId); timerId = setTimeout(() => fn.apply(this, args), delay); } и debounced.cancel = () => clearTimeout(timerId)."
+wrong:
+  - name: no-cancel
+    kind: partial
+    explanation: "Дебаунс работает, а метода cancel нет. Вызов debounced.cancel() падает с TypeError, а отложенный вызов уже не остановить, например при закрытии формы."
+  - name: first-args
+    kind: edge-case
+    explanation: "Аргументы запоминаются при первом вызове серии, а не при последнем. После ввода «ч», «чай», «чайник» поиск уйдёт с текстом «ч». Нужны аргументы последнего вызова."
+  - name: arrow-loses-this
+    kind: common-mistake
+    explanation: "Возвращаемая функция написана стрелкой. У стрелки нет своего this, поэтому метод объекта, обёрнутый в debounce, вызывается без контекста и падает на this."

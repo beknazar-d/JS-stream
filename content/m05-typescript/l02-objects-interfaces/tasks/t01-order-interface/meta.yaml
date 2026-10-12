@@ -1,0 +1,23 @@
+order: 1
+title: "Интерфейсы адреса и заказа"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 8
+language: ts
+typecheck: true
+tags: [interface, необязательные свойства, readonly, вложенные типы]
+hints:
+  - "Направление: interface Имя { поле: тип; } — поля перечисляются через точку с запятой. Вложенный объект описывается отдельным интерфейсом."
+  - "Шаг: знак вопроса ставится после имени поля (comment?: string), слово readonly — перед именем (readonly id: number). Поле address имеет тип Address."
+  - "Почти решение: export interface Address { city: string; street: string; apartment?: number } и export interface Order { readonly id: number; customer: string; address: Address; paid: boolean; comment?: string }."
+wrong:
+  - name: no-comment
+    kind: partial
+    explanation: "В Order нет поля comment. Образец заказа проходит, но тип не знает о комментарии, и проверка формы Order падает."
+  - name: flat-required
+    kind: edge-case
+    explanation: "Поле apartment сделано обязательным. Адрес частного дома без квартиры теперь не описать, и заказ без apartment отклоняется с ошибкой TS2741."
+  - name: no-readonly
+    kind: common-mistake
+    explanation: "Слово readonly пропущено. Присваивание order.id = 5 компилируется, хотя по тикету номер заказа менять нельзя, и проверка ожидаемой ошибки падает."

@@ -1,0 +1,5 @@
+отменён до abort: false
+обработчик: нас отменили
+отменён после abort: true
+причина по умолчанию: AbortError
+причина после второго abort: AbortError

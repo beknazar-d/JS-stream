@@ -1,0 +1,22 @@
+order: 4
+title: "Корзина с приватным состоянием"
+type: implement
+role: main
+difficulty: 3
+minutes: 20
+language: js
+tags: [замыкания, приватное состояние, копирование, корзина]
+hints:
+  - "Направление: список позиций должен жить в переменной внутри createCart, а наружу вы отдаёте объект с методами. Методы видят список через замыкание."
+  - "Шаг: заведите const lines = [] в createCart. add ищет позицию по sku: если есть, увеличивает qty, иначе добавляет новую. items возвращает копию списка и копии позиций."
+  - "Почти решение: items() — return lines.map((line) => ({ ...line })). remove(sku) оставляет в lines все позиции, кроме нужной, поэтому lines должен быть let или вы удаляете через splice."
+wrong:
+  - name: no-remove
+    kind: partial
+    explanation: "Реализованы add, items, total и count, но remove нет: вызов cart.remove(...) падает с TypeError. Тикет требует и удаление."
+  - name: leaks-lines
+    kind: edge-case
+    explanation: "items() возвращает внутренний массив как есть. Вызывающий код может сделать push или изменить qty, и корзина изменится без метода add. Приватное состояние перестало быть приватным."
+  - name: shared-lines
+    kind: common-mistake
+    explanation: "Массив позиций объявлен на уровне модуля. Все корзины, созданные через createCart, делят один список: товар в корзине одного покупателя появляется у другого."

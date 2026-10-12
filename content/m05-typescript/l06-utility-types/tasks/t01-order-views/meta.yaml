@@ -1,0 +1,23 @@
+order: 1
+title: "Три вида заказа из одного типа"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 10
+language: ts
+typecheck: true
+tags: [utility types, Pick, Omit, Partial]
+hints:
+  - "Направление: каждый вид получается из Order одним или двумя преобразованиями. Превью оставляет поля, форма убирает, патч делает необязательными."
+  - "Шаг: превью — Pick с двумя ключами. Форма — Omit с двумя ключами. Патч — Partial от формы: сначала уберите id и createdAt, потом сделайте остальное необязательным."
+  - "Почти решение: type OrderPreview = Pick<Order, \"id\" | \"status\">; type NewOrder = Omit<Order, \"id\" | \"createdAt\">; type OrderPatch = Partial<NewOrder>;"
+wrong:
+  - name: omit-for-preview
+    kind: common-mistake
+    explanation: "Для превью использован Omit с одним полем items: в типе остались city, total и дата, поэтому previewOf с двумя полями не проходит проверку (TS2739). Превью должно содержать только id и status, поэтому нужен Pick, а не Omit."
+  - name: new-order-with-created
+    kind: partial
+    explanation: "Из формы создания убран только id, createdAt остался. Форма всё ещё требует дату, хотя её ставит сервер. Omit принимает несколько ключей через |."
+  - name: patch-with-id
+    kind: edge-case
+    explanation: "OrderPatch сделан как Partial<Order>: все поля необязательные, но id среди них остался. Патч может подменить номер заказа, а тест типов ждёт ошибку при передаче id."

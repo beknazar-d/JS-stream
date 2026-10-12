@@ -1,0 +1,30 @@
+- id: generic-syntax
+  front: Как записать функцию, которая принимает массив значений любого типа и возвращает первое из них или undefined?
+  back: "function firstItem<T>(items: T[]): T | undefined { return items[0]; }"
+- id: constraint
+  front: Как потребовать, чтобы у T было числовое поле id?
+  back: "<T extends { id: number }>. Внутри функции item.id доступно, а снаружи можно передать любой тип с таким полем."
+  answer: extends
+- id: infer-from-args
+  front: Откуда компилятор берёт значение T при вызове firstItem(orders)?
+  back: "Из аргумента. Передали Order[], значит T равно Order. Руками указывать нужно, только когда вывести нечего."
+- id: explicit-type-arg
+  front: Как вручную указать T при вызове?
+  back: "firstItem<Order>(items). Пример, когда это нужно: toPage<Order>([]) — аргументов нет, выводить не из чего."
+- id: default-param
+  front: Как задать значение по умолчанию для параметра типа?
+  back: "interface Page<T = string> { items: T[] }. Тогда Page означает Page<string>."
+- id: all-or-none
+  front: Можно ли указать только первый из двух параметров типа без значений по умолчанию?
+  back: "Нет. pair<string>('a', 1) для pair<A, B> даёт TS2558: Expected 2 type arguments, but got 1."
+  answer: Нет
+- id: any-vs-t
+  front: Чем T лучше any в сигнатуре firstItem?
+  back: "any теряет тип результата. T запоминает его: firstItem(orders) вернёт Order | undefined."
+- id: erased
+  front: Остаются ли параметры типа в готовом JavaScript?
+  back: "Нет. Все типы стираются при компиляции, T существует только при проверке."
+  answer: Нет
+- id: one-use
+  front: Когда параметр типа, скорее всего, лишний?
+  back: "Когда T встречается в сигнатуре только один раз. Генерики нужны, чтобы связать тип входа и тип выхода."

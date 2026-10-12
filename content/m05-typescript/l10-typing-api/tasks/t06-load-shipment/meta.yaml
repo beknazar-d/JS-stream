@@ -1,0 +1,23 @@
+order: 6
+title: "Загрузка отправления с типизированными ошибками"
+type: implement
+role: real
+difficulty: 4
+minutes: 40
+language: ts
+typecheck: true
+tags: [Result, ошибки API, fetchLike, unknown, размеченные объединения]
+hints:
+  - "Направление: у запроса три способа сломаться: сеть, статус ответа и неверное тело. Каждому нужен свой вид ошибки в ApiError, и каждый ловится в своём месте."
+  - "Шаг: оберните вызов fetchLike в try/catch и верните kind network. Затем проверьте response.ok. Тело читайте отдельным try/catch: если json() отклонён, это kind invalid. Потом отдайте данные в parseShipment."
+  - "Почти решение: адрес — '/shipments/' + encodeURIComponent(id). Если разбор вернул ok: false, оберните его error в { kind: 'invalid', problems }."
+wrong:
+  - name: network-throws
+    kind: partial
+    explanation: "Обработаны успех, статус и неверное тело, но вызов fetchLike не обёрнут в try/catch. При обрыве связи функция возвращает отклонённый промис вместо { ok: false, error: { kind: 'network' } }."
+  - name: no-encode
+    kind: edge-case
+    explanation: "Идентификатор подставляется в адрес как есть. Идентификатор с пробелом и косой чертой ломает путь: тест ждёт адрес с encodeURIComponent."
+  - name: trust-body
+    kind: common-mistake
+    explanation: "Тело ответа приводится через as Shipment без разбора. Неверные данные, например вес строкой, выдаются за надёжный Shipment, а тест ждёт ошибку вида invalid со списком проблем."

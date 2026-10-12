@@ -1,0 +1,23 @@
+order: 1
+title: "Охранник статуса отправления"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 8
+language: ts
+typecheck: true
+tags: [type guard, unknown, предикат типа]
+hints:
+  - "Направление: функция получает unknown и отвечает, лежит ли значение в списке статусов. Сначала убедитесь, что это строка, потом ищите её в списке."
+  - "Шаг: у списка из as const метод includes принимает только статусы. Приведите список к readonly string[] и проверьте includes(value) после проверки typeof."
+  - "Почти решение: return typeof value === 'string' && (SHIPMENT_STATUSES as readonly string[]).includes(value); а в сигнатуре после двоеточия напишите value is ShipmentStatus."
+wrong:
+  - name: only-string
+    kind: partial
+    explanation: "Охранник проверяет только typeof value === 'string'. Любая строка, например 'shipped', объявляется статусом: поведенческий тест «отклоняет неизвестные строки» падает."
+  - name: string-coerce
+    kind: edge-case
+    explanation: "Значение превращается в строку через String(value). Массив ['delivered'] и объект с toString, который возвращает 'delivered', превращаются в настоящий статус. Скрытый тест требует отклонять не строки."
+  - name: plain-boolean
+    kind: common-mistake
+    explanation: "Возвращаемый тип boolean вместо value is ShipmentStatus. Поведение верное, но компилятор не сужает тип после проверки: проверка типов в public.types.ts падает с TS2322 (unknown нельзя вернуть как статус)."

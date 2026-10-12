@@ -1,0 +1,22 @@
+order: 1
+title: "Пауза, которую можно отменить"
+type: recall
+role: warmup
+difficulty: 2
+minutes: 10
+language: js
+tags: [AbortController, AbortSignal, setTimeout, промисы]
+hints:
+  - "Направление: вам нужен промис с тремя событиями: таймер сработал, сигнал отменили позже, сигнал отменён уже сейчас. Для каждого события своя реакция."
+  - "Шаг: у сигнала есть свойство aborted и событие abort. В обработчике abort нужно очистить таймер и вызвать reject с signal.reason. Проверку aborted сделайте до создания таймера."
+  - "Почти решение: new Promise((resolve, reject) => { if (signal?.aborted) return reject(signal.reason); const timer = setTimeout(resolve, ms); signal?.addEventListener('abort', () => { clearTimeout(timer); reject(signal.reason); }, { once: true }); })"
+wrong:
+  - name: ignore-signal
+    kind: partial
+    explanation: "Пауза работает, но сигнал никак не используется. Отмена ничего не меняет: промис выполняется через положенное время, а не отклоняется сразу."
+  - name: timer-leak
+    kind: common-mistake
+    explanation: "Промис отклоняется по abort, но таймер не очищен. Он остаётся в очереди и сработает позже. Проверка «в очереди нет таймеров» ловит утечку."
+  - name: already-aborted
+    kind: edge-case
+    explanation: "Подписка на событие abort есть, а проверки signal.aborted до таймера нет. Событие abort уже произошло и второй раз не придёт, поэтому для уже отменённого сигнала пауза идёт полностью."

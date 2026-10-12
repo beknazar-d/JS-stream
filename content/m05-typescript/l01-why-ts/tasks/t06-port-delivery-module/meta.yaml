@@ -1,0 +1,23 @@
+order: 6
+title: "Перенос модуля доставки с JavaScript на TypeScript"
+type: refactor
+role: real
+difficulty: 3
+minutes: 25
+language: ts
+typecheck: true
+tags: [миграция, аннотации, number, string, boolean, массивы]
+hints:
+  - "Направление: пройдите по функциям сверху вниз. Для каждого параметра спросите себя: что в него реально приходит? Название зоны, вес в килограммах, флаг экспресса, список цен, номер заказа, код валюты."
+  - "Шаг: zone: string, weightKg: number, express: boolean, prices: number[], orderId: number, currency: string. Результаты: zoneIndex, deliveryPrice и totalForOrders возвращают number, receipt возвращает string. Константы лучше тоже аннотировать: string[] и number[]."
+  - "Почти решение: export const zones: string[] = [...]; export function deliveryPrice(zone: string, weightKg: number, express: boolean): number { ... }. Тела функций не трогайте."
+wrong:
+  - name: receipt-untyped
+    kind: partial
+    explanation: "Типы расставлены у первых трёх функций, а у receipt параметры остались без аннотаций. Строгий режим сообщает об ошибке TS7006: параметр неявно получает тип any."
+  - name: all-any
+    kind: common-mistake
+    explanation: "Все параметры и результаты заменены на any. Файл собирается и ведёт себя как раньше, но типы ничего не документируют и ничего не проверяют: вызов deliveryPrice(\"центр\", \"5\", false) компилируется, а проверки типов падают."
+  - name: weight-as-string
+    kind: edge-case
+    explanation: "Вес описан как string, потому что в форме он приходит строкой. Но функция считает с ним арифметику (weightKg - 10), и компилятор сообщает TS2362: операнд арифметики должен быть числом. Строку в число нужно превращать до вызова функции, а не прятать в типе."

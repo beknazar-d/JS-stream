@@ -1,0 +1,22 @@
+order: 1
+title: "Печать заказа: call, apply, bind"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 8
+language: js
+tags: [this, call, apply, bind]
+hints:
+  - "Направление: printOrder использует this, и его нужно задавать при вызове. Для этого у функций есть три метода. Вспомните, какой из них вызывает функцию сразу, а какой возвращает новую."
+  - "Шаг: call принимает this и аргументы по одному. apply принимает this и массив аргументов. bind принимает this и возвращает функцию, ничего не вызывая."
+  - "Почти решение: printOrder.call(order, prefix); printOrder.apply(order, args); printOrder.bind(order)."
+wrong:
+  - name: no-bind
+    kind: partial
+    explanation: "Функции viaCall и viaApply готовы, а bindTo остался пустым и возвращает undefined. Привязку this нужно уметь набрать так же уверенно, как call и apply."
+  - name: ignores-prefix
+    kind: edge-case
+    explanation: "bindTo возвращает обёртку, которая вызывает printOrder без аргументов. Префикс, переданный при вызове привязанной функции, теряется, и в начале строки появляется слово undefined."
+  - name: calls-immediately
+    kind: common-mistake
+    explanation: "bindTo вызывает printOrder через call и возвращает строку, а не функцию. bind создаёт новую функцию, а call вызывает старую сразу. Привязанную функцию нечем вызвать позже."

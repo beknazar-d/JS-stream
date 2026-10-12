@@ -1,0 +1,23 @@
+order: 3
+title: "Исправить подпись курьера"
+type: fix-bug
+role: warmup
+difficulty: 2
+minutes: 15
+language: ts
+typecheck: true
+tags: [as, type guard, JSON.parse, unknown]
+hints:
+  - "Направление: ошибка в двух местах. Охранник isCourier пропускает слишком многое, а courierLabel верит JSON через as и не ждёт, что JSON может быть сломан."
+  - "Шаг: в isCourier проверьте, что значение объект и не null, а затем каждое поле по правилам. В courierLabel положите результат JSON.parse в переменную типа unknown и оберните разбор в try/catch."
+  - "Почти решение: в courierLabel после try/catch напишите if (!isCourier(data)) return 'Курьер не определён'; дальше data.name и data.phone доступны без as."
+wrong:
+  - name: no-try-catch
+    kind: partial
+    explanation: "Охранник исправлен, as убран, но JSON.parse не обёрнут в try/catch. Сломанный JSON вызывает исключение SyntaxError вместо подписи «Курьер не определён»: скрытый тест падает."
+  - name: phone-not-checked
+    kind: edge-case
+    explanation: "Охранник проверяет id и name, но не phone. Объект без поля phone считается курьером, а тест требует отказать: у курьера phone обязателен, пусть и со значением null."
+  - name: boolean-guard
+    kind: common-mistake
+    explanation: "Охранник возвращает boolean вместо value is Courier, а компилятор «успокоен» приведением (data as Courier). Поведение верное, но тип охранника потерян: проверка типов в public.types.ts падает с TS2322."

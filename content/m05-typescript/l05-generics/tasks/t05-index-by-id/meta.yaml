@@ -1,0 +1,23 @@
+order: 5
+title: "Склад: поиск и словарь по id"
+type: implement
+role: main
+difficulty: 3
+minutes: 20
+language: ts
+typecheck: true
+tags: [generics, extends, ограничения, Map]
+hints:
+  - "Направление: функциям нужно прочитать item.id, но тип записи у каждого списка свой. Параметр типа вместе с ограничением даёт и то, и другое."
+  - "Шаг: объявите <T extends { id: number }>. Для словаря результат — Map<number, T>. Когда id повторяется, set просто перезапишет значение."
+  - "Почти решение: export function indexById<T extends { id: number }>(items: T[]): Map<number, T> { const index = new Map<number, T>(); for (const item of items) { index.set(item.id, item); } return index; }"
+wrong:
+  - name: no-constraint
+    kind: common-mistake
+    explanation: "Ограничения extends нет, доступ к id спрятан за any. Код работает, но компилятор принимает список без id. Проверка «записи должны иметь id» исчезла: тест с @ts-expect-error сообщает, что ошибки там не было (TS2578)."
+  - name: loose-type
+    kind: partial
+    explanation: "Параметр описан как { id: number }[], и результат теряет остальные поля: findById возвращает { id: number }, а не посылку. Поле status недоступно. Ограничение должно быть у T, а не заменять его."
+  - name: first-wins
+    kind: edge-case
+    explanation: "Повторяющийся id оставляет первую запись, потому что новые добавляются только если ключа ещё нет. По критерию остаётся последняя запись: в справочниках побеждает свежая версия."

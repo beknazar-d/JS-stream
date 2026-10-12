@@ -1,0 +1,32 @@
+- id: single-thread
+  front: Сколько дел JavaScript выполняет одновременно в одном потоке?
+  back: "Одно. Пока занят стек вызовов, ни таймеры, ни события, ни промисы не выполняются."
+  answer: одно
+- id: order-rule
+  front: В каком порядке event loop берёт работу?
+  back: "1. Синхронный код до конца. 2. Все микрозадачи. 3. Одна задача из очереди. 4. Снова микрозадачи."
+- id: timeout-zero
+  front: Когда выполнится setTimeout(fn, 0)?
+  back: "Не сразу, а как задача: после синхронного кода и всех микрозадач."
+- id: microtask-sources
+  front: Что попадает в очередь микрозадач?
+  back: "Колбэки then/catch/finally, продолжение после await и функции из queueMicrotask."
+  answer: queueMicrotask
+- id: task-sources
+  front: Что попадает в очередь задач?
+  back: "Сработавшие таймеры (setTimeout, setInterval) и события (клик, ввод)."
+  answer: setTimeout
+- id: microtask-starvation
+  front: Чем опасна микрозадача, которая постоянно добавляет новую микрозадачу?
+  back: "Очередь микрозадач не пустеет, и задачи (таймеры, события) никогда не получают очередь."
+- id: yield-to-loop
+  front: Чем вернуть управление в event loop между частями тяжёлой работы?
+  back: "setTimeout(next, 0). Микрозадача не годится: после неё снова идут микрозадачи, а не задачи."
+  answer: setTimeout
+- id: try-timer
+  front: Поймает ли try/catch ошибку, брошенную внутри колбэка setTimeout?
+  back: "Нет. К моменту срабатывания таймера try уже закончился. try/catch ставят внутрь колбэка."
+  answer: нет
+- id: pass-not-call
+  front: Что не так в setTimeout(send(), 100)?
+  back: "send() вызвана сразу, в таймер ушёл её результат. Нужно setTimeout(send, 100) или setTimeout(() => send(), 100)."

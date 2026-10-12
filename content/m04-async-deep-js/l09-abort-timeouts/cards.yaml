@@ -1,0 +1,37 @@
+- id: abort-create
+  front: Как создать пару «пульт и сигнал отмены»?
+  back: "const controller = new AbortController(); const signal = controller.signal; Отмена: controller.abort(). Сигнал отдают тому, кого могут отменить."
+  answer: AbortController
+- id: abort-flag
+  front: Какое свойство сигнала показывает, что его уже отменили?
+  back: "signal.aborted — true после controller.abort(). Событие abort приходит только один раз, поэтому проверяйте aborted до подписки."
+  answer: aborted
+- id: abort-reason
+  front: Что лежит в signal.reason, если вызвали controller.abort() без аргумента?
+  back: "DOMException с именем AbortError. Можно передать свою причину: controller.abort(new Error('...'))."
+  answer: AbortError
+- id: abort-once
+  front: Что случится при втором controller.abort()?
+  back: "Ничего. Сигнал отменяется один раз, signal.reason остаётся прежним."
+- id: throw-if-aborted
+  front: Каким методом сигнала бросить причину отмены как ошибку?
+  back: "signal.throwIfAborted() — бросает signal.reason, если сигнал отменён. Удобно вызывать после await."
+  answer: throwIfAborted
+- id: timeout-pattern
+  front: Из чего собрать таймаут, чтобы его можно было проверить без ожидания?
+  back: "setTimeout, в нём controller.abort(error) и reject(error); в finally clearTimeout. AbortSignal.timeout(ms) удобен в браузере, но тесты с подменными часами его не ускоряют."
+  answer: setTimeout
+- id: timeout-error
+  front: Каким именем ошибки сигнал AbortSignal.timeout(ms) отличается от обычной отмены?
+  back: "TimeoutError. Обычная отмена даёт AbortError."
+  answer: TimeoutError
+- id: retry-shape
+  front: Где в цикле повторов нельзя ставить паузу?
+  back: "После последней неудачной попытки: ошибку нужно отдать сразу. И паузу делают отменяемой: sleep(ms, signal)."
+- id: stale-request
+  front: Что делать со старым запросом, когда пользователь отправил новый?
+  back: "Отменить его сигнал и создать новый контроллер для нового запроса. Один отменённый сигнал заново включить нельзя."
+- id: clear-timer
+  front: Что обязательно делать с таймером таймаута, когда запрос завершился?
+  back: "clearTimeout в finally. Иначе таймер сработает позже и отклонит уже ненужный промис."
+  answer: clearTimeout

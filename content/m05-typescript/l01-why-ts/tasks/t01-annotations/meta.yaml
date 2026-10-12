@@ -1,0 +1,23 @@
+order: 1
+title: "Аннотации для карточки посылки"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 8
+language: ts
+typecheck: true
+tags: [аннотации, number, string, boolean, массивы]
+hints:
+  - "Направление: тип записывается после имени через двоеточие. У переменной: имя, двоеточие, тип, знак равенства, значение. У параметра функции то же самое."
+  - "Шаг: число — number, строка — string, да или нет — boolean, массив строк — string[]. Результат функции указывается после скобок с параметрами: function name(a: number): string."
+  - "Почти решение: export const orderId: number = 1042; export const itemPrices: number[] = [1200, 450, 89]; export function describeParcel(id: number, weightKg: number): string { ... }"
+wrong:
+  - name: params-untyped
+    kind: partial
+    explanation: "Переменные размечены, а параметры describeParcel остались без типов. В строгом режиме это ошибка TS7006: параметр неявно получает тип any."
+  - name: wrapper-types
+    kind: common-mistake
+    explanation: "Типы Number, String и Boolean с большой буквы описывают объекты-обёртки, а не примитивы. Код компилируется, но тип orderId получается Number, а не number, и проверка типов это замечает."
+  - name: id-as-string
+    kind: edge-case
+    explanation: "Идентификатор посылки описан как string, потому что в других системах он бывает со строкой. По тикету это число, и вызов describeParcel(\"7\", 2) должен быть ошибкой. Компилятор его пропускает, а тип параметров получается [string, number] вместо [number, number], и проверки типов падают."

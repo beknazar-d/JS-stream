@@ -1,0 +1,2 @@
+своя причина: Клиент закрыл страницу
+причина по умолчанию: AbortError - This operation was aborted

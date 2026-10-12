@@ -1,0 +1,23 @@
+order: 2
+title: "Что выведет код с приведением типа"
+type: predict
+role: warmup
+difficulty: 2
+minutes: 8
+language: ts
+tags: [as, JSON.parse, типы стираются, typeof]
+show: [tests/snippet.ts]
+hints:
+  - "Направление: аннотации и as существуют только для компилятора. Во время работы программы остаются лишь значения из строки JSON."
+  - "Шаг: в JSON вес записан строкой в кавычках. Умножение превращает строку в число, а плюс склеивает. Поля status в JSON нет, поэтому чтение даст undefined."
+  - "Почти решение: первые три строки — string, 5, 2.52. Четвёртая и пятая связаны с courier: null, а шестая читает несуществующее поле."
+wrong:
+  - name: trusts-the-type
+    kind: common-mistake
+    explanation: "Ответ верит аннотации number: «number», «5», «4.5». Но as ничего не преобразует. В JSON вес строка, поэтому typeof даёт «string», а плюс склеивает «2.5» и «2» в «2.52»."
+  - name: only-first-half
+    kind: partial
+    explanation: "Заполнена только половина строк. Предсказать нужно каждый вызов console.log, включая чтение поля, которого нет."
+  - name: typeof-null
+    kind: edge-case
+    explanation: "В последней строке ответ «null». Но typeof всегда возвращает название типа строкой, а для null это «object» (историческая особенность языка)."

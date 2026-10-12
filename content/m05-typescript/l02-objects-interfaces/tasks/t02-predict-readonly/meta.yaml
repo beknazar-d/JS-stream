@@ -1,0 +1,23 @@
+order: 2
+title: "Что выведет код: readonly и необязательные поля"
+type: predict
+role: warmup
+difficulty: 2
+minutes: 8
+language: ts
+tags: [readonly, необязательные свойства, spread, рантайм, JSON]
+show: [tests/snippet.ts]
+hints:
+  - "Направление: сотрите в уме типы, readonly и конструкцию as. Остаётся обычная запись в поле id. Что с ней сделает JavaScript?"
+  - "Шаг: copy создан раньше записи в parcel.id и является отдельным объектом. Поле note не задано, поэтому его значение undefined, а оператор ?? подставляет запасное. JSON.stringify пропускает поля со значением undefined, но здесь поля note в объекте нет вообще."
+  - "Почти решение: пять строк из шести — 99, 1, undefined, без заметки, 2. Последняя строка — JSON объекта parcel после записи."
+wrong:
+  - name: only-start
+    kind: partial
+    explanation: "Верно только начало. Предсказать нужно каждый вызов console.log, а не первые три."
+  - name: readonly-protects
+    kind: common-mistake
+    explanation: "Ответ предполагает, что readonly не позволил записать 99. Но readonly проверяется только компилятором, а приведение as { id: number } его обходит. В рантайме запись выполнилась, и в parcel.id лежит 99."
+  - name: note-null
+    kind: edge-case
+    explanation: "В третьей строке ответ null. Поле note не задано, поэтому чтение даёт undefined, а не null. Значение null в JavaScript нужно присвоить явно."

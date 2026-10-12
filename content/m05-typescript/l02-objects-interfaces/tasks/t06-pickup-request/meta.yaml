@@ -1,0 +1,23 @@
+order: 6
+title: "Заявка партнёра на забор груза"
+type: implement
+role: real
+difficulty: 3
+minutes: 30
+language: ts
+typecheck: true
+tags: [interface, вложенные типы, необязательные свойства, неясности, API]
+hints:
+  - "Направление: сравните два примера из письма. Поля, которые есть в обоих, обязательные. Поля, которых нет хотя бы в одном примере (floor, intercom, comment), необязательные. Вложенные объекты pickup и cargo получают собственные интерфейсы."
+  - "Шаг: contacts — массив строк, пустой массив допустим. В pickupSummary собирайте адрес по частям. Этаж 0 — это значение, поэтому сравнивайте с undefined, а не проверяйте истинность."
+  - "Почти решение: let address = `${city}, ${street}`; if (floor !== undefined) address += `, этаж ${floor}`; if (intercom !== undefined) address += `, домофон ${intercom}`; return `Заявка №${id} (${company}): ${address}; мест: ${places}, вес: ${weightKg} кг`."
+wrong:
+  - name: no-total
+    kind: partial
+    explanation: "Типы и сводка готовы, а totalWeight возвращает 0 всегда. Тесты на суммарный вес падают."
+  - name: floor-zero
+    kind: edge-case
+    explanation: "Этаж проверяется по истинности: if (floor). Для первого этажа с номером 0 часть «этаж 0» пропадает, хотя значение указано."
+  - name: all-required
+    kind: common-mistake
+    explanation: "Все поля описаны как обязательные. Заявка 502 из письма не проходит проверку типов (нет этажа, домофона и комментария), хотя именно так партнёр её и присылает."

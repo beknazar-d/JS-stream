@@ -1,0 +1,3 @@
+packed -> Собран
+delivered -> Доставлен
+{ created: 0, packed: 1, onTheWay: 0, delivered: 0 }

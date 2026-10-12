@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" width="640" height="330" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="16" fill="currentColor">
+  <title id="t">Два вызова makeCounter и два независимых окружения</title>
+  <desc id="d">Слева окружение первого вызова с prefix ORD и last равным 3, внутри него функция nextOrder. Справа окружение второго вызова с prefix RET и last равным 1, внутри него функция nextReturn. Окружения не связаны между собой.</desc>
+
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="16" y="16" width="290" height="298" rx="10" opacity="0.7"/>
+    <rect x="334" y="16" width="290" height="298" rx="10" opacity="0.7"/>
+    <rect x="46" y="130" width="230" height="64" rx="8" stroke-dasharray="6 4"/>
+    <rect x="364" y="130" width="230" height="64" rx="8" stroke-dasharray="6 4"/>
+    <rect x="46" y="236" width="230" height="52" rx="8"/>
+    <rect x="364" y="236" width="230" height="52" rx="8"/>
+    <path d="M161 236 V194 M479 236 V194"/>
+    <path d="M155 202 L161 194 L167 202 M473 202 L479 194 L485 202"/>
+  </g>
+
+  <g text-anchor="middle">
+    <text x="161" y="46" font-weight="700">Первый вызов</text>
+    <text x="479" y="46" font-weight="700">Второй вызов</text>
+    <text x="161" y="68" font-family="ui-monospace, monospace" font-size="14">makeCounter("ORD")</text>
+    <text x="479" y="68" font-family="ui-monospace, monospace" font-size="14">makeCounter("RET")</text>
+
+    <text x="161" y="108" font-size="13" opacity="0.8">окружение, «рюкзак» функции</text>
+    <text x="479" y="108" font-size="13" opacity="0.8">окружение, «рюкзак» функции</text>
+
+    <text x="161" y="157" font-family="ui-monospace, monospace" font-size="15">prefix = "ORD"</text>
+    <text x="161" y="179" font-family="ui-monospace, monospace" font-size="15">last = 3</text>
+    <text x="479" y="157" font-family="ui-monospace, monospace" font-size="15">prefix = "RET"</text>
+    <text x="479" y="179" font-family="ui-monospace, monospace" font-size="15">last = 1</text>
+
+    <text x="161" y="268" font-family="ui-monospace, monospace" font-size="16">nextOrder</text>
+    <text x="479" y="268" font-family="ui-monospace, monospace" font-size="16">nextReturn</text>
+    <text x="161" y="304" font-size="12" opacity="0.8">функция держит ссылку на своё окружение</text>
+    <text x="479" y="304" font-size="12" opacity="0.8">у каждой функции своё окружение</text>
+  </g>
+</svg>

@@ -1,0 +1,23 @@
+order: 4
+title: "Типизированные помощники для панели диспетчера"
+type: implement
+role: main
+difficulty: 2
+minutes: 15
+language: ts
+typecheck: true
+tags: [аннотации, массивы, number, boolean, string]
+hints:
+  - "Направление: сначала допишите типы параметров и результата, потом тела. Массив чисел — number[], массив булевых значений — boolean[]."
+  - "Шаг: среднее — сумма, делённая на количество. Пустой массив обработайте отдельно, иначе получите деление нуля на ноль. Округление до десятых: Math.round(x * 10) / 10. Два знака после запятой даёт toFixed(2)."
+  - "Почти решение: if (minutes.length === 0) return 0; сумму посчитайте циклом или reduce; верните Math.round(sum / minutes.length * 10) / 10. Для countPaid пройдите по массиву и считайте true. Для formatPrice: amount.toFixed(2) + \" \" + currency."
+wrong:
+  - name: no-format
+    kind: partial
+    explanation: "Первые две функции готовы, а formatPrice возвращает число без форматирования и без валюты. Подпись цены получается неверной."
+  - name: empty-nan
+    kind: edge-case
+    explanation: "Для пустого массива сумма 0 делится на длину 0, результат NaN. По тикету для пустого списка нужно вернуть 0."
+  - name: any-params
+    kind: common-mistake
+    explanation: "Параметры описаны как any. Код собирается и считает правильно, но компилятор теперь принимает averageMinutes([\"30\"]) и formatPrice(100), поэтому проверки типов падают."

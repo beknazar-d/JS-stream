@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="16" fill="currentColor">
+  <title id="t">Как компилятор подставляет T в firstItem</title>
+  <desc id="d">Одна функция firstItem с параметром типа T. Слева в неё передают массив заказов, T становится Order, результат Order или undefined. Справа передают массив строк, T становится string, результат string или undefined.</desc>
+
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="215" y="16" width="210" height="52" rx="10"/>
+    <rect x="16" y="130" width="250" height="44" rx="8"/>
+    <rect x="374" y="130" width="250" height="44" rx="8"/>
+    <rect x="16" y="226" width="250" height="52" rx="8"/>
+    <rect x="374" y="226" width="250" height="52" rx="8"/>
+    <path d="M141 130 L260 68 M499 130 L380 68"/>
+    <path d="M141 174 V226 M499 174 V226"/>
+    <path d="M135 218 L141 226 L147 218 M493 218 L499 226 L505 218"/>
+  </g>
+
+  <g text-anchor="middle">
+    <text x="320" y="38" font-family="ui-monospace, monospace" font-size="16">firstItem&lt;T&gt;</text>
+    <text x="320" y="58" font-size="13" opacity="0.8">одна функция на все типы</text>
+
+    <text x="141" y="158" font-family="ui-monospace, monospace" font-size="15">firstItem(orders)</text>
+    <text x="499" y="158" font-family="ui-monospace, monospace" font-size="15">firstItem(couriers)</text>
+
+    <text x="141" y="108" font-size="14">T = Order</text>
+    <text x="499" y="108" font-size="14">T = string</text>
+
+    <text x="141" y="250" font-family="ui-monospace, monospace" font-size="15">Order | undefined</text>
+    <text x="141" y="268" font-size="12" opacity="0.8">тип результата</text>
+    <text x="499" y="250" font-family="ui-monospace, monospace" font-size="15">string | undefined</text>
+    <text x="499" y="268" font-size="12" opacity="0.8">тип результата</text>
+  </g>
+</svg>

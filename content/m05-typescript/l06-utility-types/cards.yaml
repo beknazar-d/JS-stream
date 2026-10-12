@@ -1,0 +1,34 @@
+- id: partial
+  front: Какой utility type делает все поля типа необязательными?
+  back: "Partial<Order>. Читать поле такого типа без проверки нельзя: оно может быть undefined."
+  answer: Partial
+- id: required
+  front: Какой utility type делает все поля обязательными?
+  back: "Required<T> — обратное к Partial, убирает знак вопроса у полей."
+  answer: Required
+- id: readonly
+  front: Что делает Readonly<Order> во время выполнения?
+  back: "Ничего. Только компилятор запрещает присваивание. Чтобы заморозить объект, нужен Object.freeze."
+- id: pick
+  front: Как оставить в типе только поля id и status?
+  back: 'Pick<Order, "id" | "status">. Ключ с опечаткой — ошибка TS2344.'
+  answer: Pick
+- id: omit
+  front: Как убрать из типа поле id?
+  back: 'Omit<Order, "id">. Omit не проверяет названия: опечатка в ключе молча ничего не уберёт.'
+  answer: Omit
+- id: record
+  front: Как описать объект, у которого ровно по одному значению на каждый статус?
+  back: "Record<Status, string>. Пропущенный ключ — ошибка TS2739."
+  answer: Record
+- id: return-type
+  front: Как получить тип результата готовой функции calcFee?
+  back: "ReturnType<typeof calcFee>. Без typeof получится ошибка TS2749."
+  answer: ReturnType
+- id: parameters
+  front: Как получить типы параметров функции в виде кортежа?
+  back: "Parameters<typeof calcFee>, например [zone: string, weightKg: number]."
+  answer: Parameters
+- id: patch
+  front: Как описать патч заказа, в котором можно менять любые поля, кроме id?
+  back: 'Partial<Omit<Order, "id">>. Читать нужно изнутри наружу: сначала Omit, потом Partial.'

@@ -1,0 +1,22 @@
+order: 5
+title: "Повтор вызова с паузой и отменой"
+type: implement
+role: main
+difficulty: 3
+minutes: 25
+language: js
+tags: [повторы, пауза, AbortSignal, отмена, async/await]
+hints:
+  - "Направление: повторы — это цикл по номерам попыток. Внутри цикла: вызов, при ошибке пауза, следующая попытка. Подумайте, на какой попытке паузу делать не нужно."
+  - "Шаг: перед каждой попыткой проверьте signal?.throwIfAborted(). В catch после ошибки task проверьте, что попытка не последняя и сигнал не отменён, и только потом вызывайте await sleep(pauseMs, signal)."
+  - "Почти решение: for (let attempt = 1; ; attempt++) { signal?.throwIfAborted(); try { return await task(signal); } catch (error) { if (signal?.aborted) throw signal.reason; if (attempt >= attempts) throw error; } await sleep(pauseMs, signal); }"
+wrong:
+  - name: pause-ignores-signal
+    kind: race
+    explanation: "Пауза сделана обычным setTimeout, сигнал в ней не участвует. Клиент ушёл со страницы и сигнал отменён, а повтор всё равно сработает по таймеру и отправит запрос. Отмена и повтор гоняются друг за другом, и повтор выигрывает."
+  - name: pause-after-last
+    kind: edge-case
+    explanation: "Пауза делается после каждой ошибки, в том числе после последней. Ошибка доходит до клиента с лишней задержкой в pauseMs. Паузу нужно пропускать, когда попытки закончились."
+  - name: off-by-one
+    kind: common-mistake
+    explanation: "Параметр attempts понят как число повторов, а не общее число вызовов. При attempts равном 3 task вызывается четыре раза."

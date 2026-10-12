@@ -1,0 +1,23 @@
+order: 3
+title: "Подписи статусов: ни один не забыт"
+type: implement
+role: warmup
+difficulty: 2
+minutes: 12
+language: ts
+typecheck: true
+tags: [utility types, Record, справочник, статусы]
+hints:
+  - "Направление: нужен объект, у которого ровно по одному значению на каждый статус. Для этого в TypeScript есть готовый тип с двумя параметрами: ключи и тип значения."
+  - "Шаг: const statusLabels: Record<DeliveryStatus, string> = { ... } со всеми пятью статусами. Для счётчиков сначала создайте объект с нулями для всех статусов, потом увеличивайте нужные."
+  - "Почти решение: const counters: Record<DeliveryStatus, number> = { created: 0, packed: 0, onTheWay: 0, delivered: 0, returned: 0 }; for (const delivery of deliveries) { counters[delivery.status] += 1; } return counters;"
+wrong:
+  - name: index-signature
+    kind: common-mistake
+    explanation: "Справочник описан как { [status: string]: string }. Он принимает любые ключи и не требует всех статусов: забытая подпись снова не будет замечена. Тест типов ждёт Record<DeliveryStatus, string>."
+  - name: partial-labels
+    kind: partial
+    explanation: "Тип Partial<Record<DeliveryStatus, string>> позволил пропустить подпись для returned. Для статуса «Возврат» функция возвращает запасное значение вместо подписи, и тест на подпись падает."
+  - name: no-zero-counters
+    kind: edge-case
+    explanation: "Счётчики создаются пустым объектом, и отсутствующие статусы не попадают в результат. По критерию в сводке должны быть все пять статусов, в том числе с нулями."

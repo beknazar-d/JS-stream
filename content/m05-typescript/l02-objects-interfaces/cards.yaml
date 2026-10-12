@@ -1,0 +1,31 @@
+- id: interface-syntax
+  front: Как описать форму объекта с полями id (число) и status (строка)?
+  back: "interface Order { id: number; status: string }"
+  answer: interface
+- id: optional
+  front: Как сделать свойство необязательным?
+  back: "Поставить ? после имени: comment?: string. Тип становится string | undefined."
+  answer: "?"
+- id: readonly
+  front: Что делает readonly перед свойством?
+  back: "Запрещает присваивание после создания объекта. Только для компилятора: в рантайме свойство можно изменить."
+  answer: readonly
+- id: nested
+  front: Как описать вложенный объект, например адрес заказа?
+  back: "Отдельным типом: interface Address { city: string }, затем address: Address внутри Order."
+- id: extends
+  front: Как расширить один interface другим?
+  back: "interface Courier extends Person { vehicle: string } — Courier получает все поля Person."
+  answer: extends
+- id: excess
+  front: Когда TypeScript ругается на лишние свойства?
+  back: "Только когда объект-литерал записан прямо в месте присваивания или вызова. Если передать переменную, лишние поля пропускаются."
+- id: structural
+  front: Нужно ли объекту «объявлять», что он Order?
+  back: "Нет. Типизация структурная: подходит любой объект с нужными полями нужных типов."
+- id: index-signature
+  front: Как описать словарь, где ключи — артикулы, а значения — числа?
+  back: "{ [sku: string]: number } — индексная сигнатура. Ключи заранее неизвестны."
+- id: interface-vs-type
+  front: Чем interface и type отличаются для объектов?
+  back: "Для формы объекта почти ничем. interface можно расширять и дополнять, type умеет ещё и псевдонимы, объединения и примитивы. Выберите одно и держитесь его."

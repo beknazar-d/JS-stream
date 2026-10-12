@@ -1,0 +1,22 @@
+order: 4
+title: "bindAll: методы, которые можно передавать"
+type: implement
+role: main
+difficulty: 3
+minutes: 20
+language: js
+tags: [this, bind, дескрипторы свойств, колбэки]
+hints:
+  - "Направление: нужно пройти по собственным свойствам объекта и каждую функцию заменить привязанной к этому объекту. Подумайте, чем для getter отличается чтение значения от чтения дескриптора."
+  - "Шаг: Object.keys(obj) даёт имена. Object.getOwnPropertyDescriptor(obj, key) показывает, что лежит в свойстве, не вызывая getter. Если descriptor.value — функция, запишите obj[key] = descriptor.value.bind(obj)."
+  - "Почти решение: цикл for (const key of Object.keys(obj)), внутри получите descriptor, проверьте typeof descriptor.value === 'function', замените на привязанную. После цикла верните obj."
+wrong:
+  - name: returns-copy
+    kind: partial
+    explanation: "Функции привязаны, но к новому объекту-копии. Исходный объект остаётся прежним: если вынуть из него метод, он снова теряет this. По тикету объект должен меняться на месте."
+  - name: calls-getters
+    kind: edge-case
+    explanation: "Тип свойства проверяется чтением obj[key]. Для getter это вызов функции с побочными эффектами. Счётчик обращений растёт, а getter, который выбрасывает ошибку, ломает сам bindAll."
+  - name: bind-this
+    kind: common-mistake
+    explanation: "Методы привязаны через bind(this), но bindAll вызвана как простая функция, и её this равен undefined. Методы привязаны к ничему и падают на первом обращении к this."

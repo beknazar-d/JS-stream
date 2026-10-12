@@ -1,0 +1,23 @@
+order: 4
+title: "Неизменяемый заказ"
+type: refactor
+role: main
+difficulty: 3
+minutes: 15
+language: ts
+typecheck: true
+tags: [readonly, неизменяемость, spread, рефакторинг]
+hints:
+  - "Направление: сначала добавьте readonly ко всем полям Order. Компилятор сам покажет места, где функции присваивают значения в поля заказа."
+  - "Шаг: вместо присваивания order.status = \"paid\" верните новый объект. Копия со сменой одного поля записывается так: { ...order, status: \"paid\" }."
+  - "Почти решение: return { ...order, status: \"paid\" }; и return { ...order, total: Math.round((order.total * (100 - percent)) / 100) };"
+wrong:
+  - name: partial-readonly
+    kind: partial
+    explanation: "Только id и createdAt защищены, а status и total остались изменяемыми. Присваивание в order.status по-прежнему компилируется, а по тикету запрещено."
+  - name: assign-trick
+    kind: common-mistake
+    explanation: "Поля помечены readonly, а записать значение удалось через Object.assign, который компилятор не отслеживает. Исходный заказ всё равно меняется, и скидка снова ломает общий список."
+  - name: no-round
+    kind: edge-case
+    explanation: "Скидка считается без округления. Для суммы 999 и скидки 15 процентов получается 849.15, а по тикету сумма должна быть целой: 849."

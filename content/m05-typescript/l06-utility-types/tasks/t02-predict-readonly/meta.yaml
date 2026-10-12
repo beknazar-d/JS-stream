@@ -1,0 +1,23 @@
+order: 2
+title: "Что выведет код с Readonly и Partial"
+type: predict
+role: warmup
+difficulty: 2
+minutes: 8
+language: ts
+tags: [utility types, Readonly, Partial, Object.freeze, предсказание]
+show: [tests/snippet.ts]
+hints:
+  - "Направление: Readonly и Partial исчезают при компиляции. Во время выполнения объект ведёт себя как обычный, пока его не заморозили через Object.freeze."
+  - "Шаг: приведение as Courier снимает запрет для компилятора, а не для объекта. Заморозка Object.freeze в строгом режиме при записи бросает TypeError."
+  - "Почти решение: строки 1–4: { name: \"Анна\", zone: \"Юг\", rating: 4.8 }, Север, 1, 5. Затем сообщение true из блока catch и последняя строка: что осталось в замороженной копии."
+wrong:
+  - name: half
+    kind: partial
+    explanation: "Верно только начало, остальные строки не заполнены. Предсказать нужно каждый вызов console.log."
+  - name: readonly-freezes
+    kind: common-mistake
+    explanation: "В строке 4 ответ 4.8: ответ исходит из того, что Readonly защищает объект. Но Readonly только запрещает присваивание компилятору. Приведение as Courier обходит запрет, и во время выполнения поле меняется на 5."
+  - name: partial-empty
+    kind: edge-case
+    explanation: "В строке 3 ответ 3: так считается, будто Partial добавил в patch пустые ключи. Partial ничего не добавляет во время выполнения: у patch один ключ, zone, поэтому Object.keys(patch).length равно 1."

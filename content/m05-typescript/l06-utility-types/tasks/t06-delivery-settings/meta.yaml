@@ -1,0 +1,23 @@
+order: 6
+title: "Тарифы доставки: настройки региона"
+type: implement
+role: real
+difficulty: 4
+minutes: 40
+language: ts
+typecheck: true
+tags: [utility types, Partial, Required, Readonly, Pick, ReturnType, Parameters, неясности]
+hints:
+  - "Направление: из одного DeliverySettings нужны четыре типа. Переопределение — всё необязательное. Итоговые — всё обязательное и только для чтения. Публичные — три поля из итоговых."
+  - "Шаг: SettingsOverride = Partial<DeliverySettings>; ResolvedSettings = Readonly<Required<DeliverySettings>>; PublicSettings = Pick<ResolvedSettings, ...>; CalcFeeArgs = Parameters<typeof calcFee>; Fee = ReturnType<typeof calcFee>. В resolveSettings берите значение override, а при undefined — значение defaults."
+  - "Почти решение: return { baseFee: override.baseFee ?? defaults.baseFee, perKg: override.perKg ?? defaults.perKg, freeFrom: override.freeFrom ?? defaults.freeFrom, currency: override.currency ?? defaults.currency, note: override.note ?? defaults.note };"
+wrong:
+  - name: override-required
+    kind: partial
+    explanation: "SettingsOverride оставлен равным DeliverySettings: регион обязан заполнить все поля. Вызов resolveSettings(defaults, { perKg: 20 }) не компилируется (TS2345), а тест типов именно так и вызывает функцию."
+  - name: mutates-defaults
+    kind: common-mistake
+    explanation: "Object.assign(defaults, override) записывает регион прямо в общие настройки. После расчёта для Урала общие значения изменены для всех остальных регионов. Типы Readonly этого не замечают: они действуют только на присваивание через имя поля."
+  - name: spread-undefined
+    kind: edge-case
+    explanation: "{ ...defaults, ...override } копирует и undefined: явное perKg: undefined затирает значение по умолчанию, и расчёт стоимости даёт NaN. Поля со значением undefined нужно пропускать."

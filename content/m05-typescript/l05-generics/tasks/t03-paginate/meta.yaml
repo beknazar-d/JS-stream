@@ -1,0 +1,23 @@
+order: 3
+title: "Одна функция страниц для всех списков"
+type: implement
+role: warmup
+difficulty: 2
+minutes: 12
+language: ts
+typecheck: true
+tags: [generics, обобщённый интерфейс, пагинация]
+hints:
+  - "Направление: тип Page<T> уже обобщённый. Сделайте обобщённой и функцию, чтобы T из списка попал в Page<T>."
+  - "Шаг: объявите paginate<T>(items: T[], ...): Page<T>. Количество страниц — округление вверх от длины списка, делённой на размер. Начало среза: (page - 1) * size."
+  - "Почти решение: const totalPages = Math.ceil(items.length / size); const start = (page - 1) * size; return { items: items.slice(start, start + size), page, totalPages };"
+wrong:
+  - name: any-page
+    kind: common-mistake
+    explanation: "Функция работает, но принимает any[] и возвращает Page<any>. Тест типов ждёт Page<Order> для списка заказов: пользователь функции потерял подсказки и проверки."
+  - name: floor-pages
+    kind: partial
+    explanation: "totalPages считается через Math.floor, поэтому для 25 элементов получается 2 страницы вместо 3. Неполная последняя страница теряется."
+  - name: clamp-page
+    kind: edge-case
+    explanation: "Номер страницы подрезается до последней, и вместо пустого результата пользователь получает данные последней страницы. По критерию страница за пределами списка пуста."

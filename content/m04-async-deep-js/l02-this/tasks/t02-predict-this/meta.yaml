@@ -1,0 +1,23 @@
+order: 2
+title: "Чему равно this у курьера"
+type: predict
+role: warmup
+difficulty: 2
+minutes: 8
+language: js
+tags: [this, call, bind, стрелки, предсказание]
+show: [tests/snippet.js]
+hints:
+  - "Направление: для каждого вызова посмотрите, что стоит слева от точки и есть ли call, apply или bind. Стрелка берёт this из кода вокруг."
+  - "Шаг: copy — это метод, вынутый из объекта, вызов без объекта оставляет this пустым. Привязанная функция bound помнит своё значение this даже при call. Стрелка внутри greetLater видит this метода."
+  - "Почти решение: две первые строки про Ивана и Ольгу, третья — имя ошибки, четвёртая — привязанный Пётр, пятая — Иван, шестая — Анна."
+wrong:
+  - name: only-first-half
+    kind: partial
+    explanation: "Верно только начало, остальные строки не заполнены. Нужно предсказать каждый вызов console.log, а не только первые три."
+  - name: rebinds
+    kind: edge-case
+    explanation: "В четвёртой строке ответ «Курьер Иван»: будто call на привязанной функции заменил this. Но bind фиксирует this навсегда, и вызов bound.call(courier) всё равно печатает Петра."
+  - name: sloppy-thinking
+    kind: common-mistake
+    explanation: "В третьей строке ответ «Курьер undefined»: так вёл себя нестрогий режим. В строгом режиме this равен undefined, и чтение this.name даёт TypeError. Код ловит его и печатает имя ошибки."

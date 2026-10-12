@@ -1,0 +1,34 @@
+- id: unknown-vs-any
+  front: Чем unknown отличается от any?
+  back: "any отключает проверку типов. unknown требует проверки перед использованием: читать поля и вызывать методы нельзя, пока тип не сужен."
+  answer: unknown
+- id: json-parse-type
+  front: Какой тип возвращает JSON.parse и чем это опасно?
+  back: "any. Компилятор не проверяет форму данных. Присвойте результат переменной типа unknown и проверьте."
+  answer: any
+- id: type-guard-syntax
+  front: Как объявить охранник типа для интерфейса Courier?
+  back: "function isCourier(value: unknown): value is Courier { … }. Предикат value is Courier сужает тип в ветке, где функция вернула true."
+  answer: value is Courier
+- id: in-narrowing
+  front: Как безопасно проверить, что у объекта из unknown есть поле id?
+  back: "typeof value === 'object' && value !== null && 'id' in value, и затем typeof value.id === 'number'."
+- id: as-lies
+  front: Что делает value as Courier на самом деле?
+  back: "Ничего во время работы программы. Это обещание компилятору, а не проверка. Если данные другие, ошибка случится позже и в другом месте."
+- id: result-type
+  front: Как записать тип Result с двумя исходами?
+  back: "type Result<T, E> = { ok: true; value: T } | { ok: false; error: E }. Поле ok различает ветки."
+  answer: ok
+- id: result-narrow
+  front: Как получить value из Result?
+  back: "Сначала проверить if (result.ok). Пока проверки нет, компилятор не даёт читать value: TS2339."
+- id: collect-problems
+  front: Зачем валидатор собирает все ошибки в массив, а не возвращает первую?
+  back: "Разработчик чинит данные за один заход и видит все проблемы сразу."
+- id: array-is-object
+  front: Какая ловушка есть в проверке typeof value === 'object'?
+  back: "Она верна для null и для массивов. Добавляйте value !== null и, при необходимости, !Array.isArray(value)."
+- id: no-throw-contract
+  front: Что значит «функция возвращает Result и не бросает исключений»?
+  back: "Все ошибки сети, статуса и формата видны в типе. Вызывающий код обязан проверить ok, а не забыть про try/catch."

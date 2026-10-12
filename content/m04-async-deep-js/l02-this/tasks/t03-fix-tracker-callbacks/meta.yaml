@@ -1,0 +1,22 @@
+order: 3
+title: "Баг: трекер отправлений падает в колбэке"
+type: fix-bug
+role: warmup
+difficulty: 2
+minutes: 12
+language: js
+tags: [this, колбэки, баг, bind]
+hints:
+  - "Направление: посмотрите, как вызывается markShipped внутри markAll и makeMarker. Есть ли в момент вызова объект слева от точки?"
+  - "Шаг: в markAll оберните вызов в стрелку, чтобы он шёл через точку. В makeMarker верните функцию, которая помнит tracker: либо стрелку, либо bind."
+  - "Почти решение: markAll — orders.filter((order) => tracker.markShipped(order)).length; makeMarker — return tracker.markShipped.bind(tracker)."
+wrong:
+  - name: fixes-one
+    kind: partial
+    explanation: "Исправлен только markAll. Функция makeMarker по-прежнему возвращает метод без объекта, и вызов маркера падает с TypeError: Cannot read properties of undefined."
+  - name: counts-all
+    kind: edge-case
+    explanation: "Метод вызывается верно, но markAll возвращает число всех заказов. По тикету нужно число впервые помеченных: уже отправленные заказы считаться не должны."
+  - name: call-on-order
+    kind: common-mistake
+    explanation: "В markAll метод вызван через call с заказом в роли this. this теперь заказ, у него нет списка shipped, и снова TypeError. this должен быть трекером."

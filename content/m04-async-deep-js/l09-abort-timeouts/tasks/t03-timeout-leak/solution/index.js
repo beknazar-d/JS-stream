@@ -1,0 +1,16 @@
+export async function withTimeout(load, ms) {
+  const controller = new AbortController();
+  let timer;
+  const timeout = new Promise((resolve, reject) => {
+    timer = setTimeout(() => {
+      const error = new Error(`Таймаут: ${ms} мс`);
+      controller.abort(error);
+      reject(error);
+    }, ms);
+  });
+  try {
+    return await Promise.race([load(controller.signal), timeout]);
+  } finally {
+    clearTimeout(timer);
+  }
+}

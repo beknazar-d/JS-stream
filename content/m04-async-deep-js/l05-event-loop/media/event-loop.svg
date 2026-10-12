@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="15" fill="currentColor">
+  <title id="t">Как event loop выбирает, что выполнять дальше</title>
+  <desc id="d">Три блока. Стек вызовов выполняет код прямо сейчас. Очередь микрозадач опустошается полностью после каждой задачи. Очередь задач отдаёт по одной задаче, когда стек и микрозадачи пусты. Стрелка по кругу показывает, что цикл повторяется.</desc>
+
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="16" y="40" width="190" height="200" rx="10"/>
+    <rect x="225" y="40" width="190" height="200" rx="10" stroke-dasharray="6 4"/>
+    <rect x="434" y="40" width="190" height="200" rx="10" stroke-dasharray="2 5"/>
+    <path d="M206 140 H225 M415 140 H434" opacity="0.6"/>
+    <path d="M529 240 V282 H111 V240" opacity="0.8"/>
+    <path d="M105 248 L111 240 L117 248" opacity="0.8"/>
+  </g>
+
+  <g text-anchor="middle">
+    <text x="111" y="30" font-weight="700">Стек вызовов</text>
+    <text x="320" y="30" font-weight="700">Микрозадачи</text>
+    <text x="529" y="30" font-weight="700">Очередь задач</text>
+
+    <text x="111" y="130" font-family="ui-monospace, monospace">синхронный код</text>
+    <text x="111" y="156" font-size="13" opacity="0.8">работает только</text>
+    <text x="111" y="174" font-size="13" opacity="0.8">одно дело за раз</text>
+
+    <text x="320" y="110" font-family="ui-monospace, monospace">then, catch</text>
+    <text x="320" y="132" font-family="ui-monospace, monospace">await (продолжение)</text>
+    <text x="320" y="154" font-family="ui-monospace, monospace">queueMicrotask</text>
+    <text x="320" y="190" font-size="13" opacity="0.8">выполняются ВСЕ,</text>
+    <text x="320" y="208" font-size="13" opacity="0.8">пока очередь не пуста</text>
+
+    <text x="529" y="110" font-family="ui-monospace, monospace">setTimeout</text>
+    <text x="529" y="132" font-family="ui-monospace, monospace">setInterval</text>
+    <text x="529" y="154" font-family="ui-monospace, monospace">клик, ввод</text>
+    <text x="529" y="190" font-size="13" opacity="0.8">берётся ОДНА задача,</text>
+    <text x="529" y="208" font-size="13" opacity="0.8">потом снова микрозадачи</text>
+
+    <text x="320" y="306" font-weight="700">Цикл повторяется, пока есть работа</text>
+    <text x="320" y="332" font-size="13" opacity="0.8">1. стек до конца  2. все микрозадачи  3. одна задача  4. снова пункт 2</text>
+  </g>
+</svg>

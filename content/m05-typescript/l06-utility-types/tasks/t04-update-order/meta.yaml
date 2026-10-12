@@ -1,0 +1,23 @@
+order: 4
+title: "Баг: патч заказа принимает всё подряд"
+type: fix-bug
+role: main
+difficulty: 3
+minutes: 20
+language: ts
+typecheck: true
+tags: [utility types, Partial, Omit, баг, иммутабельность]
+hints:
+  - "Направление: здесь два слоя бага. Тип патча слишком широкий (any), а в коде функции исходный объект мутируется и undefined затирает значения."
+  - "Шаг: тип патча — Partial от Omit<Order, \"id\">. В теле не меняйте order, а соберите новый объект: для каждого поля берите значение из патча, а если там undefined, то из заказа."
+  - "Почти решение: return { id: order.id, status: patch.status ?? order.status, city: patch.city ?? order.city, total: patch.total ?? order.total };"
+wrong:
+  - name: types-only
+    kind: partial
+    explanation: "Тип патча исправлен, но тело функции осталось прежним: Object.assign меняет исходный объект. Тест на неизменность исходного заказа падает."
+  - name: runtime-only
+    kind: common-mistake
+    explanation: "Поведение исправлено, но patch по-прежнему any: компилятор принимает status со значением «delivered » и поле id. Тесты типов с @ts-expect-error сообщают, что ошибок не было."
+  - name: spread-undefined
+    kind: edge-case
+    explanation: "{ ...order, ...patch } создаёт копию и типы верные, но явное city: undefined затирает город. Поля со значением undefined нужно пропускать."

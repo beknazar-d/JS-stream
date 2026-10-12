@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" width="640" height="340" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="16" fill="currentColor">
+  <title id="t">Один тип Order и четыре производных от него</title>
+  <desc id="d">В центре слева тип Order с полями id, status, city, total. От него идут четыре стрелки: Pick оставляет id и status; Omit убирает id; Partial делает все поля необязательными; Readonly запрещает менять поля.</desc>
+
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="16" y="100" width="170" height="140" rx="10"/>
+    <rect x="300" y="16" width="324" height="54" rx="8"/>
+    <rect x="300" y="96" width="324" height="54" rx="8"/>
+    <rect x="300" y="176" width="324" height="54" rx="8"/>
+    <rect x="300" y="256" width="324" height="54" rx="8"/>
+    <path d="M186 140 L300 43 M186 160 L300 123 M186 190 L300 203 M186 215 L300 283"/>
+    <path d="M292 41 L300 43 L294 48 M292 121 L300 123 L293 128 M292 205 L300 203 L294 198 M292 281 L300 283 L295 288"/>
+  </g>
+
+  <g>
+    <text x="101" y="128" text-anchor="middle" font-weight="700" font-family="ui-monospace, monospace">Order</text>
+    <text x="36" y="158" font-family="ui-monospace, monospace" font-size="14">id: number</text>
+    <text x="36" y="178" font-family="ui-monospace, monospace" font-size="14">status: Status</text>
+    <text x="36" y="198" font-family="ui-monospace, monospace" font-size="14">city: string</text>
+    <text x="36" y="218" font-family="ui-monospace, monospace" font-size="14">total: number</text>
+
+    <text x="312" y="38" font-family="ui-monospace, monospace" font-size="15">Pick&lt;Order, "id" | "status"&gt;</text>
+    <text x="312" y="58" font-size="13" opacity="0.8">оставить только id и status</text>
+    <text x="312" y="118" font-family="ui-monospace, monospace" font-size="15">Omit&lt;Order, "id"&gt;</text>
+    <text x="312" y="138" font-size="13" opacity="0.8">все поля, кроме id</text>
+    <text x="312" y="198" font-family="ui-monospace, monospace" font-size="15">Partial&lt;Order&gt;</text>
+    <text x="312" y="218" font-size="13" opacity="0.8">все поля становятся необязательными</text>
+    <text x="312" y="278" font-family="ui-monospace, monospace" font-size="15">Readonly&lt;Order&gt;</text>
+    <text x="312" y="298" font-size="13" opacity="0.8">поля нельзя менять после создания</text>
+  </g>
+</svg>

@@ -1,0 +1,22 @@
+order: 3
+title: "Баг: таймаут срабатывает после ответа"
+type: fix-bug
+role: warmup
+difficulty: 2
+minutes: 12
+language: js
+tags: [таймаут, clearTimeout, Promise.race, AbortController, баг]
+hints:
+  - "Направление: сколько работы остаётся после того, как Promise.race выбрал победителя? Таймер продолжает отсчёт, а проигравший запрос не знает, что он проиграл."
+  - "Шаг: идентификатор таймера нужно сохранить в переменную снаружи промиса-таймаута и очистить в блоке finally. Отмену запроса вызывайте в тот момент, когда сработал именно таймаут."
+  - "Почти решение: в setTimeout создайте ошибку, вызовите controller.abort(error) и reject(error). Вокруг await Promise.race([...]) поставьте try/finally с clearTimeout(timer)."
+wrong:
+  - name: success-only
+    kind: partial
+    explanation: "Таймер очищается только после успешного ответа. Если load отклонился ошибкой, таймер остаётся в очереди и позже отклонит уже никому не нужный промис."
+  - name: signal-timeout
+    kind: common-mistake
+    explanation: "AbortSignal.timeout работает на внутреннем таймере движка. Подменные часы теста его не двигают, и таймаут не наступает. В заданиях этого урока таймаут делают через setTimeout и controller.abort(). Это же даёт возможность проверять его без настоящего ожидания."
+  - name: abort-always
+    kind: edge-case
+    explanation: "controller.abort() вызывается в finally, то есть и после успешного ответа. Тогда сигнал успешного запроса отменён задним числом, а подписчики на abort выполняют лишнюю работу."

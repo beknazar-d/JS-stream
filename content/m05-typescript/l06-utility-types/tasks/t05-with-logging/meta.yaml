@@ -1,0 +1,23 @@
+order: 5
+title: "Обёртка с журналом, сохраняющая типы"
+type: implement
+role: main
+difficulty: 4
+minutes: 25
+language: ts
+typecheck: true
+tags: [utility types, Parameters, ReturnType, обобщения, обёртка]
+hints:
+  - "Направление: обёртка должна иметь те же параметры и тот же результат, что исходная функция, какой бы она ни была. Для этого типы функции нужно достать из самой функции."
+  - "Шаг: сделайте параметр типа F, ограниченный любой функцией. Параметры обёртки — Parameters<F>, результат — ReturnType<F>. Остаточный параметр ...args получит нужный тип сам."
+  - "Почти решение: export function withLogging<F extends (...args: any[]) => any>(fn: F, name: string, log: (line: string) => void): (...args: Parameters<F>) => ReturnType<F> { return (...args) => { const result = fn(...args); log(name + \"(\" + args.join(\", \") + \") = \" + String(result)); return result; }; }"
+wrong:
+  - name: loose-wrapper
+    kind: common-mistake
+    explanation: "Обёртка описана как (...args: any[]) => any. Журнал пишется, но типы потеряны: calcDeliveryFee('north') без второго аргумента компилируется, а тест типов ждёт ошибку. Типы функции нужно достать через Parameters и ReturnType."
+  - name: no-return
+    kind: partial
+    explanation: "Обёртка записывает в журнал, но забывает вернуть результат. Компилятор сообщает, что void не подходит под ReturnType<F> (TS2322), а вызовы в тестах возвращают undefined."
+  - name: swallow-errors
+    kind: edge-case
+    explanation: "Вызов fn завёрнут в try/catch, и ошибка проглатывается: обёртка возвращает undefined. По критерию ошибка должна пробрасываться наружу, иначе сбой платежа превращается в тихий undefined."

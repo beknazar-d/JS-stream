@@ -1,0 +1,22 @@
+order: 2
+title: "Отложенные вызовы: задача, микрозадача, напоминание"
+type: recall
+role: warmup
+difficulty: 2
+minutes: 10
+language: js
+tags: [setTimeout, clearTimeout, queueMicrotask, event loop]
+hints:
+  - "Направление: для вызова «в следующей задаче» есть функция таймера, для вызова «в ближайшей микрозадаче» есть функция с именем queue. Напоминание с отменой — таймер, у которого запоминают идентификатор."
+  - "Шаг: setTimeout возвращает идентификатор. Его нужно сохранить в переменную внутри scheduleReminder и вернуть функцию, которая вызывает clearTimeout с этим идентификатором."
+  - "Почти решение: const id = setTimeout(send, delayMs); return () => clearTimeout(id);"
+wrong:
+  - name: no-reminder
+    kind: partial
+    explanation: "Готовы later и soon, а scheduleReminder пуста. Она ничего не отправляет и не возвращает функцию отмены, поэтому напоминание не придёт, а вызов cancel упадёт с ошибкой."
+  - name: microtask-later
+    kind: common-mistake
+    explanation: "later сделана через queueMicrotask. Колбэк выполняется раньше любого таймера и раньше микрозадач, поставленных позже, а нужна именно следующая задача после микрозадач."
+  - name: shared-timer
+    kind: edge-case
+    explanation: "Идентификатор таймера хранится в переменной модуля. Если поставить два напоминания, отмена первого очистит таймер второго, а первое всё равно сработает. Идентификатор должен жить внутри вызова."

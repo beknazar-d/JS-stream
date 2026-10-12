@@ -1,0 +1,23 @@
+order: 6
+title: "Хранилище записей для трёх сервисов"
+type: implement
+role: real
+difficulty: 4
+minutes: 35
+language: ts
+typecheck: true
+tags: [generics, extends, значения по умолчанию, неясности, Map]
+hints:
+  - "Направление: идентификатор может быть числом или строкой, значит Id тоже параметр типа. Запись обязана иметь id именно этого типа: ограничение T extends Entity<Id>. Для числа по умолчанию подойдёт Id = number."
+  - "Шаг: объявите Entity<Id = number>, Repository<T extends Entity<Id>, Id = number> и фабрику с теми же параметрами. Внутри хранилища подойдёт Map<Id, T>: он помнит порядок добавления."
+  - "Почти решение: const items = new Map<Id, T>(); add(item) { items.set(item.id, item); }, get(id) { return items.get(id); }, list() { return [...items.values()]; }, remove(id) { return items.delete(id); }. Map создаётся внутри фабрики, а не снаружи."
+wrong:
+  - name: number-only
+    kind: partial
+    explanation: "Идентификатор зашит как number, второго параметра типа нет. Хранилище для курьеров с идентификатором c-17 не создаётся: createRepository<Courier, string>() даёт ошибку TS2558, потому что ждёт один параметр типа."
+  - name: shared-state
+    kind: common-mistake
+    explanation: "Map создан один раз снаружи фабрики, и все хранилища делят его. Запись в журнал событий появляется в списке курьеров. Хранилище нужно создавать внутри createRepository."
+  - name: remove-always-true
+    kind: edge-case
+    explanation: "remove всегда возвращает true, даже если записи не было. Вызывающий код не может отличить удаление от пустого вызова, поэтому проверка false в тестах падает."

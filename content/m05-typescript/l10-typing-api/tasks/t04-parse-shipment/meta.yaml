@@ -1,0 +1,23 @@
+order: 4
+title: "Разбор ответа об отправлении"
+type: implement
+role: main
+difficulty: 3
+minutes: 25
+language: ts
+typecheck: true
+tags: [unknown, валидация, Result, вложенные объекты]
+hints:
+  - "Направление: сначала проверьте, что raw — объект (не null и не массив). Потом читайте каждое поле как unknown и собирайте ошибки в массив, не выходя при первой."
+  - "Шаг: заведите маленькие охранники: isRecord, isShipmentStatus, isPositiveNumber и readCourier. Для каждого поля добавляйте сообщение в problems, если проверка не прошла."
+  - "Почти решение: в конце верните { ok: false, error: problems }, если массив не пуст. Компилятор не знает, что массив пуст при успехе, поэтому повторите проверки сужения в условии перед созданием значения."
+wrong:
+  - name: courier-not-checked
+    kind: partial
+    explanation: "Поле courier проверяется только как «null или объект». Курьер без id и name проходит проверку, а тест требует сообщение «courier: ожидался null или курьер с id и name»."
+  - name: null-crash
+    kind: edge-case
+    explanation: "Входное значение сразу приводится к Record через as, и проверки isRecord нет. Для null код падает с TypeError вместо ответа { ok: false } с сообщением «ответ: ожидался объект»."
+  - name: first-error-only
+    kind: common-mistake
+    explanation: "Функция возвращает ошибку на первом неверном поле. Тест передаёт ответ с тремя ошибками и ждёт все три сообщения, чтобы разработчик исправил данные за один заход."

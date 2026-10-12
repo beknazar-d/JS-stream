@@ -1,0 +1,23 @@
+order: 4
+title: "Баг: в отчёте у курьера одна доставка"
+type: fix-bug
+role: main
+difficulty: 3
+minutes: 20
+language: ts
+typecheck: true
+tags: [generics, any, баг, группировка]
+hints:
+  - "Направление: два разных бага. Первый в логике: что происходит при втором элементе с тем же ключом? Второй в типах: any на входе и на выходе."
+  - "Шаг: сначала проверьте, есть ли группа для ключа, и только потом добавляйте элемент. Затем сделайте функцию обобщённой: <T>, items: T[], keyOf: (item: T) => string, результат Record<string, T[]>."
+  - "Почти решение: if (!Object.hasOwn(groups, key)) { groups[key] = []; } groups[key].push(item); — проверка hasOwn нужна, чтобы ключ «constructor» не нашёлся в прототипе объекта."
+wrong:
+  - name: only-runtime
+    kind: partial
+    explanation: "Накопление исправлено, доставки больше не пропадают. Но any остался: опечатка в byCourier[..][0].adress по-прежнему проходит, а тест типов ждёт Record<string, Delivery[]>."
+  - name: only-types
+    kind: common-mistake
+    explanation: "Функция стала обобщённой, типы точные. Но внутри осталось присваивание groups[key] = [item], которое затирает группу при каждом новом элементе: у курьера снова одна доставка."
+  - name: plain-object
+    kind: edge-case
+    explanation: "Группа создаётся через groups[key] ??= []. Для ключа constructor такая проверка видит функцию Object из прототипа, не создаёт группу, и push падает с TypeError. Нужно проверять собственные свойства через Object.hasOwn."
