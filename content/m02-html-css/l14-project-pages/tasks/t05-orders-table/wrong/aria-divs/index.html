@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Заказы — панель менеджера Домотеки</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page">
+    <h1 class="page__title">Заказы</h1>
+    <div class="orders-scroll" data-scroll role="region" aria-label="Список заказов" tabindex="0">
+      <div class="orders" data-table role="table" aria-label="Заказы">
+        <div class="orders__row orders__row--head" data-head role="row">
+          <div class="orders__cell orders__cell--number" data-col="number" role="columnheader">№ заказа</div>
+          <div class="orders__cell orders__cell--customer" data-col="customer" role="columnheader">Клиент</div>
+          <div class="orders__cell orders__cell--status" data-col="status" role="columnheader">Статус</div>
+          <div class="orders__cell orders__cell--total" data-col="total" role="columnheader">Сумма</div>
+          <div class="orders__cell orders__cell--date" data-col="date" role="columnheader">Дата</div>
+        </div>
+        <div class="orders__row" data-row role="row">
+          <div class="orders__cell orders__cell--number" data-col="number" role="cell">ДМ-1042</div>
+          <div class="orders__cell orders__cell--customer" data-col="customer" role="cell">Ирина Соколова</div>
+          <div class="orders__cell orders__cell--status" data-col="status" role="cell"><span class="status status--paid">Оплачен</span></div>
+          <div class="orders__cell orders__cell--total" data-col="total" role="cell">12 480 ₽</div>
+          <div class="orders__cell orders__cell--date" data-col="date" role="cell">11.10.2026</div>
+        </div>
+        <div class="orders__row" data-row role="row">
+          <div class="orders__cell orders__cell--number" data-col="number" role="cell">ДМ-1043</div>
+          <div class="orders__cell orders__cell--customer" data-col="customer" role="cell">Павел Громов</div>
+          <div class="orders__cell orders__cell--status" data-col="status" role="cell"><span class="status status--shipping">В доставке</span></div>
+          <div class="orders__cell orders__cell--total" data-col="total" role="cell">5 290 ₽</div>
+          <div class="orders__cell orders__cell--date" data-col="date" role="cell">11.10.2026</div>
+        </div>
+        <div class="orders__row" data-row role="row">
+          <div class="orders__cell orders__cell--number" data-col="number" role="cell">ДМ-1044</div>
+          <div class="orders__cell orders__cell--customer" data-col="customer" role="cell">Ольга Ким</div>
+          <div class="orders__cell orders__cell--status" data-col="status" role="cell"><span class="status status--waiting">Ждёт оплаты</span></div>
+          <div class="orders__cell orders__cell--total" data-col="total" role="cell">2 190 ₽</div>
+          <div class="orders__cell orders__cell--date" data-col="date" role="cell">10.10.2026</div>
+        </div>
+        <div class="orders__row" data-row role="row">
+          <div class="orders__cell orders__cell--number" data-col="number" role="cell">ДМ-1045</div>
+          <div class="orders__cell orders__cell--customer" data-col="customer" role="cell">Сергей Лебедев</div>
+          <div class="orders__cell orders__cell--status" data-col="status" role="cell"><span class="status status--cancelled">Отменён</span></div>
+          <div class="orders__cell orders__cell--total" data-col="total" role="cell">7 990 ₽</div>
+          <div class="orders__cell orders__cell--date" data-col="date" role="cell">09.10.2026</div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

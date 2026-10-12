@@ -1,0 +1,22 @@
+.btn-sale {
+  background: #dd0000;
+  color: #ffffff;
+}
+
+.btn {
+  background: #e8ecef;
+  color: #222222;
+  border: 0;
+  padding: 8px 16px;
+  border-radius: 6px;
+}
+
+.product .btn {
+  background: #1f6feb;
+  color: #ffffff;
+}
+
+.product .btn-sale {
+  background: #dd0000;
+  color: #ffffff;
+}

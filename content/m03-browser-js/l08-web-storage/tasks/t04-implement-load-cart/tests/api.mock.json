@@ -1,0 +1,6 @@
+{
+  "routes": [],
+  "storage": {
+    "cart": "[{\"id\":1,\"qty\":2},{\"id\":4,\"qty\":1},{\"id\":9,\"qty\":\"2\"},{\"nonsense\":true},null]"
+  }
+}

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Заказы — панель менеджера Домотеки</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page">
+    <h1 class="page__title">Заказы</h1>
+    <div class="orders-scroll" data-scroll>
+      <div class="orders" data-table>
+        <div class="orders__row orders__row--head" data-head>
+          <div class="orders__cell orders__cell--number" data-col="number">№ заказа</div>
+          <div class="orders__cell orders__cell--customer" data-col="customer">Клиент</div>
+          <div class="orders__cell orders__cell--status" data-col="status">Статус</div>
+          <div class="orders__cell orders__cell--total" data-col="total">Сумма</div>
+          <div class="orders__cell orders__cell--date" data-col="date">Дата</div>
+        </div>
+        <div class="orders__row" data-row>
+          <div class="orders__cell orders__cell--number" data-col="number">ДМ-1042</div>
+          <div class="orders__cell orders__cell--customer" data-col="customer">Ирина Соколова</div>
+          <div class="orders__cell orders__cell--status" data-col="status"><span class="status status--paid">Оплачен</span></div>
+          <div class="orders__cell orders__cell--total" data-col="total">12 480 ₽</div>
+          <div class="orders__cell orders__cell--date" data-col="date">11.10.2026</div>
+        </div>
+        <div class="orders__row" data-row>
+          <div class="orders__cell orders__cell--number" data-col="number">ДМ-1043</div>
+          <div class="orders__cell orders__cell--customer" data-col="customer">Павел Громов</div>
+          <div class="orders__cell orders__cell--status" data-col="status"><span class="status status--shipping">В доставке</span></div>
+          <div class="orders__cell orders__cell--total" data-col="total">5 290 ₽</div>
+          <div class="orders__cell orders__cell--date" data-col="date">11.10.2026</div>
+        </div>
+        <div class="orders__row" data-row>
+          <div class="orders__cell orders__cell--number" data-col="number">ДМ-1044</div>
+          <div class="orders__cell orders__cell--customer" data-col="customer">Ольга Ким</div>
+          <div class="orders__cell orders__cell--status" data-col="status"><span class="status status--waiting">Ждёт оплаты</span></div>
+          <div class="orders__cell orders__cell--total" data-col="total">2 190 ₽</div>
+          <div class="orders__cell orders__cell--date" data-col="date">10.10.2026</div>
+        </div>
+        <div class="orders__row" data-row>
+          <div class="orders__cell orders__cell--number" data-col="number">ДМ-1045</div>
+          <div class="orders__cell orders__cell--customer" data-col="customer">Сергей Лебедев</div>
+          <div class="orders__cell orders__cell--status" data-col="status"><span class="status status--cancelled">Отменён</span></div>
+          <div class="orders__cell orders__cell--total" data-col="total">7 990 ₽</div>
+          <div class="orders__cell orders__cell--date" data-col="date">09.10.2026</div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

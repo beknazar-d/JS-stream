@@ -1,0 +1,22 @@
+order: 1
+title: "Категория в адресе страницы"
+type: recall
+role: warmup
+difficulty: 2
+minutes: 8
+language: html
+tags: [pushState, URLSearchParams, history]
+hints:
+  - "Направление: нужен вызов history.pushState с тремя аргументами: состояние, заголовок (его не используют) и адрес."
+  - "Шаг: адрес соберите через new URLSearchParams({ category }), а в pushState передайте '?' + params. Состояние — объект { category }. Вызов делайте в обработчике change."
+  - "Почти решение: select.addEventListener('change', () => { const params = new URLSearchParams({ category: select.value }); history.pushState({ category: select.value }, '', '?' + params); });"
+wrong:
+  - name: replace-state
+    kind: common-mistake
+    explanation: "replaceState подменяет текущую запись, а не добавляет новую. Адрес меняется, но в истории по-прежнему одна запись, и «Назад» уходит на прошлый сайт."
+  - name: no-state
+    kind: partial
+    explanation: "Адрес меняется, но вторым аргументом pushState передан null: объект состояния не записан. При возврате по истории страница не сможет получить выбранную категорию из event.state."
+  - name: string-concat
+    kind: edge-case
+    explanation: "Адрес склеен руками: '?category=' + value. Значение «coffee & tea» ломает его: амперсанд начинает новый параметр, и категория читается как «coffee »."

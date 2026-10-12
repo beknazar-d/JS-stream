@@ -3,12 +3,17 @@ import { useEffect, useRef } from 'react'
 import * as monaco from 'monaco-editor'
 import EditorWorker from 'monaco-editor/editor/editor.worker.js?worker'
 import TsWorker from 'monaco-editor/languages/features/typescript/ts.worker.js?worker'
+import CssWorker from 'monaco-editor/languages/features/css/css.worker.js?worker'
+import HtmlWorker from 'monaco-editor/languages/features/html/html.worker.js?worker'
 import testGlobals from './test-globals.d.ts.txt?raw'
 
 // Workers редактора собирает Vite: базовый и языковой для JS/TS.
 self.MonacoEnvironment = {
   getWorker(_id: string, label: string) {
-    return label === 'typescript' || label === 'javascript' ? new TsWorker() : new EditorWorker()
+    if (label === 'typescript' || label === 'javascript') return new TsWorker()
+    if (label === 'css' || label === 'scss' || label === 'less') return new CssWorker()
+    if (label === 'html' || label === 'handlebars' || label === 'razor') return new HtmlWorker()
+    return new EditorWorker()
   },
 }
 
@@ -39,7 +44,11 @@ function currentTheme() {
 }
 
 function languageOf(file: string) {
-  return /\.tsx?$/.test(file) ? 'typescript' : 'javascript'
+  if (/\.tsx?$/.test(file)) return 'typescript'
+  if (/\.html?$/.test(file)) return 'html'
+  if (/\.css$/.test(file)) return 'css'
+  if (/\.(txt|md)$/.test(file)) return 'plaintext'
+  return 'javascript'
 }
 
 export interface CodeEditorProps {
@@ -86,7 +95,6 @@ export default function CodeEditor({ files, active, readOnlyFiles = [], onChange
       fontSize: 14,
       tabSize: 2,
       scrollBeyondLastLine: false,
-      ariaLabel: label,
       theme: currentTheme(),
       accessibilitySupport: 'auto',
     })
@@ -103,6 +111,11 @@ export default function CodeEditor({ files, active, readOnlyFiles = [], onChange
       for (const model of models.values()) model.dispose()
       models.clear()
     }
+    // Редактор создаётся один раз: подпись и файл меняются без пересоздания.
+  }, [])
+
+  useEffect(() => {
+    editorRef.current?.updateOptions({ ariaLabel: label })
   }, [label])
 
   useEffect(() => {

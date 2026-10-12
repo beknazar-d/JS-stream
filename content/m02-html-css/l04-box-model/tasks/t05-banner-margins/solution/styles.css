@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+.banner {
+  display: flow-root;
+  background: #fff4d6;
+}
+
+.banner-title {
+  margin: 24px 0 8px;
+}
+
+.banner-text {
+  margin: 0 0 24px;
+}

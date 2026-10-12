@@ -1,0 +1,22 @@
+order: 6
+title: "Страница каталога: панель и карточки"
+type: layout
+role: real
+difficulty: 4
+minutes: 30
+language: html
+tags: [flex, flex-wrap, flex-shrink, gap, карточки]
+hints:
+  - "Направление: два независимых контейнера. Панель инструментов — ряд с растягивающимся полем поиска. Список карточек — ряд с переносом, где у карточки заранее известна доля ширины."
+  - "Шаг: у .toolbar нужны flex, align-items и gap; полю поиска flex: 1, а корзине flex-shrink: 0. У .cards нужны flex, flex-wrap и gap; у .card нужна ширина в четверть с учётом трёх промежутков и flex-direction: column, а кнопке margin-top: auto."
+  - "Почти решение: .toolbar { display: flex; align-items: center; gap: 16px; } .search { flex: 1; } .cart { flex-shrink: 0; white-space: nowrap; } .cards { display: flex; flex-wrap: wrap; gap: 16px; } .card { flex: 0 0 calc((100% - 48px) / 4); display: flex; flex-direction: column; } .btn { margin-top: auto; }"
+wrong:
+  - name: cards-stretch
+    kind: edge-case
+    explanation: "flex: 1 1 200px заполняет строку: во втором ряду две карточки растягиваются на всю ширину и получаются в два раза шире остальных. Нужна фиксированная доля ширины без роста: flex: 0 0 calc((100% - 48px) / 4)."
+  - name: cart-shrinks
+    kind: common-mistake
+    explanation: "Поле поиска растягивается через width: 100% вместо flex: 1, а у корзины нет flex-shrink: 0. Поле отбирает место, корзина сжимается, и надпись «Корзина (3)» переносится на две строки."
+  - name: buttons-float
+    kind: partial
+    explanation: "Карточки и панель собраны верно, но карточки не колонки, и кнопка идёт сразу после цены. У карточек с короткими описаниями кнопки оказываются выше, чем у соседей."

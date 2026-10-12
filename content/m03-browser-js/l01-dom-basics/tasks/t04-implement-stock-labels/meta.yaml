@@ -1,0 +1,22 @@
+order: 4
+title: "Подписи наличия на карточках"
+type: implement
+role: main
+difficulty: 3
+minutes: 15
+language: html
+tags: [dataset, classList, disabled, querySelectorAll, строки]
+hints:
+  - "Направление: сначала достаньте остаток: dataset.stock либо undefined, если атрибута нет. Потом разберите случаи по порядку: нет данных, ноль, мало, много."
+  - "Шаг: подпись и кнопку ищите через card.querySelector, а не document.querySelector, иначе все карточки получат одну и ту же подпись. Число получите через Number. Для повторного вызова задавайте состояние явно: classList.toggle('card--out', условие) и button.disabled = условие."
+  - "Почти решение: const raw = card.dataset.stock; const stock = Number(raw); const out = raw !== undefined && stock === 0; card.classList.toggle('card--out', out); button.disabled = out; потом if-цепочка для текста подписи."
+wrong:
+  - name: no-button
+    kind: partial
+    explanation: "Подписи написаны верно, но кнопка не отключается и карточка не получает класс card--out. Покупатель всё ещё может нажать «В корзину» у товара, которого нет."
+  - name: document-query
+    kind: common-mistake
+    explanation: "Подпись ищется через document.querySelector('.stock'), то есть среди всей страницы. Находится первая подпись в документе, и тексты всех карточек записываются в неё. Искать нужно внутри карточки: card.querySelector."
+  - name: no-reset
+    kind: edge-case
+    explanation: "Состояние только добавляется: card--out ставится, но не снимается, кнопка отключается, но не включается. Если остаток пополнили и функцию вызвали снова, карточка остаётся серой и недоступной. Нужно задавать состояние в обе стороны."

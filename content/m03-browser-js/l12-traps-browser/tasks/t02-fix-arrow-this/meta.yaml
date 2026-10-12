@@ -1,0 +1,22 @@
+order: 2
+title: "Исправить: this в стрелке-обработчике"
+type: fix-bug
+role: warmup
+difficulty: 2
+minutes: 12
+language: html
+tags: [this, стрелочные функции, currentTarget, обработчики]
+hints:
+  - "Направление: в стрелочной функции this не равен элементу. В обычном скрипте он равен window. Нужный элемент надо получить другим способом."
+  - "Шаг: добавьте обработчику параметр event и возьмите элемент из event.currentTarget. Не из event.target: если кликнуть по значку внутри кнопки, target будет значком."
+  - "Почти решение: button.addEventListener('click', (event) => { addToCart(event.currentTarget.dataset.id); }); и аналогично clearButton: event.currentTarget.textContent = 'Корзина пуста'."
+wrong:
+  - name: event-target
+    kind: common-mistake
+    explanation: "event.target — это элемент под курсором. Если кликнуть по значку внутри кнопки, dataset.id у значка нет, и в корзину попадает undefined. Нужен event.currentTarget."
+  - name: only-buy
+    kind: partial
+    explanation: "Исправлена только кнопка «В корзину». У «Очистить» тот же this внутри стрелки: присваивание window.textContent молча ничего не делает, надпись не меняется."
+  - name: first-button
+    kind: edge-case
+    explanation: "Обработчик повешен только на первую кнопку через querySelector. Остальные кнопки «В корзину» по-прежнему молчат."

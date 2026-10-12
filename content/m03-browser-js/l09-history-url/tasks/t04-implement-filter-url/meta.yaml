@@ -1,0 +1,22 @@
+order: 4
+title: "Фильтры каталога в адресе и обратно"
+type: implement
+role: main
+difficulty: 3
+minutes: 20
+language: js
+tags: [URL, URLSearchParams, фильтры, валидация]
+hints:
+  - "Направление: адрес разбирает new URL(url, base): второй аргумент нужен, чтобы понимать относительные пути вроде '?sort=rating'. Параметры лежат в url.searchParams."
+  - "Шаг: для каждого параметра возьмите get(имя) и проверьте через includes в списке допустимых значений, иначе возьмите значение по умолчанию. inStock сравнивайте строго со строкой '1'. Для buildUrl создайте пустой URLSearchParams и добавляйте set только для непустых и отличных от значений по умолчанию."
+  - "Почти решение: const params = new URL(url, 'https://domoteka.example').searchParams; category: CATEGORIES.includes(params.get('category')) ? params.get('category') : DEFAULTS.category; inStock: params.get('inStock') === '1'. Оберните разбор URL в try/catch и верните копию DEFAULTS."
+wrong:
+  - name: keeps-defaults
+    kind: partial
+    explanation: "buildUrl всегда пишет все три параметра, даже значения по умолчанию. Ссылка получается длинной и некрасивой: /catalog?category=all&sort=popular, а пустые фильтры должны давать просто /catalog."
+  - name: trusts-url
+    kind: edge-case
+    explanation: "parseFilters возвращает category и sort из адреса как есть. Ссылка с ?category=toaster (опечатка или чужая подборка) превращается в несуществующую категорию, и каталог показывает пустую страницу."
+  - name: instock-boolean
+    kind: common-mistake
+    explanation: "Boolean(params.get('inStock')) даёт true для любой непустой строки, в том числе для '0'. Ссылка ?inStock=0 включает фильтр «в наличии». Сравнивайте со строкой '1'."

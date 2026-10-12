@@ -1,0 +1,3 @@
+order: 2
+title: "Создание элементов и списки"
+summary: "Как построить список товаров из массива: createElement, append, template, и почему текст пользователя нужно вставлять через textContent, а не через innerHTML."

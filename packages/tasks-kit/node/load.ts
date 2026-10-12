@@ -32,9 +32,19 @@ const exists = (path: string) => {
   }
 };
 const read = (path: string) => (exists(path) ? readFileSync(path, 'utf8') : undefined);
+// Ошибки разбора YAML не останавливают проверку: они попадают в список проблем.
+export const yamlErrors: string[] = [];
+const safeParse = (text: string, path: string): unknown => {
+  try {
+    return parse(text);
+  } catch (error) {
+    yamlErrors.push(`${path}: ${error instanceof Error ? error.message.split('\n')[0] : String(error)}`);
+    return undefined;
+  }
+};
 const readYaml = (path: string): unknown => {
   const text = read(path);
-  return text === undefined ? undefined : parse(text);
+  return text === undefined ? undefined : safeParse(text, path);
 };
 const subdirs = (path: string) =>
   exists(path)
@@ -75,7 +85,7 @@ export function loadContent(contentRoot: string): ModuleOnDisk[] {
           tasks: subdirs(tasksDir).map((taskName) => {
             const taskDir = join(tasksDir, taskName);
             const files = readTree(taskDir);
-            const rawMeta = files['meta.yaml'] === undefined ? undefined : parse(files['meta.yaml']);
+            const rawMeta = files['meta.yaml'] === undefined ? undefined : safeParse(files['meta.yaml'], join(taskDir, 'meta.yaml'));
             return {
               dir: taskDir,
               rawMeta,

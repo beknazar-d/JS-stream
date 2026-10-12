@@ -1,0 +1,69 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+.header {
+  padding: 16px;
+}
+
+.header__logo {
+  margin: 0 0 8px;
+  font-weight: 700;
+}
+
+/* От планшета и шире */
+@media (min-width: 768px) {
+  .nav {
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  .features {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.title {
+  margin: 0;
+  padding: 0 16px;
+  font-size: 1.5rem;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 0;
+  padding: 16px;
+  list-style: none;
+}
+
+.features__item {
+  padding: 16px;
+  border: 1px solid #c8d0d8;
+  border-radius: 8px;
+}
+
+.features__item h2 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.features__item p {
+  margin: 0;
+}
+

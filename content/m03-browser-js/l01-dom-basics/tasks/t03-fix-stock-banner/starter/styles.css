@@ -1,0 +1,16 @@
+body {
+  margin: 16px;
+  font-family: system-ui, "Segoe UI", Arial, sans-serif;
+}
+
+.sale-badge {
+  display: none;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #c62828;
+  color: #ffffff;
+}
+
+.sale-badge.visible {
+  display: inline-block;
+}

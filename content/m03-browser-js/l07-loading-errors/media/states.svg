@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="13" fill="currentColor">
+  <title id="t">Состояния загрузки списка</title>
+  <desc id="d">Из состояния «Загрузка» есть три выхода. Успех с данными ведёт в «Список». Успех с пустым массивом ведёт в «Пусто». Ошибка статуса, сбой сети или таймаут ведут в «Ошибка». Из «Ошибки» по кнопке «Повторить» страница возвращается в «Загрузку».</desc>
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="currentColor"/></marker>
+  </defs>
+  <g fill="none" stroke="currentColor" stroke-width="1.5">
+    <rect x="20" y="115" width="140" height="60" rx="8"/>
+    <rect x="460" y="20" width="160" height="60" rx="8"/>
+    <rect x="460" y="115" width="160" height="60" rx="8"/>
+    <rect x="460" y="210" width="160" height="60" rx="8"/>
+    <path d="M160 135 L458 55" marker-end="url(#arr)"/>
+    <path d="M160 145 H458" marker-end="url(#arr)"/>
+    <path d="M160 160 L458 240" marker-end="url(#arr)"/>
+    <path d="M540 270 V290 H90 V177" marker-end="url(#arr)" stroke-dasharray="5 4"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="90" y="141" font-weight="700">Загрузка</text><text x="90" y="159" opacity="0.8">«Загружаем…»</text>
+    <text x="540" y="46" font-weight="700">Список</text><text x="540" y="64" opacity="0.8">статус пуст</text>
+    <text x="540" y="141" font-weight="700">Пусто</text><text x="540" y="159" opacity="0.8">«Данных пока нет»</text>
+    <text x="540" y="236" font-weight="700">Ошибка</text><text x="540" y="254" opacity="0.8">текст и «Повторить»</text>
+  </g>
+  <text x="250" y="86" opacity="0.8" transform="rotate(-14 250 86)">успех, есть данные</text>
+  <text x="270" y="138" opacity="0.8">успех, массив пуст</text>
+  <text x="235" y="214" opacity="0.8" transform="rotate(14 235 214)">статус, сеть, таймаут</text>
+  <text x="250" y="284" opacity="0.8">кнопка «Повторить»</text>
+</svg>

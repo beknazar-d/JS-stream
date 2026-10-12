@@ -1,0 +1,22 @@
+order: 5
+title: "Общие помощники для хранилища"
+type: refactor
+role: main
+difficulty: 3
+minutes: 15
+language: html
+tags: [localStorage, рефакторинг, JSON, дублирование]
+hints:
+  - "Направление: найдите повторяющийся фрагмент. В двух местах читается JSON с запасным значением, в двух записывается. Это и есть две функции."
+  - "Шаг: readJson принимает ключ и запасное значение. Внутри: try, JSON.parse(localStorage.getItem(key)), результат или запасное значение, а в catch — запасное значение. Не забудьте, что JSON.parse(null) возвращает null, а не ошибку."
+  - "Почти решение: function readJson(key, fallback) { try { const value = JSON.parse(localStorage.getItem(key)); return value === null ? fallback : value; } catch { return fallback; } } function writeJson(key, value) { localStorage.setItem(key, JSON.stringify(value)); }"
+wrong:
+  - name: only-favorites
+    kind: partial
+    explanation: "Помощники написаны и используются для избранного, а недавние товары по-прежнему читаются и пишутся напрямую. Дублирование осталось, и повреждённый recent всё ещё роняет страницу."
+  - name: no-try-catch
+    kind: edge-case
+    explanation: "В readJson нет try/catch. Пока данные корректны, всё работает, но обрезанный JSON бросает SyntaxError. Весь смысл помощника — один раз защититься от испорченных данных."
+  - name: null-fallback
+    kind: common-mistake
+    explanation: "Ошибку разбора перехватили, но для отсутствующего ключа вернули результат JSON.parse(null), то есть null, а не запасное значение. Код вида favorites.includes(id) на первом визите падает."

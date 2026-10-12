@@ -1,0 +1,22 @@
+order: 1
+title: "Шапка сайта в одну линию"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 8
+language: html
+tags: [flex, justify-content, align-items, gap]
+hints:
+  - "Направление: включите Flexbox у родителя шапки. Меню внутри тоже контейнер: у него свой display: flex."
+  - "Шаг: у .site-header нужны display, justify-content со значением, которое разводит края, и align-items. У .nav нужны display и gap."
+  - "Почти решение: .site-header { display: flex; justify-content: space-between; align-items: center; } .nav { display: flex; gap: 24px; }"
+wrong:
+  - name: no-alignment
+    kind: partial
+    explanation: "display: flex включён, но выравнивания по вертикали нет, а меню остаётся вертикальным списком: у .nav нет flex и gap. Разные по высоте элементы стоят верхними краями."
+  - name: margin-instead-of-gap
+    kind: common-mistake
+    explanation: "Промежутки сделаны через margin-left у каждого пункта. Первый пункт получает лишний отступ слева, и край списка не совпадает с краем первого пункта. gap ставит промежуток только между пунктами."
+  - name: space-around
+    kind: edge-case
+    explanation: "space-around оставляет места по краям, поэтому логотип и корзина не прижаты к краям шапки (отступ 24px плюс свободное место)."

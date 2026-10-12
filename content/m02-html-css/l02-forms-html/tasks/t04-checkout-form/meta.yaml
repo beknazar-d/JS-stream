@@ -1,0 +1,22 @@
+order: 4
+title: "Форма оформления заказа"
+type: implement
+role: main
+difficulty: 3
+minutes: 20
+language: html
+tags: [form, fieldset, legend, select, textarea, required, autocomplete]
+hints:
+  - "Направление: разделите форму на три fieldset по смыслу. Каждому нужен legend. Затем для каждого поля сделайте пару label и input."
+  - "Шаг: select обязателен, а первый option с value=«» не должен проходить проверку. Для радиокнопок нужен один name на группу, у каждой свой value и свой label."
+  - "Почти решение: input type=«date» required name=«date», textarea name=«comment» maxlength=«300», радиокнопка card с атрибутом checked. Кнопка button type=«submit»."
+wrong:
+  - name: no-fieldsets
+    kind: partial
+    explanation: "Все поля лежат в форме подряд, без fieldset и legend. Скринридер не скажет, к какой группе относится «Картой онлайн», а переключатели оплаты теряют общий вопрос."
+  - name: default-city
+    kind: edge-case
+    explanation: "Первым и выбранным стоит «Москва». Пустая форма проходит проверку города: человек, который не посмотрел на список, закажет доставку не в тот город."
+  - name: placeholder-labels
+    kind: common-mistake
+    explanation: "Подписей label нет, вместо них placeholder. Поля без имени для скринридера, а подпись пропадает при вводе. Для переключателей и списка placeholder вообще не существует."

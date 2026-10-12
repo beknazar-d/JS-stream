@@ -1,0 +1,30 @@
+- id: settimeout
+  front: Как выполнить функцию один раз через 300 мс?
+  back: "const id = setTimeout(fn, 300). Функцию передают без скобок: fn, а не fn()."
+  answer: setTimeout
+- id: cleartimeout
+  front: Чем отменить таймер, который ещё не сработал?
+  back: "clearTimeout(id), где id — число, которое вернул setTimeout. Если таймер уже сработал, вызов ничего не делает."
+  answer: clearTimeout
+- id: debounce-idea
+  front: Что делает дебаунс (debounce)?
+  back: "Откладывает вызов, пока события идут подряд. Функция срабатывает один раз, когда после последнего события прошла пауза."
+- id: debounce-code
+  front: Из каких трёх шагов состоит debounce(fn, delay)?
+  back: "1) переменная timer снаружи возвращаемой функции; 2) clearTimeout(timer); 3) timer = setTimeout(() => fn(...args), delay)."
+- id: throttle-idea
+  front: Чем троттлинг (throttle) отличается от дебаунса?
+  back: "Троттлинг пропускает не больше одного вызова за интервал, пока события идут. Дебаунс ждёт паузы и вызывает один раз в конце."
+- id: when-which
+  front: Что выбрать для поиска при вводе, а что для прокрутки?
+  back: "Поиск при вводе — дебаунс (нужен итог, а не промежуточные буквы). Прокрутка и изменение размера окна — троттлинг (нужны обновления по ходу)."
+- id: abort-controller
+  front: Как отменить запрос fetch, который стал не нужен?
+  back: "const controller = new AbortController(); fetch(url, { signal: controller.signal }); controller.abort(). Промис отклоняется с ошибкой AbortError."
+  answer: AbortController
+- id: abort-error
+  front: Как отличить отмену запроса от настоящей ошибки сети?
+  back: "В catch проверить error.name === 'AbortError' и тихо выйти: пользователю об отмене сообщать не нужно."
+- id: stale-response
+  front: Что такое устаревший ответ и чем он опасен?
+  back: "Ответ на запрос, который уже не актуален. Если он пришёл позже нового, то перезапишет правильный список. Отменяйте прошлый запрос перед новым."

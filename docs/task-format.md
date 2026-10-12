@@ -137,3 +137,79 @@ API в стиле Vitest, глобальные функции без импор�
 - Для write-tests: эталонные тесты ловят всех мутантов, неверные — нет.
 
 Код выполняется с лимитом 5 секунд на прогон и 2 секунды на асинхронный тест.
+
+## Задания на страницу: HTML, CSS, DOM (`language: html`)
+
+Для модулей 2–3. Человек правит файлы страницы, тесты выполняются прямо внутри неё
+(в iframe с `sandbox`, у страницы чужой источник и нет доступа к данным платформы).
+
+```
+tasks/t03-<slug>/
+  task.md
+  meta.yaml          # language: html; type: layout | implement | fix-bug | refactor | api | recall
+  mockup.svg         # необязательно: макет (svg или png), показывается под описанием
+  starter/
+    index.html       # <link rel="stylesheet" href="styles.css">, <script src="script.js"></script>
+    styles.css
+    script.js        # если нужен
+  tests/
+    public.test.js
+    hidden.test.js
+    api.mock.json    # необязательно: мок API и начальный localStorage
+  solution/ index.html, styles.css, script.js, README.md
+  wrong/<name>/      # те же файлы, что в starter (подставляются поверх заготовки)
+```
+
+`<link>` и `<script src>` на файлы задания встраиваются в страницу. Страница открывается
+шириной 1024×768. Тесты начинаются после события `load`.
+
+Хелперы в тестах (глобальные, как `describe` и `expect`):
+
+| Хелпер | Что делает |
+|---|---|
+| `$(sel)`, `$$(sel)` | `querySelector`, массив из `querySelectorAll` |
+| `css(sel или элемент, 'свойство')` | вычисленное значение: `css('.card', 'display')` → `"flex"` |
+| `box(sel)` | `{ x, y, top, left, right, bottom, width, height }`, округлено до px |
+| `await viewport(375)` | меняет ширину окна (проверка адаптивности); верните `viewport(1024)` в конце теста |
+| `await click(sel)`, `await type(sel, 'текст')`, `await submit('form')`, `await press(sel, 'Enter')` | действия пользователя; `type` вызывает события `input` и `change` |
+| `await waitFor(() => условие, мс)` | ждёт, пока условие станет истинным (загрузка данных) |
+| `await wait(мс)` | пауза (дебаунс, анимации) |
+| `labelOf(sel)` | доступное имя: `aria-label`, `label`, `alt` или текст |
+| `api().calls` | журнал запросов к мок-API: `{ method, path, query, body }` |
+| `currentUrl()` | адрес после `history.pushState/replaceState`: `"/catalog?page=2"` |
+
+Правила тестов вёрстки:
+
+- Проверяйте результат, а не способ: «карточки стоят в три колонки» — через `box()` трёх
+  карточек (одинаковый `top`, разный `left`), а не через `display: grid`. Тогда засчитаются и
+  Flexbox, и Grid. Свойство проверяйте напрямую, только если урок про него («добавьте
+  `box-sizing: border-box`»).
+- Шрифты в разных системах разные: не проверяйте точную высоту текста и ширину по
+  тексту. Ширины и отступы, заданные в CSS, проверяйте с допуском: `toBeCloseTo` или
+  `Math.abs(a - b) <= 2`.
+- Доступность — тоже критерий: `alt`, `label`, порядок заголовков, `button` вместо `div`.
+
+`api.mock.json`:
+
+```json
+{
+  "routes": [
+    { "method": "GET", "path": "/api/products", "body": [{ "id": 1, "title": "Чайник" }], "delayMs": 300 },
+    { "method": "GET", "path": "/api/stock", "responses": [{ "status": 503 }, { "status": 200, "body": { "left": 3 } }] }
+  ],
+  "storage": { "cart": "[]" }
+}
+```
+
+`responses` — ответы по очереди (нестабильный API), последний повторяется. Неизвестный
+путь отвечает 404. `fetch` поддерживает `AbortController`. Адрес в коде страницы —
+относительный: `fetch('/api/products?page=2')`.
+
+Ограничения страницы в sandbox (заменители работают как настоящие API):
+
+- `localStorage` и `sessionStorage` хранятся в памяти страницы;
+- `history.pushState/replaceState/back` работают и вызывают `popstate`, но `location`
+  не меняется — читайте адрес через функцию, которая принимает строку адреса, а в
+  задании передавайте её из `history.state` или из хелпера `currentUrl()` в тестах;
+- cookies недоступны;
+- бесконечный цикл в скрипте страницы прерывается через 1 секунду с понятной ошибкой.

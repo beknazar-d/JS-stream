@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+.catalog {
+  padding: 24px;
+}
+
+/* Спиннер: кольцо, у которого один край цветной */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #d5dbe1;
+  border-top-color: #0b6e4f;
+  border-radius: 50%;
+}
+
+/* Скелетон: серая заглушка на месте будущей карточки */
+.skeletons {
+  display: grid;
+  gap: 12px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skeleton {
+  height: 72px;
+  border-radius: 8px;
+  background: #e3e8ee;
+}
+
+/* Допишите анимации:
+   1. Спиннер вращается: @keyframes spin с поворотом от 0 до 360 градусов,
+      1 секунда, равномерно (linear), бесконечно.
+   2. Скелетоны пульсируют: @keyframes pulse с изменением прозрачности
+      от 1 до 0.4 и обратно, 1.5 секунды, ease-in-out, бесконечно.
+   Анимируйте только transform и opacity. */

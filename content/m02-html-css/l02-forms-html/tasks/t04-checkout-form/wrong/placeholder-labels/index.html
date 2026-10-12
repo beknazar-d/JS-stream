@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Оформление заказа — Домотека</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <h1>Оформление заказа</h1>
+    <form class="checkout" action="/orders" method="post">
+      <fieldset>
+        <legend>Контакты</legend>
+        <p>
+          <input id="name" name="name" type="text" placeholder="Имя" required autocomplete="name">
+        </p>
+        <p>
+          <input placeholder="Телефон" id="phone" name="phone" type="tel" required autocomplete="tel">
+        </p>
+        <p>
+          <input placeholder="Email" id="email" name="email" type="email" autocomplete="email">
+        </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Доставка</legend>
+        <p>
+          <select id="city" name="city" required>
+            <option value="">Выберите город</option>
+            <option value="msk">Москва</option>
+            <option value="kzn">Казань</option>
+            <option value="tver">Тверь</option>
+          </select>
+        </p>
+        <p>
+          <input placeholder="Адрес" id="address" name="address" type="text" required autocomplete="street-address">
+        </p>
+        <p>
+          <input placeholder="Дата" id="date" name="date" type="date" required>
+        </p>
+        <p>
+          <textarea placeholder="Комментарий" id="comment" name="comment" rows="3" maxlength="300"></textarea>
+        </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Оплата</legend>
+        <p>
+          <input id="pay-card" name="payment" type="radio" value="card" checked> Картой онлайн
+        </p>
+        <p>
+          <input id="pay-cash" name="payment" type="radio" value="cash"> При получении
+        </p>
+      </fieldset>
+
+      <button type="submit">Подтвердить заказ</button>
+    </form>
+  </body>
+</html>

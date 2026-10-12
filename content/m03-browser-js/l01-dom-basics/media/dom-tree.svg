@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="13" fill="currentColor">
+  <title id="t">HTML-страница как дерево</title>
+  <desc id="d">Слева фрагмент HTML со списком каталога. Справа то же самое в виде дерева: от body идут header и main, у main один потомок ul, у ul два потомка li с классом card. Стрелка показывает, что querySelector возвращает первый подходящий узел при обходе сверху вниз.</desc>
+  <rect x="10" y="10" width="270" height="280" rx="6" fill="none" stroke="currentColor" opacity="0.6"/>
+  <text x="24" y="34" font-weight="700">HTML</text>
+  <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12">
+    <text x="24" y="62">&lt;body&gt;</text>
+    <text x="38" y="84">&lt;header&gt;...&lt;/header&gt;</text>
+    <text x="38" y="106">&lt;main&gt;</text>
+    <text x="52" y="128">&lt;ul class="catalog"&gt;</text>
+    <text x="66" y="150">&lt;li class="card"&gt;</text>
+    <text x="66" y="172">&lt;li class="card"&gt;</text>
+    <text x="52" y="194">&lt;/ul&gt;</text>
+    <text x="38" y="216">&lt;/main&gt;</text>
+    <text x="24" y="238">&lt;/body&gt;</text>
+  </g>
+  <text x="330" y="34" font-weight="700">DOM: дерево узлов</text>
+  <g fill="none" stroke="currentColor" stroke-width="1.5">
+    <rect x="440" y="48" width="80" height="28" rx="4"/>
+    <rect x="350" y="108" width="90" height="28" rx="4"/>
+    <rect x="520" y="108" width="80" height="28" rx="4"/>
+    <rect x="520" y="164" width="80" height="28" rx="4"/>
+    <rect x="440" y="224" width="80" height="28" rx="4"/>
+    <rect x="540" y="224" width="80" height="28" rx="4"/>
+    <path d="M480 76 L395 108"/><path d="M480 76 L560 108"/><path d="M560 136 L560 164"/>
+    <path d="M560 192 L480 224"/><path d="M560 192 L580 224"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="480" y="67">body</text><text x="395" y="127">header</text><text x="560" y="127">main</text>
+    <text x="560" y="183">ul.catalog</text><text x="480" y="243">li.card</text><text x="580" y="243">li.card</text>
+  </g>
+  <text x="330" y="278" opacity="0.8">querySelector возвращает первый li.card; querySelectorAll — оба</text>
+</svg>

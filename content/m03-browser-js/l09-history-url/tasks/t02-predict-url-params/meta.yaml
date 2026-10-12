@@ -1,0 +1,23 @@
+order: 2
+title: "Что вернёт URLSearchParams"
+type: predict
+role: warmup
+difficulty: 2
+minutes: 8
+language: js
+tags: [URLSearchParams, URL, кодирование]
+show: [tests/snippet.js]
+hints:
+  - "Направление: разберите методы по одному. get возвращает одно значение, getAll — все. Подумайте, какое из повторяющихся значений вернёт get."
+  - "Шаг: get при повторе параметра возвращает первое значение. Для отсутствующего параметра get возвращает null. Метод toString не ставит знак вопроса. Адрес в объекте URL хранится в закодированном виде: пробел и русские буквы превращаются в %-последовательности."
+  - "Почти решение: kettles, price-asc, 2, null, category=kettles&page=2. Шестая строка начинается с ?q=%D1%87..., а седьмая — читаемый текст, потому что searchParams раскодирует значение."
+wrong:
+  - name: unfinished
+    kind: partial
+    explanation: "Верны первые четыре строки, остальные не заполнены. Предсказать нужно каждый вызов console.log."
+  - name: last-sort-wins
+    kind: common-mistake
+    explanation: "Во второй строке ответ rating. Но get возвращает первое значение параметра (price-asc). Все значения, включая rating, отдаёт getAll."
+  - name: missing-undefined
+    kind: edge-case
+    explanation: "В четвёртой строке ответ undefined. Для отсутствующего параметра get возвращает null, как и getItem у хранилища."

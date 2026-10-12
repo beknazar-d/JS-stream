@@ -1,0 +1,33 @@
+- id: four-states
+  front: Какие четыре состояния у списка, который приходит с сервера?
+  back: "Загрузка, ошибка, пусто, список. Каждое показываем отдельным понятным текстом."
+- id: finally-reset
+  front: Где сбрасывать флаг загрузки и таймер, чтобы не забыть ни одну ветку?
+  back: "В блоке finally: он выполняется после успеха, после ошибки и после return внутри try."
+  answer: finally
+- id: retry-button
+  front: Что нужно сделать при показе кнопки «Повторить»?
+  back: "Показать её только в состоянии ошибки, скрыть на время загрузки и повесить на неё ту же функцию загрузки (без скобок)."
+- id: abort-controller
+  front: Как отменить запрос fetch?
+  back: "const controller = new AbortController(); fetch(url, { signal: controller.signal }); потом controller.abort()."
+  answer: controller.abort()
+- id: abort-error-name
+  front: Как в catch отличить отмену запроса от сбоя сети?
+  back: "error.name === 'AbortError' для отмены. Сбой сети — TypeError: Failed to fetch."
+- id: timeout-recipe
+  front: Как сделать таймаут запроса?
+  back: "const timer = setTimeout(() => controller.abort(), мс); а в finally — clearTimeout(timer)."
+- id: clear-timer
+  front: Что будет, если не сбросить таймер после успешного ответа?
+  back: "Он сработает позже: отменит ненужный запрос и, если в нём есть сообщение, покажет ложную ошибку."
+- id: live-region
+  front: Как сделать, чтобы скринридер озвучивал сообщения о состоянии?
+  back: "Элементу с сообщением задать role=\"status\" или aria-live=\"polite\" до того, как текст изменится."
+  answer: aria-live
+- id: aria-busy
+  front: Для чего нужен aria-busy на списке?
+  back: "aria-busy=\"true\" сообщает вспомогательным технологиям, что содержимое сейчас обновляется. Снимите его по окончании загрузки."
+- id: parallel-guard
+  front: Как не допустить двух одновременных запросов?
+  back: "Флаг loading: в начале if (loading) return; loading = true; а в finally loading = false."

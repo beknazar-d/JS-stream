@@ -1,0 +1,37 @@
+- id: label-for
+  front: Как связать подпись с полем?
+  back: "label for=«email» и input id=«email»: значения for и id совпадают. Клик по подписи ставит курсор в поле."
+- id: placeholder-not-label
+  front: Заменяет ли placeholder подпись label?
+  back: "Нет. Placeholder пропадает при вводе, плохо читается и не считается подписью. Он только пример ввода."
+  answer: нет
+- id: type-email
+  front: Какие типы input выбрать для почты, телефона, количества и даты?
+  back: "email, tel, number, date. Тип включает проверку и подходящую клавиатуру."
+- id: required
+  front: Каким атрибутом запрещают отправить пустое поле?
+  back: "required. Для select первый option с value=«» тогда считается незаполненным."
+  answer: required
+- id: fieldset-legend
+  front: Какими тегами группируют связанные поля, например способ оплаты?
+  back: "fieldset с вложенным legend. Скринридер объявит название группы перед каждым её полем."
+  answer: fieldset
+- id: radio-name
+  front: Что связывает радиокнопки в одну группу?
+  back: "Одинаковый name. У каждой кнопки свой value, у каждой свой label."
+  answer: name
+- id: min-max-pattern
+  front: Чем ограничить число от 1 до 5 и индекс из шести цифр без скриптов?
+  back: "min=«1» max=«5» у number; pattern=«[0-9]{6}» у text. Браузер проверит сам."
+- id: form-strings
+  front: Какого типа значение любого поля формы в JavaScript?
+  back: "Строка, даже у type=«number». Число получают через Number(value)."
+  answer: строка
+- id: name-sent
+  front: Что нужно полю, чтобы его значение ушло на сервер?
+  back: "Атрибут name. Поле без name или с disabled в отправляемые данные не попадает."
+  answer: name
+- id: autocomplete
+  front: Какой атрибут подсказывает браузеру, что подставить в поле?
+  back: "autocomplete: name, email, tel, street-address, postal-code и другие значения из стандарта."
+  answer: autocomplete

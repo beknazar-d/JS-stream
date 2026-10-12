@@ -1,0 +1,22 @@
+order: 1
+title: "Подписка на поступление: обработчик submit"
+type: recall
+role: warmup
+difficulty: 2
+minutes: 10
+language: html
+tags: [form, submit, preventDefault, FormData]
+hints:
+  - "Направление: форма сообщает о себе событием submit. Повесьте обработчик на форму, а не на кнопку, и первым делом отмените действие браузера."
+  - "Шаг: form.addEventListener('submit', (event) => { event.preventDefault(); ... }). Данные берите так: new FormData(form).get('sku'), это строка. Края очищает trim()."
+  - "Почти решение: const sku = String(new FormData(form).get('sku')).trim(); затем if (sku === '') result.textContent = 'Введите артикул'; else result.textContent = 'Подписка на ' + sku + ' оформлена'."
+wrong:
+  - name: click-instead-of-submit
+    kind: common-mistake
+    explanation: "Обработчик висит на клике по кнопке. Мышкой работает, но отправка по Enter и программная отправка формы его не вызывают: страница перезагружается. Событие submit надёжнее клика."
+  - name: no-trim
+    kind: partial
+    explanation: "Подписка оформляется, но пробелы по краям остаются: в результате «Подписка на  K-200  оформлена». Строку из поля нужно очищать через trim()."
+  - name: empty-sku
+    kind: edge-case
+    explanation: "Пустое поле не проверяется: покупатель нажимает кнопку и видит «Подписка на  оформлена». Пустая строка после trim() должна давать сообщение «Введите артикул»."

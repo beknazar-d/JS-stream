@@ -1,0 +1,11 @@
+"3" + 1 = 31
+"3" * 2 = 6
+Number("") = 0
+Number("abc") = NaN
+"3" -> 3
+" 4 " -> 4
+"" -> null
+"abc" -> null
+"2.5" -> null
+"0" -> null
+"-1" -> null

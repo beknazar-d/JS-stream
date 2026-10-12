@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Заказы</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Заказы</h1>
+  <p id="summary">Новых: 3</p>
+  <table>
+    <thead>
+      <tr><th>№</th><th>Покупатель</th><th>Статус</th><th>Действия</th></tr>
+    </thead>
+    <tbody id="orders">
+      <tr data-id="101" data-status="new">
+        <td>101</td><td>Мария</td><td class="status">Новый</td>
+        <td>
+          <button type="button" data-action="confirm">Подтвердить</button>
+          <button type="button" data-action="cancel"><span class="icon">✕</span> Отменить</button>
+          <button type="button" data-action="delete">Удалить</button>
+        </td>
+      </tr>
+      <tr data-id="102" data-status="new">
+        <td>102</td><td>Игорь</td><td class="status">Новый</td>
+        <td>
+          <button type="button" data-action="confirm">Подтвердить</button>
+          <button type="button" data-action="cancel"><span class="icon">✕</span> Отменить</button>
+          <button type="button" data-action="delete">Удалить</button>
+        </td>
+      </tr>
+      <tr data-id="103" data-status="new">
+        <td>103</td><td>Анна</td><td class="status">Новый</td>
+        <td>
+          <button type="button" data-action="confirm">Подтвердить</button>
+          <button type="button" data-action="cancel"><span class="icon">✕</span> Отменить</button>
+          <button type="button" data-action="delete">Удалить</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <script src="script.js"></script>
+</body>
+</html>

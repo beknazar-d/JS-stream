@@ -1,0 +1,22 @@
+order: 2
+title: "Этап 2. Загрузка, пустой результат и ошибка"
+type: implement
+role: warmup
+difficulty: 2
+minutes: 20
+language: html
+tags: [проект, состояния, fetch, response.ok, try/catch]
+hints:
+  - "Направление: у запроса есть четыре исхода: идёт, успех с данными, успех без данных, ошибка. Для каждого нужен свой текст в #status и своё состояние кнопки #retry."
+  - "Шаг: в начале loadProducts поставьте «Загрузка…», aria-busy и скройте #retry. Запрос оберните в try/catch. Ответ с кодом 503 не бросает исключение сам: проверьте response.ok и бросьте ошибку вручную."
+  - "Почти решение: try { const response = await fetch(url); if (!response.ok) throw new Error('HTTP ' + response.status); ... statusLine.textContent = data.items.length === 0 ? 'Ничего не найдено' : ''; } catch { очистить список и total, показать «Не удалось загрузить каталог», retryButton.hidden = false; } затем aria-busy равно false. Кнопки reload и retry вызывают loadProducts."
+wrong:
+  - name: no-ok-check
+    kind: common-mistake
+    explanation: "Проверяется только ошибка сети, а код ответа нет. При 503 сервер всё же отвечает JSON-ом с полем error, items оказывается undefined, и код падает на map. Статус навсегда остаётся «Загрузка…»."
+  - name: no-loading
+    kind: partial
+    explanation: "Состояния ошибки и пустого результата есть, а загрузки нет. Пока идёт запрос, страница молчит: человек не понимает, работает ли она."
+  - name: retry-stays
+    kind: edge-case
+    explanation: "Кнопка «Повторить» показывается при ошибке, но не прячется при новом запросе. После успешного повтора она остаётся на странице."

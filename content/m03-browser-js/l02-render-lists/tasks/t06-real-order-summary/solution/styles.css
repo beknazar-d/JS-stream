@@ -1,0 +1,31 @@
+body {
+  margin: 16px;
+  font-family: system-ui, "Segoe UI", Arial, sans-serif;
+}
+
+.order-table {
+  border-collapse: collapse;
+}
+
+.order-table th,
+.order-table td {
+  padding: 4px 12px;
+  border-bottom: 1px solid #d0d0da;
+  text-align: left;
+}
+
+.totals div {
+  display: flex;
+  gap: 12px;
+}
+
+.totals dd {
+  margin: 0;
+  font-weight: 700;
+}
+
+.promo-row[hidden],
+.order-table[hidden],
+.order-empty[hidden] {
+  display: none;
+}

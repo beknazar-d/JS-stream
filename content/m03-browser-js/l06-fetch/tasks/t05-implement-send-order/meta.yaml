@@ -1,0 +1,22 @@
+order: 5
+title: "Отправить заказ на сервер"
+type: api
+role: main
+difficulty: 4
+minutes: 25
+language: html
+tags: [fetch, POST, JSON.stringify, headers, try/catch, FormData]
+hints:
+  - "Направление: разделите работу на две части: обработчик формы собирает объект заказа и вызывает async-функцию sendOrder. В ней три ветки по ответу: успех, ошибка с JSON, ошибка без JSON."
+  - "Шаг: у fetch второй аргумент с method, headers и body. Тело нужно превратить в строку: JSON.stringify(order). Тело ошибки читайте внутри try/catch, потому что response.json() на тексте или HTML выбросит SyntaxError."
+  - "Почти решение: await fetch('/api/orders', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(order) }). Если response.ok — читаем id. Иначе пробуем const problem = await response.json() в try, а в catch оставляем причину со статусом."
+wrong:
+  - name: no-json-header
+    kind: common-mistake
+    explanation: "Тело превращено в JSON, но заголовок Content-Type не указан. Сервер не поймёт, что это JSON, и может отклонить запрос. Нужен заголовок Content-Type: application/json."
+  - name: no-error-reason
+    kind: partial
+    explanation: "Успех обработан, а при любой ошибке выводится одна и та же фраза. Текст из поля error, который сервер специально прислал для покупателя, теряется."
+  - name: parse-crash
+    kind: edge-case
+    explanation: "Тело ошибки читается через response.json() без try/catch. Если сервер вернул текст или HTML, выбрасывается SyntaxError, функция падает, а сообщение на странице так и не появляется."

@@ -1,0 +1,22 @@
+order: 2
+title: "Обрезание названия с многоточием"
+type: recall
+role: warmup
+difficulty: 2
+minutes: 6
+language: html
+tags: [text-overflow, overflow, white-space, обрезание]
+hints:
+  - "Направление: чтобы появилось многоточие, нужны три условия. Строка не переносится. Всё, что не поместилось, скрыто. Скрытое заменено на троеточие."
+  - "Шаг: по одному свойству на каждое условие: white-space, overflow, text-overflow."
+  - "Почти решение: .order-title { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }"
+wrong:
+  - name: no-nowrap
+    kind: partial
+    explanation: "Без white-space: nowrap название переносится на вторую и третью строки. Блок вырастает, а многоточие не нужно: обрезать нечего."
+  - name: no-overflow-hidden
+    kind: common-mistake
+    explanation: "text-overflow: ellipsis без overflow: hidden не работает: пока скрытия нет, обрезать нечего, и текст вылезает за карточку."
+  - name: cut-without-ellipsis
+    kind: edge-case
+    explanation: "nowrap и overflow: hidden обрезают название, но без text-overflow пользователь видит обрубок слова и не понимает, что текст продолжается."

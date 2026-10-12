@@ -1,0 +1,22 @@
+order: 6
+title: "Сводка заказа по данным"
+type: implement
+role: real
+difficulty: 4
+minutes: 30
+language: html
+tags: [template, textContent, hidden, XSS, рендер, расчёты]
+hints:
+  - "Направление: разбейте функцию на шаги: тексты покупателя, строки таблицы с суммой, затем расчёт итогов, затем показ или скрытие блоков. Расчёт сначала сделайте в обычных переменных, и только потом выводите."
+  - "Шаг: строки создавайте циклом по items и template.content.cloneNode(true). Перед циклом очищайте tbody через replaceChildren. Для блоков, которые то видны, то нет, пишите hidden = условие, чтобы повторный вызов сам всё сбрасывал."
+  - "Почти решение: const subtotal = items.reduce((s, i) => s + i.price * i.qty, 0); const discount = order.promoCode === 'DOM10' ? Math.round(subtotal * 0.1) : 0; const afterDiscount = subtotal - discount; const deliveryCost = afterDiscount >= 5000 ? 0 : 390;"
+wrong:
+  - name: no-totals
+    kind: partial
+    explanation: "Покупатель, адрес и строки таблицы выводятся, а блок итогов остаётся пустым: нет скидки, доставки и итоговой суммы. Покупатель не видит, сколько платить."
+  - name: threshold
+    kind: edge-case
+    explanation: "Условие бесплатной доставки записано строгим сравнением afterDiscount > 5000. Заказ ровно на 5000 ₽ получает платную доставку, хотя по тикету порог включительный. Такие ошибки на границе ловят только тесты на сам порог."
+  - name: inner-html-name
+    kind: common-mistake
+    explanation: "Имя и адрес вставляются через innerHTML, потому что приветствие удобно собрать строкой. Покупатель с именем в виде тега img создаёт элемент и выполняет чужой код. Данные покупателя выводятся только через textContent."

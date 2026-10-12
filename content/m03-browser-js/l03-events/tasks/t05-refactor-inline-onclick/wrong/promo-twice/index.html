@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Каталог</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <ul class="catalog">
+    <li>
+      <span class="title">Чайник K-200</span>
+      <button class="buy" type="button" data-id="k200"><span class="buy__icon">+</span> В корзину</button>
+    </li>
+    <li>
+      <span class="title">Блендер B-50</span>
+      <button class="buy" type="button" data-id="b50"><span class="buy__icon">+</span> В корзину</button>
+    </li>
+    <li>
+      <span class="title">Тостер T-2</span>
+      <button class="buy" type="button" data-id="t2"><span class="buy__icon">+</span> В корзину</button>
+    </li>
+  </ul>
+
+  <p id="summary">В корзине: 0 шт.</p>
+  <p id="last">Последний товар: нет</p>
+
+  <button id="promo-btn" type="button">Применить промокод DOM10</button>
+  <p id="promo-status">Скидка: 0%</p>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="13" fill="currentColor">
+  <title id="t">Макет: страница панели менеджера</title>
+  <desc id="d">Окно 1024 на 768 пикселей. Сверху шапка на всю ширину. Ниже в одном ряду меню шириной 200 пикселей слева, основная часть по центру и сводка шириной 240 пикселей справа. Внизу подвал на всю ширину, прижат к нижнему краю окна. Между всеми блоками промежутки по 16 пикселей.</desc>
+  <rect x="10" y="10" width="620" height="340" rx="6" fill="none" stroke="currentColor" opacity="0.6"/>
+  <g fill="none" stroke="currentColor" stroke-width="1.5">
+    <rect x="20" y="20" width="600" height="40" rx="4"/>
+    <rect x="20" y="72" width="118" height="224" rx="4"/>
+    <rect x="150" y="72" width="324" height="224" rx="4"/>
+    <rect x="486" y="72" width="134" height="224" rx="4"/>
+    <rect x="20" y="308" width="600" height="32" rx="4"/>
+  </g>
+  <g text-anchor="middle" font-weight="700">
+    <text x="320" y="45">header</text><text x="79" y="188">nav</text><text x="312" y="188">main (1fr)</text><text x="553" y="188">aside</text><text x="320" y="329">footer</text>
+  </g>
+  <g text-anchor="middle" font-size="11" opacity="0.8">
+    <text x="79" y="206">200px</text><text x="553" y="206">240px</text><text x="144" y="68">16</text>
+  </g>
+  <text x="30" y="355" font-size="11" opacity="0.8">gap: 16px; высота страницы не меньше окна, средний ряд забирает свободное место</text>
+</svg>

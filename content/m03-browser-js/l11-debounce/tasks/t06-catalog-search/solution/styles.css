@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  padding: 24px;
+  font-family: system-ui, sans-serif;
+}
+
+input {
+  display: block;
+  margin: 8px 0;
+  padding: 8px 12px;
+  font-size: 1rem;
+}
+
+#status {
+  min-height: 1.5em;
+  color: #555;
+}
+
+#results {
+  padding-left: 20px;
+}

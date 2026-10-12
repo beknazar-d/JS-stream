@@ -1,0 +1,22 @@
+order: 6
+title: "Блок «Состав заказа» по макету"
+type: layout
+role: real
+difficulty: 4
+minutes: 30
+language: html
+tags: [блочная модель, inline-block, overflow, box-sizing, auto, макет]
+hints:
+  - "Направление: сначала общий каркас: ширина страницы с box-sizing и центрирование. Потом строка: три inline-block подряд с заданными ширинами."
+  - "Шаг: у inline-block с overflow: hidden базовая линия сдвигается к нижнему краю, поэтому ячейки разъезжаются по высоте. Исправляет это vertical-align: top. Для обрезки нужны white-space: nowrap, overflow: hidden и text-overflow: ellipsis."
+  - "Почти решение: .total { display: block; width: 320px; margin: 24px 0 0 auto; box-sizing: border-box; padding: 16px; border: 1px solid ... } Автоматический левый отступ прижимает блок вправо."
+wrong:
+  - name: content-box
+    kind: common-mistake
+    explanation: "box-sizing не задан: рамка и внутренние отступы прибавились к ширине. Страница стала 1010px вместо 960, строки уже содержимого, итог 354px вместо 320."
+  - name: no-top-align
+    kind: edge-case
+    explanation: "Ячейкам не задано vertical-align: top. Из-за overflow: hidden у .name его базовая линия уходит вниз, и ячейка оказывается выше соседних на несколько пикселей. Ряд не ровный."
+  - name: no-ellipsis
+    kind: partial
+    explanation: "Каркас, ширины и итог сделаны, но название не обрезается: длинный текст переносится на вторую строку, ячейка выше 40px."

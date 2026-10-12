@@ -1,0 +1,22 @@
+order: 5
+title: "Таймаут запроса через AbortController"
+type: api
+role: main
+difficulty: 4
+minutes: 25
+language: html
+tags: [AbortController, signal, таймаут, setTimeout, clearTimeout]
+hints:
+  - "Направление: нужны три вещи: контроллер, таймер, который его отменит, и разбор того, почему fetch завершился ошибкой. Отмену и сбой сети отличает имя ошибки."
+  - "Шаг: const controller = new AbortController(); setTimeout(() => controller.abort(), TIMEOUT_MS); fetch(url, { signal: controller.signal }). В catch проверьте error.name === 'AbortError'. Таймер нужно сбросить через clearTimeout, когда запрос завершился."
+  - "Почти решение: таймер создаётся до try, а clearTimeout(timer) стоит в блоке finally. Так таймер сбрасывается и после успеха, и после ошибки, и после отмены."
+wrong:
+  - name: no-abort
+    kind: common-mistake
+    explanation: "По таймеру выводится сообщение, но запрос не отменяется: signal не передан в fetch. Запрос продолжает висеть, а когда ответ всё-таки придёт, он перезапишет страницу. Отменять нужно сам запрос."
+  - name: timer-not-cleared
+    kind: edge-case
+    explanation: "Таймер не сбрасывается после успешного ответа и сам выводит сообщение. Данные пришли вовремя, а через полсекунды поверх них появляется «Сервер отвечает слишком долго». Таймер нужно останавливать через clearTimeout."
+  - name: timeout-as-network
+    kind: partial
+    explanation: "Любая ошибка называется «Нет соединения с сервером». Таймаут и отсутствие сети — разные случаи. Различать их нужно по error.name: у отмены он равен AbortError."

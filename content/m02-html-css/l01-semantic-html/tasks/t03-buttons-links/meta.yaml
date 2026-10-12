@@ -1,0 +1,22 @@
+order: 3
+title: "Баг: фокус не доходит до кнопки"
+type: fix-bug
+role: warmup
+difficulty: 2
+minutes: 10
+language: html
+tags: [кнопка, ссылка, button, a, alt, доступность]
+hints:
+  - "Направление: спросите про каждый элемент: он что-то делает на этой странице или ведёт на другую? Первое — button, второе — a с href."
+  - "Шаг: .buy и .specs-toggle только действуют, значит это button. .back ведёт на /catalog, значит это a с настоящим href. У картинки нужно описание в alt."
+  - "Почти решение: button class=«buy» type=«button», a class=«back» href=«/catalog», button class=«specs-toggle» type=«button», img с alt вроде «Электрический чайник T-200 серебристого цвета»."
+wrong:
+  - name: role-button
+    kind: common-mistake
+    explanation: "Разработчик оставил div и добавил role=«button». Скринридер назовёт элемент кнопкой, но Tab и Enter по-прежнему не работают: нужен настоящий тег button."
+  - name: only-button
+    kind: partial
+    explanation: "Исправлена только кнопка «Добавить в корзину». «Вернуться в каталог» осталось span без адреса, картинка осталась без описания, ссылка-пустышка на # осталась."
+  - name: empty-alt
+    kind: edge-case
+    explanation: "Теги исправлены, но у картинки пустой alt. Пустой alt говорит скринридеру «это украшение, пропусти», а фото товара важно для покупателя."

@@ -1,0 +1,22 @@
+order: 1
+title: "Список названий из массива"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 8
+language: html
+tags: [createElement, append, textContent, replaceChildren]
+hints:
+  - "Направление: для каждой строки массива нужно создать li, записать в него текст и добавить в список. Перед этим список надо очистить."
+  - "Шаг: очищает контейнер метод replaceChildren без аргументов. Элемент создаёт document.createElement('li'), текст пишется в textContent."
+  - "Почти решение: list.replaceChildren(); for (const name of names) { const li = document.createElement('li'); li.className = 'cart-item'; li.textContent = name; list.append(li); } count.textContent = 'Позиций: ' + names.length;"
+wrong:
+  - name: no-count
+    kind: partial
+    explanation: "Список строится, но счётчик «Позиций: N» не обновляется: остаётся текст из разметки."
+  - name: inner-html
+    kind: common-mistake
+    explanation: "Названия вставляются через innerHTML. Для обычных строк результат тот же, но название с тегами станет разметкой: «Миксер <b>PRO</b>» создаст элемент b вместо текста со скобками."
+  - name: no-clear
+    kind: edge-case
+    explanation: "Список не очищается перед отрисовкой. Первый вызов работает, а повторный дописывает новые элементы после старых, и в списке оказываются позиции от прошлого вызова."

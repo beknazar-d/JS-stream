@@ -1,0 +1,22 @@
+order: 3
+title: "Ленивая загрузка грузит всё сразу"
+type: fix-bug
+role: warmup
+difficulty: 2
+minutes: 10
+language: html
+tags: [IntersectionObserver, isIntersecting, отладка]
+hints:
+  - "Направление: наблюдатель сообщает о каждом элементе сразу после observe, в том числе о невидимом. Чем отличаются записи для видимых и невидимых элементов?"
+  - "Шаг: у каждой записи есть поле isIntersecting. Колбэк в заготовке его не читает, поэтому действует на все записи."
+  - "Почти решение: в цикле по записям добавьте первой строкой if (!entry.isIntersecting) return; (в forEach) или continue (в for...of)."
+wrong:
+  - name: ratio-check
+    kind: common-mistake
+    explanation: "Картинка загружается, только когда видно больше половины (intersectionRatio больше 0.5). Покупатель увидит пустой серый блок, пока не прокрутит ещё немного. Загружать нужно, как только блок хоть частично попал в область слежения."
+  - name: first-entry-only
+    kind: edge-case
+    explanation: "Исправление применено только к entries[0]. Когда две картинки пришли в одном уведомлении, вторая никогда не загрузится."
+  - name: keeps-observing
+    kind: partial
+    explanation: "Проверка isIntersecting добавлена, а unobserve убран «на всякий случай». Загруженные картинки остаются под наблюдением, и колбэк срабатывает за ними снова и снова."

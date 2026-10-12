@@ -1,0 +1,25 @@
+.menu a {
+  color: #333333;
+}
+
+.menu a.active {
+  color: #dd0000;
+}
+
+.note {
+  background: #eeeeff;
+  padding: 8px;
+}
+
+.note.warning {
+  background: #ffeeee;
+}
+
+.btn {
+  background: #1f6feb;
+  color: #ffffff;
+}
+
+.btn.danger {
+  background: #dd0000;
+}

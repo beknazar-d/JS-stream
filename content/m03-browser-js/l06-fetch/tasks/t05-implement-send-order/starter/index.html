@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Быстрый заказ</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <h1>Быстрый заказ: Чайник K-200</h1>
+    <form id="order-form">
+      <label for="name">Имя</label>
+      <input id="name" name="name" type="text" required>
+      <label for="qty">Количество</label>
+      <input id="qty" name="qty" type="number" min="1" max="10" value="1" required>
+      <button type="submit">Заказать</button>
+    </form>
+    <p id="status" role="status"></p>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

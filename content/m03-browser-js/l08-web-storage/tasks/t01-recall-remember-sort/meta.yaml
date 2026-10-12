@@ -1,0 +1,22 @@
+order: 1
+title: "Запомнить сортировку каталога"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 7
+language: html
+tags: [localStorage, getItem, setItem, change]
+hints:
+  - "Направление: нужны два действия. При загрузке прочитать значение, при выборе записать. Для обоих есть методы у объекта localStorage."
+  - "Шаг: читайте через localStorage.getItem('sort'). Если ключа нет, метод вернёт null, и тогда список трогать не надо. Записывайте в обработчике события change через localStorage.setItem('sort', значение)."
+  - "Почти решение: const saved = localStorage.getItem('sort'); if (saved) select.value = saved; select.addEventListener('change', () => localStorage.setItem('sort', select.value));"
+wrong:
+  - name: no-restore
+    kind: partial
+    explanation: "Выбор записывается, но при загрузке список не трогают. После перезагрузки покупатель снова видит «Сначала популярные», хотя сортировка сохранена."
+  - name: session-storage
+    kind: common-mistake
+    explanation: "sessionStorage живёт, пока открыта вкладка. Закрыли вкладку, и выбор пропал. Для настройки на следующий визит нужен localStorage."
+  - name: skip-default
+    kind: edge-case
+    explanation: "Значение по умолчанию (popular) не записывается, потому что «и так по умолчанию». Тогда после выбора «По рейтингу» и возврата к «популярным» в хранилище остаётся rating, и после перезагрузки сортировка снова неверная."

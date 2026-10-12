@@ -1,0 +1,23 @@
+order: 2
+title: "Состояния списка и отмена запроса"
+type: predict
+role: warmup
+difficulty: 3
+minutes: 10
+language: js
+tags: [AbortController, signal, состояния, loading, error, empty]
+show: [tests/snippet.js]
+hints:
+  - "Направление: функция проверяет условия по порядку и возвращает при первом совпадении. Для AbortController: пока abort не вызван, aborted ложно; после вызова истинно."
+  - "Шаг: у отменённого сигнала есть reason, и по умолчанию это ошибка с именем AbortError. Событие abort срабатывает прямо внутри вызова abort(), то есть до следующей строки кода."
+  - "Почти решение: loading, error, empty, list; потом false, true, AbortError; потом «до abort», «отмена получена», «после abort»."
+wrong:
+  - name: unfinished
+    kind: partial
+    explanation: "Заполнены только первые строки. Нужно предсказать все десять вызовов console.log, включая порядок сообщений вокруг abort()."
+  - name: error-after-list
+    kind: edge-case
+    explanation: "Во второй строке выбрано list. Но функция проверяет ошибку раньше списка: если error задан, возвращается error, даже когда в items что-то лежит от прошлой загрузки."
+  - name: abort-later
+    kind: common-mistake
+    explanation: "Обработчик abort выполнен после «после abort». На самом деле abort() вызывает обработчики сразу, прямо внутри вызова, поэтому «отмена получена» стоит между двумя другими сообщениями."

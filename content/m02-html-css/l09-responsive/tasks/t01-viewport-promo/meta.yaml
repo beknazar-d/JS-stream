@@ -1,0 +1,22 @@
+order: 1
+title: "По памяти: viewport и плашка от 768 px"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 6
+language: html
+tags: [viewport, медиазапросы, min-width, mobile-first]
+hints:
+  - "Направление: метатег называется viewport и живёт в head. Условие в медиазапросе читается как «ширина окна не меньше»."
+  - "Шаг: meta name=«viewport» content=«width=device-width, initial-scale=1». Медиазапрос начинается со слова @media и условия в круглых скобках."
+  - "Почти решение: @media (min-width: 768px) { .promo { display: block; } }"
+wrong:
+  - name: meta-only
+    kind: partial
+    explanation: "Метатег добавлен, а медиазапроса нет: плашка не показывается ни на планшете, ни на компьютере."
+  - name: max-width
+    kind: common-mistake
+    explanation: "Условие max-width: 768px читается «до 768 px», то есть как раз на телефоне. Плашка показалась там, где её хотели скрыть, и пропала на компьютере."
+  - name: off-by-one
+    kind: edge-case
+    explanation: "Граница 769 px вместо 768 px: ровно на 768 px (типичный планшет) плашки нет. Условие min-width: 768px включает саму границу."

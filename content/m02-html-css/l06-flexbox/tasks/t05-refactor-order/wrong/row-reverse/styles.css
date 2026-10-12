@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  padding: 24px;
+  font-family: system-ui, "Segoe UI", Arial, sans-serif;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 24px;
+  padding: 12px 0;
+  border-bottom: 1px solid #d5d5de;
+}
+
+.title {
+  flex: 1;
+}
+
+.price {
+  font-weight: 700;
+}
+
+.btn {
+  padding: 8px 16px;
+}

@@ -1,0 +1,22 @@
+order: 5
+title: "Карточка заказа: из пикселей в rem"
+type: refactor
+role: main
+difficulty: 3
+minutes: 20
+language: html
+tags: [rem, em, px, рефакторинг, line-height]
+hints:
+  - "Направление: разделите значения на три группы. То, что должно расти вместе с текстом (шрифт, отступы, ширина). То, что не должно (рамка в 1px). И межстрочье, которое пишется числом."
+  - "Шаг: делите пиксели на 16. 24px → 1.5rem, 320px → 20rem, 12px → 0.75rem. Для line-height: 30px / 24px = 1.25, 24px / 16px = 1.5. Подберите числа, которые дают те же пиксели."
+  - "Почти решение: .card { width: 20rem; padding: 1.25rem; border: 1px solid ...; } .card h2 { font-size: 1.5rem; line-height: 1.25; } .card p { font-size: 1rem; line-height: 1.5; } .btn { padding: 0.75rem 1.5rem; font-size: 1rem; line-height: 1.5; }"
+wrong:
+  - name: root-62-5
+    kind: common-mistake
+    explanation: "Корень сброшен в 62.5%, чтобы 1rem равнялся 10px, и всё поделено на 10. При обычных настройках вид тот же, но настройка шрифта браузера перестаёт работать как задумано: при корне 20px заголовок получается 48px вместо 30px, потому что значения рассчитаны на корень 10px."
+  - name: fonts-only
+    kind: partial
+    explanation: "В rem переведены только размеры шрифта. Отступы, ширина карточки и padding кнопки остались в пикселях, поэтому при увеличении шрифта текст упирается в рамку."
+  - name: line-height-rem
+    kind: edge-case
+    explanation: "line-height: 1.5rem даёт те же 24px, но это длина, а не число. Когда размер шрифта абзаца меняется, межстрочье остаётся 24px."

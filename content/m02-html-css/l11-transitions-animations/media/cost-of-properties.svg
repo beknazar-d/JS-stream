@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="14" fill="currentColor">
+  <title id="t">Три этапа работы браузера и что их запускает</title>
+  <desc id="d">Цепочка из трёх шагов: раскладка (layout), рисование (paint), композиция (composite). Изменение width, margin, top запускает все три шага. Изменение background-color, box-shadow запускает рисование и композицию. Изменение transform и opacity запускает только композицию.</desc>
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="30" y="40" width="170" height="44" rx="8"/>
+    <rect x="235" y="40" width="170" height="44" rx="8"/>
+    <rect x="440" y="40" width="170" height="44" rx="8"/>
+    <path d="M200 62 H235 M405 62 H440"/>
+    <path d="M229 56 L235 62 L229 68 M434 56 L440 62 L434 68"/>
+    <rect x="30" y="130" width="580" height="34" rx="6" opacity="0.9"/>
+    <rect x="235" y="180" width="375" height="34" rx="6" opacity="0.75"/>
+    <rect x="440" y="230" width="170" height="34" rx="6" opacity="0.6"/>
+  </g>
+  <g>
+    <text x="115" y="68" text-anchor="middle" font-weight="700">1. Раскладка</text>
+    <text x="320" y="68" text-anchor="middle" font-weight="700">2. Рисование</text>
+    <text x="525" y="68" text-anchor="middle" font-weight="700">3. Композиция</text>
+    <text x="40" y="152">width, height, margin, top, font-size: все три шага, дорого</text>
+    <text x="245" y="202">background-color, box-shadow: два шага</text>
+    <text x="450" y="252">transform, opacity: один шаг, дёшево</text>
+    <text x="30" y="24" font-size="13" opacity="0.85">Что пересчитывает браузер на каждом кадре анимации</text>
+    <text x="320" y="290" text-anchor="middle" font-size="12" opacity="0.85">Раскладка — где и какого размера. Рисование — как выглядит. Композиция — сложить готовые слои.</text>
+  </g>
+</svg>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Оформление заказа — Домотека</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <h1>Оформление заказа</h1>
+    <form class="checkout" action="/orders" method="post">
+      <fieldset>
+        <legend>Контакты</legend>
+        <p>
+          <label for="name">Имя</label>
+          <input id="name" name="name" type="text" required autocomplete="name">
+        </p>
+        <p>
+          <label for="phone">Телефон</label>
+          <input id="phone" name="phone" type="tel" required autocomplete="tel">
+        </p>
+        <p>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email">
+        </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Доставка</legend>
+        <p>
+          <label for="city">Город</label>
+          <select id="city" name="city" required>
+            <option value="">Выберите город</option>
+            <option value="msk">Москва</option>
+            <option value="kzn">Казань</option>
+            <option value="tver">Тверь</option>
+          </select>
+        </p>
+        <p>
+          <label for="address">Адрес</label>
+          <input id="address" name="address" type="text" required autocomplete="street-address">
+        </p>
+        <p>
+          <label for="date">Дата доставки</label>
+          <input id="date" name="date" type="date" required>
+        </p>
+        <p>
+          <label for="comment">Комментарий для курьера</label>
+          <textarea id="comment" name="comment" rows="3" maxlength="300"></textarea>
+        </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Оплата</legend>
+        <p>
+          <input id="pay-card" name="payment" type="radio" value="card" checked>
+          <label for="pay-card">Картой онлайн</label>
+        </p>
+        <p>
+          <input id="pay-cash" name="payment" type="radio" value="cash">
+          <label for="pay-cash">При получении</label>
+        </p>
+      </fieldset>
+
+      <button type="submit">Подтвердить заказ</button>
+    </form>
+  </body>
+</html>

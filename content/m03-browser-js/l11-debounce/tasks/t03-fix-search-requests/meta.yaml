@@ -1,0 +1,22 @@
+order: 3
+title: "Исправить: запрос на каждую букву"
+type: fix-bug
+role: warmup
+difficulty: 2
+minutes: 12
+language: html
+tags: [debounce, setTimeout, поиск, fetch]
+hints:
+  - "Направление: запрос должен уходить не при каждом input, а после паузы. Паузу измеряют таймером, который каждое новое нажатие сбрасывает."
+  - "Шаг: заведите переменную timer снаружи обработчика. В обработчике сначала clearTimeout(timer), потом timer = setTimeout(..., 300). Внутри таймера вызывайте loadResults с актуальным значением поля."
+  - "Почти решение: let timer; search.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(() => loadResults(search.value), 300); });"
+wrong:
+  - name: timer-no-clear
+    kind: common-mistake
+    explanation: "Каждое нажатие ставит свой таймер, а прежние не отменяются. Запросы просто сдвинулись на 300 мс, но их по-прежнему по одному на букву."
+  - name: too-slow
+    kind: partial
+    explanation: "Дебаунс сделан правильно, но пауза 1500 мс. Покупатель ждёт полторы секунды после последней буквы; по критериям запрос должен уйти не позже чем через 500 мс."
+  - name: first-value
+    kind: edge-case
+    explanation: "Таймер ставится только на первом нажатии и больше не сбрасывается, значение берётся тогда же. В запрос уходит «ч», а не «чайник»: поиск по недописанному слову."

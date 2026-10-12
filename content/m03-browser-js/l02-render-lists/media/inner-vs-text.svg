@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" width="640" height="260" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="13" fill="currentColor">
+  <title id="t">textContent и innerHTML</title>
+  <desc id="d">Вверху строка из имени пользователя: тег img с обработчиком onerror. Слева стрелка в textContent ведёт к безопасному результату: на странице видна та же строка как текст. Справа стрелка в innerHTML ведёт к опасному результату: браузер создаёт настоящий элемент img, и обработчик onerror выполняется.</desc>
+  <rect x="120" y="12" width="400" height="34" rx="6" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <text x="320" y="34" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12">name = &lt;img src=x onerror="steal()"&gt;</text>
+  <g stroke="currentColor" stroke-width="2" fill="currentColor">
+    <path d="M250 46 L160 96" fill="none"/><path d="M160 96 l9 -3 l-5 -8 z"/>
+    <path d="M390 46 L480 96" fill="none"/><path d="M480 96 l-9 -3 l5 -8 z"/>
+  </g>
+  <g font-weight="700" text-anchor="middle">
+    <text x="130" y="116">element.textContent = name</text>
+    <text x="510" y="116">element.innerHTML = name</text>
+  </g>
+  <rect x="20" y="130" width="290" height="100" rx="6" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <rect x="330" y="130" width="290" height="100" rx="6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <g text-anchor="middle">
+    <text x="165" y="158">Безопасно</text>
+    <text x="165" y="182">На странице видна строка</text>
+    <text x="165" y="202" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12">&lt;img src=x onerror="steal()"&gt;</text>
+    <text x="475" y="158">Опасно</text>
+    <text x="475" y="182">Создан настоящий элемент img</text>
+    <text x="475" y="202">Код из onerror выполняется</text>
+  </g>
+</svg>

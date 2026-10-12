@@ -1,0 +1,22 @@
+order: 5
+title: "Панель менеджера через области"
+type: layout
+role: main
+difficulty: 3
+minutes: 20
+language: html
+tags: [grid-template-areas, grid-area, fr, min-height]
+hints:
+  - "Направление: опишите страницу как таблицу из трёх рядов и трёх колонок. Шапка и подвал занимают всю ширину, средний ряд делится на три блока."
+  - "Шаг: на .app включите grid, задайте колонки (200px, 1fr, 240px), ряды (auto, 1fr, auto), grid-template-areas со словами и gap. Каждому прямому потомку присвойте grid-area с его именем. Высоту страницы задайте min-height в vh."
+  - "Почти решение: .app { display: grid; grid-template-columns: 200px 1fr 240px; grid-template-rows: auto 1fr auto; grid-template-areas: 'header header header' 'nav main aside' 'footer footer footer'; gap: 16px; min-height: 100vh; } и .app > header { grid-area: header; } для остальных так же."
+wrong:
+  - name: no-area-names
+    kind: common-mistake
+    explanation: "Области описаны в grid-template-areas, но элементам не присвоены grid-area. Потомки ложатся в клетки по порядку разметки, и шапка занимает только первую колонку."
+  - name: swapped-columns
+    kind: edge-case
+    explanation: "Колонки заданы в порядке 240px 1fr 200px: меню получается шириной 240px, а сводка 200px. Размеры привязаны к областям не по макету."
+  - name: no-min-height
+    kind: partial
+    explanation: "Без min-height: 100vh сетка высотой по содержимому, подвал не прижат к нижнему краю окна, а средний ряд не занимает свободное место."

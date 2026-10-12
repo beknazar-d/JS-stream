@@ -1,0 +1,22 @@
+order: 3
+title: "«Вперёд» не работает после «Назад»"
+type: fix-bug
+role: warmup
+difficulty: 3
+minutes: 12
+language: html
+tags: [popstate, pushState, history, отладка]
+hints:
+  - "Направление: pushState добавляет запись и стирает всё, что «впереди». Подумайте, где в коде он вызывается, кроме реакции на выбор пользователя."
+  - "Шаг: обработчик popstate вызывает applyFilters, а та вызывает pushState. Получается, что возврат по истории сам создаёт новую запись. Для popstate нужно только показать состояние."
+  - "Почти решение: в обработчике popstate вместо applyFilters(filters) вызовите showControls(filters) и render(filters). pushState оставьте только в applyFilters, которую вызывают обработчики change."
+wrong:
+  - name: controls-stale
+    kind: partial
+    explanation: "Лишняя запись убрана, но в popstate нет showControls: список перерисовывается, а значения в элементах управления остаются прежними. После «Назад» флажок стоит, а товары показаны без фильтра."
+  - name: null-state
+    kind: edge-case
+    explanation: "У самой первой записи истории state равен null. Обработчик читает event.state.category без проверки, и возврат к началу падает с TypeError. Для null нужны значения по умолчанию."
+  - name: push-on-load
+    kind: common-mistake
+    explanation: "Вместо render при загрузке вызвана applyFilters. Теперь первый же визит создаёт лишнюю запись в истории, и «Назад» из каталога сначала возвращает на тот же каталог."

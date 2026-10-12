@@ -1,0 +1,7 @@
+body { font-family: system-ui, sans-serif; margin: 16px; }
+.logo { font-weight: 700; }
+.big-title { font-size: 28px; font-weight: 700; margin: 16px 0; }
+.item { border: 1px solid #ccd; padding: 12px; margin-bottom: 8px; }
+.item-title { font-weight: 700; }
+.price { color: #b32d00; }
+.side-title { font-weight: 700; }

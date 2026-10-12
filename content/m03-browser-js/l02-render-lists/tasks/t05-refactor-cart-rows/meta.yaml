@@ -1,0 +1,22 @@
+order: 5
+title: "Строки корзины без innerHTML +="
+type: refactor
+role: main
+difficulty: 3
+minutes: 15
+language: html
+tags: [createElement, append, innerHTML, рефакторинг, XSS]
+hints:
+  - "Направление: сейчас строка собирается как текст разметки. Постройте её из элементов: li и два span, каждому задайте класс и текст отдельно."
+  - "Шаг: li.dataset.id = item.id, два span создаются через createElement, число с крестиком записывается в textContent второго. В конце row.append(title, qty), потом list.append(row)."
+  - "Почти решение: const row = document.createElement('li'); row.className = 'cart-row'; row.dataset.id = item.id; ... row.append(title, qty); list.append(row); total.textContent = 'Позиций: ' + list.children.length;"
+wrong:
+  - name: no-qty
+    kind: partial
+    explanation: "Строка создаётся без span для количества. Названия на месте и пересоздания нет, но пользователь не видит, сколько штук в корзине, а тест на «× N» не проходит."
+  - name: rerender-all
+    kind: edge-case
+    explanation: "Строки создаются через createElement, но функция сначала запоминает позицию в массиве, а затем очищает список и строит все строки заново. Узлы пересоздаются при каждом добавлении, то есть проблема из тикета осталась."
+  - name: inner-html-title
+    kind: common-mistake
+    explanation: "Строка и нужный порядок построены правильно, но название записывается через innerHTML. Для обычных названий всё работает, а название с символами < и > создаёт лишний элемент и ломает разметку строки."

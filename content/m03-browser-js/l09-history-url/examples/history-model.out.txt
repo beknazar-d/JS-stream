@@ -1,0 +1,5 @@
+2 из 2: /catalog?category=kettles&inStock=1
+1 из 2: /catalog?category=kettles
+{"category":"kettles"}
+2 из 2: /catalog?category=blenders
+/catalog | /catalog?category=kettles | /catalog?category=blenders

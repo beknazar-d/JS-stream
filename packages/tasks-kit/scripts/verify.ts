@@ -4,7 +4,7 @@
 
 import { fileURLToPath } from 'node:url';
 import ts from 'typescript';
-import { compileAll } from '../src/compile.ts';
+import { compileAll, guardPageScripts } from '../src/compile.ts';
 import { editableFiles, evaluate, filesIn, subdirs, type EvaluateDeps, type Report } from '../src/evaluate.ts';
 import {
   LESSON_SECTIONS,
@@ -16,15 +16,19 @@ import {
   validateTaskMeta,
   type TaskMeta,
 } from '../src/meta.ts';
-import { loadContent, type LessonOnDisk } from '../node/load.ts';
+import { loadContent, yamlErrors, type LessonOnDisk } from '../node/load.ts';
 import { createPool } from '../node/pool.ts';
+import { createPageRunner } from '../node/page-runner.ts';
 
 const contentRoot = fileURLToPath(new URL('../../../content', import.meta.url));
 const filter = process.argv[2];
 const pool = createPool(5000);
+const pages = createPageRunner();
 const deps: EvaluateDeps = {
   compile: async (files) => compileAll(ts, files),
   execute: pool.execute,
+  executeHtml: pages.executeHtml,
+  guardLoops: async (files) => guardPageScripts(ts, files),
 };
 
 const problems: string[] = [];
@@ -74,7 +78,7 @@ async function verifyTask(where: string, bundle: LessonOnDisk['tasks'][number]['
     }
   } else {
     if (testFiles.length === 0) fail(where, 'tests/ без файлов *.test.js');
-    if (['implement', 'fix-bug', 'refactor'].includes(meta.type) && !testFiles.some((f) => f.includes('hidden'))) {
+    if (['implement', 'fix-bug', 'refactor', 'layout', 'api'].includes(meta.type) && !testFiles.some((f) => f.includes('hidden'))) {
       fail(where, 'для этого типа нужны скрытые тесты (tests/hidden.test.js)');
     }
   }
@@ -156,6 +160,9 @@ async function verifyLesson(lesson: LessonOnDisk) {
 }
 
 const modules = loadContent(contentRoot);
+for (const error of yamlErrors) {
+  if (!filter || error.includes(filter)) fail('YAML', error.replace(`${contentRoot}/`, ''));
+}
 for (const module of modules) {
   if (filter && !module.id.includes(filter) && !module.lessons.some((l) => l.id.includes(filter))) continue;
   for (const error of validateModuleMeta(module.meta)) fail(`${module.id}/module.yaml`, error);
@@ -165,6 +172,7 @@ for (const module of modules) {
   }
 }
 await pool.close();
+await pages.close();
 
 if (problems.length) {
   console.error(problems.join('\n'));

@@ -1,0 +1,8 @@
+body {
+  font-family: system-ui, "Segoe UI", Arial, sans-serif;
+  line-height: 1.5;
+}
+h1 { font-size: 32px; }
+.lead { font-size: 20px; }
+.text { font-size: 16px; }
+.note { font-size: 14px; }

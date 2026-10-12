@@ -1,0 +1,23 @@
+order: 2
+title: "Что вернёт хранилище"
+type: predict
+role: warmup
+difficulty: 2
+minutes: 8
+language: js
+tags: [localStorage, строки, JSON, "null"]
+show: [tests/snippet.js]
+hints:
+  - "Направление: посмотрите на setItem. Что он делает со значением перед тем, как положить его в Map?"
+  - "Шаг: String(3) даёт строку «3», String([4, 7]) даёт «4,7», String({}) даёт «[object Object]». Для отсутствующего ключа getItem возвращает null, а не undefined."
+  - "Почти решение: первые три строки — string, 31, 4,7. Четвёртая — «[object Object]». Пятая — null. Последняя — true: JSON возвращает настоящее булево значение."
+wrong:
+  - name: unfinished
+    kind: partial
+    explanation: "Верно только начало. Предсказать нужно каждый вызов console.log, а не только первые три."
+  - name: numbers-stay
+    kind: common-mistake
+    explanation: "Ответ 4 во второй строке означает, что qty считается числом. Но getItem вернул строку «3», и плюс склеил её с единицей: получилось «31»."
+  - name: missing-undefined
+    kind: edge-case
+    explanation: "В пятой строке ответ undefined. Для отсутствующего ключа Storage.getItem возвращает null, и модель из задания повторяет это."

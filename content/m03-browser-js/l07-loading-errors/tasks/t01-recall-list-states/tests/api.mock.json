@@ -1,0 +1,20 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/orders",
+      "responses": [
+        { "status": 503, "delayMs": 300, "body": { "error": "Service Unavailable" } },
+        {
+          "status": 200,
+          "delayMs": 300,
+          "body": [
+            { "id": 1042, "total": 12990 },
+            { "id": 1043, "total": 3490 },
+            { "id": 1044, "total": 2190 }
+          ]
+        }
+      ]
+    }
+  ]
+}

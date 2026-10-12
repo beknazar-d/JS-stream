@@ -1,0 +1,22 @@
+order: 4
+title: "Текст карточки товара по макету"
+type: layout
+role: main
+difficulty: 3
+minutes: 20
+language: html
+tags: [rem, ch, line-height, max-width]
+hints:
+  - "Направление: сначала размеры шрифта в rem, потом колонка. Ширину строки задаёт max-width в единице ch, а не пиксели."
+  - "Шаг: у .product задайте max-width, margin: 0 auto и padding по бокам. Для .text поставьте max-width около 65ch и line-height числом."
+  - "Почти решение: .product { max-width: 48rem; margin: 0 auto; padding: 1.5rem 1rem; } .text { max-width: 65ch; line-height: 1.6; } И размеры h1, .price, .lead в rem."
+wrong:
+  - name: no-measure
+    kind: partial
+    explanation: "Размеры и межстрочье заданы, но у абзацев нет ограничения в ch. Строка занимает всю ширину колонки и вмещает больше 75 символов."
+  - name: px-everything
+    kind: edge-case
+    explanation: "Пиксельные размеры совпадают с макетом при корне 16px, но не реагируют на размер шрифта браузера. Проверка с корнем 20px ожидает 40px у заголовка."
+  - name: line-height-px
+    kind: common-mistake
+    explanation: "line-height: 24px фиксирует высоту строки. Если у абзаца другой размер шрифта, строки слипаются или разъезжаются. Нужно число без единиц."

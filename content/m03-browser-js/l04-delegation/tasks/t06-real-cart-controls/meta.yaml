@@ -1,0 +1,22 @@
+order: 6
+title: "Корзина: плюс, минус и удалить"
+type: implement
+role: real
+difficulty: 4
+minutes: 30
+language: html
+tags: [делегирование, closest, data-action, состояние, перерисовка]
+hints:
+  - "Направление: данные живут в массиве cart, страница рисуется из него функцией render. Обработчик на списке меняет массив и зовёт render, а не правит DOM руками."
+  - "Шаг: кнопку ищите через event.target.closest('[data-action]'), строку через closest('.cart-row'), товар в массиве по row.dataset.id через find. Для remove перезапишите массив через filter или удалите по индексу."
+  - "Почти решение: const item = cart.find((entry) => entry.id === row.dataset.id); if (action === 'inc') item.qty = Math.min(99, item.qty + 1); else if (action === 'dec') item.qty = Math.max(1, item.qty - 1); else if (action === 'remove') cart.splice(cart.indexOf(item), 1); render();"
+wrong:
+  - name: handlers-once
+    kind: partial
+    explanation: "Обработчики подключены к кнопкам, которые существуют после первого render. Как только корзина перерисовалась, кнопки стали новыми и обработчиков у них нет: после первого нажатия корзина больше не реагирует."
+  - name: min-zero
+    kind: edge-case
+    explanation: "Кнопка dec уменьшает количество без нижней границы. На единице количество становится нулём и дальше отрицательным: в корзине строка «Чайник × 0», итог считается неверно. Нужна граница в 1."
+  - name: target-icon
+    kind: common-mistake
+    explanation: "Действие читается из event.target.dataset.action. Для клика по значку внутри кнопки target — значок без data-action, и клик по значку игнорируется. Нужно искать кнопку через closest."

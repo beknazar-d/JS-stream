@@ -1,0 +1,43 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/deliveries",
+      "responses": [
+        {
+          "status": 200,
+          "delayMs": 3000,
+          "body": []
+        },
+        {
+          "status": 503,
+          "delayMs": 100,
+          "body": {
+            "error": "Service Unavailable"
+          }
+        },
+        {
+          "status": 200,
+          "delayMs": 100,
+          "body": [
+            {
+              "id": 1042,
+              "city": "Казань",
+              "status": "в пути"
+            },
+            {
+              "id": 1043,
+              "city": "Самара",
+              "status": "собирается"
+            },
+            {
+              "id": 1044,
+              "city": "Пермь",
+              "status": "доставлена"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

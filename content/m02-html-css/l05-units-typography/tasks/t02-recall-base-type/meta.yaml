@@ -1,0 +1,22 @@
+order: 2
+title: "Базовая типографика по памяти"
+type: recall
+role: warmup
+difficulty: 2
+minutes: 8
+language: html
+tags: [font-family, rem, line-height]
+hints:
+  - "Направление: вспомните три правила урока. Шрифт — стеком с общим семейством в конце, размеры — в rem, межстрочье — числом без единиц."
+  - "Шаг: на body задайте font-family и line-height. Для h1, .lead и .note задайте font-size в rem: 2, 1.25 и 0.875."
+  - "Почти решение: body { font-family: system-ui, Arial, Helvetica, sans-serif; line-height: 1.5; } h1 { font-size: 2rem; } .lead { font-size: 1.25rem; } .note { font-size: 0.875rem; }"
+wrong:
+  - name: only-headings
+    kind: partial
+    explanation: "Размеры заданы, но на body нет ни стека шрифтов, ни межстрочья. Базовая типографика состоит из обоих правил."
+  - name: line-height-em
+    kind: common-mistake
+    explanation: "line-height: 1.5em на body вычисляется один раз (24px) и передаётся потомкам готовым. При корне 20px или у абзаца с другим размером межстрочье не масштабируется. Число 1.5 без единицы умножается на размер каждого элемента."
+  - name: sizes-in-px
+    kind: edge-case
+    explanation: "В пикселях размеры при корне 16px выглядят верно, но при увеличении шрифта в браузере ничего не меняется. Проверка с корнем 20px показывает 32px вместо 40px."

@@ -1,0 +1,92 @@
+:root {
+  --color-bg: #f7f8fa;
+  --color-surface: #ffffff;
+  --color-text: #1d2733;
+  --color-brand: #0b6e4f;
+  --color-on-brand: #ffffff;
+  --color-accent: #0b5cad;
+  --color-on-accent: #ffffff;
+}
+
+[data-theme="dark"] {
+  --color-bg: #12161c;
+  --color-surface: #1c232d;
+  --color-text: #e8edf2;
+  --color-brand: #3ddc97;
+  --color-on-brand: #06281c;
+  --color-accent: #7ab8ff;
+  --color-on-accent: #0a1f33;
+}
+
+/* «Чёрная пятница» */
+[data-theme="sale"] {
+  --color-bg: #2b0a0a;
+  --color-surface: #3d1212;
+  --color-text: #fff1f0;
+  --color-brand: #ff4d4f;
+  --color-on-brand: #2b0a0a;
+  --color-accent: #ffd666;
+  --color-on-accent: #2b0a0a;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.site-header {
+  padding: 16px;
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+}
+
+.site-header__logo {
+  margin: 0;
+  font-weight: 700;
+}
+
+.catalog {
+  padding: 16px;
+}
+
+.card {
+  padding: 16px;
+  border-radius: 8px;
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.card__title {
+  margin: 0 0 4px;
+  font-size: 1.125rem;
+}
+
+.card__text {
+  margin: 0 0 8px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+.badge--hot {
+  background: #b42318;
+  color: #ffffff;
+}
+
+.button {
+  border: 0;
+  border-radius: 6px;
+  padding: 8px 16px;
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+  font: inherit;
+}

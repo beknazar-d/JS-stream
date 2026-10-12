@@ -1,0 +1,22 @@
+order: 4
+title: "Безопасное чтение корзины"
+type: implement
+role: main
+difficulty: 3
+minutes: 15
+language: html
+tags: [localStorage, JSON.parse, try/catch, валидация]
+hints:
+  - "Направление: чтение состоит из трёх проверок. Сначала разобрать JSON с защитой от ошибки, потом убедиться, что это массив, потом отфильтровать позиции."
+  - "Шаг: оберните JSON.parse в try/catch и в catch верните []. Для массива есть Array.isArray(data). Для позиции проверьте Number.isInteger(item.id), Number.isInteger(item.qty) и item.qty > 0. Не забудьте, что элемент может быть null."
+  - "Почти решение: let data; try { data = JSON.parse(localStorage.getItem(CART_KEY)); } catch { return []; } if (!Array.isArray(data)) return []; return data.filter((item) => item && Number.isInteger(item.id) && Number.isInteger(item.qty) && item.qty > 0);"
+wrong:
+  - name: no-try-catch
+    kind: partial
+    explanation: "Проверка на массив есть, а try/catch нет. Обрезанный JSON бросает SyntaxError, скрипт останавливается, и страница остаётся без корзины. Хранилище нельзя считать надёжным: данные мог записать кто угодно."
+  - name: not-array
+    kind: edge-case
+    explanation: "Ошибки разбора обработаны, но результат не проверяется на массив. Для значения {\"id\":1} функция вернёт объект, а метод filter или reduce у объекта не существует: страница упадёт позже и в другом месте."
+  - name: no-item-check
+    kind: common-mistake
+    explanation: "Массив вернули как есть. Если в нём лежит позиция с qty строкой или объект без qty, сумма превращается в «NaN» или склеивается как строка. Данные из хранилища надо проверять так же строго, как данные из формы."

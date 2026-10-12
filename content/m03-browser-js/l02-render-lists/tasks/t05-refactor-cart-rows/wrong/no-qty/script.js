@@ -1,0 +1,19 @@
+const list = document.querySelector('.cart-list');
+const total = document.querySelector('.cart-total');
+
+function addRow(item) {
+  const row = document.createElement('li');
+  row.className = 'cart-row';
+  row.dataset.id = item.id;
+
+  const title = document.createElement('span');
+  title.className = 'cart-row__title';
+  title.textContent = item.title;
+
+  row.append(title);
+  list.append(row);
+  total.textContent = 'Позиций: ' + list.children.length;
+}
+
+addRow({ id: 'k200', title: 'Чайник K-200', qty: 1 });
+addRow({ id: 'b50', title: 'Блендер B-50', qty: 2 });

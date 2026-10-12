@@ -1,0 +1,22 @@
+order: 1
+title: "Загрузить список товаров"
+type: recall
+role: warmup
+difficulty: 2
+minutes: 10
+language: html
+tags: [fetch, async, await, json]
+hints:
+  - "Направление: fetch возвращает обещание, поэтому перед ним нужен await, а функция должна быть async. Ответ сервера тоже нужно «развернуть» методом json(), и он тоже возвращает обещание."
+  - "Шаг: const response = await fetch('/api/products'); const products = await response.json(); потом цикл for...of и createElement('li')."
+  - "Почти решение: перед циклом очистите список (list.textContent = ''), иначе по кнопке «Обновить» товары удвоятся. В конце файла: кнопке addEventListener('click', loadProducts) и вызов loadProducts()."
+wrong:
+  - name: no-await-json
+    kind: common-mistake
+    explanation: "После response.json() забыт await. В переменной лежит обещание, а не массив, и цикл for...of падает: TypeError, products is not iterable. На странице ничего не появляется."
+  - name: title-only
+    kind: partial
+    explanation: "Выводится только название товара, а цена потеряна. По тикету в строке должны быть название, тире и цена в рублях."
+  - name: duplicates
+    kind: edge-case
+    explanation: "Список не очищается перед выводом. При первой загрузке всё хорошо, а по кнопке «Обновить» товары добавляются ещё раз: три элемента превращаются в шесть."

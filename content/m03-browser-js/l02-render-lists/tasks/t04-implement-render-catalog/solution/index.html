@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Каталог</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Малая бытовая техника</h1>
+  <ul class="catalog"></ul>
+  <p class="empty" hidden>Ничего не найдено</p>
+
+  <template id="card-template">
+    <li class="card">
+      <h3 class="card__title"></h3>
+      <p class="card__price"></p>
+      <button class="card__buy" type="button">В корзину</button>
+    </li>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>

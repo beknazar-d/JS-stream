@@ -1,0 +1,83 @@
+{
+ "routes": [
+  {
+   "method": "GET",
+   "path": "/api/products",
+   "body": [
+    {
+     "id": 1,
+     "title": "Чайник Bosch",
+     "category": "kettles",
+     "price": 3490,
+     "stock": 12,
+     "sold": 120
+    },
+    {
+     "id": 2,
+     "title": "Чайник Tefal",
+     "category": "kettles",
+     "price": 2790,
+     "stock": 0,
+     "sold": 80
+    },
+    {
+     "id": 3,
+     "title": "Чайник Xiaomi",
+     "category": "kettles",
+     "price": 1990,
+     "stock": 5,
+     "sold": 300
+    },
+    {
+     "id": 4,
+     "title": "Блендер Philips",
+     "category": "blenders",
+     "price": 5990,
+     "stock": 7,
+     "sold": 90
+    },
+    {
+     "id": 5,
+     "title": "Блендер Braun",
+     "category": "blenders",
+     "price": 8490,
+     "stock": 0,
+     "sold": 40
+    },
+    {
+     "id": 6,
+     "title": "Гриль Redmond",
+     "category": "grills",
+     "price": 6990,
+     "stock": 3,
+     "sold": 60
+    },
+    {
+     "id": 7,
+     "title": "Гриль Tefal",
+     "category": "grills",
+     "price": 11990,
+     "stock": 0,
+     "sold": 25
+    },
+    {
+     "id": 8,
+     "title": "Блендер Moulinex",
+     "category": "blenders",
+     "price": 4590,
+     "stock": 9,
+     "sold": 150
+    },
+    {
+     "id": 9,
+     "title": "Кофемашина DeLonghi",
+     "category": "coffee",
+     "price": 24990,
+     "stock": 0,
+     "sold": 70
+    }
+   ],
+   "delayMs": 80
+  }
+ ]
+}

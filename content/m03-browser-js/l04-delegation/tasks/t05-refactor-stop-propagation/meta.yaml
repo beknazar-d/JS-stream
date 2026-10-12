@@ -1,0 +1,22 @@
+order: 5
+title: "Убрать stopPropagation из карточек"
+type: refactor
+role: main
+difficulty: 4
+minutes: 20
+language: html
+tags: [делегирование, stopPropagation, closest, рефакторинг, currentTarget]
+hints:
+  - "Направление: два места, где клик что-то делает: сердечко и карточка. Обработчик на списке должен сначала проверить сердечко, и если клик по нему, выйти. Тогда проверка карточки не выполнится, и stopPropagation не нужен."
+  - "Шаг: используйте event.target.closest('.heart') и event.target.closest('.card'). После обработки сердечка поставьте return. Класс is-selected сначала снимите у всех карточек, потом поставьте на нужную."
+  - "Почти решение: cards.addEventListener('click', (event) => { const heart = event.target.closest('.heart'); if (heart) { toggleFav(heart); return; } const card = event.target.closest('.card'); if (card) select(card); });"
+wrong:
+  - name: still-stops
+    kind: partial
+    explanation: "Обработчики объединены на списке, но внутри ветки сердечка остался вызов stopPropagation. Для самого списка он ничего не меняет, но счётчик кликов на документе по-прежнему не видит клики по сердечкам. Проблема из тикета не решена."
+  - name: heart-selects
+    kind: edge-case
+    explanation: "После переключения избранного нет return, и тот же клик идёт дальше в проверку карточки. Сердечко работает, но карточка тоже выбирается. Раньше этого не давал stopPropagation, поэтому ветку нужно прервать самим."
+  - name: current-target
+    kind: common-mistake
+    explanation: "Выбранным объявляется event.currentTarget. В обработчике на списке это сам список #cards, а не карточка. Класс is-selected уходит на весь список, а в тексте выбранного оказывается пустое название. Карточку нужно искать через event.target.closest."

@@ -1,0 +1,2 @@
+row: justify-content по оси «горизонталь», align-items по оси «вертикаль»
+column: justify-content по оси «вертикаль», align-items по оси «горизонталь»

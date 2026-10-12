@@ -1,0 +1,36 @@
+- id: contrast-normal
+  front: Какой минимальный контраст обычного текста с фоном требует WCAG 2.1 уровня AA?
+  back: "4,5 к 1. Для крупного текста достаточно 3 к 1."
+  answer: "4.5"
+- id: contrast-large
+  front: Какой минимальный контраст требуется для крупного текста (уровень AA)?
+  back: "3 к 1. Крупный текст: от 18pt (24px) или от 14pt жирным (около 18,67px)."
+  answer: "3"
+- id: contrast-ui
+  front: Какой контраст нужен рамкам полей, значкам и рамке фокуса с соседним цветом?
+  back: "Не меньше 3 к 1 (критерий 1.4.11 «Контраст нетекстовых элементов»)."
+  answer: "3"
+- id: focus-visible
+  front: Какой псевдокласс показывает рамку фокуса при навигации с клавиатуры и не мешает при щелчке мышью?
+  back: ":focus-visible { outline: 3px solid #0b57d0; outline-offset: 2px; }"
+  answer: ":focus-visible"
+- id: outline-none
+  front: Что нельзя делать, если не заменяете рамку фокуса другой видимой?
+  back: "Писать outline: none или outline: 0. Клавиатурный пользователь перестаёт видеть, где он находится."
+- id: tabindex
+  front: Какие значения tabindex допустимы, а какое лучше не использовать?
+  back: "tabindex=«0» включает элемент в порядок Tab. tabindex=«-1» разрешает только программный фокус. Положительные значения ломают порядок: не использовать."
+- id: alt-decorative
+  front: Что писать в alt у декоративной картинки?
+  back: 'Пустую строку: alt="". Атрибут обязан быть, значение пустое. У содержательной картинки alt описывает, что на ней и зачем.'
+  answer: alt=""
+- id: aria-label
+  front: Каким атрибутом дать имя кнопке-значку без видимого текста?
+  back: 'aria-label="Открыть корзину" (значок svg получает aria-hidden="true"). Другой вариант: скрытый текст в .visually-hidden.'
+  answer: aria-label
+- id: aria-first-rule
+  front: Когда ARIA не нужна?
+  back: "Когда есть подходящий нативный элемент: button, a, label и input. Первое правило ARIA: если можно обойтись HTML, не добавляйте ARIA."
+- id: visually-hidden
+  front: Как спрятать текст от глаз, но оставить для скринридера?
+  back: "position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap. Не display: none и не visibility: hidden."

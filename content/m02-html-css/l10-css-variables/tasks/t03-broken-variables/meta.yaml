@@ -1,0 +1,22 @@
+order: 3
+title: "Баг: переменные не доходят до цены и подвала"
+type: fix-bug
+role: warmup
+difficulty: 2
+minutes: 12
+language: html
+tags: [custom properties, var, область видимости, баг]
+hints:
+  - "Направление: подвал лежит вне секции каталога. Где объявлены переменные? Кто их там видит? Отдельно сравните имена в объявлении и в var()."
+  - "Шаг: переменные для всей страницы объявляют в :root. В var(--gap)px единица после скобки не склеивается со значением: --gap уже содержит 16px."
+  - "Почти решение: :root { --gap: 16px; --color-accent: #b42318; } .card { margin-bottom: var(--gap); } .card__price { color: var(--color-accent); }"
+wrong:
+  - name: typo-only
+    kind: partial
+    explanation: "Опечатка в имени исправлена, цена стала красной. Но переменные по-прежнему объявлены внутри .catalog-section: подвал их не видит, отступ и красная ссылка пропали. Карточки по-прежнему слипаются из-за var(--gap)px."
+  - name: calc-px
+    kind: common-mistake
+    explanation: "calc(var(--gap)px) недействительно по той же причине, что и var(--gap)px: после подстановки получается 16pxpx. Единицу не дописывают: она уже в значении. Умножение на единицу выглядело бы как calc(var(--gap) * 1)."
+  - name: accent-still-scoped
+    kind: edge-case
+    explanation: "--gap вынесена в :root, а --color-accent осталась внутри .catalog-section. Цена красная, зазоры верные, но ссылка в подвале теряет цвет. Все общие переменные объявляют в :root."

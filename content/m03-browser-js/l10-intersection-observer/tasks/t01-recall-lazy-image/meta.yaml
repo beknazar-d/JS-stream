@@ -1,0 +1,22 @@
+order: 1
+title: "Ленивая фотография товара"
+type: recall
+role: warmup
+difficulty: 2
+minutes: 10
+language: html
+tags: [IntersectionObserver, ленивая загрузка, unobserve]
+hints:
+  - "Направление: нужен один наблюдатель на все картинки. Колбэк получает массив записей entries, у каждой есть target (элемент) и isIntersecting."
+  - "Шаг: создайте new IntersectionObserver(callback), в колбэке пройдите по записям, пропустите те, у которых isIntersecting равно false. Для остальных: img.src = img.dataset.src и observer.unobserve(img). Затем вызовите observer.observe для каждой картинки."
+  - "Почти решение: const observer = new IntersectionObserver((entries) => { for (const entry of entries) { if (!entry.isIntersecting) continue; entry.target.src = entry.target.dataset.src; observer.unobserve(entry.target); } }); document.querySelectorAll('img[data-src]').forEach((img) => observer.observe(img));"
+wrong:
+  - name: no-observer
+    kind: partial
+    explanation: "Все картинки получают src сразу при загрузке страницы. Выглядит так же, но смысла в ленивой загрузке нет: браузер скачивает всё, чего мы и хотели избежать."
+  - name: no-unobserve
+    kind: common-mistake
+    explanation: "Картинка загружена, но наблюдатель продолжает за ней следить. Каждый новый заход картинки на экран вызывает колбэк ещё раз и лишний раз перезаписывает src."
+  - name: first-entry-only
+    kind: edge-case
+    explanation: "Колбэк обрабатывает только entries[0]. Если две картинки появляются на экране одновременно, браузер передаёт обе записи сразу, и вторая никогда не загрузится."

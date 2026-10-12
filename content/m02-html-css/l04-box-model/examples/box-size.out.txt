@@ -1,0 +1,3 @@
+content-box: 344
+border-box: 300
+Содержимое в border-box: 256

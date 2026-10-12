@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="12" fill="currentColor">
+  <title id="t">Макет: каталог Домотеки</title>
+  <desc id="d">Колонка шириной 960 пикселей. Сверху панель: логотип слева, широкое поле поиска посередине, кнопка корзины справа. Ниже заголовок и шесть карточек товаров: четыре в первом ряду и две во втором. Все карточки одной ширины 228 пикселей, промежутки по 16 пикселей. Кнопки В корзину лежат на одной линии внизу карточек.</desc>
+  <rect x="20" y="10" width="600" height="380" rx="6" fill="none" stroke="currentColor" opacity="0.6"/>
+  <text x="30" y="26" opacity="0.7">колонка 960px</text>
+  <g fill="none" stroke="currentColor" stroke-width="1.5">
+    <rect x="30" y="36" width="90" height="28" rx="4"/><rect x="132" y="36" width="364" height="28" rx="4"/><rect x="508" y="36" width="102" height="28" rx="4"/>
+  </g>
+  <g text-anchor="middle"><text x="75" y="55">логотип</text><text x="314" y="55">поиск: flex 1</text><text x="559" y="55">корзина: не сжимается</text></g>
+  <text x="30" y="92" font-size="14" font-weight="700">Малая бытовая техника</text>
+  <g fill="none" stroke="currentColor" stroke-width="1.5">
+    <rect x="30" y="106" width="140" height="130" rx="6"/><rect x="186" y="106" width="140" height="130" rx="6"/><rect x="342" y="106" width="140" height="130" rx="6"/><rect x="498" y="106" width="112" height="130" rx="6"/>
+    <rect x="30" y="252" width="140" height="130" rx="6"/><rect x="186" y="252" width="140" height="130" rx="6"/>
+  </g>
+  <g opacity="0.4">
+    <rect x="40" y="206" width="120" height="20" rx="4"/><rect x="196" y="206" width="120" height="20" rx="4"/><rect x="352" y="206" width="120" height="20" rx="4"/><rect x="508" y="206" width="92" height="20" rx="4"/>
+    <rect x="40" y="352" width="120" height="20" rx="4"/><rect x="196" y="352" width="120" height="20" rx="4"/>
+  </g>
+  <text x="106" y="222" text-anchor="middle" font-size="10">В корзину</text>
+  <text x="338" y="246" text-anchor="middle" opacity="0.8" font-size="11">gap 16px; карточка 4 в ряд</text>
+  <text x="470" y="320" opacity="0.8">второй ряд — той же</text>
+  <text x="470" y="334" opacity="0.8">ширины, слева</text>
+</svg>

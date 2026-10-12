@@ -1,0 +1,34 @@
+- id: submit-event
+  front: На какое событие вешать проверку формы и почему не на click по кнопке?
+  back: "form.addEventListener('submit', ...). submit срабатывает и по кнопке, и по Enter, и при программной отправке."
+  answer: submit
+- id: prevent-default
+  front: Как не дать форме перезагрузить страницу?
+  back: "Первой строкой обработчика submit вызвать event.preventDefault()."
+  answer: event.preventDefault()
+- id: formdata-read
+  front: Как собрать значения всех полей формы в один объект?
+  back: "Object.fromEntries(new FormData(form)). Работают только поля с атрибутом name; все значения — строки."
+- id: formdata-name
+  front: Почему поле не попало в FormData?
+  back: "У него нет атрибута name. id и label не считаются. Невыбранные флажки и радиокнопки тоже не попадают."
+- id: formdata-checkbox
+  front: Как узнать, отмечен ли флажок через FormData?
+  back: "formData.has('gift'). Значение отмеченного флажка по умолчанию — строка on, не true."
+  answer: has
+- id: builtin-rules
+  front: Какие атрибуты задают встроенную проверку поля?
+  back: "required, type (email, number, tel), minlength, maxlength, min, max, step, pattern. Неверная форма не отправляется."
+- id: validity-flags
+  front: Как узнать причину ошибки поля?
+  back: "Флаги field.validity: valueMissing, typeMismatch, patternMismatch, rangeUnderflow, rangeOverflow, customError. field.validity.valid истинно, если ошибок нет."
+- id: custom-validity
+  front: Что делает setCustomValidity(текст) и как его отменить?
+  back: "Делает поле неверным со своим сообщением. Отменяется вызовом setCustomValidity(''). Без сброса поле неверно навсегда."
+  answer: "setCustomValidity('')"
+- id: aria-error
+  front: Какие две вещи нужны полю с ошибкой для скринридера?
+  back: "aria-invalid=\"true\" и aria-describedby с id элемента, в котором написан текст ошибки. Фокус отправьте на первое неверное поле."
+- id: report-validity
+  front: Чем checkValidity отличается от reportValidity?
+  back: "checkValidity только проверяет и возвращает true или false. reportValidity ещё и показывает подсказку браузера."

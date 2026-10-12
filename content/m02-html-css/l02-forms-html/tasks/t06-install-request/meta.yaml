@@ -1,0 +1,22 @@
+order: 6
+title: "Форма заявки на установку"
+type: implement
+role: real
+difficulty: 4
+minutes: 30
+language: html
+tags: [form, optgroup, number, pattern, min, max, autocomplete, radio, fieldset]
+hints:
+  - "Направление: сначала выпишите все поля с их типами и ограничениями, потом соберите fieldset по группам. Ограничения на значения задаются атрибутами: min, max, pattern, required, maxlength."
+  - "Шаг: индекс — pattern=«[0-9]{6}» и inputmode=«numeric». Количество — type=«number» min=«1» max=«5» step=«1». Для обязательного выбора из радиокнопок достаточно поставить required хотя бы на одну кнопку группы."
+  - "Почти решение: select required, первый option value=«», затем два optgroup label=«Настенные» и label=«Напольные». Радиокнопки name=«slot» без checked и с required."
+wrong:
+  - name: placeholders
+    kind: common-mistake
+    explanation: "Вместо подписей использованы placeholder. Поля без label невозможно назвать скринридером, у переключателей и списка подписей нет совсем."
+  - name: no-limits
+    kind: edge-case
+    explanation: "Форма подписана и разбита на группы, но нет ограничений: количество можно ввести любое, а индекс — в любом виде. Именно это стало причиной жалоб менеджеров."
+  - name: no-hints
+    kind: partial
+    explanation: "Типы и ограничения есть, но нет fieldset для адреса и времени приезда, и пропущены autocomplete. Браузер не поможет покупателю заполнить адрес."

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Поддержка — Домотека</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <h1>Написать в поддержку</h1>
+    <form class="support" action="/support" method="post">
+      <div>
+        <input id="name" aria-label="Ваше имя" type="text" name="name" placeholder="Анна" autocomplete="name">
+      </div>
+      <div>
+        <input id="email" aria-label="Email" type="email" name="email" placeholder="anna@example.ru" autocomplete="email" required>
+      </div>
+      <div>
+        <input id="order" aria-label="Номер заказа" type="text" name="order" placeholder="DT-10542">
+      </div>
+      <fieldset>
+        <legend>Тема обращения</legend>
+        <input id="topic-delivery" type="radio" name="topic" value="delivery">
+        <input id="topic-return" type="radio" name="topic" value="return">
+        <input id="topic-other" type="radio" name="topic" value="other">
+      </fieldset>
+      <div>
+        <textarea id="message" aria-label="Сообщение" name="message" required></textarea>
+      </div>
+      <div>
+        <input id="agree" aria-label="Согласен на обработку данных" type="checkbox" name="agree" required>
+      </div>
+      <button type="submit" class="send">Отправить</button>
+    </form>
+  </body>
+</html>

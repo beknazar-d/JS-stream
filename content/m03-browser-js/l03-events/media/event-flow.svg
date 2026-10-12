@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 230" width="640" height="230" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="13" fill="currentColor">
+  <title id="t">Путь события от действия до результата</title>
+  <desc id="d">Слева направо: пользователь нажимает кнопку, браузер создаёт объект события, вызывает ваш обработчик и передаёт ему событие, затем выполняет действие по умолчанию, например отправку формы или переход по ссылке. Вызов preventDefault в обработчике отменяет действие по умолчанию.</desc>
+  <g fill="none" stroke="currentColor" stroke-width="1.5">
+    <rect x="10" y="50" width="120" height="60" rx="6"/>
+    <rect x="160" y="50" width="130" height="60" rx="6"/>
+    <rect x="320" y="50" width="150" height="60" rx="6"/>
+    <rect x="500" y="50" width="130" height="60" rx="6"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="70" y="76">Человек</text><text x="70" y="94">нажал кнопку</text>
+    <text x="225" y="76">Браузер создаёт</text><text x="225" y="94">объект события</text>
+    <text x="395" y="76">Ваш обработчик</text><text x="395" y="94">handler(event)</text>
+    <text x="565" y="76">Действие по</text><text x="565" y="94">умолчанию</text>
+  </g>
+  <g stroke="currentColor" stroke-width="2" fill="currentColor">
+    <path d="M130 80 H152" fill="none"/><path d="M152 80 l-7 -4 v8 z"/>
+    <path d="M290 80 H312" fill="none"/><path d="M312 80 l-7 -4 v8 z"/>
+    <path d="M470 80 H492" fill="none"/><path d="M492 80 l-7 -4 v8 z"/>
+  </g>
+  <g text-anchor="middle" opacity="0.85">
+    <text x="395" y="140">event.preventDefault()</text>
+    <text x="395" y="158">отменяет то, что справа</text>
+    <text x="565" y="140">отправка формы,</text>
+    <text x="565" y="158">переход по ссылке</text>
+  </g>
+  <path d="M395 124 V118" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3" fill="none"/>
+  <text x="320" y="200" text-anchor="middle" opacity="0.85">В handler попадает именно функция, а не её результат: пишем click, handler, без скобок</text>
+</svg>

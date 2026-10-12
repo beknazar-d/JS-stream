@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+.order {
+  padding: 16px;
+}
+
+/* 1. Объявите в :root две переменные:
+      --color-brand со значением #0b6e4f
+      --space-md со значением 16px
+   2. Используйте их в .button через var().
+   3. Для .badge задайте цвет текста через var(--badge-color) с запасным значением #b42318. */
+
+.button {
+  border: 0;
+  border-radius: 6px;
+  background: #555555;
+  color: #ffffff;
+  padding: 8px 12px;
+  font: inherit;
+}
+
+.badge {
+  font-weight: 700;
+  color: #555555;
+}

@@ -1,0 +1,4 @@
+0 мс: linear 0px, ease-in 0px
+250 мс: linear 25px, ease-in 6.25px
+500 мс: linear 50px, ease-in 25px
+1000 мс: linear 100px, ease-in 100px

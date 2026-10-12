@@ -1,0 +1,22 @@
+order: 3
+title: "Форма оформления заказа по макету"
+type: layout
+role: warmup
+difficulty: 3
+minutes: 40
+language: html
+tags: [проект P2, формы, label, fieldset, Grid, автозаполнение]
+hints:
+  - "Направление: сначала разметка. Каждому полю дайте label с for, группы оберните в fieldset с legend, выберите правильные type и autocomplete. После этого стили станут проще."
+  - "Шаг: строки .order__row делайте сеткой из двух колонок с зазором 16. Для строки с одним полем добавьте модификатор в одну колонку, для города и индекса колонки 2fr и 1fr. Подпись и поле соберите во flex-колонку."
+  - "Почти решение: .field__input с box-sizing: border-box, width: 100%, height: 44px, border: 1px solid #6b7280. Подвал: display: flex, justify-content: space-between, align-items: center. Фокус: :focus-visible с outline 3px solid #0b57d0."
+wrong:
+  - name: no-labels
+    kind: partial
+    explanation: "Стили готовы, а разметка осталась прежней: вместо подписей подсказки внутри полей, нет fieldset и типов. Вид правильный, но скринридер не скажет, что за поле, а подсказка исчезает при вводе."
+  - name: hidden-labels
+    kind: common-mistake
+    explanation: "Подписи есть, но спрятаны через display: none, потому что «и так видно по подсказке». Подпись должна быть видна: подсказка пропадает при вводе, и человек забывает, что вводил."
+  - name: no-focus
+    kind: edge-case
+    explanation: "Раскладка и подписи на месте, но у полей и кнопки отключена рамка outline ради «чистого» вида. Клавиатурный пользователь не видит, в каком поле находится."

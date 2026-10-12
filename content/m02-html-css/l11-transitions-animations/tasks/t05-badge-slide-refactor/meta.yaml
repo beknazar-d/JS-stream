@@ -1,0 +1,22 @@
+order: 5
+title: "Рефакторинг: плашка выезжает через transform"
+type: refactor
+role: main
+difficulty: 3
+minutes: 12
+language: html
+tags: [keyframes, transform, производительность, рефакторинг]
+hints:
+  - "Направление: чем left отличается от transform с точки зрения соседних элементов и пересчёта раскладки? Какая функция transform двигает по горизонтали?"
+  - "Шаг: замените left: -120px на transform: translateX(-120px), а left: 0 на translateX(0). Свойство opacity не трогайте. Затем уберите position: relative: он нужен только для left."
+  - "Почти решение: @keyframes slide-in { from { transform: translateX(-120px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }"
+wrong:
+  - name: left-in-last-frame
+    kind: partial
+    explanation: "В кадре from left заменён на transform, а в to остался left: 0. Анимация по-прежнему включает left, и браузер пересчитывает раскладку. Конвертировать нужно все кадры."
+  - name: wrong-name
+    kind: common-mistake
+    explanation: "Кадры переименованы в slidein, а animation по-прежнему вызывает slide-in. Браузер не находит кадры и молча не запускает анимацию: плашка просто стоит на месте. Консоль ничего не говорит."
+  - name: wrong-direction
+    kind: edge-case
+    explanation: "translateX(120px) двигает плашку вправо, а не влево. Анимация выглядит похоже, но стартовая точка другая. Знак важен: отрицательное смещение уводит элемент влево."

@@ -1,0 +1,8 @@
+p -> 0-0-1
+.btn -> 0-1-0
+ul li a -> 0-0-3
+button.btn.sale -> 0-2-1
+.card > .title -> 0-2-0
+a[href]:hover -> 0-2-1
+#cart .btn -> 1-1-0
+p::first-line -> 0-0-2

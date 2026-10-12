@@ -1,0 +1,22 @@
+order: 5
+title: "Исправить: гонка ответов при смене вкладки"
+type: fix-bug
+role: main
+difficulty: 3
+minutes: 20
+language: html
+tags: [гонка ответов, AbortController, fetch, race condition]
+hints:
+  - "Направление: запросы уходят в одном порядке, а возвращаются в другом. Нужно, чтобы результат старого запроса не попадал на экран ни при успехе, ни при ошибке."
+  - "Шаг: перед новым запросом отмените прошлый через AbortController и передайте signal в fetch. В catch отмену (error.name === 'AbortError') узнайте и тихо выйдите, не показывая ошибку."
+  - "Почти решение: let controller; в selectCategory: if (controller) controller.abort(); controller = new AbortController(); fetch(url, { signal: controller.signal }); в catch первой строкой: if (error.name === 'AbortError') return;"
+wrong:
+  - name: ignore-while-loading
+    kind: common-mistake
+    explanation: "Пока идёт загрузка, новые нажатия игнорируются. Подсветка и список не расходятся, но покупатель нажал «Уборка», а получил «Кухню»: показан не последний выбор."
+  - name: abort-no-signal
+    kind: race
+    explanation: "AbortController создан и abort() вызывается, но signal не передан в fetch. Запрос не отменяется, медленный ответ «Кухни» по-прежнему приходит последним и затирает список."
+  - name: stale-error
+    kind: edge-case
+    explanation: "Устаревший успешный ответ отбрасывается по номеру запроса, а ветка catch не проверяет номер. Ошибка медленной вкладки «Климат» стирает список «Уборки» и показывает сообщение об ошибке."

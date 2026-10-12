@@ -1,0 +1,22 @@
+order: 1
+title: "Каталог в три колонки по памяти"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 6
+language: html
+tags: [grid, repeat, fr, gap]
+hints:
+  - "Направление: включите сетку у списка и опишите колонки. Строки создадутся сами."
+  - "Шаг: нужны три свойства: display, grid-template-columns с функцией повторения и gap."
+  - "Почти решение: .catalog { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }"
+wrong:
+  - name: no-gap
+    kind: partial
+    explanation: "Колонки заданы, но промежутков нет: карточки слипаются вплотную. gap нужен и между колонками, и между рядами."
+  - name: rows-instead-of-columns
+    kind: common-mistake
+    explanation: "grid-template-rows: repeat(3, 1fr) создаёт три ряда, а не три колонки. Колонка остаётся одна, карточки идут друг под другом. Перепутаны строки и колонки."
+  - name: fixed-widths
+    kind: edge-case
+    explanation: "repeat(3, 300px) даёт колонки фиксированной ширины: 3 × 300 + 2 × 16 = 932px, а в колонке main 960px. Сетка не заполняет контейнер до правого края. fr делит всё свободное место."

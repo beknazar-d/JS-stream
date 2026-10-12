@@ -1,0 +1,23 @@
+order: 2
+title: "Порядок обработчиков, once и снятие"
+type: predict
+role: warmup
+difficulty: 2
+minutes: 10
+language: js
+tags: [addEventListener, removeEventListener, once]
+show: [tests/snippet.js]
+hints:
+  - "Направление: обработчики вызываются в порядке добавления. Обработчик с once вызывается один раз и снимается перед вызовом."
+  - "Шаг: перед третьим fire обработчик a снят, остались b (уже снят после первого fire) и c. Стрелка, добавленная через on, и стрелка в off — это две разные функции."
+  - "Почти решение: a click, b click, c click. Потом a click, c click. Последний fire вызовет c input и x, потому что off не нашёл такую же стрелку."
+wrong:
+  - name: unfinished
+    kind: partial
+    explanation: "Записаны только три строки: первый вызов fire. Нужно предсказать все семь строк, включая второй fire и последний с событием input."
+  - name: once-ignored
+    kind: common-mistake
+    explanation: "Во втором fire в ответе снова есть b click. Но b подключён с once: true и снят после первого срабатывания, поэтому дальше его вызовов нет."
+  - name: off-arrow
+    kind: edge-case
+    explanation: "В последнем вызове нет строки x: предполагается, что off снял стрелку. Но два текста одной стрелки — это две разные функции, и off(второй_стрелкой) ничего не нашёл. Обработчик x остался и сработал."

@@ -1,0 +1,9 @@
+body {
+  margin: 16px;
+  font-family: system-ui, "Segoe UI", Arial, sans-serif;
+}
+
+#results li[hidden],
+.empty[hidden] {
+  display: none;
+}

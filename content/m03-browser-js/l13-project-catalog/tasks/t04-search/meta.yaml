@@ -1,0 +1,22 @@
+order: 4
+title: "Этап 4. Поиск с дебаунсом и отменой"
+type: implement
+role: main
+difficulty: 3
+minutes: 30
+language: html
+tags: [проект, debounce, AbortController, поиск, неясности]
+hints:
+  - "Направление: поиск — это ещё одна часть состояния рядом с page. Любая смена состояния ведёт к одному и тому же запросу. Дебаунс нужен только между полем ввода и сменой состояния."
+  - "Шаг: добавьте q в state и в buildQuery (только если не пусто). Обработчик input вызывает дебаунснутую функцию, она меняет state.q и page: 1 и вызывает loadProducts. В loadProducts перед запросом отмените прошлый через AbortController и в catch выходите на AbortError без сообщения."
+  - "Почти решение: const debouncedSearch = debounce((text) => changeState({ q: text, page: 1 }), 300); searchInput.addEventListener('input', () => debouncedSearch(searchInput.value.trim())); В loadProducts: if (controller) controller.abort(); controller = new AbortController(); fetch(url, { signal }); if (error.name === 'AbortError') return;"
+wrong:
+  - name: no-abort
+    kind: race
+    explanation: "Дебаунс и сброс страницы есть, но запросы не отменяются. Медленный ответ на короткий запрос приходит позже и подменяет список по полному слову."
+  - name: page-not-reset
+    kind: edge-case
+    explanation: "Новый поиск оставляет текущую страницу. Если человек был на третьей странице, он ищет «пылесос» и получает пустую третью страницу, хотя результаты есть на первой."
+  - name: no-debounce
+    kind: common-mistake
+    explanation: "Запрос уходит на каждую букву. Для слова из семи букв это семь запросов вместо одного, и без отмены ответы ещё и путаются."

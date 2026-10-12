@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="14" fill="currentColor">
+  <title id="t">Как устроен каталог: состояние, адрес, запрос, экран</title>
+  <desc id="d">Четыре блока по кругу. Состояние каталога: поиск, категория, сортировка, страница. Из него строятся адрес страницы и запрос к API. Ответ API рисуется на экране. Действие пользователя меняет состояние, кнопка Назад возвращает состояние из адреса.</desc>
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="240" y="20" width="160" height="56" rx="8"/>
+    <rect x="30" y="130" width="160" height="56" rx="8"/>
+    <rect x="450" y="130" width="160" height="56" rx="8"/>
+    <rect x="240" y="226" width="160" height="56" rx="8"/>
+    <path d="M240 60 L110 130"/>
+    <path d="M400 60 L530 130"/>
+    <path d="M530 186 L400 246"/>
+    <path d="M240 250 L110 186" stroke-dasharray="6 4"/>
+  </g>
+  <g text-anchor="middle">
+    <text x="320" y="44" font-weight="700">Состояние</text>
+    <text x="320" y="64" font-size="12">q, category, sort, page</text>
+    <text x="110" y="154" font-weight="700">Адрес</text>
+    <text x="110" y="174" font-size="12">?q=...&amp;page=2</text>
+    <text x="530" y="154" font-weight="700">Запрос к API</text>
+    <text x="530" y="174" font-size="12">GET /api/products?...</text>
+    <text x="320" y="250" font-weight="700">Экран</text>
+    <text x="320" y="270" font-size="12">карточки, статус, страницы</text>
+    <text x="150" y="238" font-size="12">Назад / Вперёд</text>
+    <text x="320" y="106" font-size="12">действие пользователя меняет состояние</text>
+  </g>
+</svg>

@@ -1,0 +1,4 @@
+body { font-family: system-ui, sans-serif; margin: 24px; }
+#status { min-height: 1.2em; }
+#deliveries { padding-left: 20px; }
+#deliveries[aria-busy="true"] { opacity: 0.5; }

@@ -1,0 +1,33 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/slots",
+      "responses": [
+        {
+          "status": 200,
+          "delayMs": 5000,
+          "body": []
+        },
+        {
+          "status": 200,
+          "delayMs": 50,
+          "body": [
+            {
+              "id": 1,
+              "label": "Вт, 9:00–12:00"
+            },
+            {
+              "id": 2,
+              "label": "Вт, 12:00–15:00"
+            },
+            {
+              "id": 3,
+              "label": "Ср, 9:00–12:00"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

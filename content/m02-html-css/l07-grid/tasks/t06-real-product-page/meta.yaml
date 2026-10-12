@@ -1,0 +1,22 @@
+order: 6
+title: "Страница товара на сетке"
+type: layout
+role: real
+difficulty: 4
+minutes: 30
+language: html
+tags: [grid, span, fr, grid-row, grid-column]
+hints:
+  - "Направление: сначала нарисуйте сетку: две колонки 1.2fr и 1fr, строки по числу блоков. Потом решите, кому нужно больше одной клетки."
+  - "Шаг: у .gallery grid-row: 1 / span 3 — три ряда подряд. Заголовку, цене и кнопке задайте колонку 2 и ряды 1, 2 и 3. Описанию — grid-column: 1 / -1. Характеристики лягут в колонку 1, отзывы в колонку 2 сами."
+  - "Почти решение: .product { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; } .gallery { grid-column: 1; grid-row: 1 / span 3; } .title { grid-column: 2; grid-row: 1; } .price { grid-column: 2; grid-row: 2; } .buy { grid-column: 2; grid-row: 3; align-self: end; } .about { grid-column: 1 / -1; }"
+wrong:
+  - name: gallery-one-row
+    kind: common-mistake
+    explanation: "Фото стоит только в первом ряду, а заголовок, цена и кнопка идут в правой колонке ниже или выше без привязки. Низ фото не доходит до кнопки: span для рядов забыт."
+  - name: equal-columns
+    kind: edge-case
+    explanation: "grid-template-columns: 1fr 1fr даёт равные колонки. По макету фото шире правой колонки в 1.2 раза. Доли fr нужно записать как 1.2fr 1fr."
+  - name: about-one-column
+    kind: partial
+    explanation: "Описание осталось в одной колонке, а не на всю ширину. Правая половина ряда пустует, и порядок следующих блоков смещается."

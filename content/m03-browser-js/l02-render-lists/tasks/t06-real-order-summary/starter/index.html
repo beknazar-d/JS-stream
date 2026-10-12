@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Сводка заказа</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Сводка заказа</h1>
+  <p class="greeting"></p>
+  <p class="address"></p>
+
+  <table class="order-table">
+    <thead>
+      <tr><th>Товар</th><th>Кол-во</th><th>Сумма</th></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <p class="order-empty" hidden>В заказе нет товаров</p>
+
+  <dl class="totals">
+    <div><dt>Товары</dt><dd class="subtotal"></dd></div>
+    <div class="promo-row" hidden><dt>Скидка по промокоду</dt><dd class="discount"></dd></div>
+    <div><dt>Доставка</dt><dd class="delivery"></dd></div>
+    <div><dt>Итого</dt><dd class="grand-total"></dd></div>
+  </dl>
+
+  <template id="row-template">
+    <tr class="order-row">
+      <td class="order-row__title"></td>
+      <td class="order-row__qty"></td>
+      <td class="order-row__sum"></td>
+    </tr>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+order: 1
+title: "Форма подписки по памяти"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 6
+language: html
+tags: [form, label, input, email, required]
+hints:
+  - "Направление: форма состоит из form, подписи label, поля input и кнопки button. Подпись и поле связываются парой for и id."
+  - "Шаг: у input нужны type=«email», name, id, required и autocomplete. У кнопки type=«submit»."
+  - "Почти решение: form action=«/subscribe» method=«post» содержит label for=«email», input id=«email» name=«email» type=«email» required autocomplete=«email» и button type=«submit»."
+wrong:
+  - name: placeholder-only
+    kind: common-mistake
+    explanation: "Вместо подписи использован placeholder. Он исчезает, как только человек начинает печатать, и не считается подписью для скринридера: у поля нет связанного label."
+  - name: text-type
+    kind: edge-case
+    explanation: "Поле имеет тип text. Подпись и кнопка на месте, но браузер не проверяет формат: строка «abc» принимается как почта, а на телефоне не показывается клавиатура с @."
+  - name: no-button
+    kind: partial
+    explanation: "В форме нет кнопки отправки. Без неё форма отправляется только по Enter, и это не очевидно ни зрению, ни скринридеру."

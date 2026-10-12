@@ -1,0 +1,4 @@
+.orders td.num, .orders th.num { text-align: right !important; }
+.orders tr[data-status="cancelled"] td { color: #888888 !important; text-decoration: line-through !important; }
+.grid.orders tr[data-status="new"] td { background: #e7f1ff !important; }
+.orders .urgent td:first-child { border-left: 4px solid #dd0000 !important; }

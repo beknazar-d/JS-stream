@@ -1,0 +1,22 @@
+order: 4
+title: "Своя функция debounce"
+type: implement
+role: main
+difficulty: 3
+minutes: 20
+language: js
+tags: [debounce, замыкание, setTimeout, clearTimeout]
+hints:
+  - "Направление: debounce возвращает функцию. Таймер хранится в переменной снаружи этой функции, чтобы все вызовы видели один и тот же таймер."
+  - "Шаг: внутри возвращаемой функции (с параметрами через ...args) сначала clearTimeout(timer), затем timer = setTimeout(() => fn(...args), delay). Метод cancel — это clearTimeout(timer) без запуска нового."
+  - "Почти решение: const debounced = (...args) => { clearTimeout(timer); timer = setTimeout(() => fn(...args), delay); }; debounced.cancel = () => clearTimeout(timer); return debounced;"
+wrong:
+  - name: no-return
+    kind: common-mistake
+    explanation: "debounce только запускает таймер и ничего не возвращает. Результат нельзя вызвать: TypeError: debounced is not a function."
+  - name: no-clear
+    kind: partial
+    explanation: "Таймер ставится на каждый вызов, но прежний не отменяется. Три вызова подряд дают три срабатывания fn, только позже."
+  - name: first-args
+    kind: edge-case
+    explanation: "fn вызывается с аргументами первого вызова, а не последнего: поиск получил бы «ч» вместо «чайник». Также при втором аргументе передаётся только один."

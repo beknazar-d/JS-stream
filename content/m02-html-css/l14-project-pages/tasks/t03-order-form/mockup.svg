@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="12">
+  <title id="t">Макет формы оформления заказа на ширине 1024</title>
+  <desc id="d">Форма шириной 720 по центру с заголовком. Группа «Контакты»: имя и телефон в одной строке, почта на всю ширину. Группа «Доставка»: два варианта в строку, адрес на всю ширину, город вдвое шире индекса, комментарий высотой 96. Внизу слева итог, справа кнопка 220 на 48. Подписи над полями, поля высотой 44.</desc>
+  <rect width="640" height="420" fill="#ffffff"/>
+  <text x="60" y="30" font-size="18" font-weight="700" fill="#1a1a1a">Оформление заказа</text>
+  <rect x="50" y="42" width="540" height="116" rx="6" fill="none" stroke="#9aa5b1"/>
+  <text x="62" y="46" font-weight="700" fill="#1a1a1a" font-size="13">Контакты</text>
+  <g fill="#374151"><text x="62" y="70">Имя</text><text x="330" y="70">Телефон</text><text x="62" y="118">Электронная почта</text></g>
+  <g fill="#ffffff" stroke="#6b7280"><rect x="62" y="76" width="256" height="26" rx="4"/><rect x="330" y="76" width="248" height="26" rx="4"/><rect x="62" y="124" width="516" height="26" rx="4"/></g>
+  <rect x="50" y="170" width="540" height="190" rx="6" fill="none" stroke="#9aa5b1"/>
+  <text x="62" y="174" font-weight="700" fill="#1a1a1a" font-size="13">Доставка</text>
+  <text x="62" y="198" fill="#1a1a1a">(•) Курьером     ( ) Самовывоз из магазина</text>
+  <g fill="#374151"><text x="62" y="222">Улица, дом, квартира</text><text x="62" y="264">Город</text><text x="402" y="264">Индекс</text><text x="62" y="306">Комментарий для курьера</text></g>
+  <g fill="#ffffff" stroke="#6b7280"><rect x="62" y="228" width="516" height="26" rx="4"/><rect x="62" y="270" width="332" height="26" rx="4"/><rect x="402" y="270" width="176" height="26" rx="4"/><rect x="62" y="312" width="516" height="40" rx="4"/></g>
+  <text x="62" y="392" font-size="15" fill="#1a1a1a">Итого: <tspan font-weight="700">12 480 ₽</tspan></text>
+  <rect x="430" y="374" width="148" height="30" rx="6" fill="#0b3d91"/>
+  <text x="504" y="394" text-anchor="middle" fill="#ffffff" font-weight="700">Оформить заказ</text>
+  <text x="590" y="412" text-anchor="end" fill="#555555" font-size="11">зазор между полями 16, внутри группы отступ 16, поля 44, кнопка 220 × 48</text>
+</svg>

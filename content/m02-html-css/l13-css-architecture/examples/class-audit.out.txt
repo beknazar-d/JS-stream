@@ -1,0 +1,7 @@
+product-card: ok
+product-card__title: ok
+product-card--sale: ok
+product-card__price--old: ok
+productCard: заглавные буквы
+product-card__title__icon: элемент внутри элемента
+card_title: не по шаблону

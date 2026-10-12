@@ -1,0 +1,15 @@
+body {
+  margin: 16px;
+  font-family: system-ui, "Segoe UI", Arial, sans-serif;
+}
+
+.cart-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.qty {
+  width: 3em;
+  text-align: center;
+}

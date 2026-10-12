@@ -1,0 +1,30 @@
+- id: this-regular
+  front: Чему равен this в обычной функции-обработчике (function)?
+  back: "Элементу, на котором висит обработчик. Это то же самое, что event.currentTarget."
+- id: this-arrow
+  front: Чему равен this в стрелочной функции-обработчике?
+  back: "Тому же, что снаружи неё. В обычном скрипте это window, поэтому this.dataset даёт undefined и TypeError. Берите элемент из event.currentTarget."
+  answer: currentTarget
+- id: duplicate-listeners
+  front: Почему клик обрабатывается два-три раза после перерисовки?
+  back: "addEventListener вызывается при каждой перерисовке с новой функцией, и обработчики копятся. Подпишитесь один раз снаружи render, лучше через делегирование."
+- id: same-function
+  front: Когда повторный addEventListener не добавляет обработчик второй раз?
+  back: "Когда передана та же самая функция (одна и та же ссылка) с теми же параметрами. Две одинаковые по тексту стрелки — это две разные функции."
+- id: innerhtml-plus
+  front: Что не так с list.innerHTML += '<li>...</li>'?
+  back: "Весь внутренний HTML собирается заново: старые элементы заменяются новыми копиями без обработчиков. Добавляйте через append или insertAdjacentHTML."
+  answer: insertAdjacentHTML
+- id: stale-ref
+  front: Что будет со ссылкой на элемент, если родителю заменили innerHTML?
+  back: "Элемент уцелеет в переменной, но будет отсоединён от страницы (isConnected равно false). Клики по нему на странице невозможны."
+- id: race
+  front: Что такое гонка ответов (race condition)?
+  back: "Два запроса ушли подряд, а ответ на старый пришёл позже и перетёр новый. Лечение: отменить прошлый запрос (AbortController) или игнорировать устаревший."
+- id: number-from-field
+  front: Что приходит из поля формы и во что это превращают?
+  back: "Всегда строка. Number('') даёт 0, Number('abc') даёт NaN, '3' + 1 даёт '31'. Проверяйте результат: Number.isNaN, Number.isInteger, диапазон."
+  answer: Number
+- id: nan-check
+  front: Как проверить, что число получилось из текста поля?
+  back: "const n = Number(text.trim()); text.trim() !== '' && Number.isFinite(n). Пустая строка тоже превращается в число 0, поэтому её проверяют отдельно."

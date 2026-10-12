@@ -1,0 +1,22 @@
+order: 6
+title: "Страница статьи «Как выбрать чайник»"
+type: layout
+role: real
+difficulty: 4
+minutes: 30
+language: html
+tags: [rem, vh, ch, line-height, типографика, адаптивность]
+hints:
+  - "Направление: начните с базы: шрифт и межстрочье на body. Потом первый экран, потом колонка статьи. Каждый размер подбирайте под единицу, которая ему подходит."
+  - "Шаг: для hero возьмите min-height: 40vh и расположите заголовок по центру (flex с align-items). Колонку ограничьте max-width: 65ch и поставьте margin: 0 auto. Поля по бокам задайте padding в rem, чтобы на телефоне текст не касался края."
+  - "Почти решение: .hero { display: flex; align-items: center; justify-content: center; min-height: 40vh; } .article { max-width: 65ch; margin: 0 auto; padding: 1.5rem 1rem; } body { line-height: 1.6; } h1 { font-size: 2.5rem; } h2 { font-size: 1.75rem; } .intro { font-size: 1.25rem; } blockquote { padding-left: 1rem; border-left: 4px solid ...; }"
+wrong:
+  - name: hero-percent-height
+    kind: common-mistake
+    explanation: "height: 40% берётся от высоты родителя, а у body она не задана. Процент не срабатывает, блок схлопывается до высоты заголовка. Нужна единица от окна: 40vh."
+  - name: no-side-padding
+    kind: edge-case
+    explanation: "На телефоне 375px колонка равна ширине окна, и текст касается краёв: у .article нет внутренних отступов по бокам. Проверка узкого экрана ожидает поле не меньше 16px."
+  - name: no-measure
+    kind: partial
+    explanation: "Первый экран и размеры заголовков сделаны, но колонка не ограничена по ширине. На широком мониторе в строке больше 75 символов."

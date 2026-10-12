@@ -1,0 +1,22 @@
+order: 2
+title: "Баг: карточки вылезают из панели"
+type: fix-bug
+role: warmup
+difficulty: 2
+minutes: 10
+language: html
+tags: [box-sizing, padding, border, ширина, переполнение]
+hints:
+  - "Направление: откройте DevTools и посмотрите на схему блока у карточки: ширина 100% относится только к содержимому, а padding и border добавляются сверху."
+  - "Шаг: свойство box-sizing меняет, что именно задаёт width. Нужно значение, при котором width включает padding и border."
+  - "Почти решение: box-sizing: border-box для .card и .search. Удобнее задать его всем элементам одним правилом: * (звёздочка) и box-sizing."
+wrong:
+  - name: overflow-hidden
+    kind: common-mistake
+    explanation: "Переполнение скрыто через overflow: hidden на панели. Полосы прокрутки нет, но карточка по-прежнему шире панели на 44px, и правая рамка обрезана."
+  - name: only-card
+    kind: partial
+    explanation: "border-box добавлен только карточкам. Поле поиска тоже имеет width 100% и padding, и оно по-прежнему вылезает."
+  - name: no-padding
+    kind: edge-case
+    explanation: "Переполнение убрано удалением padding и border. Блоки вписались, но дизайн сломан: внутренние отступы и рамка по ТЗ должны остаться."

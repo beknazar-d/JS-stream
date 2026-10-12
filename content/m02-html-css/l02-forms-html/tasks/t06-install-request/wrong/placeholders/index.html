@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Установка кондиционера — Домотека</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <h1>Заявка на установку кондиционера</h1>
+    <form class="install" action="/install" method="post">
+      <fieldset>
+        <legend>Контакты</legend>
+        <p>
+          <input id="fullname" placeholder="ФИО" name="fullname" type="text" required autocomplete="name">
+        </p>
+        <p>
+          <input id="phone" placeholder="Телефон" name="phone" type="tel" required autocomplete="tel">
+        </p>
+        <p>
+          <input id="email" placeholder="Email" name="email" type="email" autocomplete="email">
+        </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Что устанавливаем</legend>
+        <p>
+          <select id="model" name="model" required>
+            <option value="">Выберите модель</option>
+            <optgroup label="Настенные">
+              <option value="msag09">Midea MSAG-09</option>
+              <option value="as09">Haier AS09</option>
+            </optgroup>
+            <optgroup label="Напольные">
+              <option value="bfl18">Ballu BFL-18</option>
+            </optgroup>
+          </select>
+        </p>
+        <p>
+          <input id="units" name="units" type="number" min="1" max="5" step="1" value="1" required>
+        </p>
+        <p>
+          <input id="date" name="date" type="date" required>
+        </p>
+        <fieldset>
+          <legend>Время приезда</legend>
+          <input id="slot-morning" name="slot" type="radio" value="morning" required>
+          <input id="slot-day" name="slot" type="radio" value="day">
+          <input id="slot-evening" name="slot" type="radio" value="evening">
+        </fieldset>
+      </fieldset>
+
+      <fieldset>
+        <legend>Адрес</legend>
+        <p>
+          <input id="city" placeholder="Город" name="city" type="text" required autocomplete="address-level2">
+        </p>
+        <p>
+          <input id="street" placeholder="Улица и дом" name="street" type="text" required autocomplete="street-address">
+        </p>
+        <p>
+          <input id="zip" placeholder="Индекс" name="zip" type="text" required autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{6}">
+        </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Дополнительно</legend>
+        <p>
+          <textarea id="comment" placeholder="Комментарий" name="comment" rows="4" maxlength="500"></textarea>
+        </p>
+        <p>
+          <input id="agree" name="agree" type="checkbox" required>
+        </p>
+      </fieldset>
+
+      <button type="submit">Отправить заявку</button>
+    </form>
+  </body>
+</html>

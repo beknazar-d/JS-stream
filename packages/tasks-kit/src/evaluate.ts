@@ -5,6 +5,7 @@
 import type { CompileError } from './compile.ts';
 import { formatCompileError } from './compile.ts';
 import type { ExecJob, ExecResult, LogEntry } from './exec.ts';
+import type { HtmlRun, MockApi } from './html.ts';
 import { TIMEOUT_EXPLANATION } from './explain.ts';
 import type { TaskMeta } from './meta.ts';
 
@@ -39,6 +40,10 @@ export type ExecOutcome = { kind: 'ok'; result: ExecResult } | { kind: 'timeout'
 export interface EvaluateDeps {
   compile: (files: Record<string, string>) => Promise<{ modules: Record<string, string>; errors: CompileError[] }>;
   execute: (job: ExecJob) => Promise<ExecOutcome>;
+  // Исполнение заданий на страницу (language: html) в iframe. Нет — задания html не поддерживаются.
+  executeHtml?: (run: HtmlRun) => Promise<ExecOutcome>;
+  // Защита от бесконечных циклов в скриптах страницы (см. loop-guard.ts).
+  guardLoops?: (files: Record<string, string>) => Promise<{ files: Record<string, string>; errors: CompileError[] }>;
 }
 
 const TEST_FILE = /\.test\.[jt]s$/;
@@ -199,7 +204,36 @@ async function evaluateWriteTests(bundle: TaskBundle, userFiles: Record<string, 
   return { status: failed ? 'failed' : 'passed', checks, logs };
 }
 
+async function evaluateHtml(bundle: TaskBundle, userFiles: Record<string, string>, deps: EvaluateDeps): Promise<Report> {
+  if (!deps.executeHtml) {
+    return { status: 'error', checks: [], logs: [], error: { message: 'Задания на вёрстку здесь не запускаются.' } };
+  }
+  const testDir = filesIn(bundle.files, 'tests');
+  const testFiles = Object.keys(testDir).filter((f) => TEST_FILE.test(f)).sort(testOrder);
+  const code = Object.fromEntries(Object.entries(testDir).filter(([f]) => /\.[jt]s$/.test(f)));
+  const { modules, errors } = await deps.compile(code);
+  if (errors.length) return compileErrorReport(errors);
+  let pageFiles = userFiles;
+  if (deps.guardLoops) {
+    const scripts = Object.fromEntries(Object.entries(userFiles).filter(([f]) => /\.m?js$/.test(f)));
+    const guarded = await deps.guardLoops(scripts);
+    if (guarded.errors.length) return compileErrorReport(guarded.errors);
+    pageFiles = { ...userFiles, ...guarded.files };
+  }
+  let api: MockApi | undefined;
+  if (testDir['api.mock.json']) api = JSON.parse(testDir['api.mock.json']) as MockApi;
+  const outcome = await deps.executeHtml({
+    pageFiles,
+    api,
+    modules,
+    tests: testFiles.map((file) => ({ file, hidden: file.includes('hidden') })),
+  });
+  if (outcome.kind === 'timeout') return timeoutReport();
+  return toReport(outcome.result);
+}
+
 export function evaluate(bundle: TaskBundle, userFiles: Record<string, string>, deps: EvaluateDeps): Promise<Report> {
+  if (bundle.meta.language === 'html') return evaluateHtml(bundle, userFiles, deps);
   return bundle.meta.type === 'write-tests'
     ? evaluateWriteTests(bundle, userFiles, deps)
     : evaluateCode(bundle, userFiles, deps);

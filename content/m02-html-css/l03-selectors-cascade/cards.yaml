@@ -1,0 +1,33 @@
+- id: class-selector
+  front: Каким селектором выбрать элементы с классом price?
+  back: ".price. Класс начинается с точки, идентификатор с решётки (#cart)."
+  answer: .price
+- id: descendant
+  front: Что выбирает селектор .card .price и чем он отличается от .card > .price?
+  back: "Первый — любой .price внутри .card на любой глубине. Второй — только прямой ребёнок .card."
+- id: adjacent
+  front: Что выбирает селектор .old-price + .price?
+  back: ".price, который стоит сразу после .old-price на том же уровне (соседний элемент)."
+- id: attribute
+  front: Как выбрать ссылки, адрес которых начинается с https?
+  back: 'a[href^="https"]. Точное значение: [data-stock="0"].'
+- id: nth-child
+  front: Какие элементы выбирает li:nth-child(even)?
+  back: "Чётных детей: второго, четвёртого и так далее. Нечётные: odd. Каждый третий: 3n."
+  answer: even
+- id: focus-visible
+  front: Каким псевдоклассом оформляют фокус с клавиатуры и почему не убирают outline?
+  back: ":focus-visible. Без видимого фокуса клавиатурный пользователь не видит, где он."
+  answer: ":focus-visible"
+- id: specificity-weight
+  front: Как записывается вес селектора и в каком порядке сравнивается?
+  back: "[идентификаторы, классы, теги], слева направо. #cart .btn = 1-1-0, .card .btn = 0-2-0, p = 0-0-1."
+- id: tie-order
+  front: Какое из двух правил равного веса победит?
+  back: "То, что написано ниже в CSS (позднее)."
+- id: inheritance
+  front: Какие свойства наследуются потомками, а какие нет?
+  back: "Наследуются color, font-size, line-height, font-family. Не наследуются border, margin, padding, background."
+- id: important-smell
+  front: Почему !important в большинстве случаев признак проблемы?
+  back: "Он ломает порядок и вес: перебить его можно только другим !important. Правильно набрать вес селектора или переставить правила."

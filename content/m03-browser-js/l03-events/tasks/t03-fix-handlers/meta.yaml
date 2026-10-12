@@ -1,0 +1,22 @@
+order: 3
+title: "Три сломанных обработчика"
+type: fix-bug
+role: warmup
+difficulty: 2
+minutes: 12
+language: html
+tags: [addEventListener, preventDefault, keydown, event.key]
+hints:
+  - "Направление: сначала проверьте счётчик сразу после загрузки: если он уже не ноль, обработчик вызывается при подключении. Потом ссылку, потом клавишу."
+  - "Шаг: в addEventListener вторым аргументом должна идти функция, а не её результат. У preventDefault должны быть круглые скобки. Название клавиши Enter пишется с заглавной буквы."
+  - "Почти решение: addEventListener('click', addItem); event.preventDefault(); if (event.key === 'Enter')"
+wrong:
+  - name: click-only
+    kind: partial
+    explanation: "Исправлен только счётчик. Ссылка по-прежнему переходит по адресу, потому что у preventDefault нет скобок, а поиск не реагирует на Enter, потому что клавиша сравнивается со строкой enter."
+  - name: link-no-call
+    kind: common-mistake
+    explanation: "Запись event.preventDefault; без скобок только читает свойство и ничего не вызывает. Ошибки нет, но страница всё равно переходит по ссылке. Нужен вызов preventDefault()."
+  - name: lowercase-key
+    kind: edge-case
+    explanation: "Клавиша сравнивается со строкой enter. Имена клавиш в event.key регистрозависимы: значение равно Enter, поэтому ветка никогда не выполняется, и статус остаётся прежним."

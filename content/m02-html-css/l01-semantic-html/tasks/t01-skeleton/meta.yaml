@@ -1,0 +1,22 @@
+order: 1
+title: "Каркас страницы каталога"
+type: recall
+role: warmup
+difficulty: 1
+minutes: 6
+language: html
+tags: [семантика, header, nav, main, footer]
+hints:
+  - "Направление: вспомните схему страницы из урока: шапка, основная часть, подвал. Для каждой части есть свой тег."
+  - "Шаг: меню — это nav внутри header. Внутри nav ссылки лежат в списке ul. Добавьте nav атрибут aria-label."
+  - "Почти решение: header с nav и ul из трёх li с ссылками, затем main с h1 и p, затем footer. Все три блока лежат в body один за другим."
+wrong:
+  - name: div-soup
+    kind: common-mistake
+    explanation: "Блоки размечены как div с классами header, main и footer. Внешне страница та же, но у браузера и скринридера нет ориентиров: тестам не находятся теги header, main и footer."
+  - name: no-nav-list
+    kind: edge-case
+    explanation: "Каркас на месте, но ссылки меню лежат прямо в nav без списка, а у nav нет имени. Скринридер не скажет «список из трёх пунктов» и не назовёт меню."
+  - name: no-footer
+    kind: partial
+    explanation: "Сделаны шапка и основная часть, подвал пропущен. Каркас страницы неполный."

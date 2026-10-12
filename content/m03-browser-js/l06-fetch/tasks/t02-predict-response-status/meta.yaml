@@ -1,0 +1,23 @@
+order: 2
+title: "Какие ответы сервера считаются успешными"
+type: predict
+role: warmup
+difficulty: 3
+minutes: 10
+language: js
+tags: [Response, status, ok, JSON.parse, encodeURIComponent, async]
+show: [tests/snippet.js]
+hints:
+  - "Направление: response.ok истинно для кодов от 200 до 299, а не только для 200. Коды 4xx и 5xx дают false. Функция с async возвращает обещание сразу."
+  - "Шаг: пробел в адресе кодируется как %20, амперсанд как %26. JSON.parse от текста, который не является JSON, выбрасывает SyntaxError, и управление уходит в catch. Тело async-функции выполняется синхронно до первого await."
+  - "Почти решение: 200 true, 201 true, 404 false, 503 false, true, 1043, sku=K-200%20%26%20B-50, ошибка: SyntaxError, load: начало, после вызова: true."
+wrong:
+  - name: unfinished
+    kind: partial
+    explanation: "Заполнены только первые строки. Нужно предсказать все десять вызовов console.log, включая кодирование адреса и вызов async-функции."
+  - name: ok-means-200
+    kind: common-mistake
+    explanation: "Принято, что ok бывает только у кода 200. На самом деле ok истинно для любого кода от 200 до 299: 201 (создано) и 204 (нет содержимого) тоже успешны."
+  - name: no-encoding
+    kind: edge-case
+    explanation: "Адрес записан без кодирования. encodeURIComponent заменяет пробел на %20, а & на %26, чтобы значение не разломило строку запроса. Правильно: sku=K-200%20%26%20B-50."

@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+.product {
+  padding: 16px;
+}
+
+.product__photo {
+  width: 800px;
+}

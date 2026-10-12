@@ -1,0 +1,22 @@
+order: 4
+title: "Спиннер и скелетоны для загрузки каталога"
+type: implement
+role: main
+difficulty: 3
+minutes: 15
+language: html
+tags: [keyframes, animation, transform, opacity, infinite]
+hints:
+  - "Направление: сначала опишите кадры через @keyframes имя { from {...} to {...} }, потом подключите их свойством animation у элемента с тем же именем."
+  - "Шаг: animation принимает имя, длительность, функцию плавности и число повторов. Бесконечное число повторов — ключевое слово infinite. Пульс идёт туда и обратно, поэтому опорных точек три: 0%, 50% и 100%."
+  - "Почти решение: .spinner { animation: spin 1s linear infinite; } @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } } .skeleton { animation: pulse 1.5s ease-in-out infinite; } @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }"
+wrong:
+  - name: no-skeleton
+    kind: partial
+    explanation: "Спиннер готов, а скелетоны остались статичными: @keyframes pulse есть, но у .skeleton нет свойства animation. Кадры сами ничего не запускают, их нужно подключить."
+  - name: ease-spinner
+    kind: edge-case
+    explanation: "В animation не указана функция плавности, а по умолчанию это ease: кольцо разгоняется и замедляется на каждом обороте, вращение дёргается. Для равномерного вращения нужен linear."
+  - name: width-pulse
+    kind: common-mistake
+    explanation: "В кадр пульса добавлено изменение width. Для анимации прозрачности это лишнее, а изменение ширины заставляет браузер пересчитывать раскладку на каждом кадре. Анимируйте только transform и opacity."

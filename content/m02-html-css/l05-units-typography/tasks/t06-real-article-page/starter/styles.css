@@ -1,0 +1,8 @@
+/* Допишите стили страницы статьи */
+body {
+  margin: 0;
+}
+
+.hero {
+  background: #e8eefc;
+}

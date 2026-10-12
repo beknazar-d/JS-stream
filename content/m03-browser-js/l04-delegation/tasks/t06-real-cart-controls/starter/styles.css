@@ -1,0 +1,20 @@
+body {
+  margin: 16px;
+  font-family: system-ui, "Segoe UI", Arial, sans-serif;
+}
+
+#cart {
+  padding: 0;
+  list-style: none;
+}
+
+.cart-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.empty[hidden] {
+  display: none;
+}

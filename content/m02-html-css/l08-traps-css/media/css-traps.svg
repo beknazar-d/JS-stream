@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="13" fill="currentColor">
+  <title id="t">Карта шести ловушек CSS</title>
+  <desc id="d">Таблица из трёх колонок и шести строк: ловушка, симптом и лекарство.</desc>
+  <g stroke="currentColor" fill="none" stroke-width="1.5" opacity="0.7"><rect x="8" y="8" width="624" height="404" rx="8"/><path d="M8 44 H632"/><path d="M190 8 V412 M410 8 V412"/></g>
+  <g stroke="currentColor" fill="none" opacity="0.35">
+<path d="M8 104 H632"/>
+<path d="M8 164 H632"/>
+<path d="M8 224 H632"/>
+<path d="M8 284 H632"/>
+<path d="M8 344 H632"/>
+</g>
+  <g font-weight="700"><text x="20" y="31">Ловушка</text><text x="202" y="31">Симптом</text><text x="422" y="31">Лекарство</text></g>
+  <g>
+<text x="20" y="78">Специфичность</text>
+<text x="202" y="70">правило не применяется,</text>
+<text x="202" y="88">в DevTools зачёркнуто</text>
+<text x="422" y="70">понизить вес старого,</text>
+<text x="422" y="88">без !important</text>
+<text x="20" y="138">Схлопывание</text>
+<text x="202" y="130">отступ ушёл наружу</text>
+<text x="202" y="148">через родителя</text>
+<text x="422" y="138" font-family="ui-monospace, monospace" font-size="12">display: flow-root</text>
+<text x="20" y="198">Flex-элемент</text>
+<text x="202" y="190">длинное слово</text>
+<text x="202" y="208">расталкивает строку</text>
+<text x="422" y="198" font-family="ui-monospace, monospace" font-size="12">min-width: 0</text>
+<text x="20" y="258">Длинное слово</text>
+<text x="202" y="250">прокрутка вбок</text>
+<text x="202" y="268">на телефоне</text>
+<text x="422" y="258" font-family="ui-monospace, monospace" font-size="12">overflow-wrap: anywhere</text>
+<text x="20" y="318">z-index</text>
+<text x="202" y="310">слой не поднимается</text>
+<text x="202" y="328">над соседом</text>
+<text x="422" y="318" font-family="ui-monospace, monospace" font-size="12">position: relative / fixed</text>
+<text x="20" y="378">height: 100%</text>
+<text x="202" y="370">блок не тянется</text>
+<text x="202" y="388">на высоту окна</text>
+<text x="422" y="378" font-family="ui-monospace, monospace" font-size="12">min-height: 100vh</text>
+</g>
+</svg>

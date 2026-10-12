@@ -1,0 +1,5 @@
+.btn → 0-1-0
+.btn.btn--accent → 0-2-0
+.card .btn.btn--primary → 0-3-0
+#catalog .btn → 1-1-0
+#catalog .card .btn:hover → 1-3-0

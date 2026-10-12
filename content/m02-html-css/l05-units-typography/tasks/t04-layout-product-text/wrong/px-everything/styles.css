@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  font-family: system-ui, "Segoe UI", Arial, sans-serif;
+  line-height: 1.6;
+}
+.product { max-width: 768px; margin: 0 auto; padding: 24px 16px; }
+h1 { font-size: 32px; }
+.price { font-size: 24px; font-weight: 700; }
+.lead { font-size: 20px; }
+.text { font-size: 16px; max-width: 65ch; }

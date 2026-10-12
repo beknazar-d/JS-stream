@@ -1,0 +1,292 @@
+{
+ "routes": [
+  {
+   "method": "GET",
+   "path": "/api/products?page=1&limit=6",
+   "body": {
+    "items": [
+     {
+      "id": 1,
+      "title": "Чайник Bosch",
+      "price": 1430
+     },
+     {
+      "id": 2,
+      "title": "Чайник Tefal",
+      "price": 1860
+     },
+     {
+      "id": 3,
+      "title": "Чайник Xiaomi",
+      "price": 2290
+     },
+     {
+      "id": 4,
+      "title": "Блендер Philips",
+      "price": 2720
+     },
+     {
+      "id": 5,
+      "title": "Блендер Braun",
+      "price": 3150
+     },
+     {
+      "id": 6,
+      "title": "Блендер Moulinex",
+      "price": 3580
+     }
+    ],
+    "page": 1,
+    "totalPages": 4
+   },
+   "delayMs": 120
+  },
+  {
+   "method": "GET",
+   "path": "/api/products?limit=6&page=1",
+   "body": {
+    "items": [
+     {
+      "id": 1,
+      "title": "Чайник Bosch",
+      "price": 1430
+     },
+     {
+      "id": 2,
+      "title": "Чайник Tefal",
+      "price": 1860
+     },
+     {
+      "id": 3,
+      "title": "Чайник Xiaomi",
+      "price": 2290
+     },
+     {
+      "id": 4,
+      "title": "Блендер Philips",
+      "price": 2720
+     },
+     {
+      "id": 5,
+      "title": "Блендер Braun",
+      "price": 3150
+     },
+     {
+      "id": 6,
+      "title": "Блендер Moulinex",
+      "price": 3580
+     }
+    ],
+    "page": 1,
+    "totalPages": 4
+   },
+   "delayMs": 120
+  },
+  {
+   "method": "GET",
+   "path": "/api/products?page=2&limit=6",
+   "body": {
+    "items": [
+     {
+      "id": 7,
+      "title": "Мультиварка <b>Pro</b> Redmond",
+      "price": 4010
+     },
+     {
+      "id": 8,
+      "title": "Гриль Tefal",
+      "price": 4440
+     },
+     {
+      "id": 9,
+      "title": "Тостер Tefal",
+      "price": 4870
+     },
+     {
+      "id": 10,
+      "title": "Кофемашина DeLonghi",
+      "price": 5300
+     },
+     {
+      "id": 11,
+      "title": "Кофемолка Bosch",
+      "price": 5730
+     },
+     {
+      "id": 12,
+      "title": "Мясорубка Moulinex",
+      "price": 6160
+     }
+    ],
+    "page": 2,
+    "totalPages": 4
+   },
+   "delayMs": 120
+  },
+  {
+   "method": "GET",
+   "path": "/api/products?limit=6&page=2",
+   "body": {
+    "items": [
+     {
+      "id": 7,
+      "title": "Мультиварка <b>Pro</b> Redmond",
+      "price": 4010
+     },
+     {
+      "id": 8,
+      "title": "Гриль Tefal",
+      "price": 4440
+     },
+     {
+      "id": 9,
+      "title": "Тостер Tefal",
+      "price": 4870
+     },
+     {
+      "id": 10,
+      "title": "Кофемашина DeLonghi",
+      "price": 5300
+     },
+     {
+      "id": 11,
+      "title": "Кофемолка Bosch",
+      "price": 5730
+     },
+     {
+      "id": 12,
+      "title": "Мясорубка Moulinex",
+      "price": 6160
+     }
+    ],
+    "page": 2,
+    "totalPages": 4
+   },
+   "delayMs": 120
+  },
+  {
+   "method": "GET",
+   "path": "/api/products?page=3&limit=6",
+   "body": {
+    "items": [
+     {
+      "id": 13,
+      "title": "Соковыжималка Philips",
+      "price": 6590
+     },
+     {
+      "id": 14,
+      "title": "Пароварка Tefal",
+      "price": 7020
+     },
+     {
+      "id": 15,
+      "title": "Хлебопечь Redmond",
+      "price": 7450
+     },
+     {
+      "id": 16,
+      "title": "Фен Dyson",
+      "price": 7880
+     },
+     {
+      "id": 17,
+      "title": "Утюг Philips",
+      "price": 8310
+     },
+     {
+      "id": 18,
+      "title": "Пылесос Karcher",
+      "price": 8740
+     }
+    ],
+    "page": 3,
+    "totalPages": 4
+   },
+   "delayMs": 120
+  },
+  {
+   "method": "GET",
+   "path": "/api/products?limit=6&page=3",
+   "body": {
+    "items": [
+     {
+      "id": 13,
+      "title": "Соковыжималка Philips",
+      "price": 6590
+     },
+     {
+      "id": 14,
+      "title": "Пароварка Tefal",
+      "price": 7020
+     },
+     {
+      "id": 15,
+      "title": "Хлебопечь Redmond",
+      "price": 7450
+     },
+     {
+      "id": 16,
+      "title": "Фен Dyson",
+      "price": 7880
+     },
+     {
+      "id": 17,
+      "title": "Утюг Philips",
+      "price": 8310
+     },
+     {
+      "id": 18,
+      "title": "Пылесос Karcher",
+      "price": 8740
+     }
+    ],
+    "page": 3,
+    "totalPages": 4
+   },
+   "delayMs": 120
+  },
+  {
+   "method": "GET",
+   "path": "/api/products?page=4&limit=6",
+   "body": {
+    "items": [
+     {
+      "id": 19,
+      "title": "Робот-пылесос Xiaomi",
+      "price": 9170
+     },
+     {
+      "id": 20,
+      "title": "Вентилятор Polaris",
+      "price": 9600
+     }
+    ],
+    "page": 4,
+    "totalPages": 4
+   },
+   "delayMs": 120
+  },
+  {
+   "method": "GET",
+   "path": "/api/products?limit=6&page=4",
+   "body": {
+    "items": [
+     {
+      "id": 19,
+      "title": "Робот-пылесос Xiaomi",
+      "price": 9170
+     },
+     {
+      "id": 20,
+      "title": "Вентилятор Polaris",
+      "price": 9600
+     }
+    ],
+    "page": 4,
+    "totalPages": 4
+   },
+   "delayMs": 120
+  }
+ ]
+}

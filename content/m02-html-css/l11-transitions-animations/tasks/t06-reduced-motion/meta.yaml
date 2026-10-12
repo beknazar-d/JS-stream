@@ -1,0 +1,22 @@
+order: 6
+title: "Подпрыгивающий счётчик и режим «уменьшить движение»"
+type: implement
+role: real
+difficulty: 4
+minutes: 25
+language: html
+tags: [keyframes, prefers-reduced-motion, доступность, transition, animation]
+hints:
+  - "Направление: сначала напишите анимацию подпрыга и убедитесь, что она работает. Потом отдельным блоком в конце файла перечислите, что отключается в режиме «уменьшить движение»."
+  - "Шаг: анимацию отключает animation: none, переход — transition: none. Селекторы в блоке такие же, как в основных правилах. Блок стоит в конце, потому что при равной специфичности побеждает то, что ниже."
+  - "Почти решение: @media (prefers-reduced-motion: reduce) { .product-card, .cart-count { animation: none; } .button { transition: none; } } @keyframes bump { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.3); } }"
+wrong:
+  - name: no-bump
+    kind: partial
+    explanation: "Блок для режима «уменьшить движение» написан, а нового эффекта нет: счётчик не подпрыгивает. Первая половина задачи не выполнена."
+  - name: transition-forgotten
+    kind: edge-case
+    explanation: "Анимации выключены, но переход кнопки остался: transition нужно отключать так же, как animation. У человека с настройкой кнопка продолжает двигаться при наведении."
+  - name: block-first
+    kind: common-mistake
+    explanation: "Блок reduce стоит выше основных правил. Правила одной специфичности решает порядок, поэтому animation и transition ниже побеждают блок, и в реальном браузере с включённой настройкой анимации не отключатся. Блок пишут в конце файла."

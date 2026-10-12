@@ -1,0 +1,22 @@
+order: 4
+title: "Каталог без медиазапросов"
+type: implement
+role: main
+difficulty: 3
+minutes: 15
+language: html
+tags: [auto-fill, minmax, адаптивность, grid]
+hints:
+  - "Направление: колонок должно быть столько, сколько поместится по минимальной ширине карточки. Для этого у repeat вместо числа есть специальное слово."
+  - "Шаг: внутри repeat поставьте auto-fill и minmax с минимумом 200px и максимумом в долю свободного места."
+  - "Почти решение: .catalog { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }"
+wrong:
+  - name: fixed-four
+    kind: partial
+    explanation: "repeat(4, 1fr) работает на широком экране, но в окне 700px и 375px карточки сжимаются до узких полосок. Количество колонок не подстраивается."
+  - name: auto-fit
+    kind: edge-case
+    explanation: "auto-fit при двух карточках схлопывает пустые колонки, и две карточки растягиваются на пол-экрана. Для каталога нужен auto-fill: карточка сохраняет обычную ширину."
+  - name: fixed-width-tracks
+    kind: common-mistake
+    explanation: "repeat(auto-fill, 200px) создаёт колонки ровно по 200px и не растягивает их. Справа остаётся пустое место, правый край сетки не доходит до края main."

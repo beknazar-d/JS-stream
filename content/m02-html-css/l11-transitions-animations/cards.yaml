@@ -1,0 +1,35 @@
+- id: transition-syntax
+  front: "Как записать плавный переход цвета фона за 0.2 секунды?"
+  back: "transition: background-color 0.2s ease; Пишется у исходного состояния, а не у :hover."
+  answer: transition
+- id: cheap-properties
+  front: Какие два свойства дёшево анимировать?
+  back: "transform и opacity. Они не вызывают пересчёта раскладки."
+  answer: transform
+- id: transition-all
+  front: "Почему лучше не писать transition: all?"
+  back: "Он анимирует любое изменённое свойство, в том числе случайные и дорогие. Перечисляйте нужные свойства."
+- id: keyframes-syntax
+  front: Как описать анимацию вращения на 360 градусов?
+  back: "@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }"
+  answer: "@keyframes"
+- id: animation-shorthand
+  front: "Что значит animation: spin 1s linear infinite?"
+  back: "Имя кадров, длительность 1 секунда, равномерная скорость, бесконечные повторы."
+- id: animation-timing
+  front: Какую функцию плавности брать для вращения спиннера?
+  back: "linear. Со стандартной ease скорость меняется внутри каждого оборота, вращение дёргается."
+  answer: linear
+- id: translate-vs-left
+  front: Чем сдвиг через transform лучше, чем left или margin?
+  back: "Не меняет раскладку: соседние блоки остаются на месте, и браузер не пересчитывает страницу."
+- id: reduced-motion-query
+  front: Какое условие включается, когда человек просит уменьшить движение?
+  back: "@media (prefers-reduced-motion: reduce) { ... } — внутри отключают animation и transition."
+  answer: prefers-reduced-motion
+- id: reduced-motion-order
+  front: Где в файле писать блок prefers-reduced-motion?
+  back: "В конце, после основных правил. При равной специфичности побеждает то, что ниже."
+- id: animation-fill-mode
+  front: "Что делает animation-fill-mode: both?"
+  back: "До начала анимации (во время задержки) применяет первый кадр, после конца оставляет последний."

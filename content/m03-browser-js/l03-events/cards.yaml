@@ -1,0 +1,30 @@
+- id: add-listener
+  front: Как повесить обработчик клика на кнопку?
+  back: "button.addEventListener('click', handler) — вторым аргументом функция без скобок. Скобки вызовут её сразу."
+  answer: "addEventListener('click'"
+- id: event-object
+  front: Что получает обработчик первым аргументом?
+  back: "Объект события: event.type, event.target (где случилось), event.currentTarget (на ком обработчик), event.key для клавиш."
+- id: prevent-default
+  front: Как отменить переход по ссылке или отправку формы?
+  back: "event.preventDefault() внутри обработчика. Скобки обязательны: без них это просто чтение свойства."
+  answer: "preventDefault"
+- id: submit-vs-click
+  front: "На какое событие вешают проверку формы: на click кнопки или submit формы?"
+  back: "На submit формы: оно срабатывает и по кнопке, и по Enter в поле."
+  answer: submit
+- id: input-vs-change
+  front: Чем input отличается от change у текстового поля?
+  back: "input срабатывает на каждое изменение при вводе. change у текстового поля — когда ввод завершён и поле потеряло фокус."
+- id: keydown
+  front: Как проверить нажатие Enter и Escape?
+  back: "input.addEventListener('keydown', (event) => { if (event.key === 'Enter') ... }). Значения регистрозависимые: 'Enter', 'Escape'."
+- id: value-string
+  front: Какого типа input.value и как получить число?
+  back: "Всегда строка. Number(input.value), затем проверка на NaN и границы."
+- id: remove-listener
+  front: Как снять обработчик?
+  back: "element.removeEventListener('click', handler) с той же самой функцией. Новая стрелка с тем же текстом не подойдёт."
+- id: once
+  front: Как сделать обработчик, который сработает один раз?
+  back: "addEventListener('click', handler, { once: true }). После первого вызова браузер сам его снимет."

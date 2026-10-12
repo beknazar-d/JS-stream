@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" role="img" aria-labelledby="t d" font-family="system-ui, sans-serif" font-size="14" fill="currentColor">
+  <title id="t">Как слои min-width накладываются на ширину окна</title>
+  <desc id="d">Горизонтальная ось ширины окна от 0 до 1440 пикселей. Базовые стили действуют на всей оси. Правило от 768 пикселей действует правее отметки 768. Правило от 1024 пикселей действует правее отметки 1024. На ширине 1024 действуют все три слоя, и побеждает верхний.</desc>
+  <g stroke="currentColor" stroke-width="2" fill="none">
+    <rect x="40" y="60" width="560" height="36" rx="6" opacity="0.5"/>
+    <rect x="339" y="110" width="261" height="36" rx="6" opacity="0.75"/>
+    <rect x="438" y="160" width="162" height="36" rx="6"/>
+    <path d="M40 230 H600" />
+    <path d="M40 224 V236 M186 224 V236 M339 224 V236 M438 224 V236 M600 224 V236"/>
+    <path d="M339 40 V222 M438 40 V222" stroke-dasharray="5 4" opacity="0.6"/>
+  </g>
+  <g>
+    <text x="48" y="83">Базовые стили: телефон, 1 колонка</text>
+    <text x="347" y="133">от 768: 2 колонки</text>
+    <text x="446" y="183" font-size="13">от 1024: 4</text>
+  </g>
+  <g text-anchor="middle" font-size="13">
+    <text x="40" y="254">0</text>
+    <text x="186" y="254">375</text>
+    <text x="339" y="254">768</text>
+    <text x="438" y="254">1024</text>
+    <text x="600" y="254">1440 px</text>
+    <text x="320" y="285" font-size="12" opacity="0.85">Чем правее, тем больше слоёв. Последний подходящий слой перебивает предыдущие.</text>
+    <text x="320" y="24" font-weight="700">Ширина окна</text>
+  </g>
+</svg>

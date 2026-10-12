@@ -1,0 +1,80 @@
+{
+ "routes": [
+  {
+   "path": "/api/search?q=%D1%87%D0%B0%D0%B9%D0%BD%D0%B8%D0%BA",
+   "delayMs": 50,
+   "body": [
+    {
+     "id": 1,
+     "title": "Электрический чайник Domo K-17",
+     "price": 2990
+    },
+    {
+     "id": 2,
+     "title": "Чайник стеклянный Vento",
+     "price": 2490
+    }
+   ]
+  },
+  {
+   "path": "/api/search?q=%D1%87%D0%B0%D0%B9",
+   "delayMs": 600,
+   "body": [
+    {
+     "id": 1,
+     "title": "Электрический чайник Domo K-17",
+     "price": 2990
+    },
+    {
+     "id": 2,
+     "title": "Чайник стеклянный Vento",
+     "price": 2490
+    },
+    {
+     "id": 3,
+     "title": "Заварник для чая Vento",
+     "price": 890
+    }
+   ]
+  },
+  {
+   "path": "/api/search?q=%D1%83%D1%82%D1%8E%D0%B3",
+   "delayMs": 30,
+   "body": [
+    {
+     "id": 9,
+     "title": "Утюг Domo S-5",
+     "price": 3490
+    }
+   ]
+  },
+  {
+   "path": "/api/search?q=%D1%82%D0%BE%D1%81%D1%82%D0%B5%D1%80",
+   "delayMs": 30,
+   "body": []
+  },
+  {
+   "path": "/api/search?q=%D0%BF%D1%8B%D0%BB%D0%B5%D1%81%D0%BE%D1%81",
+   "responses": [
+    {
+     "status": 503,
+     "body": {
+      "error": "Service Unavailable"
+     },
+     "delayMs": 30
+    },
+    {
+     "status": 200,
+     "delayMs": 30,
+     "body": [
+      {
+       "id": 15,
+       "title": "Пылесос Domo V-300",
+       "price": 8990
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

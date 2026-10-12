@@ -1,0 +1,22 @@
+order: 6
+title: "Этап 6. Проект: фильтры в адресе страницы"
+type: implement
+role: real
+difficulty: 4
+minutes: 60
+language: html
+tags: [проект, History API, pushState, popstate, URLSearchParams, неясности]
+hints:
+  - "Направление: сначала две чистые функции в url.js, они проверяются отдельно от страницы. Потом одна точка, через которую проходят все изменения состояния, и она же пишет в историю. Отдельно подумайте, чем «Назад» отличается от обычного изменения."
+  - "Шаг: в changeState после сравнения нового и старого адреса вызывайте history.pushState(state, '', buildSearch(state) || location.pathname) и loadProducts. В обработчике popstate запись не добавляйте: возьмите состояние из event.state (или parseState(location.search) для первой записи), обновите поля и вызовите loadProducts. При старте вызовите replaceState и заполните поля из состояния."
+  - "Почти решение: parseState: URLSearchParams, category и sort проверяйте includes по спискам CATEGORIES и SORTS, page: Number(...), целое и не меньше 1. buildSearch: params.set для q, category, sort (если не popular) и page (если больше 1), в конце text ? '?' + text : ''. В script.js: let state = parseState(location.search); в changeState if (buildSearch(next) === buildSearch(state)) return; popstate: state = event.state ? { ...DEFAULT_STATE, ...event.state } : parseState(location.search); showControls(); loadProducts();"
+wrong:
+  - name: no-popstate
+    kind: partial
+    explanation: "Адрес и записи истории создаются, но события popstate никто не слушает. «Назад» меняет адрес, а поля и список остаются прежними."
+  - name: push-on-popstate
+    kind: edge-case
+    explanation: "Обработчик popstate применяет состояние через общую функцию, которая добавляет запись в историю. После «Назад» создаётся новая запись, «Вперёд» пропадает, а история растёт с каждым возвратом."
+  - name: no-validation
+    kind: common-mistake
+    explanation: "parseState берёт значения из адреса как есть. Ссылка с sort=hack или page=-2 попадает прямо в запрос к серверу и в состояние страницы."

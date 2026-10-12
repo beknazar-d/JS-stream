@@ -1,0 +1,22 @@
+order: 3
+title: "Генератор классов по БЭМ"
+type: implement
+role: warmup
+difficulty: 2
+minutes: 15
+language: js
+tags: [БЭМ, строки, объекты, Object.entries, модификаторы]
+hints:
+  - "Направление: сначала соберите базовое имя: блок или блок__элемент. Затем пройдите по модификаторам и для каждого решите, добавлять ли его."
+  - "Шаг: перебирайте Object.entries(modifiers). Пропускайте значения false, null, undefined и пустую строку. Для true добавляйте только имя, для остальных имя и значение через дефис."
+  - "Почти решение: base = element ? block + '__' + element : block; classes = [base]; для каждой пары [name, value] проверьте value === true, затем иначе добавьте base + '--' + name + '-' + value; верните classes.join(' ')."
+wrong:
+  - name: elements-only
+    kind: partial
+    explanation: "Работает только для блока и элемента. Модификаторы игнорируются: карточка со скидкой остаётся без класса product-card--sale."
+  - name: no-base-class
+    kind: common-mistake
+    explanation: "Функция возвращает только класс модификатора. В БЭМ модификатор не заменяет блок, а дополняет его: без базового класса пропадают все основные стили компонента."
+  - name: falsy-check
+    kind: edge-case
+    explanation: "Значение проверяется по истинности, поэтому число 0 пропадает: bem('btn', null, { quantity: 0 }) не даёт btn--quantity-0. Пропускать нужно только false, null, undefined и пустую строку."

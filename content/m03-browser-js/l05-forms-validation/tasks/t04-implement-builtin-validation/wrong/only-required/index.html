@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Оформление заказа</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <h1>Оформление заказа</h1>
+    <form id="order-form">
+      <div class="field">
+        <label for="name">Имя и фамилия</label>
+        <input id="name" name="name" type="text" required>
+      </div>
+      <div class="field">
+        <label for="phone">Телефон в формате +79001234567</label>
+        <input id="phone" name="phone" type="tel" required>
+      </div>
+      <div class="field">
+        <label for="email">Электронная почта</label>
+        <input id="email" name="email" type="text" required>
+      </div>
+      <div class="field">
+        <label for="qty">Количество (от 1 до 10)</label>
+        <input id="qty" name="qty" type="text" required>
+      </div>
+      <div class="field">
+        <label for="postcode">Почтовый индекс</label>
+        <input id="postcode" name="postcode" type="text" required>
+      </div>
+      <div class="field">
+        <label for="comment">Комментарий курьеру</label>
+        <textarea id="comment" name="comment" rows="3"></textarea>
+      </div>
+      <button type="submit">Оформить заказ</button>
+    </form>
+  </main>
+</body>
+</html>

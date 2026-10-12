@@ -1,0 +1,34 @@
+- id: ls-vs-ss
+  front: Чем localStorage отличается от sessionStorage?
+  back: "localStorage живёт между визитами и общий для вкладок сайта. sessionStorage живёт, пока открыта вкладка, и у каждой вкладки свой."
+- id: get-set
+  front: Как записать и прочитать значение в localStorage?
+  back: "localStorage.setItem('key', value) и localStorage.getItem('key'). Нет ключа — getItem вернёт null."
+  answer: getItem
+- id: only-strings
+  front: Что произойдёт, если записать в хранилище число 3 или массив [4, 7]?
+  back: "Хранилище превратит значение в строку: '3' и '4,7'. Читая, вы получите строки, а не числа и не массив."
+- id: object-text
+  front: Что окажется в хранилище, если записать туда объект без JSON.stringify?
+  back: "Строка '[object Object]'. Данные потеряны, обратно их не собрать."
+  answer: "[object Object]"
+- id: stringify-parse
+  front: Как сохранить массив или объект и получить его обратно?
+  back: "Записать JSON.stringify(value), прочитать JSON.parse(localStorage.getItem(key))."
+  answer: JSON.stringify
+- id: parse-throws
+  front: Что делает JSON.parse на повреждённой строке и как это обработать?
+  back: "Бросает SyntaxError. Оберните разбор в try/catch и верните значение по умолчанию."
+  answer: try/catch
+- id: parse-null
+  front: Что вернёт JSON.parse(localStorage.getItem('нет-такого'))?
+  back: "null: getItem вернул null, а JSON.parse(null) тоже даёт null, ошибки нет. Для отсутствующего ключа подставляйте запасное значение явно."
+- id: validate
+  front: Что проверять после успешного JSON.parse?
+  back: "Форму данных: Array.isArray, нужные поля и их типы. Корректный JSON ещё не значит корректная корзина."
+- id: json-loses
+  front: Какие значения JSON.stringify теряет или меняет?
+  back: "Date становится строкой, undefined и функции пропадают, NaN и Infinity превращаются в null."
+- id: quota
+  front: Что будет, если в localStorage записать слишком много?
+  back: "Лимит порядка 5 МБ на сайт, зависит от браузера. При превышении setItem бросает QuotaExceededError. Хранилище не база данных: храните мало и оборачивайте запись в try/catch."

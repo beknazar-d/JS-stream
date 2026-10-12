@@ -1,0 +1,22 @@
+order: 1
+title: "Этап 1. Первая страница каталога"
+type: api
+role: warmup
+difficulty: 2
+minutes: 20
+language: html
+tags: [проект, fetch, DOM, мок-API, неясности]
+hints:
+  - "Направление: сделайте три маленькие функции. Первая формирует цену, вторая собирает одну карточку из объекта товара, третья делает запрос и выводит все карточки."
+  - "Шаг: fetch('/api/products?page=1&limit=6'), затем await response.json(). В ответе объект с полями items и total. Для каждого товара создайте li через createElement, текст кладите в textContent. Список заменяйте через grid.replaceChildren(...карточки)."
+  - "Почти решение: createCard(product) собирает li.card с h3, двумя p и добавляет класс card--out, если product.inStock равно false. loadProducts делает запрос, вызывает grid.replaceChildren(...data.items.map(createCard)) и пишет 'Найдено: ' + data.total. Цена: new Intl.NumberFormat('ru-RU').format(price) + ' ₽'."
+wrong:
+  - name: no-price
+    kind: partial
+    explanation: "Карточки показывают только названия. В критериях ещё цена и наличие, без них покупатель не поймёт, что выбирает."
+  - name: no-limit
+    kind: common-mistake
+    explanation: "В запросе нет параметра limit. Сервер по умолчанию отдаёт 12 товаров, поэтому на странице 12 карточек вместо шести. Страницу размера нужно просить явно."
+  - name: total-from-length
+    kind: edge-case
+    explanation: "Общее число взято как длина массива на странице: «Найдено: 6». Но в каталоге 24 товара, и у API для этого есть поле total."

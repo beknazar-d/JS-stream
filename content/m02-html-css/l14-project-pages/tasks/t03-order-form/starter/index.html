@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Оформление заказа — Домотека</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page">
+    <div class="order">
+      <div class="order__title">Оформление заказа</div>
+      <div class="order__group">
+        <div class="order__legend">Контакты</div>
+        <div class="order__row">
+        <div class="field">
+          <input class="field__input" id="name" placeholder="Имя">
+        </div>
+        <div class="field">
+          <input class="field__input" id="phone" placeholder="Телефон">
+        </div>
+        </div>
+        <div class="order__row order__row--single">
+        <div class="field">
+          <input class="field__input" id="email" placeholder="Электронная почта">
+        </div>
+        </div>
+      </div>
+      <div class="order__group">
+        <div class="order__legend">Доставка</div>
+        <div class="order__choices">
+          <span class="choice"><input type="radio" name="delivery" value="courier" checked> Курьером</span>
+          <span class="choice"><input type="radio" name="delivery" value="pickup"> Самовывоз из магазина</span>
+        </div>
+        <div class="order__row order__row--single">
+        <div class="field">
+          <input class="field__input" id="address" placeholder="Улица, дом, квартира">
+        </div>
+        </div>
+        <div class="order__row order__row--address">
+        <div class="field">
+          <input class="field__input" id="city" placeholder="Город">
+        </div>
+        <div class="field">
+          <input class="field__input" id="zip" placeholder="Индекс">
+        </div>
+        </div>
+        <div class="order__row order__row--single">
+          <div class="field">
+            <textarea class="field__input field__input--area" id="comment" name="comment" placeholder="Комментарий для курьера"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="order__footer">
+        <p class="order__total">Итого: <strong>12 480 ₽</strong></p>
+        <div class="order__submit">Оформить заказ</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
